@@ -1,56 +1,66 @@
 <ul class="nav nav-sidebar">
-    <li class="active">
-        <span class="icon_homePage icon_com"></span>
-        <a class="item" data-route="overview" href="#/list">
-            <span>首页</span>
-        </a>
-    </li>
-    <li id="video">
-        <span class="icon_video icon_com"></span>
-        <a class="item">
-            <span>视频管理</span>
-            <i class="nav-icon"></i>
-        </a>
-        <ul class="nav nav-sub">
-            <li>
-                <a class="item" href="#/video" data-route="u-s">
-                    <span>管理视频</span>
-                </a>
-            </li>
-
-            <!--#if(${vod-vr}==1)-->
+    <% $.each(list, function(i, n){ %>
+        <li class="<%= i== 0 && 'active' %>">
+        <!--<li class="">-->
+            <span class="<%= n.className %> icon_com"></span>
+            <a class="item"  href="<%= n.href %>">
+                <span><%= n.title %></span>
+            </a>
+        </li>
+        <span class="<%= n.className %> icon_com"></span>
+    <% }); %>
+    <!--<li class="active">-->
+        <!--<span class="icon_homePage icon_com"></span>-->
+        <!--<a class="item"  href="#/register/officeArea">-->
+            <!--<span>办公区登记</span>-->
+        <!--</a>-->
+    <!--</li>-->
+    <!--<li id="video">-->
+        <!--<span class="icon_video icon_com"></span>-->
+        <!--<a class="item">-->
+            <!--<span>视频管理</span>-->
+            <!--<i class="nav-icon"></i>-->
+        <!--</a>-->
+        <!--<ul class="nav nav-sub">-->
             <!--<li>-->
-            <!--<a href="#/template/VR/index" data-route="u-v">-->
-            <!--<span>VR转码参数</span>-->
-            <!--</a>-->
+                <!--<a class="item" href="#/video" data-route="u-s">-->
+                    <!--<span>管理视频</span>-->
+                <!--</a>-->
             <!--</li>-->
-            <!--#end-->
-        </ul>
-    </li>
-    <li id="bigData">
-        <span class="icon_stats icon_com"></span>
-        <a class="item">
-            <span>数据统计</span>
-            <i class="nav-icon"></i>
-        </a>
-        <ul class="nav nav-sub">
-            <li class="active">
-                <a class="item" data-route="overview" href="#/overview">
-                    <span>数据统计概览</span>
-                </a>
-            </li>
-            <li>
-                <a class="item" href="#/terminal">
-                    <span>终端分析</span>
-                </a>
-                <ul class="nav nav-sub">
-                    <li>
-                        <a class="item" href="javascript:void(0)" data-route="t-a">
-                            <span>终端访问量</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
+
+            <!--&lt;!&ndash;#if(${vod-vr}==1)&ndash;&gt;-->
+            <!--&lt;!&ndash;<li>&ndash;&gt;-->
+            <!--&lt;!&ndash;<a href="#/template/VR/index" data-route="u-v">&ndash;&gt;-->
+            <!--&lt;!&ndash;<span>VR转码参数</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+            <!--&lt;!&ndash;#end&ndash;&gt;-->
+        <!--</ul>-->
+    <!--</li>-->
+    <!--<li id="bigData">-->
+        <!--<span class="icon_stats icon_com"></span>-->
+        <!--<a class="item">-->
+            <!--<span>数据统计</span>-->
+            <!--<i class="nav-icon"></i>-->
+        <!--</a>-->
+        <!--<ul class="nav nav-sub">-->
+            <!--<li class="active">-->
+                <!--<a class="item" data-route="overview" href="#/overview">-->
+                    <!--<span>数据统计概览</span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a class="item" href="#/terminal">-->
+                    <!--<span>终端分析</span>-->
+                <!--</a>-->
+                <!--<ul class="nav nav-sub">-->
+                    <!--<li>-->
+                        <!--<a class="item" href="javascript:void(0)" data-route="t-a">-->
+                            <!--<span>终端访问量</span>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</li>-->
 </ul>

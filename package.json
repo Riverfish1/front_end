@@ -1,0 +1,24 @@
+{
+  "name": "mock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/main.js",
+  "entry": {
+    "index": "./src/main.js"
+  },
+  "dependencies": {
+    "atool-build": "~0.4.x",
+    "mockjs": "^1.0.0-beta1",
+    "qs": "^6.0.1"
+  },
+  "devDependencies": {
+    "dora": "0.2.x",
+    "dora-plugin-atool-build": "~0.4.x",
+    "dora-plugin-proxy": "~0.5.x"
+  },
+  "scripts": {
+    "dev": "dora --plugins proxy,atool-build"
+  },
+  "author": "",
+  "license": "ISC"
+}

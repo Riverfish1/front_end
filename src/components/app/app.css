@@ -35,6 +35,13 @@ body {
 }
 
 /*
+ * Header
+ */
+#navbar li.active a{
+    color: #1090c6
+}
+
+/*
  * Sidebar
  */
 
@@ -458,7 +465,7 @@ input:-webkit-autofill {
 }
 @media (min-width: 768px) {
     .sidebar {
-        position: fixed;
+        position: absolute;
         top: 51px;
         bottom: 0;
         left: 0;
@@ -616,4 +623,14 @@ input:-webkit-autofill {
     width: 23px;
     height: 23px;
     background: url(../../../static/images/device_icon_p.png) no-repeat;
+}
+
+
+/*表格*/
+.grid-command-p {
+    margin: 0!important;
+    /*padding: 1px!important;*/
+    /*display: block!important;*/
+    color: #3366cc;
+    cursor: pointer;
 }
