@@ -1,0 +1,111 @@
+<div class="clearfix">
+    <div id="indexBtn">
+        <button type="button" class="btn btn_upload" onclick="javascript:window.open('#/video/forward/upload' ,'_self')">
+            <i class="icon_upload"></i>上传视频
+        </button>
+    </div>
+    <div id="indexStats">
+        <div id="statsH">
+            <span>数据统计</span>
+            <a href="#/overview"><span class="right">详细数据》</span></a>
+        </div>
+        <div id="statsC">
+            <div>
+                <div class="col-md-4">
+                    <div class="content video">
+                        <img class="fl" src="static/images/index_video.png">
+                        <div class="center">
+                            <span id="video-num"></span>
+                            <br>
+                            <span>视频个数(个)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="content time">
+                        <img class="fl" src="static/images//index_clock.png">
+                        <div class="center">
+                            <span id="video-time"></span>
+                            <br>
+                            <span>上传时长(分)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="content playTime">
+                        <img class="fl" style="margin-top: 8px;" src="static/images/index_play.png">
+                        <div class="center">
+                            <span id="video-playTime"></span>
+                            <br>
+                            <span>播放次数(次)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div id="processTraffic">
+                <div class="mb15">
+                    本月已用流量：
+                    <span id="usedFlow"></span>
+                </div>
+                <div class="progress active" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                     aria-valuenow="0">
+                    <!--#if(${trial}==1)-->
+                    <!--<div class="trail_bg"></div>-->
+                    <!--#end-->
+                    <div class="progress-bar progress-bar-success" style="width:0%;color:red;background-color: #00AEF9;"></div>
+                </div>
+                <div class="progressText">
+                    <span>10G</span>
+                    <span>1TB</span>
+                    <span>100TB</span>
+                    <span>1PB</span>
+                </div>
+            </div>
+            <div id="chart">
+                <div class="tabbable" id="chartTabs">
+                    <!--#if(${trial}==1)-->
+                    <!--<span class="chartTitle">按7天使用流量</span>-->
+                    <!--#else-->
+                    <ul class="nav nav-tabs" id="chartNav">
+                        <li class="active"><a href="#tab1" data-toggle="tab">近7天使用流量</a></li>
+                        <li><a href="#tab2" data-toggle="tab">近1个月使用流量</a></li>
+                    </ul>
+                    <!--#end-->
+                    <div class="tab-content" id="terminalContent">
+                        <div class="tab-pane active" id="tab1">
+                            <div id="traffic-7-table">
+                                <span class="text"></span>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab2">
+                            <div id="traffic-30-table">
+                                <span class="text"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="processSpace">
+                <div class="mb15">
+                    已用空间：
+                    <span id="usedSpace"></span>
+                </div>
+                <div class="progress active" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                     aria-valuenow="0">
+                    <!--#if(${trial}==1)-->
+                    <!--<div class="trail_bg"></div>-->
+                    <!--#end-->
+                    <div class="progress-bar progress-bar-success"></div>
+                </div>
+                <div class="progressText">
+                    <span>10G</span>
+                    <span>1TB</span>
+                    <span>100TB</span>
+                    <span>1PB</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

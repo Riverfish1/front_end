@@ -1,0 +1,56 @@
+<ul class="nav nav-sidebar">
+    <li class="active">
+        <span class="icon_homePage icon_com"></span>
+        <a class="item" data-route="overview" href="#/list">
+            <span>首页</span>
+        </a>
+    </li>
+    <li id="video">
+        <span class="icon_video icon_com"></span>
+        <a class="item">
+            <span>视频管理</span>
+            <i class="nav-icon"></i>
+        </a>
+        <ul class="nav nav-sub">
+            <li>
+                <a class="item" href="#/video" data-route="u-s">
+                    <span>管理视频</span>
+                </a>
+            </li>
+
+            <!--#if(${vod-vr}==1)-->
+            <!--<li>-->
+            <!--<a href="#/template/VR/index" data-route="u-v">-->
+            <!--<span>VR转码参数</span>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--#end-->
+        </ul>
+    </li>
+    <li id="bigData">
+        <span class="icon_stats icon_com"></span>
+        <a class="item">
+            <span>数据统计</span>
+            <i class="nav-icon"></i>
+        </a>
+        <ul class="nav nav-sub">
+            <li class="active">
+                <a class="item" data-route="overview" href="#/overview">
+                    <span>数据统计概览</span>
+                </a>
+            </li>
+            <li>
+                <a class="item" href="#/terminal">
+                    <span>终端分析</span>
+                </a>
+                <ul class="nav nav-sub">
+                    <li>
+                        <a class="item" href="javascript:void(0)" data-route="t-a">
+                            <span>终端访问量</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>

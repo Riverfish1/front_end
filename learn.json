@@ -1,0 +1,57 @@
+﻿{
+	"backbonejs": {
+		"name": "Backbone.js",
+		"description": "Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface.",
+		"homepage": "backbonejs.org",
+		"examples": [{
+			"name": "Example",
+			"url": "examples/backbone"
+		}, {
+			"name": "Require.js & Backbone.js",
+			"url": "examples/backbone_require"
+		}, {
+			"name": "Enyo & Backbone.js",
+			"url": "examples/enyo_backbone"
+		}, {
+			"name": "TypeScript & Backbone.js",
+			"url": "examples/typescript-backbone"
+		}],
+		"link_groups": [{
+			"heading": "Official Resources",
+			"links": [{
+				"name": "Annotated source code",
+				"url": "http://backbonejs.org/docs/backbone.html"
+			}, {
+				"name": "Applications built with Backbone.js",
+				"url": "http://backbonejs.org/#examples"
+			}, {
+				"name": "FAQ",
+				"url": "http://backbonejs.org/#faq"
+			}]
+		}, {
+			"heading": "Articles and Guides",
+			"links": [{
+				"name": "Developing Backbone.js Applications",
+				"url": "http://addyosmani.github.io/backbone-fundamentals"
+			}, {
+				"name": "Collection of tutorials, blog posts, and example sites",
+				"url": "https://github.com/documentcloud/backbone/wiki/Tutorials%2C-blog-posts-and-example-sites"
+			}]
+		}, {
+			"heading": "Community",
+			"links": [{
+				"name": "Backbone.js on Stack Overflow",
+				"url": "http://stackoverflow.com/questions/tagged/backbone.js"
+			}, {
+				"name": "Google Groups mailing list",
+				"url": "https://groups.google.com/forum/#!forum/backbonejs"
+			}, {
+				"name": "Backbone.js on Twitter",
+				"url": "http://twitter.com/documentcloud"
+			}]
+		}]
+	},
+	"templates": {
+		"todomvc": "<header> <h3><%= name %></h3> <span class=\"source-links\"> <% if (typeof examples !== 'undefined') { %> <% examples.forEach(function (example) { %> <h5><%= example.name %></h5> <% if (!location.href.match(example.url + '/')) { %> <a class=\"demo-link\" data-type=\"<%= example.type === 'backend' ? 'external' : 'local' %>\" href=\"<%= example.url %>\">Demo</a>, <% } if (example.type === 'backend') { %><a href=\"<%= example.source_url %>\"><% } else { %><a href=\"https://github.com/tastejs/todomvc/tree/gh-pages/<%= example.source_url ? example.source_url : example.url %>\"><% } %>Source</a> <% }); %> <% } %> </span> </header> <hr> <blockquote class=\"quote speech-bubble\"> <p><%= description %></p> <footer> <a href=\"http://<%= homepage %>\"><%= name %></a> </footer> </blockquote> <% if (typeof link_groups !== 'undefined') { %> <hr> <% link_groups.forEach(function (link_group) { %> <h4><%= link_group.heading %></h4> <ul> <% link_group.links.forEach(function (link) { %> <li> <a href=\"<%= link.url %>\"><%= link.name %></a> </li> <% }); %> </ul> <% }); %> <% } %> <footer> <hr> <em>If you have other helpful links to share, or find any of the links above no longer work, please <a href=\"https://github.com/tastejs/todomvc/issues\">let us know</a>.</em> </footer>"
+	}
+}

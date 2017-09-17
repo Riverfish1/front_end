@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-framework="backbonejs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+    <meta name="author" content="zhy"/>
+    <title>Backbone.js + RequireJS + Bootstrap 兼容IE8</title>
+    <!--[if lte IE 9]>
+    <script src=libs/bootstrap/hack/respond.min.js></script>
+    <script src=libs/bootstrap/hack/html5shiv.min.js></script>
+    <![endif]-->
+<body>
+<!--头部-->
+<header id="header"></header>
+<section id="app">
+    <div class="container-fluid">
+        <div class="row">
+            <!--侧边栏-->
+            <div class="col-sm-3 col-md-2 sidebar" id="sidebar"></div>
+            <!--主体-->
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" id="main"></div>
+        </div>
+    </div>
+</section>
+<!--底部-->
+<footer id="footer"></footer>
+<script data-baseurl="./" id="baseUrl" data-main="src/main.js" src="libs/requirejs/require.js"></script>
+</body>
+</head>
+<body>
+</body>
+</html>
