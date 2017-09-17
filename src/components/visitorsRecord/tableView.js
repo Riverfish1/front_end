@@ -1,8 +1,8 @@
 /*global define*/
-define([], function () {
+define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#tb_officeArea',
+        el: '#record_visitors',
         initialize: function () {
         },
         showLoading: function () {
@@ -21,8 +21,8 @@ define([], function () {
         },
         init: function () {
             this.$el.bootstrapTable({
-                url: '/api/postRecord/query', //请求后台的URL（*）
-                method: 'get', //请求方式（*）
+                url: QUERY.RECORD_VISITORS_QUERY, //请求后台的URL（*）
+                method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
                 cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -46,44 +46,30 @@ define([], function () {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'areaName',
-                    title: '办公区名称',
+                    field: 'name',
+                    title: '姓名',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'areaUsage',
-                    title: '用途'
-                    ,
+                    field: 'idCard',
+                    title: '身份证号码',
                     align: 'center',
                     valign: "middle",
                 }, {
-                    field: 'areaSize',
-                    title: '面积',
+                    field: 'reason',
+                    title: '事由',
                     align: 'center',
-                    valign: "middle",
-                    formatter: function (value, row, index) {
-                        return value ? value + "㎡" : "";
-                    }
+                    valign: "middle"
                 }, {
-                    field: 'areaAddress',
-                    title: '地址'
-                    ,
+                    field: 'interviewee',
+                    title: '被访问人',
                     align: 'center',
-                    valign: "middle",
+                    valign: "middle"
                 }, {
-                    field: 'areaPhotoAddress',
-                    title: '图片',
+                    field: 'gmtCreate',
+                    title: '访问时间',
                     align: 'center',
-                    valign: "middle",
-                    formatter: function (value, row, index) {
-                        return value ? "<img class='view' style='width:100px; height:100px' src='" + value + "'/>" : "";
-                    }
-                }, {
-                    field: 'areaDescription',
-                    title: '描述'
-                    ,
-                    align: 'center',
-                    valign: "middle",
+                    valign: "middle"
                 }, {
                     field: 'status',
                     title: '操作',
@@ -97,16 +83,19 @@ define([], function () {
                         return str;
                     }
                 }],
-                onPostBody: function (data) {
-                    $('.view').viewer();
+                responseHandler: function(res) {
+                    return {
+                        "total": 100,
+                        "rows": res.data[0]
+                    }
                 }
             });
             // this.hideLoading();
         },
         queryParams: function (params) {
             var temp = {
-                limit: params.limit, //页面大小
-                offset: params.offset, //页码
+                pageNum: parseInt(params.offset, 10) + 1, //页面大小
+                pageSize: params.limit, //页码
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()
             };

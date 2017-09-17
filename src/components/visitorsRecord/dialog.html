@@ -1,0 +1,35 @@
+<div class="loading" style="width:95%"></div>
+
+<form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
+    <div class="form-group">
+        <label class="col-md-3 control-label">姓名</label>
+        <div class="col-md-9">
+            <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
+            <input type="text" name="name" class="form-control" value="<%= name %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">身份证号码</label>
+        <div class="col-md-9">
+            <input type="text" name="idCard" class="form-control" value="<%= idCard %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">事由</label>
+        <div class="col-md-9">
+            <input type="text" name="reason" class="form-control" value="<%= reason %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">被访问人</label>
+        <div class="col-md-9">
+            <input type="text" name="interviewee" class="form-control" value="<%= interviewee %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3  control-label">访问时间</label>
+        <div class="col-md-9">
+            <input type="text" name="gmtCreate" class="form-control" value="<%= gmtCreate %>">
+        </div>
+    </div>
+</form>
