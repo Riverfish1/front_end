@@ -4882,7 +4882,7 @@
                 input.attr( 'type', 'file' );
                 input.attr( 'name', opts.name );
                 input.addClass('webuploader-element-invisible');
-    
+                container.addClass('webuploader-element-container');
                 label.on( 'click', function() {
                     input.trigger('click');
                 });

@@ -3,8 +3,9 @@ define([
     'src/components/baseTable/indexCollection',
     'src/components/baseTable/indexView',
     'text!src/components/registerOfficeArea/index.html',
-    'text!src/components/registerOfficeArea/dialog.html'
-], function (BaseTableCollection, BaseTableView, tpl, dialogTpl) {
+    'text!src/components/registerOfficeArea/dialog.html',
+    'src/components/uploadImg/indexView'
+], function (BaseTableCollection, BaseTableView, tpl, dialogTpl, UploadImgView) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
@@ -42,6 +43,8 @@ define([
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
+            this.uploadImg = new UploadImgView();
+            // this.uploadImg.createUpload();
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },

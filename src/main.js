@@ -94,16 +94,24 @@
                     'jquery', 'jqueryValid'
                 ],
                 exports: 'Common'
-			}
+			},
+            'webuploader': {
+                deps: [
+                    'jquery'
+                ],
+                exports: 'WebUploader'
+            }
 		}
 	};
 	require.config(config);
 
 	//Backbone会把自己加到全局变量中
 	// Backbone, _, Bootstrap, config, AppView
-	require(['backbone', 'underscore', 'bootstrap', 'bootstrapTableLocal', 'src/router/router-cfg-version', 'src/components/app/appView', 'box', 'viewer', 'webuploader'], function(Backbone, _, Bootstrap, BT, config, AppView, Bootbox, Viewer,Webuploader){
+	require(['backbone', 'underscore', 'bootstrap', 'bootstrapTableLocal', 'src/router/router-cfg-version', 'src/components/app/appView', 'box', 'viewer', 'webuploader'], function(Backbone, _, Bootstrap, BT, config, AppView, Bootbox, Viewer, WebUploader){
 		new AppView();
 		window.bootbox = Bootbox;
+		console.log('WebUploader', WebUploader);
+		window.WebUploader = WebUploader;
 		Backbone.history.start();   //开始监控url变化
 	});
 

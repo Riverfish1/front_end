@@ -634,3 +634,7 @@ input:-webkit-autofill {
     color: #3366cc;
     cursor: pointer;
 }
+
+/*图片上传*/
+#filePicker .webuploader-element-container{width:86px !important;height: 40px !important;}
+#filePicker label{max-width: 100px;  width:86px !important;height: 40px !important;}

@@ -99,6 +99,9 @@ define([], function () {
                 }],
                 onPostBody: function (data) {
                     $('.view').viewer();
+                },
+                onLoadSuccess: function (res) {
+                    console.log(res);
                 }
             });
             // this.hideLoading();
