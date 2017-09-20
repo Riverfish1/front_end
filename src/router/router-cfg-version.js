@@ -9,7 +9,11 @@ define(['backbone'], function (Backbone) {
         // 'work/department': 'src/components/list/listController.js',
         'login': 'src/components/login/indexController.js',
         'work/department': 'src/components/workDepartment/indexController.js',
-        'work/staff': 'src/components/workStaff/indexController.js'
+        'work/staff': 'src/components/workStaff/indexController.js',
+        'register/visitors': 'src/components/visitorsRecord/indexController.js',
+        'register/post': 'src/components/postRecord/indexController.js',
+        'register/department': 'src/components/departmentRecord/indexController.js',
+        'register/officeRoom': 'src/components/officeRoom/indexController.js'
 
         // '*actions': 'defaultAction'
     };

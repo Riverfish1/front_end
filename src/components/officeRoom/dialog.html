@@ -1,0 +1,52 @@
+<div class="loading" style="width:95%"></div>
+
+<form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
+    <input type="hidden" name="id" />
+    <div class="form-group">
+        <label class="col-md-3 control-label">所属办公区</label>
+        <div class="col-md-9">
+            <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
+            <input type="text" name="officeAreaId" class="form-control" value="<%= officeAreaId %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">办公室名称</label>
+        <div class="col-md-9">
+            <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
+            <input type="text" name="officeRoomName" class="form-control" value="<%= officeRoomName %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">办公室功能类型</label>
+        <div class="col-md-9">
+            <select name="officeRoomFunction" value="<%= officeRoomFunction %>" class="form-control">
+                <option value="办公室">办公室</option>
+                <option value="会议室">会议室</option>
+                <option value="库房">库房</option>
+                <option value="备勤室">备勤室</option>
+                <option value="训练室">训练室</option>
+                <option value="食堂">食堂</option>
+                <option value="会客室">会客室</option>
+                <option value="信访接待室">信访接待室</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">办公室大小(平米)</label>
+        <div class="col-md-9">
+            <input type="text" name="officeSize" class="form-control" value="<%= officeSize %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">办公室容量</label>
+        <div class="col-md-9">
+            <input type="text" name="officeCapacity" class="form-control" value="<%= officeCapacity %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">办公室用途描述</label>
+        <div class="col-md-9">
+            <input type="text" name="officeUsage" class="form-control" value="<%= officeUsage %>">
+        </div>
+    </div>
+</form>

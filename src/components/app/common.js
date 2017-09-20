@@ -3,25 +3,25 @@ var ncjwUtil = (function ($) {
     'use strict';
     //提示信息
     var showInfo = function(title, detail){
-        $('#info-success-id').html("<strong>"+title+"</strong>" );
-        $('#info-success-id').show ().delay (3000).fadeOut ();
+        $('#info-success-id').html("<strong><i class='icon-ok'></i> " + title + "</strong>");
+        $('#info-success-id').show().delay(5000).fadeOut();
     }
-    var showError=function(title,detail){
-        $('#info-error-id').html("<strong>"+title+"</strong>" );
-        $('#info-error-id').show ().delay (3000).fadeOut ();
+    var showError = function(title,detail){
+        $('#info-error-id').html("<strong><i class='icon-remove'></i> " + title + "</strong>");
+        $('#info-error-id').show().delay(5000).fadeOut();
     }
 
     var _getRootPath = function () {
         //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
-        var curWwwPath=window.document.location.href;
+        var curWwwPath = window.document.location.href;
         //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
-        var pathName=window.document.location.pathname;
+        var pathName = window.document.location.pathname;
         var pos=curWwwPath.indexOf(pathName);
         //获取主机地址，如： http://localhost:8083
-        var localhostPaht=curWwwPath.substring(0,pos);
+        var localhostPaht = curWwwPath.substring(0, pos);
         //获取带"/"的项目名，如：/uimcardprj
-        var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
-        return(localhostPaht+projectName);
+        var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+        return(localhostPaht + projectName);
     }
 
     var context = _getRootPath();
@@ -118,6 +118,13 @@ var ncjwUtil = (function ($) {
         postData: postData
     };
 })(jQuery);
+
+var serializeJSON = function (data) {
+   data=data.replace(/&/g,"\",\"");
+   data=data.replace(/=/g,"\":\"");
+   data="{\""+data+"\"}";
+   return data;
+}
 
 // define([], function () {
 //     'use strict';

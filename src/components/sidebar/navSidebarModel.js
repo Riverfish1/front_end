@@ -9,7 +9,8 @@ define({
         {className: 'icon_homePage', href: '#/register/company', title: '单位登记'},
         {className: 'icon_homePage', href: '#/register/department', title: '部门登记'},
         {className: 'icon_homePage', href: '#/register/job', title: '职位登记'},
-        {className: 'icon_homePage', href: '#/register/post', title: '岗位登记'}
+        {className: 'icon_homePage', href: '#/register/post', title: '岗位登记'},
+        {className: 'icon_homePage', href: '#/register/visitors', title: '外来人员登记'},
     ],
     "work":[
         {className: 'icon_homePage', href: '#/work/department', title: '部门档案'},
