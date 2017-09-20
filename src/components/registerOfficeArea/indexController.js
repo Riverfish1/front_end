@@ -8,6 +8,7 @@ define(['src/components/registerOfficeArea/indexModel', 'src/components/register
         view.render();      //利用Model定义的默认属性初始化界面
         controller.onRouteChange = function () {
             view.undelegateEvents();
+            view.$el.off();
         };
     };
 

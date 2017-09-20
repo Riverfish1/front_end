@@ -4,6 +4,7 @@ define(['src/components/workDepartment/indexView'], function (View) {
         view.render();      //利用Model定义的默认属性初始化界面
         controller.onRouteChange = function () {
             view.undelegateEvents();
+            view.$el.off();
         };
     };
 

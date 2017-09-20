@@ -11,6 +11,7 @@ define(['src/components/list/listModel', 'src/components/list/listView'], functi
         controller.onRouteChange = function () {
 
             view.undelegateEvents();
+            view.$el.off();
         };
     };
 
