@@ -76,7 +76,7 @@ define(['../../common/query/index'], function (QUERY) {
                 }],
                 responseHandler: function(res) {
                     return {
-                        "total": 100,
+                        "total": res.total,
                         "rows": res.data[0]
                     }
                 }
@@ -95,7 +95,7 @@ define(['../../common/query/index'], function (QUERY) {
         queryParams: function (params) {
             console.log(params);
             var temp = {
-                pageNum: params.offset / params.limit + 1,
+                pageNum: params.offset / params.limit,
                 pageSize: params.limit,
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()

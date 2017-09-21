@@ -105,13 +105,15 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
-                ncjwUtil.postData(QUERY.RECORD_POSTRECORD_INSERT, serializeJSON(data), function (res) {
+                var datas = serializeJSON(data);
+                var id = $('#id').val();
+                ncjwUtil.postData(id ? QUERY.RECORD_POSTRECORD_UPDATE : QUERY.RECORD_POSTRECORD_INSERT, datas, function (res) {
                     if (res.success) {
-                        ncjwUtil.showInfo('保存成功！');
+                        ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
                         that.table.refresh();
                     } else {
-                        ncjwUtil.showError("删除失败：" + res.errorMsg);
+                        ncjwUtil.showError("保存失败：" + res.errorMsg);
                     }
                 }, {
                     "contentType": 'application/json'

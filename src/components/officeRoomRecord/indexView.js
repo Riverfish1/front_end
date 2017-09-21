@@ -29,12 +29,16 @@ define([
         },
         addOne: function (row) {
             var initState = {
-                postName: '',
-                dutyDescription: '',
-                staffingLevel: '',
+                officeAreaId: '',
+                // num: '',
+                officeRoomName: '',
+                officeRoomFunction: '',
+                officeSize: '',
+                officeCapacity: '',
+                officeUsage: '',
                 id: ''
             };
-            var row = row.postName ? row : initState;
+            var row = row.id ? row : initState;
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
@@ -58,7 +62,7 @@ define([
                     if (result) {
                         ncjwUtil.postData(QUERY.RECORD_POSTRECORD_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
-                                ncjwUtil.showInfo('删除成功');
+                                ncjwUtil.showInfo('删除成功！');
                                 that.table.refresh();
                             } else {
                                 ncjwUtil.showError("删除失败：" + res.errorMsg);
@@ -75,17 +79,32 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    name: {
+                    officeAreaId: {
                         required: true
                     },
-
-                    gmtCreate: {
+                    officeRoomName: {
+                        required: true
+                    },
+                    officeRoomFunction: {
+                        required: true
+                    },
+                    officeSize: {
+                        required: true
+                    },
+                    officeCapacity: {
+                        required: true
+                    },
+                    officeUsage: {
                         required: true
                     }
                 },
                 messages: {
-                    name: "请输入名称",
-                    gmtCreate: "请输入时间"
+                    officeAreaId: '请选择',
+                    officeRoomName: '请输入',
+                    officeRoomFunction: '请输入',
+                    officeSize: '请输入',
+                    officeCapacity: '请输入',
+                    officeUsage: '请输入',
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -107,13 +126,13 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.RECORD_POSTRECORD_UPDATE : QUERY.RECORD_POSTRECORD_INSERT, datas, function (res) {
-                    if (res.success) {
+                ncjwUtil.postData(id ? QUERY.RECORD_OFFICEROOM_UPDATE : QUERY.RECORD_OFFICEROOM_INSERT, datas, function (res) {
+                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
                         that.table.refresh();
                     } else {
-                        ncjwUtil.showError("保存失败：" + res.errorMsg);
+                        ncjwUtil.showError("删除失败：" + res.errorMsg);
                     }
                 }, {
                     "contentType": 'application/json'

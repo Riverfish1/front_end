@@ -5,7 +5,7 @@
 define({
     "register": [
         {className: 'icon_homePage', href: '#/register/officeArea', title: '办公区登记'},
-        {className: 'icon_homePage', href: '#/register/workArea', title: '办公室登记'},
+        {className: 'icon_homePage', href: '#/register/officeRoom', title: '办公室登记'},
         {className: 'icon_homePage', href: '#/register/company', title: '单位登记'},
         {className: 'icon_homePage', href: '#/register/department', title: '部门登记'},
         {className: 'icon_homePage', href: '#/register/job', title: '职位登记'},

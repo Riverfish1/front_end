@@ -3,17 +3,25 @@
 define(['backbone'], function (Backbone) {
 
     var routesMap = {
-        'register/officeArea': 'src/components/registerOfficeArea/indexController.js',
-        'register/workArea': 'src/components/list/listController.js',
+        // 办公区登记
+        'register/officeArea': 'src/components/officeAreaRecord/indexController.js',
+        // 办公室登记
+        'register/officeRoom': 'src/components/officeRoomRecord/indexController.js',
+        // 单位登记
+        // 'register/company': 'src/components/companyRecord/indexController.js',
+        // 部门登记
+        'register/department': 'src/components/departmentRecord/indexController.js',
+        // 职位登记
+        // 'register/job': 'src/components/jobRecord/indexController.js',
+        // 岗位登记
+        'register/post': 'src/components/postRecord/indexController.js',
+        // 外来人员登记
+        'register/visitors': 'src/components/visitorsRecord/indexController.js',
         // 'work/department': 'src/components/list/listController.js',
         // 'work/department': 'src/components/list/listController.js',
         'login': 'src/components/login/indexController.js',
         'work/department': 'src/components/workDepartment/indexController.js',
-        'work/staff': 'src/components/workStaff/indexController.js',
-        'register/visitors': 'src/components/visitorsRecord/indexController.js',
-        'register/post': 'src/components/postRecord/indexController.js',
-        'register/department': 'src/components/departmentRecord/indexController.js',
-        'register/officeRoom': 'src/components/officeRoom/indexController.js'
+        'work/staff': 'src/components/workStaff/indexController.js'
 
         // '*actions': 'defaultAction'
     };

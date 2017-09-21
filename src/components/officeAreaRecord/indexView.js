@@ -1,10 +1,11 @@
 /*global define*/
 define([
-    './tableView',
+    'src/components/baseTable/indexCollection',
+    'src/components/baseTable/indexView',
     'text!./index.html',
     'text!./dialog.html',
-    '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, QUERY) {
+    'src/components/uploadImg/indexView'
+], function (BaseTableCollection, BaseTableView, tpl, dialogTpl, UploadImgView) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
@@ -15,29 +16,35 @@ define([
             'click #submitBtn': 'submitForm'
         },
         initialize: function () {
+            // var that = this;
+            // var onDataHandler = function (res) {
+            //     that.render();
+            // }
+            // that.collection  = new  BaseTableCollection([]);
+            // that.collection.fetch({success: onDataHandler});
+            // this.table = new BaseTableView();
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
         },
         render: function () {
             //main view
-            this.$el.empty().html(this.template());
-            this.$officeDialog = this.$el.find('#editDialog');
-            this.$officeDialogPanel = this.$el.find('#editPanel');
+            this.$el.empty().html(this.template(this.model.toJSON()));
+            this.$officeDialog = this.$el.find('#encoding-library-dialog');
+            this.$officeDialogPanel = this.$el.find('#encodingLibrary-panl');
+            //table view
+            // this.table = new BaseTableView({collection: this.collection});
+            // this.table.trigger('loading');
             this.table = new BaseTableView();
             this.table.render();
             return this;
         },
         addOne: function (row) {
-            var initState = {
-                postName: '',
-                dutyDescription: '',
-                staffingLevel: '',
-                id: ''
-            };
-            var row = row.postName ? row : initState;
+            var row = row.areaName ? row : {areaName: '', areaUsage: '', areaSize: '', areaAddress: '', areaPhotoAddress: '', areaDescription: ''}
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
+            this.uploadImg = new UploadImgView();
+            // this.uploadImg.createUpload();
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
@@ -56,9 +63,9 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.RECORD_POSTRECORD_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.getData("/api/del/register/officeArea", {id: row.id}, function (res) {
                             if (res.success) {
-                                ncjwUtil.showInfo('删除成功');
+                                ncjwUtil.showInfo(res.errorMsg);
                                 that.table.refresh();
                             } else {
                                 ncjwUtil.showError("删除失败：" + res.errorMsg);
@@ -75,17 +82,25 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    name: {
-                        required: true
+                    areaName: {
+                        required: true,
+                        maxlength: 10
                     },
 
-                    gmtCreate: {
-                        required: true
+                    videoBitrate: {
+                        required: true,
+                        number: true,
+                        maxlength: 4
                     }
                 },
                 messages: {
-                    name: "请输入名称",
-                    gmtCreate: "请输入时间"
+                    name: {
+                        required: "请输入名称"
+                    },
+                    videoBitrate: {
+                        required: "请输入数字",
+                        number: "必须为数字"
+                    }
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -102,21 +117,19 @@ define([
         submitForm: function (e) {
             if(this.$editForm.valid()){
                 var that = this;
+                $('#gmtCreate').val(new Date().getTime());
+                $('#gmtModified').val(new Date().getTime());
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
-                data = decodeURIComponent(data, true);
-                var datas = serializeJSON(data);
-                var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.RECORD_POSTRECORD_UPDATE : QUERY.RECORD_POSTRECORD_INSERT, datas, function (res) {
+                ncjwUtil.postData("/api/saveOrUpdate/register/officeArea",data, function (res) {
+                // ncjwUtil.postData("/officeArea/insert",data, function (res) {
                     if (res.success) {
-                        ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
+                        ncjwUtil.showInfo('保存成功！');
                         that.$officeDialog.modal('hide');
                         that.table.refresh();
                     } else {
-                        ncjwUtil.showError("保存失败：" + res.errorMsg);
+                        ncjwUtil.showError("删除失败：" + res.errorMsg);
                     }
-                }, {
-                    "contentType": 'application/json'
                 })
             }
         }

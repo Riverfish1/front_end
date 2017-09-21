@@ -33,9 +33,10 @@ define([
                 idCard: '',
                 reason: '',
                 interviewee: '',
-                gmtCreate: ''
+                gmtCreate: '',
+                id: ''
             };
-            var row = row.name ? row : initState;
+            var row = row.id ? row : initState;
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
@@ -57,9 +58,9 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.getData(QUERY.RECORD_VISITORS_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.RECORD_VISITORS_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
-                                ncjwUtil.showInfo(res.errorMsg);
+                                ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();
                             } else {
                                 ncjwUtil.showError("删除失败：" + res.errorMsg);
@@ -79,14 +80,17 @@ define([
                     name: {
                         required: true
                     },
-
+                    idCard: {
+                        maxlength: 18
+                    },
                     gmtCreate: {
-                        required: true
+                        required: true,
+                        date: true
                     }
                 },
                 messages: {
                     name: "请输入名称",
-                    gmtCreate: "请输入时间"
+                    gmtCreate: "请选择时间"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -106,13 +110,16 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
-                ncjwUtil.postData(QUERY.RECORD_VISITORS_INSERT, serializeJSON(data), function (res) {
-                    if (res.success) {
-                        ncjwUtil.showInfo('保存成功！');
+                data = decodeURIComponent(data, true);
+                var datas = serializeJSON(data);
+                var id = $('#id').val();
+                ncjwUtil.postData(id ? QUERY.RECORD_VISITORS_UPDATE : QUERY.RECORD_VISITORS_INSERT, datas, function (res) {
+                   if (res.success) {
+                        ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
                         that.table.refresh();
                     } else {
-                        ncjwUtil.showError("删除失败：" + res.errorMsg);
+                        ncjwUtil.showError("保存失败：" + res.errorMsg);
                     }
                 }, {
                     "contentType": 'application/json'

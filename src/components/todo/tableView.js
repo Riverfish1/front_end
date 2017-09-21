@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#record_departmentRecord',
+        el: '#record_postRecord',
         initialize: function () {
         },
         showLoading: function () {
@@ -22,7 +22,7 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_DEPARTMENT_QUERY, //请求后台的URL（*）
+                url: QUERY.RECORD_POSTRECORD_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,15 +47,20 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'departmentName',
-                    title: '部门名称',
+                    field: 'postName',
+                    title: '职位名称',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'responsibility',
-                    title: '部门职责',
+                    field: 'dutyDescription',
+                    title: '岗位职责',
                     align: 'center',
                     valign: "middle",
+                }, {
+                    field: 'staffingLevel',
+                    title: '人员编制',
+                    align: 'center',
+                    valign: "middle"
                 }, {
                     field: 'status',
                     title: '操作',
@@ -75,13 +80,22 @@ define(['../../common/query/index'], function (QUERY) {
                         "rows": res.data[0]
                     }
                 }
+                // onLoadSuccess: function(res) {
+                //     console.log(that.$el);
+                //     that.$el.bootstrapTable('load', res.data[0]);
+                //     // console.log(res.data[0]);
+                //     // if (res.success) {
+                //     //     var rows = res.data[0];
+                //     //     return rows;
+                //     // }
+                // }
             });
             // this.hideLoading();
         },
         queryParams: function (params) {
             console.log(params);
             var temp = {
-                pageNum: params.offset / params.limit,
+                pageNum: params.offset / params.limit + 1,
                 pageSize: params.limit,
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()

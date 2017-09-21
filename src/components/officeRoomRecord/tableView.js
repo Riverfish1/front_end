@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#record_postRecord',
+        el: '#record_officeRoom',
         initialize: function () {
         },
         showLoading: function () {
@@ -22,7 +22,7 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_POSTRECORD_QUERY, //请求后台的URL（*）
+                url: QUERY.RECORD_OFFICEROOM_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,18 +47,33 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'postName',
-                    title: '职位名称',
+                    field: 'officeRoomName',
+                    title: '办公室名称',
                     align: 'center',
                     valign: "middle"
+                // }, {
+                //     field: 'num',
+                //     title: '编号',
+                //     align: 'center',
+                //     valign: "middle",
                 }, {
-                    field: 'dutyDescription',
-                    title: '岗位职责',
+                    field: 'officeRoomFunction',
+                    title: '功能',
                     align: 'center',
                     valign: "middle",
                 }, {
-                    field: 'staffingLevel',
-                    title: '人员编制',
+                    field: 'officeSize',
+                    title: '面积',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'officeCapacity',
+                    title: '使用人数',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'officeUsage',
+                    title: '使用类型',
                     align: 'center',
                     valign: "middle"
                 }, {
@@ -76,7 +91,7 @@ define(['../../common/query/index'], function (QUERY) {
                 }],
                 responseHandler: function(res) {
                     return {
-                        "total": 100,
+                        "total": res.total,
                         "rows": res.data[0]
                     }
                 }
@@ -95,7 +110,7 @@ define(['../../common/query/index'], function (QUERY) {
         queryParams: function (params) {
             console.log(params);
             var temp = {
-                pageNum: params.offset / params.limit + 1,
+                pageNum: params.offset / params.limit,
                 pageSize: params.limit,
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()
@@ -104,6 +119,7 @@ define(['../../common/query/index'], function (QUERY) {
         },
         operateEvents: {
             'click .btn-edit': function (e, value, row, index) {
+                console.log(row);
                 Backbone.trigger('itemEdit', row);
             },
             'click .btn-delete': function (e, value, row, index) {

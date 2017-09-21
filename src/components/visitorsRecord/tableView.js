@@ -32,7 +32,7 @@ define(['../../common/query/index'], function (QUERY) {
                 queryParams: this.queryParams,//传递参数（*）
                 sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
                 pageNumber: 1, //初始化加载第一页，默认第一页
-                pageSize: 10, //每页的记录行数（*）
+                pageSize: 20, //每页的记录行数（*）
                 pageList: [10, 25, 50, 100], //可供选择的每页的行数（*）
                 search: false, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
                 strictSearch: true,
@@ -85,7 +85,7 @@ define(['../../common/query/index'], function (QUERY) {
                 }],
                 responseHandler: function(res) {
                     return {
-                        "total": 100,
+                        "total": res.total,
                         "rows": res.data[0]
                     }
                 }
@@ -94,7 +94,7 @@ define(['../../common/query/index'], function (QUERY) {
         },
         queryParams: function (params) {
             var temp = {
-                pageNum: parseInt(params.offset, 10) + 1, //页面大小
+                pageNum: params.offset / params.limit, //页面大小
                 pageSize: params.limit, //页码
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()

@@ -1,4 +1,4 @@
-define(['src/components/registerOfficeArea/indexModel', 'src/components/registerOfficeArea/indexView'], function (Model, View) {
+define(['./indexModel', './indexView'], function (Model, View) {
     var controller = function (name) {
         var model = new Model();
         name && model.set({
