@@ -95,25 +95,13 @@ define(['../../common/query/index'], function (QUERY) {
                         "rows": res.data[0]
                     }
                 }
-                // onLoadSuccess: function(res) {
-                //     console.log(that.$el);
-                //     that.$el.bootstrapTable('load', res.data[0]);
-                //     // console.log(res.data[0]);
-                //     // if (res.success) {
-                //     //     var rows = res.data[0];
-                //     //     return rows;
-                //     // }
-                // }
             });
-            // this.hideLoading();
         },
         queryParams: function (params) {
             console.log(params);
             var temp = {
                 pageNum: params.offset / params.limit,
-                pageSize: params.limit,
-                // departmentname: $("#txt_search_departmentname").val(),
-                // statu: $("#txt_search_statu").val()
+                pageSize: params.limit
             };
             return temp;
         },

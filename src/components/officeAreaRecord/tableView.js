@@ -1,8 +1,8 @@
 /*global define*/
-define(['../../common/query/index'], function (QUERY) {
+define([], function () {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#record_postRecord',
+        el: '#tb_officeArea',
         initialize: function () {
         },
         showLoading: function () {
@@ -20,10 +20,9 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable('refresh');
         },
         init: function () {
-            var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_POSTRECORD_QUERY, //请求后台的URL（*）
-                method: 'post', //请求方式（*）
+                url: '/api/register/officeArea', //请求后台的URL（*）
+                method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
                 cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -33,7 +32,7 @@ define(['../../common/query/index'], function (QUERY) {
                 queryParams: this.queryParams,//传递参数（*）
                 sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
                 pageNumber: 1, //初始化加载第一页，默认第一页
-                pageSize: 20, //每页的记录行数（*）
+                pageSize: 10, //每页的记录行数（*）
                 pageList: [10, 25, 50, 100], //可供选择的每页的行数（*）
                 search: false, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
                 strictSearch: true,
@@ -47,20 +46,44 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'postName',
-                    title: '职位名称',
+                    field: 'areaName',
+                    title: '办公区名称',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'dutyDescription',
-                    title: '岗位职责',
+                    field: 'areaUsage',
+                    title: '用途'
+                    ,
                     align: 'center',
                     valign: "middle",
                 }, {
-                    field: 'staffingLevel',
-                    title: '人员编制',
+                    field: 'areaSize',
+                    title: '面积',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row, index) {
+                        return value ? value + "㎡" : "";
+                    }
+                }, {
+                    field: 'areaAddress',
+                    title: '地址'
+                    ,
+                    align: 'center',
+                    valign: "middle",
+                }, {
+                    field: 'areaPhotoAddress',
+                    title: '图片',
+                    align: 'center',
+                    valign: "middle",
+                    formatter: function (value, row, index) {
+                        return value ? "<img class='view' style='width:100px; height:100px' src='" + value + "'/>" : "";
+                    }
+                }, {
+                    field: 'areaDescription',
+                    title: '描述'
+                    ,
+                    align: 'center',
+                    valign: "middle",
                 }, {
                     field: 'status',
                     title: '操作',
@@ -74,6 +97,9 @@ define(['../../common/query/index'], function (QUERY) {
                         return str;
                     }
                 }],
+                onPostBody: function (data) {
+                    $('.view').viewer();
+                },
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
@@ -83,10 +109,9 @@ define(['../../common/query/index'], function (QUERY) {
             });
         },
         queryParams: function (params) {
-            console.log(params);
-            var temp = {
-                pageNum: params.offset / params.limit,
-                pageSize: params.limit,
+            var temp = { //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                limit: params.limit, //页面大小
+                offset: params.offset, //页码
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()
             };

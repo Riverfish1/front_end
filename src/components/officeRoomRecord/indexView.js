@@ -30,7 +30,6 @@ define([
         addOne: function (row) {
             var initState = {
                 officeAreaId: '',
-                // num: '',
                 officeRoomName: '',
                 officeRoomFunction: '',
                 officeSize: '',
@@ -104,7 +103,7 @@ define([
                     officeRoomFunction: '请输入',
                     officeSize: '请输入',
                     officeCapacity: '请输入',
-                    officeUsage: '请输入',
+                    officeUsage: '请输入'
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

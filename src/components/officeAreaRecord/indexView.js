@@ -16,13 +16,6 @@ define([
             'click #submitBtn': 'submitForm'
         },
         initialize: function () {
-            // var that = this;
-            // var onDataHandler = function (res) {
-            //     that.render();
-            // }
-            // that.collection  = new  BaseTableCollection([]);
-            // that.collection.fetch({success: onDataHandler});
-            // this.table = new BaseTableView();
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
         },
@@ -31,9 +24,6 @@ define([
             this.$el.empty().html(this.template(this.model.toJSON()));
             this.$officeDialog = this.$el.find('#encoding-library-dialog');
             this.$officeDialogPanel = this.$el.find('#encodingLibrary-panl');
-            //table view
-            // this.table = new BaseTableView({collection: this.collection});
-            // this.table.trigger('loading');
             this.table = new BaseTableView();
             this.table.render();
             return this;
@@ -44,7 +34,6 @@ define([
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
             this.uploadImg = new UploadImgView();
-            // this.uploadImg.createUpload();
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
@@ -121,6 +110,9 @@ define([
                 $('#gmtModified').val(new Date().getTime());
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
+                data = decodeURIComponent(data, true);
+                var datas = serializeJSON(data);
+                var id = $('#id').val();
                 ncjwUtil.postData("/api/saveOrUpdate/register/officeArea",data, function (res) {
                 // ncjwUtil.postData("/officeArea/insert",data, function (res) {
                     if (res.success) {
