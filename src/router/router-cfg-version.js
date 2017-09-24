@@ -8,7 +8,7 @@ define(['backbone'], function (Backbone) {
         // 办公室登记
         'register/officeRoom': 'src/components/officeRoomRecord/indexController.js',
         // 单位登记
-        // 'register/company': 'src/components/companyRecord/indexController.js',
+        'register/company': 'src/components/companyRecord/indexController.js',
         // 部门登记
         'register/department': 'src/components/departmentRecord/indexController.js',
         // 职位登记
