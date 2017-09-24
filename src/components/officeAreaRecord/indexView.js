@@ -1,11 +1,12 @@
 /*global define*/
 define([
     'src/components/baseTable/indexCollection',
-    'src/components/baseTable/indexView',
+    'src/components/officeAreaRecord/tableView',
     'text!./index.html',
     'text!./dialog.html',
-    'src/components/uploadImg/indexView'
-], function (BaseTableCollection, BaseTableView, tpl, dialogTpl, UploadImgView) {
+    'src/components/uploadImg/indexView',
+    '../../common/query/index'
+], function (BaseTableCollection, BaseTableView, tpl, dialogTpl, UploadImgView, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
@@ -29,7 +30,8 @@ define([
             return this;
         },
         addOne: function (row) {
-            var row = row.areaName ? row : {areaName: '', areaUsage: '', areaSize: '', areaAddress: '', areaPhotoAddress: '', areaDescription: ''}
+            var initState = {areaName: '', areaUsage: '', areaSize: '', areaAddress: '', areaPhotoAddress: '', areaDescription: ''};
+            var row = row.id ? row : initState
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
@@ -52,9 +54,10 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.getData("/api/del/register/officeArea", {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.RECORD_OFFICEAREA_DELETE, {id: row.id}, function (res) {
+                        // ncjwUtil.getData("/api/del/register/officeArea", {id: row.id}, function (res) {
                             if (res.success) {
-                                ncjwUtil.showInfo(res.errorMsg);
+                                ncjwUtil.showInfo('删除成功！');
                                 that.table.refresh();
                             } else {
                                 ncjwUtil.showError("删除失败：" + res.errorMsg);
@@ -143,15 +146,18 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData("/api/saveOrUpdate/register/officeArea",data, function (res) {
+                ncjwUtil.postData(id ? QUERY.RECORD_OFFICEAREA_UPDATE : QUERY.RECORD_OFFICEAREA_INSERT, datas, function (res) {
+                // ncjwUtil.postData("/api/saveOrUpdate/register/officeArea",data, function (res) {
                 // ncjwUtil.postData("/officeArea/insert",data, function (res) {
                     if (res.success) {
-                        ncjwUtil.showInfo('保存成功！');
+                        ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
                         that.table.refresh();
                     } else {
                         ncjwUtil.showError("删除失败：" + res.errorMsg);
                     }
+                }, {
+                    "contentType": 'application/json'
                 })
             }
         }
