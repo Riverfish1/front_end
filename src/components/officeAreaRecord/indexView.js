@@ -30,7 +30,7 @@ define([
             return this;
         },
         addOne: function (row) {
-            var initState = {areaName: '', areaUsage: '', areaSize: '', areaAddress: '', areaPhotoAddress: '', areaDescription: ''};
+            var initState = {id: '', areaName: '', areaUsage: '', areaSize: '', areaAddress: '', areaPhotoAddress: '', areaDescription: ''};
             var row = row.id ? row : initState
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});

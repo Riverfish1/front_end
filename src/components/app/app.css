@@ -645,3 +645,4 @@ input:-webkit-autofill {
 }
 .modal-backdrop{-khtml-opacity:0.5;-moz-opacity:0.5;filter:alpha(opacity=50);filter:"alpha(opacity=50)";opacity:0.5; filter: progid:DXImageTransform.Microsoft.Alpha(opacity=30);/*兼容ie8及以下*/}
 /*.modal-backdrop {display: none !important;}*/
+.modal-body{max-height: 400px;overflow-x: scroll;padding-right: 30px;}
