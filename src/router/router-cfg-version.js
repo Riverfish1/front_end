@@ -19,7 +19,6 @@ define(['backbone'], function (Backbone) {
         'register/visitors': 'src/components/visitorsRecord/indexController.js',
         // 'work/department': 'src/components/list/listController.js',
         // 'work/department': 'src/components/list/listController.js',
-        'login': 'src/components/login/indexController.js',
         'work/department': 'src/components/workDepartment/indexController.js',
         'work/staff': 'src/components/workStaff/indexController.js'
 
