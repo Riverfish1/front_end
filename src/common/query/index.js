@@ -2,6 +2,12 @@ define([], function() {
 	var QUERY = {
 		LOGIN: '/api/login/loginPost',
 		// 登记
+        // 办公区登记
+        RECORD_OFFICEAREA_INSERT: '/api/officeArea/insert',
+        RECORD_OFFICEAREA_UPDATE: '/api/officeArea/updateById',
+        RECORD_OFFICEAREA_DELETE: '/api/officeArea/deleteById',
+        RECORD_OFFICEAREA_QUERY: '/api/officeArea/query',
+        RECORD_OFFICEAREA_SELECT_BY_ID: '/api/officeArea/selectById',
 		// 外来人员登记
 		RECORD_VISITORS_INSERT: '/api/visitorsRecord/insert',
 		RECORD_VISITORS_UPDATE: '/api/visitorsRecord/updateById',
