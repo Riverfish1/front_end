@@ -20,7 +20,6 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable('refresh');
         },
         init: function () {
-            var that = this;
             this.$el.bootstrapTable({
                 url: QUERY.RECORD_DEPARTMENT_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）

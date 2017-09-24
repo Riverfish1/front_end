@@ -54,7 +54,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.RECORD_OFFICEAREA_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.getData(QUERY.RECORD_OFFICEAREA_DELETE, {id: row.id}, function (res) {
                         // ncjwUtil.getData("/api/del/register/officeArea", {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功！');

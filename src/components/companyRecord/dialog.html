@@ -1,24 +1,29 @@
 <div class="loading" style="width:95%"></div>
 
 <form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
-    <input type="hidden" name="id" value="<%= id %>" id="id" />
+    <input type="hidden" name="id" id="id" value="<%= id %>" />
+    <input type="hidden" name="parentId" value="<%= parentId %>" />
     <div class="form-group">
-        <label class="col-md-3 control-label">职位名称</label>
+        <label class="col-md-3 control-label">单位名称</label>
         <div class="col-md-9">
             <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
-            <input type="text" name="postName" class="form-control" value="<%= postName %>">
+            <input type="text" name="departmentName" class="form-control" value="<%= departmentName %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">岗位职责</label>
+        <label class="col-md-3 control-label">职责描述</label>
         <div class="col-md-9">
-            <input type="text" name="dutyDescription" class="form-control" value="<%= dutyDescription %>">
+            <input type="text" name="responsibility" class="form-control" value="<%= responsibility %>">
         </div>
     </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">人员编制</label>
-        <div class="col-md-9">
-            <input type="text" name="staffingLevel" class="form-control" value="<%= staffingLevel %>">
-        </div>
-    </div>
+    <!--<div class="form-group">-->
+        <!--<label class="col-md-3 control-label">所属单位</label>-->
+        <!--<div class="col-md-9">-->
+            <!--&lt;!&ndash;<selec name="parentName">&ndash;&gt;-->
+                <!--&lt;!&ndash;<% $.each(, function(i, n){ %>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<% }); %>&ndash;&gt;-->
+            <!--&lt;!&ndash;</selec>&ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
 </form>

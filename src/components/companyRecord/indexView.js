@@ -29,12 +29,12 @@ define([
         },
         addOne: function (row) {
             var initState = {
-                postName: '',
-                dutyDescription: '',
-                staffingLevel: '',
-                id: ''
+                departmentName: '',
+                responsibility: '',
+                id: '',
+                parentId: 0
             };
-            var row = row.postName ? row : initState;
+            var row = row.id ? row : initState;
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
@@ -56,9 +56,9 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.RECORD_POSTRECORD_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.RECORD_POSTRECORD_DELETE, {id: row.id, parentId: 0}, function (res) {
                             if (res.success) {
-                                ncjwUtil.showInfo('删除成功');
+                                ncjwUtil.showInfo('删除成功！');
                                 that.table.refresh();
                             } else {
                                 ncjwUtil.showError("删除失败：" + res.errorMsg);
@@ -75,17 +75,17 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    name: {
+                    departmentName: {
                         required: true
                     },
 
-                    gmtCreate: {
+                    responsibility: {
                         required: true
                     }
                 },
                 messages: {
-                    name: "请输入名称",
-                    gmtCreate: "请输入时间"
+                    departmentName: "请输入",
+                    responsibility: "请输入"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -107,8 +107,8 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.RECORD_POSTRECORD_UPDATE : QUERY.RECORD_POSTRECORD_INSERT, datas, function (res) {
-                    if (res.success) {
+                ncjwUtil.postData(id ? QUERY.RECORD_DEPARTMENT_UPDATE : QUERY.RECORD_DEPARTMENT_INSERT, datas, function (res) {
+                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
                         that.table.refresh();
