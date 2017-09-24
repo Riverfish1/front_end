@@ -73,22 +73,54 @@ define([
                 rules: {
                     areaName: {
                         required: true,
-                        maxlength: 10
+                        maxlength: 50
                     },
-
-                    videoBitrate: {
+                    areaUsage: {
+                        required: true,
+                        maxlength: 50
+                    },
+                    areaSize: {
                         required: true,
                         number: true,
-                        maxlength: 4
+                        maxlength: 50
+                    },
+                    areaAddress: {
+                        required: true,
+                        maxlength: 50
+                    },
+                    areaPhotoAddress: {
+                        required: true
+                    },
+                    areaDescription: {
+                        required: true,
+                        maxlength: 50
                     }
                 },
                 messages: {
                     name: {
-                        required: "请输入名称"
+                        required: "请输入办公区名称",
+                        maxlength: "最多输入50个字符"
                     },
-                    videoBitrate: {
-                        required: "请输入数字",
-                        number: "必须为数字"
+                    areaUsage: {
+                        required: "请输入用途",
+                        maxlength: "最多输入50个字符"
+                    },
+                    areaSize: {
+                        required: "请输入面积",
+                        number: "必须为数字",
+                        maxlength: "最多输入50个字符"
+                    },
+                    areaAddress: {
+                        required: "请输入地址",
+                        maxlength: "最多输入50个字符"
+                    },
+                    areaPhotoAddress: {
+                        required: "请选择图片、并上传",
+                        maxlength: "最多输入50个字符"
+                    },
+                    areaDescription: {
+                        required: "请输入描述",
+                        maxlength: "最多输入50个字符"
                     }
                 },
                 highlight: function (element) {

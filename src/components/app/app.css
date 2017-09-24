@@ -638,3 +638,10 @@ input:-webkit-autofill {
 /*图片上传*/
 #filePicker .webuploader-element-container{width:86px !important;height: 40px !important;}
 #filePicker label{max-width: 100px;  width:86px !important;height: 40px !important;}
+
+/*兼容iE8*/
+#editDialog  .form-group > div > input{
+    margin-bottom: 15px;
+}
+.modal-backdrop{-khtml-opacity:0.5;-moz-opacity:0.5;filter:alpha(opacity=50);filter:"alpha(opacity=50)";opacity:0.5; filter: progid:DXImageTransform.Microsoft.Alpha(opacity=30);/*兼容ie8及以下*/}
+/*.modal-backdrop {display: none !important;}*/
