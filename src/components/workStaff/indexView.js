@@ -27,7 +27,8 @@ define([
             return this;
         },
         addOne: function (row) {
-            var row = row.areaName ? row : {areaName: '', areaUsage: '', areaSize: '', areaAddress: '', areaPhotoAddress: '', areaDescription: ''}
+            var initData = {areaName: '', areaUsage: '', areaSize: '', areaAddress: '', areaPhotoAddress: '', areaDescription: ''};
+            var row = row.areaName ? row : initData;
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
@@ -70,22 +71,79 @@ define([
                 rules: {
                     areaName: {
                         required: true,
-                        maxlength: 10
+                        maxlength: 50
                     },
-
-                    videoBitrate: {
+                    areaUsage: {
                         required: true,
-                        number: true,
-                        maxlength: 4
+                        maxlength: 50
+                    },
+                    areaName: {
+                        required: true,
+                        maxlength: 50
+                    },
+                    areaUsage: {
+                        required: true
+                    },
+                    areaName: {
+                        required: true,
+                        maxlength: 50
+                    },
+                    areaUsage: {
+                        required: true,
+                        maxlength: 50
+                    },
+                    areaName: {
+                        required: true
+                    },
+                    areaUsage: {
+                        required: true
+                    },
+                    areaName: {
+                        required: true,
+                        maxlength: 50
+                    },
+                    areaUsage: {
+                        required: true,
+                        maxlength: 50
                     }
                 },
                 messages: {
-                    name: {
-                        required: "请输入名称"
+                    areaName: {
+                        required: "请输入部门名称",
+                        maxlength: "最多输入50个字符"
                     },
-                    videoBitrate: {
-                        required: "请输入数字",
-                        number: "必须为数字"
+                    areaUsage: {
+                        required: "请输入编号",
+                        maxlength: "最多输入50个字符"
+                    },
+                    areaName: {
+                        required: "请输入职别",
+                        maxlength: "最多输入50个字符"
+                    },
+                    areaUsage: {
+                        required: "请选择所属部门"
+                    },
+                    areaName: {
+                        required: "请输入手机号",
+                        maxlength: "最多输入50个字符"
+                    },
+                    areaUsage: {
+                        required: "请输入邮箱",
+                        maxlength: "最多输入50个字符"
+                    },
+                    areaName: {
+                        required: "请选择办公区"
+                    },
+                    areaUsage: {
+                        required: "请选择办公室"
+                    },
+                    areaName: {
+                        required: "请输入职务",
+                        maxlength: "最多输入50个字符"
+                    },
+                    areaUsage: {
+                        required: "请输入岗位",
+                        maxlength: "最多输入50个字符"
                     }
                 },
                 highlight: function (element) {
@@ -103,11 +161,12 @@ define([
         submitForm: function (e) {
             if(this.$editForm.valid()){
                 var that = this;
-                $('#gmtCreate').val(new Date().getTime());
-                $('#gmtModified').val(new Date().getTime());
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
-                ncjwUtil.postData("/api/saveOrUpdate/register/officeArea",data, function (res) {
+                data = decodeURIComponent(data, true);
+                var datas = serializeJSON(data);
+                var id = $('#id').val();
+                ncjwUtil.postData("/api/saveOrUpdate/register/officeArea",datas, function (res) {
                 // ncjwUtil.postData("/officeArea/insert",data, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo('保存成功！');

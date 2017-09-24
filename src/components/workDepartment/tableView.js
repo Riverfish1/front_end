@@ -47,41 +47,12 @@ define(['../../common/query/index'], function (QUERY) {
                 detailView: false, //是否显示父子表
                 columns: [{
                     field: 'areaName',
-                    title: '办公区名称',
+                    title: '部门名称',
                     align: 'center',
                     valign: "middle"
                 }, {
                     field: 'areaUsage',
-                    title: '用途'
-                    ,
-                    align: 'center',
-                    valign: "middle",
-                }, {
-                    field: 'areaSize',
-                    title: '面积',
-                    align: 'center',
-                    valign: "middle",
-                    formatter: function (value, row, index) {
-                        return value ? value + "㎡" : "";
-                    }
-                }, {
-                    field: 'areaAddress',
-                    title: '地址'
-                    ,
-                    align: 'center',
-                    valign: "middle",
-                }, {
-                    field: 'areaPhotoAddress',
-                    title: '图片',
-                    align: 'center',
-                    valign: "middle",
-                    formatter: function (value, row, index) {
-                        return value ? "<img class='view' style='width:100px; height:100px' src='" + value + "'/>" : "";
-                    }
-                }, {
-                    field: 'areaDescription',
-                    title: '描述'
-                    ,
+                    title: '部门编号',
                     align: 'center',
                     valign: "middle",
                 }, {
@@ -97,8 +68,11 @@ define(['../../common/query/index'], function (QUERY) {
                         return str;
                     }
                 }],
-                onPostBody: function (data) {
-                    $('.view').viewer();
+                responseHandler: function(res) {
+                    return {
+                        "total": res.total,
+                        "rows": res.data[0]
+                    }
                 }
             });
             // this.hideLoading();

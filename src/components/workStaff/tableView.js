@@ -97,8 +97,11 @@ define([], function () {
                         return str;
                     }
                 }],
-                onPostBody: function (data) {
-                    $('.view').viewer();
+                responseHandler: function(res) {
+                    return {
+                        "total": res.total,
+                        "rows": res.data[0]
+                    }
                 }
             });
             // this.hideLoading();

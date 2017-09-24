@@ -1,4 +1,4 @@
-define(['src/components/workDepartment/indexView'], function (View) {
+define(['src/components/workStaff/indexView'], function (View) {
     var controller = function () {
         var view = new View();
         view.render();      //利用Model定义的默认属性初始化界面

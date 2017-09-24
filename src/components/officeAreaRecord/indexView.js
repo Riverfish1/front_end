@@ -97,7 +97,7 @@ define([
                     }
                 },
                 messages: {
-                    name: {
+                    areaName: {
                         required: "请输入办公区名称",
                         maxlength: "最多输入50个字符"
                     },
@@ -138,8 +138,6 @@ define([
         submitForm: function (e) {
             if(this.$editForm.valid()){
                 var that = this;
-                $('#gmtCreate').val(new Date().getTime());
-                $('#gmtModified').val(new Date().getTime());
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
