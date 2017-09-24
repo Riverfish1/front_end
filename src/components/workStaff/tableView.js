@@ -117,7 +117,7 @@ define([], function () {
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data[0]
+                        "rows": res.data && res.data[0]
                     }
                 }
             });

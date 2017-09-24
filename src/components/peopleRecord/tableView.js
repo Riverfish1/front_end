@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#record_departmentRecord',
+        el: '#record_postRecord',
         initialize: function () {
         },
         showLoading: function () {
@@ -20,8 +20,9 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable('refresh');
         },
         init: function () {
+            var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_DEPARTMENT_QUERY, //请求后台的URL（*）
+                url: QUERY.RECORD_POSTRECORD_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -46,15 +47,50 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'departmentName',
-                    title: '部门名称',
+                    field: 'peopleName',
+                    title: '姓名',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'responsibility',
-                    title: '部门职责',
+                    field: 'employeeNum',
+                    title: '工号',
                     align: 'center',
                     valign: "middle",
+                }, {
+                    field: 'departmentId',
+                    title: '部门',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'departmentId',
+                    title: '部门',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'departmentId',
+                    title: '部门',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'departmentId',
+                    title: '部门',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'departmentId',
+                    title: '部门',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'departmentId',
+                    title: '部门',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'departmentId',
+                    title: '部门',
+                    align: 'center',
+                    valign: "middle"
                 }, {
                     field: 'status',
                     title: '操作',
@@ -75,7 +111,6 @@ define(['../../common/query/index'], function (QUERY) {
                     }
                 }
             });
-            // this.hideLoading();
         },
         queryParams: function (params) {
             console.log(params);

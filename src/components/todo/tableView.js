@@ -77,15 +77,15 @@ define(['../../common/query/index'], function (QUERY) {
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data[0]
+                        "rows": res.data && res.data[0]
                     }
                 }
                 // onLoadSuccess: function(res) {
                 //     console.log(that.$el);
-                //     that.$el.bootstrapTable('load', res.data[0]);
-                //     // console.log(res.data[0]);
+                //     that.$el.bootstrapTable('load', res.data && res.data[0]);
+                //     // console.log(res.data && res.data[0]);
                 //     // if (res.success) {
-                //     //     var rows = res.data[0];
+                //     //     var rows = res.data && res.data[0];
                 //     //     return rows;
                 //     // }
                 // }
