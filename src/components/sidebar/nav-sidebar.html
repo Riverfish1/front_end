@@ -6,6 +6,17 @@
             <a class="item"  href="<%= n.href %>">
                 <span><%= n.title %></span>
             </a>
+            <% if(n.children && n.children.length > 0){ %>
+                <ul class="nav nav-sub">
+                    <% $.each(n.children, function(k, m){ %>
+                        <li>
+                            <a class="item" href="<%= m.href %>" data-route="u-s">
+                                <span><%= m.title %></span>
+                            </a>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
         </li>
         <span class="<%= n.className %> icon_com"></span>
     <% }); %>

@@ -47,18 +47,17 @@ define([], function () {
                 detailView: false, //是否显示父子表
                 columns: [{
                     field: 'areaName',
-                    title: '办公区名称',
+                    title: '姓名',
                     align: 'center',
                     valign: "middle"
                 }, {
                     field: 'areaUsage',
-                    title: '用途'
-                    ,
+                    title: '员工/警员编号',
                     align: 'center',
                     valign: "middle",
                 }, {
                     field: 'areaSize',
-                    title: '面积',
+                    title: '职别',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row, index) {
@@ -66,13 +65,12 @@ define([], function () {
                     }
                 }, {
                     field: 'areaAddress',
-                    title: '地址'
-                    ,
+                    title: '所属部门',
                     align: 'center',
-                    valign: "middle",
+                    valign: "middle"
                 }, {
                     field: 'areaPhotoAddress',
-                    title: '图片',
+                    title: '手机',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row, index) {
@@ -80,8 +78,27 @@ define([], function () {
                     }
                 }, {
                     field: 'areaDescription',
-                    title: '描述'
-                    ,
+                    title: '邮箱',
+                    align: 'center',
+                    valign: "middle",
+                }, {
+                    field: 'areaDescription',
+                    title: '办公区',
+                    align: 'center',
+                    valign: "middle",
+                }, {
+                    field: 'areaDescription',
+                    title: '办公室',
+                    align: 'center',
+                    valign: "middle",
+                }, {
+                    field: 'areaDescription',
+                    title: '职务',
+                    align: 'center',
+                    valign: "middle",
+                }, {
+                    field: 'areaDescription',
+                    title: '岗位',
                     align: 'center',
                     valign: "middle",
                 }, {

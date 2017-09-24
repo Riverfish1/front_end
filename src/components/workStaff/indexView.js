@@ -1,8 +1,8 @@
 /*global define*/
 define([
-    'src/components/workDepartment/tableView',
-    'text!src/components/workDepartment/index.html',
-    'text!src/components/workDepartment/dialog.html'
+    'src/components/workStaff/tableView',
+    'text!src/components/workStaff/index.html',
+    'text!src/components/workStaff/dialog.html'
 ], function (BaseTableView, tpl, dialogTpl) {
     'use strict';
     var View = Backbone.View.extend({
