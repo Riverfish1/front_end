@@ -31,7 +31,7 @@ var listMock = {
 
 var listOfficArea = {
     total: '30',
-    'rows|30': [{
+    'data|30': [{
         'id|+1': '1',
         'areaName' : '@Title',
         'areaUsage' : '@Title',
@@ -81,5 +81,7 @@ module.exports = {
     'GET /api/register/officeArea': Mock.mock(listOfficArea),
     'GET /api/del/register/officeArea': Mock.mock(delOfficeAreaList),
     'POST /api/saveOrUpdate/register/officeArea': Mock.mock(delOfficeAreaList),
-    'POST /officeArea/insert': Mock.mock(delOfficeAreaList)
+    'POST /officeArea/insert': Mock.mock(delOfficeAreaList),
+    'POST /api/officeArea/query': Mock.mock(listOfficArea),
+    'POST /api/officeRoom/query': Mock.mock(listOfficArea),
 };

@@ -1,0 +1,10 @@
+<% $.each(list, function(i, n){ %>
+<li class="<%= i== 0 && 'active' %>">
+    <!--<li class="">-->
+    <!--<span class="<%= n.className %> icon_com"></span>-->
+    <a class="item"  href="<%= n.href %>">
+        <span><%= n.title %></span>
+    </a>
+</li>
+<span class="<%= n.className %> icon_com"></span>
+<% }); %>

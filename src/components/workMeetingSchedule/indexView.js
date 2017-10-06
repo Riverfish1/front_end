@@ -1,45 +1,48 @@
 /*global define*/
 define([
-    'src/components/baseTable/indexCollection',
-    'src/components/officeAreaRecord/tableView',
+    'src/components/workMeetingSchedule/tableView',
     'text!./index.html',
     'text!./dialog.html',
-    'src/components/uploadImg/indexView',
+    'text!./select.html',
     '../../common/query/index'
-], function (BaseTableCollection, BaseTableView, tpl, dialogTpl, UploadImgView, QUERY) {
+], function (BaseTableView, tpl, dialogTpl, selectTpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
+        getSelectContent: _.template(selectTpl),
         events: {
-            'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
+            'click #btn_add': 'changeMetting',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
             'click #submitBtn': 'submitForm'
         },
         initialize: function () {
-            Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
-            Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
+            Backbone.off('itemCancel').on('itemCancel', this.cangelMeeting, this);
+            Backbone.off('itemChange').on('itemChange', this.changeMetting, this);
         },
         render: function () {
             //main view
-            this.$el.empty().html(this.template(this.model.toJSON()));
+            this.$el.empty().html(this.template());
             this.$officeDialog = this.$el.find('#encoding-library-dialog');
             this.$officeDialogPanel = this.$el.find('#encodingLibrary-panl');
             this.table = new BaseTableView();
             this.table.render();
             return this;
         },
-        addOne: function (row) {
+        changeMetting: function (row) {
             var initState = {id: '', areaName: '', areaUsage: '', areaSize: '', areaAddress: '', areaPhotoAddress: '', areaDescription: ''};
             var row = row.id ? row : initState
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
-            this.$officeDialogPanel.empty().html(this.getDialogContent(row))
-            this.uploadImg = new UploadImgView();
+            this.$officeDialogPanel.empty().html(this.getDialogContent(row));
+            this.$officeAreaSel = this.$officeDialogPanel.find('#officeAreaSel');
+            this.$officeRoomSel = this.$officeDialogPanel.find('#officeRoomSel');
+            this.getOfficeAreaList();
+            this.getOfficeRoomList();
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
-        delOne: function (row) {
+        cangelMeeting: function (row) {
             var that = this;
             bootbox.confirm({
                 buttons: {
@@ -55,7 +58,6 @@ define([
                 callback: function (result) {
                     if (result) {
                         ncjwUtil.getData(QUERY.RECORD_OFFICEAREA_DELETE, {id: row.id}, function (res) {
-                        // ncjwUtil.getData("/api/del/register/officeArea", {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功！');
                                 that.table.refresh();
@@ -67,6 +69,38 @@ define([
                 }
 
             });
+        },
+        getOfficeAreaList: function () {
+            var self = this;
+            var params = {
+                pageNum: 0,
+                pageSize: 10000
+            }
+            ncjwUtil.postData(QUERY.RECORD_OFFICEAREA_QUERY , params, function (res) {
+                if (res.success) {
+                    var list = {list: res.data};
+                    self.$officeAreaSel.empty().html(self.getSelectContent(list))
+                } else {
+                }
+            }, {
+                "contentType": 'application/json'
+            })
+        },
+        getOfficeRoomList: function () {
+            var self = this;
+            var params = {
+                pageNum: 0,
+                pageSize: 10000
+            }
+            ncjwUtil.postData(QUERY.RECORD_OFFICEROOM_QUERY , params, function (res) {
+                if (res.success) {
+                    var list = {list: res.data};
+                    self.$officeRoomSel.empty().html(self.getSelectContent(list))
+                } else {
+                }
+            }, {
+                "contentType": 'application/json'
+            })
         },
         initSubmitForm: function () {
             this.$editForm.validate({

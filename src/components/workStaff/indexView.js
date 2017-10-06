@@ -173,7 +173,7 @@ define([
                         that.$officeDialog.modal('hide');
                         that.table.refresh();
                     } else {
-                        ncjwUtil.showError("删除失败：" + res.errorMsg);
+                        ncjwUtil.showError("保存失败：" + res.errorMsg);
                     }
                 })
             }
