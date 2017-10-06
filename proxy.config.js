@@ -31,7 +31,7 @@ var listMock = {
 
 var listOfficArea = {
     total: '30',
-    'rows|30': [{
+    'data|30': [{
         'id|+1': '1',
         'areaName' : '@Title',
         'areaUsage' : '@Title',
@@ -39,6 +39,16 @@ var listOfficArea = {
         'areaAddress': '@Address',
         'areaPhotoAddress': 'static/images/logo_teb.png',
         'areaDescription': '@Title'
+    }],
+    'success': true,
+    'rc|1': [0]
+}
+var listShotcut = {
+    total: '30',
+    'data|30': [{
+        'id|+1': '1',
+        'title' : '@Title',
+        'href|1' : ['#work/metting', '#/register/officeArea', '#/register/company', '#/register/post']
     }],
     'success': true,
     'rc|1': [0]
@@ -81,5 +91,8 @@ module.exports = {
     'GET /api/register/officeArea': Mock.mock(listOfficArea),
     'GET /api/del/register/officeArea': Mock.mock(delOfficeAreaList),
     'POST /api/saveOrUpdate/register/officeArea': Mock.mock(delOfficeAreaList),
-    'POST /officeArea/insert': Mock.mock(delOfficeAreaList)
+    'POST /officeArea/insert': Mock.mock(delOfficeAreaList),
+    'POST /api/officeArea/query': Mock.mock(listOfficArea),
+    'POST /api/officeRoom/query': Mock.mock(listOfficArea),
+    'GET /api/shotcut/list': Mock.mock(listShotcut),
 };

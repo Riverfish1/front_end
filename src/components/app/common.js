@@ -110,12 +110,63 @@ var ncjwUtil = (function ($) {
         min: $.validator.format("请输入一个最小为{0} 的值")
     });
 
+    /**
+     * 格式化时间戳为日期
+     * @param time
+     * @param fmt
+     * @returns {*|string}
+     */
+    var formatTime = function (timeStr, fmt) {
+        if(!timeStr){
+            return "";
+        }
+        var fmt = fmt || "yyyy-MM-dd hh:mm:ss";
+        var time = {};
+        if(Object.prototype.toString.call(timeStr) !== "[object Date]") {
+            time = /^\d*$/.test(timeStr) ? new Date(timeStr) : parseDate(timeStr);
+        } else {
+            time = timeStr;
+        }
+        var o = {
+            "M+": time.getMonth() + 1, //月份
+            "d+": time.getDate(), //日
+            "h+": time.getHours(), //小时
+            "m+": time.getMinutes(), //分
+            "s+": time.getSeconds(), //秒
+            "q+": Math.floor((time.getMonth() + 3) / 3), //季度
+            "S": time.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (time.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    };
+
+
+    //时间戳转换（具体到秒）2016-10-9 12:00:00
+    var timeTurn = function (d) {
+        return formatTime(d);
+    };
+
+    //填充form数据
+    var setFiledsValue = function (parentEle, obj) {
+        for (var i in obj) {
+            //buiForm.setFieldValue( i, obj[i] );
+            if (parentEle.find("[name=" + i + "]").hasClass("calendar-time")) {
+                parentEle.find("[name=" + i + "]").val(timeTurn(obj[i]));
+            } else {
+                parentEle.find("[name=" + i + "]").val(obj[i]);
+            }
+        }
+    }
     return {
         //将方法暴露出来 JSON格式数
         showInfo: showInfo,
         showError: showError,
         getData: getData,
-        postData: postData
+        postData: postData,
+        setFiledsValue: setFiledsValue,
+        timeTurn: timeTurn
     };
 })(jQuery);
 
@@ -125,23 +176,3 @@ var serializeJSON = function (data) {
    data="{\""+data+"\"}";
    return data;
 }
-
-// define([], function () {
-//     'use strict';
-//     //提示信息
-//     var showInfo = function(title, detail){
-//         $('#info-success-id').html("<strong>"+title+"</strong>" );
-//         $('#info-success-id').show ().delay (3000).fadeOut ();
-//     }
-//     var showError=function(title,detail){
-//         $('#info-error-id').html("<strong>"+title+"</strong>" );
-//         $('#info-error-id').show ().delay (3000).fadeOut ();
-//     }
-//
-//     var ncjwUtil = {
-//         showInfo: showInfo,
-//         showError: showError
-//     }
-//
-//     return ncjwUtil;
-// });

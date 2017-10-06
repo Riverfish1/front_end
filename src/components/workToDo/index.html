@@ -1,0 +1,11 @@
+<!--{{if title}}-->
+<!--<div class="f16 panel-heading" style="padding-bottom: 25px">{{title}}</div>-->
+<!--{{/if}}-->
+<div class="tabbable">
+    <ul class="nav nav-tabs" id="tabNav">
+        <% $.each(items, function(i, n){ %>
+        <li><a href="#" data-value="<%= i %>" data-toggle="tab"><%= n %></a></li>
+        <% }); %>
+    </ul>
+</div>
+<div class="tab-content" id="tabContent"></div>
