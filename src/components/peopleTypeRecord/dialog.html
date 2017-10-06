@@ -1,0 +1,12 @@
+<div class="loading" style="width:95%"></div>
+
+<form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
+    <input type="hidden" name="id" value="<%= id %>" id="id" />
+    <div class="form-group">
+        <label class="col-md-3 control-label">人员类型</label>
+        <div class="col-md-9">
+            <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
+            <input type="text" name="typeName" class="form-control" value="<%= typeName %>">
+        </div>
+    </div>
+</form>

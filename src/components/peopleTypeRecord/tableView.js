@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#record_peopleRecord',
+        el: '#record_peopleTypeRecord',
         initialize: function () {
         },
         showLoading: function () {
@@ -22,7 +22,7 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_PEOPLE_QUERY, //请求后台的URL（*）
+                url: QUERY.RECORD_PEOPLETYPE_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,48 +47,8 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'peopleName',
-                    title: '姓名',
-                    align: 'center',
-                    valign: "middle",
-                }, {
-                    field: 'employeeNum',
-                    title: '工号',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'departmentId',
-                    title: '部门',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'positionName',
-                    title: '岗位',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'titleName',
-                    title: '职务',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'phoneNum',
-                    title: '电话号码',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'mailAddress',
-                    title: '邮箱地址',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'officeAreaId',
-                    title: '所在办公区',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'officeRoomId',
-                    title: '所属办公室',
+                    field: 'typeName',
+                    title: '人员类型',
                     align: 'center',
                     valign: "middle"
                 }, {
@@ -101,7 +61,6 @@ define(['../../common/query/index'], function (QUERY) {
                         var str = '';
                         str += '<p class="grid-command-p btn-edit">修改</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
-                        str += '<p class="grid-command-p btn-add">加入名片夹</p>';
                         return str;
                     }
                 }],
@@ -129,9 +88,6 @@ define(['../../common/query/index'], function (QUERY) {
             },
             'click .btn-delete': function (e, value, row, index) {
                 Backbone.trigger('itemDelete', row);
-            },
-            'click .btn-add': function (e, value, row, index) {
-                Backbone.trigger('itemAdd', row.id)
             }
         }
     });

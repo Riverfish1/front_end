@@ -13,6 +13,10 @@ define(['backbone'], function (Backbone) {
         'register/department': 'src/components/departmentRecord/indexController.js',
         // 职位登记
         // 'register/job': 'src/components/jobRecord/indexController.js',
+        // 人员信息
+        'register/people': 'src/components/peopleRecord/indexController.js',
+        // 人员类型
+        'register/peopleType': 'src/components/peopleTypeRecord/indexController.js',
         // 岗位登记
         'register/post': 'src/components/postRecord/indexController.js',
         // 外来人员登记

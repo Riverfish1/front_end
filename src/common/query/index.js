@@ -26,6 +26,19 @@ define([], function () {
         RECORD_POSTRECORD_DELETE: '/api/postRecord/deleteById',
         RECORD_POSTRECORD_QUERY: '/api/postRecord/query',
         RECORD_POSTRECORD_SELECT_BY_ID: '/api/postRecord/selectById',
+        // 人员信息登记
+        RECORD_PEOPLE_INSERT: '/api/people/insert',
+        RECORD_PEOPLE_UPDATE: '/api/people/updateById',
+        RECORD_PEOPLE_DELETE: '/api/people/deleteById',
+        RECORD_PEOPLE_QUERY: '/api/people/query',
+        RECORD_PEOPLE_SELECT_BY_ID: '/api/people/selectById',
+        RECORD_PEOPLE_ADD: '/api/people/addToCard',
+        // 人员类型登记
+        RECORD_PEOPLETYPE_INSERT: '/api/peopleType/insert',
+        RECORD_PEOPLETYPE_UPDATE: '/api/peopleType/updateById',
+        RECORD_PEOPLETYPE_DELETE: '/api/peopleType/deleteById',
+        RECORD_PEOPLETYPE_QUERY: '/api/peopleType/query',
+        RECORD_PEOPLETYPE_SELECT_BY_ID: '/api/peopleType/selectById',
         // 外来人员登记
         RECORD_VISITORS_INSERT: '/api/visitorsRecord/insert',
         RECORD_VISITORS_UPDATE: '/api/visitorsRecord/updateById',
