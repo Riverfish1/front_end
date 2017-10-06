@@ -13,11 +13,11 @@ define([
 		template: _.template(tpl),
         events: {
             'mouseover .shotcutWrap':	'mouseoverShotcutMenu',
-            'mouseout .shotcutWrap':	'mouseoutShotcutMenu'
+            'mouseout .shotcutWrap':	'mouseoutShotcutMenu',
+            'click .shotcutBtn': 'addShotcut'
         },
 		initialize:function(){
-			Backbone.off('routeChange').on('routeChange', this.updateNavSideBar)
-			this.dropMenu = new DropMenu();
+			Backbone.off('routeChange').on('routeChange', this.updateNavSideBar);
 		},
         updateNavSideBar: function (hash) {
             var hashFirst = hash.split('/')[1];
@@ -31,17 +31,25 @@ define([
             })
         },
         mouseoverShotcutMenu: function (e) {
-           var $menu = this.$el.find('.shotMenu');
-           $menu.show();
+            this.$menu.show();
+            this.$shotcutBtn.show();
         },
         mouseoutShotcutMenu: function (e) {
-            var $menu = this.$el.find('.shotMenu');
-            $menu.hide();
+            this.$menu.hide();
+            this.$shotcutBtn.hide();
         },
 		render:function(){
 			this.$el.html(this.template());
+            this.dropMenu = new DropMenu();
+            this.$menu = this.$el.find('.shotMenu');
+            this.$shotcutBtn = this.$el.find('.shotcutBtn');
 			return this;
-		}
+		},
+        addShotcut: function () {
+            Backbone.trigger('shotcutBtnClick');
+            this.$menu.hide();
+            this.$shotcutBtn.hide();
+        }
 	});
 	return HeaderView;
 });

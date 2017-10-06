@@ -43,6 +43,16 @@ var listOfficArea = {
     'success': true,
     'rc|1': [0]
 }
+var listShotcut = {
+    total: '30',
+    'data|30': [{
+        'id|+1': '1',
+        'title' : '@Title',
+        'href|1' : ['#work/metting', '#/register/officeArea', '#/register/company', '#/register/post']
+    }],
+    'success': true,
+    'rc|1': [0]
+}
 var delOfficeAreaList = {
     'success': true,
     'rc|1': [0],
@@ -84,4 +94,5 @@ module.exports = {
     'POST /officeArea/insert': Mock.mock(delOfficeAreaList),
     'POST /api/officeArea/query': Mock.mock(listOfficArea),
     'POST /api/officeRoom/query': Mock.mock(listOfficArea),
+    'GET /api/shotcut/list': Mock.mock(listShotcut),
 };

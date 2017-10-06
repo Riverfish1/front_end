@@ -10,27 +10,58 @@ define([
         getDialogContent: _.template(dialogTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
+            'click a.item':	'active',
+            'click .shotcutBtn': 'addOne'
         },
         initialize: function () {
-            Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
+            Backbone.off('shotcutBtnClick').on('shotcutBtnClick', this.addOne, this);
+            this.render();
         },
         render: function () {
-            //main view
-            // this.$el.empty().html(this.template());
-            this.$officeDialog = this.$el.find('#editDialog');
-            this.$officeDialogPanel = this.$el.find('#editPanel');
+            var $parent = this.$el.parents('#navbar');
+            this.$officeDialog = $parent.find('#editDialog');
+            this.$officeDialogPanel = $parent.find('#editPanel');
+            this.getData();
             return this;
         },
+        active: function(e) {
+            var $el = $(e.target);
+            $el = $el.hasClass('item') ? $el : $el.parents('.item');
+            var $subNav = $el.next(),
+                $parentLi = $el.parent(),
+                $parentUl = $parentLi.parent(),
+                level = $parentUl.hasClass('nav-sub') ? 1 : 0;
+
+            if (level == 0) {
+                var $otherSubNav = $parentUl.find('.active').not($parentLi).removeClass('open active').find('.nav-sub');
+                $otherSubNav.stop().slideUp('slow');
+                $parentLi.addClass('active').toggleClass('open');
+                $subNav.stop();
+                if ($parentLi.hasClass('open')) {
+                    $subNav.slideDown('slow');
+                } else {
+                    $subNav.find('.active').removeClass('active');
+                    $subNav.slideUp('slow');
+                }
+            } else {
+                $parentUl.find('.active').not($parentLi).removeClass('active');
+                $parentLi.addClass('active');
+            }
+        },
         getData: function () {
-            ncjwUtil.getData("api/shotcut/list", function (res) {
+            var self = this;
+            ncjwUtil.getData("api/shotcut/list", {}, function (res) {
+                debugger;
+                var list = {list: res.data}
                 if (res.success) {
-                    this.$el.empty().html(this.template(res.data[0]));
+                    self.$el.empty().html(self.template(list));
                 } else {
                     ncjwUtil.showError(res.errorMsg);
                 }
             })
         },
         addOne: function (row) {
+            debugger;
             var initData = {areaName: '', areaUsage: ''};
             var row = initData.areaName ? row : initData;
             this.$officeDialog.modal('show');
