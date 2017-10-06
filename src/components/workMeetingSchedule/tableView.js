@@ -85,7 +85,6 @@ define(['../../common/query/index'], function (QUERY) {
                     $('.view').viewer();
                 },
                 responseHandler: function(res) {
-                    debugger;
                     return {
                         "total": res.total,
                         // "rows": res.data && res.data[0]

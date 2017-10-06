@@ -30,7 +30,7 @@ define([
             return this;
         },
         changeMetting: function (row) {
-            var initState = {id: '', areaName: '', areaUsage: '', areaSize: '', areaAddress: '', areaPhotoAddress: '', areaDescription: ''};
+            var initState = {id: '', areaName: '', areaUsage: '', areaSize: '', areaAddress: '', areaPhotoAddress: ''};
             var row = row.id ? row : initState
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
@@ -40,10 +40,14 @@ define([
             this.getOfficeAreaList();
             this.getOfficeRoomList();
             this.$editForm = this.$el.find('#editForm');
+            row.id  && ncjwUtil.setFiledsValue(this.$officeDialogPanel, row);
             this.initSubmitForm();
         },
         cangelMeeting: function (row) {
             var that = this;
+            row.time = ncjwUtil.timeTurn(new Date().getTime());
+            row.areaName = "A办公区";
+            row.areaRoom = "a会议室";
             bootbox.confirm({
                 buttons: {
                     confirm: {
@@ -53,8 +57,8 @@ define([
                         label: '取消'
                     }
                 },
-                title: "温馨提示",
-                message: '执行删除后将无法恢复，确定继续吗？',
+                title: "退订会议",
+                message: '<div class="tipInfo">你确定退订会议室？<p><span>'+ row.time +'</span><span>' + row.areaName + "——" + row.areaRoom +'</span></p></div>',
                 callback: function (result) {
                     if (result) {
                         ncjwUtil.getData(QUERY.RECORD_OFFICEAREA_DELETE, {id: row.id}, function (res) {
@@ -180,17 +184,34 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.RECORD_OFFICEAREA_UPDATE : QUERY.RECORD_OFFICEAREA_INSERT, datas, function (res) {
-                    if (res.success) {
-                        ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
-                        that.$officeDialog.modal('hide');
-                        that.table.refresh();
-                    } else {
-                        ncjwUtil.showError("修改失败：" + res.errorMsg);
+                bootbox.confirm({
+                    buttons: {
+                        confirm: {
+                            label: '确认'
+                        },
+                        cancel: {
+                            label: '取消'
+                        }
+                    },
+                    title: "预定确认",
+                    message: '<div class="tipInfo tipConfirm"><p>' + data.areaName + "——" + data.areaRoom + '</p><p>'+ ncjwUtil.timeTurn(new Date().getTime()) +'</p><p>会议主题：' + data.topic + '</p></div>',
+                    callback: function (result) {
+                        if (result) {
+                            ncjwUtil.postData(id ? QUERY.RECORD_OFFICEAREA_UPDATE : QUERY.RECORD_OFFICEAREA_INSERT, datas, function (res) {
+                                if (res.success) {
+                                    ncjwUtil.showInfo('预定成功！');
+                                    that.$officeDialog.modal('hide');
+                                    that.table.refresh();
+                                } else {
+                                    ncjwUtil.showError("修改失败：" + res.errorMsg);
+                                }
+                            }, {
+                                "contentType": 'application/json'
+                            })
+                        }
                     }
-                }, {
-                    "contentType": 'application/json'
-                })
+
+                });
             }
         }
     });
