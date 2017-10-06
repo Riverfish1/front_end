@@ -22,7 +22,9 @@ define(['backbone'], function (Backbone) {
         'work/department': 'src/components/workDepartment/indexController.js',
         'work/staff': 'src/components/workStaff/indexController.js',
         //会议预定
-        'work/meeting': 'src/components/workMeetingSchedule/indexController.js'
+        'work/meeting': 'src/components/workMeetingSchedule/indexController.js',
+        //待办事宜
+        'work/todo': 'src/components/workToDo/indexController.js'
 
 
         // '*actions': 'defaultAction'
