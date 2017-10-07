@@ -31,6 +31,10 @@ define({
         {className: 'icon_homePage', href: '#', title: '通讯录', children: [
             {className: 'icon_homePage', href: '#/work/department', title: '部门档案'},
             {className: 'icon_homePage', href: '#/work/staff', title: '人员档案'}
+        ]},
+        {className: 'icon_homePage', href: '#', title: '小结', children: [
+            {className: 'icon_homePage', href: '#/work/mySummary', title: '我的小结'},
+            {className: 'icon_homePage', href: '#/work/summaryReceived', title: '收到的小结'}
         ]}
     ]
 });

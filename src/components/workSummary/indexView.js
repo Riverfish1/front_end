@@ -15,8 +15,15 @@ define([
             'click #submitBtn': 'submitForm'
         },
         initialize: function () {
+            $('.startDate,.endDate').datepicker({
+                language: 'zh-CN',
+                autoclose: true,
+                todayHighlight: true,
+                format: 'yyyy-mm-dd'
+            });
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
+            Backbone.off('itemAdd').on('itemAdd', this.addToCard, this);
         },
         render: function () {
             //main view
@@ -29,7 +36,9 @@ define([
         },
         addOne: function (row) {
             var initState = {
-                typeName: '',
+                summaryContent: '',
+                summaryStartDate: '',
+                summaryEndDate: '',
                 id: ''
             };
             var row = row.id ? row : initState;
@@ -54,7 +63,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.WORK_STAFF_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.WORK_SUMMARY_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();
@@ -67,18 +76,35 @@ define([
 
             });
         },
+        addToCard: function (id) {
+            var that = this;
+            var params = {
+                id: id,
+                name: window.loginName
+            };
+            ncjwUtil.postData(QUERY.WORK_SUMMARY_ADD, params, function (res) {
+                if (res.success) {
+                    ncjwUtil.showInfo('加入名片夹成功！');
+                    that.table.refresh();
+                } else {
+                    ncjwUtil.showError('加入名片夹失败！');
+                }
+            });
+        },
         initSubmitForm: function () {
             this.$editForm.validate({
                 errorElement: 'span',
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    typeName: {
-                        required: true
+                    employeeNum: {
+                        required: true,
+                        number: true
                     }
                 },
                 messages: {
-                    typeName: "请输入名称"
+                    name: "请输入名称",
+                    gmtCreate: "请输入时间"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -100,7 +126,7 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_STAFF_UPDATE : QUERY.WORK_STAFF_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_SUMMARY_UPDATE : QUERY.WORK_SUMMARY_INSERT, datas, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');

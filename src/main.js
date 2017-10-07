@@ -24,14 +24,16 @@
 			text: 'libs/text' ,            //用于requirejs导入html类型的依赖
 			bootstrap: 'libs/bootstrap/js/bootstrap',
 			bootstrapTable: 'libs/bootstrap.table/bootstrap-table.min',
-            bootstrapTableLocal: 'libs/bootstrap.table/bootstrap-table-zh-CN.min',
-            box: 'libs/bootbox/bootbox.min',
+      bootstrapTableLocal: 'libs/bootstrap.table/bootstrap-table-zh-CN.min',
+      box: 'libs/bootbox/bootbox.min',
 			jqueryValid: 'libs/jquery/jquery.validate',
 			jqueryForm: 'libs/jquery/jquery.form.min',
 			jqueryCookie: 'libs/jquery/jquery.cookie',
 			common: 'src/components/app/common',
 			viewer: 'libs/tools/viewer-jquery.min',
-            webuploader: 'libs/webUpload/webuploader'
+      webuploader: 'libs/webUpload/webuploader',
+      datepicker: 'libs/bootstrap-datepicker/bootstrap-datepicker',
+      datepicker_zh: 'libs/bootstrap-datepicker/bootstrap-datepicker.zh-CN'
 		},
 		shim: {                     //引入没有使用requirejs模块写法的类库。backbone依赖underscore
 			'underscore': {
@@ -48,66 +50,84 @@
 				exports: 'Backbone'
 			},
 			'bootstrap':{
-				deps: [
-					'jquery'
-				]
+				deps: ['jquery']
 			},
 			'bootstrapTableLocal': {
-                deps: [
-                    // 'jquery', 'bootstrap', 'bootstrapTable', 'imgViewTool'
-                    'jquery', 'bootstrap', 'bootstrapTable', 'box', 'jqueryValid', 'jqueryForm', 'jqueryCookie', 'common'
-                ],
-                exports: 'BootstrapTableLocal'
+        deps: [
+          // 'jquery', 'bootstrap', 'bootstrapTable', 'imgViewTool'
+          'jquery', 'bootstrap', 'bootstrapTable', 'box', 'jqueryValid', 'jqueryForm', 'jqueryCookie', 'common'
+        ],
+        exports: 'BootstrapTableLocal'
 			},
 			'bootstrapTable': {
-                deps: [
-                    'jquery', 'bootstrap'
-                ],
-                exports: 'BootstrapTable'
+        deps: [
+          'jquery', 'bootstrap'
+        ],
+        exports: 'BootstrapTable'
 			},
-            'box': {
-                deps: [
-                    'bootstrap'
-                ],
-                exports: 'Bootbox'
-            },
+      'box': {
+        deps: [
+          'bootstrap'
+        ],
+        exports: 'Bootbox'
+      },
 			'jqueryValid': {
-                deps: [
-                    'jquery'
-                ],
-                exports: 'JqueryValid'
-            },
-            'jqueryForm': {
-                deps: [
-                    'jquery'
-                ],
-                exports: 'JqueryForm'
-            },
-            'jqueryCookie': {
-                deps: [
-                    'jquery'
-                ],
-                exports: 'JqueryCookie'
-            },
+        deps: [
+            'jquery'
+        ],
+        exports: 'JqueryValid'
+	    },
+	    'jqueryForm': {
+        deps: [
+            'jquery'
+        ],
+        exports: 'JqueryForm'
+	    },
+	    'jqueryCookie': {
+        deps: [
+            'jquery'
+        ],
+        exports: 'JqueryCookie'
+	    },
 			'common': {
-                deps: [
-                    'jquery', 'jqueryValid'
-                ],
-                exports: 'Common'
+        deps: [
+            'jquery', 'jqueryValid'
+        ],
+        exports: 'Common'
 			},
-            'webuploader': {
-                deps: [
-                    'jquery'
-                ],
-                exports: 'WebUploader'
-            }
+      'webuploader': {
+        deps: [
+            'jquery'
+        ],
+        exports: 'WebUploader'
+      },
+      'datepicker': {
+      	deps: ['jquery'],
+      	exports: 'Datepicker'
+      },
+      'datepicker_zh': {
+      	deps: ['jquery', 'datepicker'],
+      	exports: 'DatepickerCN'
+      }
 		}
 	};
 	require.config(config);
 
 	//Backbone会把自己加到全局变量中
 	// Backbone, _, Bootstrap, config, AppView
-	require(['backbone', 'underscore', 'bootstrap', 'bootstrapTableLocal', 'src/router/router-cfg-version', 'src/components/app/appView', 'box', 'viewer', 'webuploader'], function(Backbone, _, Bootstrap, BT, config, AppView, Bootbox, Viewer, WebUploader){
+	require([
+			'backbone',
+			'underscore',
+			'bootstrap',
+			'bootstrapTableLocal',
+			'src/router/router-cfg-version',
+			'src/components/app/appView',
+			'box',
+			'viewer',
+			'webuploader',
+			'datepicker',
+			'datepicker_zh'
+		], function(Backbone, _, Bootstrap, BT, config, AppView, Bootbox, Viewer, WebUploader, Datepicker, DatepickerCN){
 		new AppView();
 		window.backbone = Backbone;
 		window.bootbox = Bootbox;

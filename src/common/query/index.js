@@ -44,7 +44,20 @@ define([], function () {
         RECORD_VISITORS_UPDATE: '/api/visitorsRecord/updateById',
         RECORD_VISITORS_DELETE: '/api/visitorsRecord/deleteById',
         RECORD_VISITORS_QUERY: '/api/visitorsRecord/query',
-        RECORD_VISITORS_SELECT_BY_ID: '/api/visitorsRecord/selectById'
+        RECORD_VISITORS_SELECT_BY_ID: '/api/visitorsRecord/selectById',
+        // 办公
+        // 人员档案
+        WORK_STAFF_INSERT: '/api/workStaff/insert',
+        WORK_STAFF_DELETE: '/api/workStaff/delete',
+        WORK_STAFF_QUERY: '/api/workStaff/query',
+        // 工作小结
+        WORK_SUMMARY_INSERT: '/api/personalSummary/insert',
+        WORK_SUMMARY_UPDATE: '/api/personalSummary/updateById',
+        WORK_SUMMARY_DELETE: '/api/personalSummary/deleteById',
+        WORK_SUMMARY_QUERY: '/api/personalSummary/query',
+        WORK_SUMMARY_SELECT_BY_ID: '/api/personalSummary/selectById'
+        // 信访管理
+        // 领导预约
     };
     return QUERY;
 })
