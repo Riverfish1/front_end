@@ -1,11 +1,16 @@
 <div class="loading" style="width:95%"></div>
 
-<form class="form-horizontal" id="editForm" >
-    <div class="row">
-        <% $.each(list, function(i, n){ %>
-        <div class="col-md-4">
-            <%= n.title %>
-        </div>
-        <% }); %>
-    </div>
+<form class="form-horizontal" id="editForm">
+
+    <% $.each(list, function(i, n){ %>
+        <% if(i%3 == 0){ %>
+            <div class="row">
+        <% } %>
+                <div class="col-md-4">
+                    <input type="checkbox" value="<%= n.title %>"> <%= n.title %>
+                </div>
+        <% if(i%3 == 2){ %>
+            </div>
+        <% } %>
+    <% }); %>
 </form>

@@ -60,13 +60,24 @@ define([
                 }
             })
         },
+        getEditData: function () {
+            var self = this;
+            ncjwUtil.getData("api/shotcut/list", {}, function (res) {
+                var list = {list: res.data}
+                if (res.success) {
+                    self.$officeDialogPanel.empty().html(self.getDialogContent(list))
+                } else {
+                    ncjwUtil.showError(res.errorMsg);
+                }
+            })
+        },
         addOne: function (row) {
             debugger;
             var initData = {areaName: '', areaUsage: ''};
             var row = initData.areaName ? row : initData;
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
-            this.$officeDialogPanel.empty().html(this.getDialogContent(row))
+            this.getEditData();
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
