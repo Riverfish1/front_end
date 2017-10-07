@@ -109,6 +109,7 @@
 	// Backbone, _, Bootstrap, config, AppView
 	require(['backbone', 'underscore', 'bootstrap', 'bootstrapTableLocal', 'src/router/router-cfg-version', 'src/components/app/appView', 'box', 'viewer', 'webuploader'], function(Backbone, _, Bootstrap, BT, config, AppView, Bootbox, Viewer, WebUploader){
 		new AppView();
+		window.backbone = Backbone;
 		window.bootbox = Bootbox;
 		console.log('WebUploader', WebUploader);
 		window.WebUploader = WebUploader;

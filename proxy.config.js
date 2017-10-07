@@ -53,6 +53,17 @@ var listShotcut = {
     'success': true,
     'rc|1': [0]
 }
+var listWorkToDo = {
+    total: '30',
+    'data|30': [{
+        'id|+1': '1',
+        'title' : '@Title',
+        'name' : '@Name',
+        'time' : new Date().getTime()
+    }],
+    'success': true,
+    'rc|1': [0]
+}
 var delOfficeAreaList = {
     'success': true,
     'rc|1': [0],
@@ -95,4 +106,6 @@ module.exports = {
     'POST /api/officeArea/query': Mock.mock(listOfficArea),
     'POST /api/officeRoom/query': Mock.mock(listOfficArea),
     'GET /api/shotcut/list': Mock.mock(listShotcut),
+    'GET /api/workToDo/query': Mock.mock(listWorkToDo),
+    'POST /api/workToDo/query': Mock.mock(listWorkToDo),
 };
