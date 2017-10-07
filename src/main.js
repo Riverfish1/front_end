@@ -24,16 +24,16 @@
 			text: 'libs/text' ,            //用于requirejs导入html类型的依赖
 			bootstrap: 'libs/bootstrap/js/bootstrap',
 			bootstrapTable: 'libs/bootstrap.table/bootstrap-table.min',
-      bootstrapTableLocal: 'libs/bootstrap.table/bootstrap-table-zh-CN.min',
-      box: 'libs/bootbox/bootbox.min',
+			bootstrapTableLocal: 'libs/bootstrap.table/bootstrap-table-zh-CN.min',
+      		box: 'libs/bootbox/bootbox.min',
 			jqueryValid: 'libs/jquery/jquery.validate',
 			jqueryForm: 'libs/jquery/jquery.form.min',
 			jqueryCookie: 'libs/jquery/jquery.cookie',
 			common: 'src/components/app/common',
 			viewer: 'libs/tools/viewer-jquery.min',
-      webuploader: 'libs/webUpload/webuploader',
-      datepicker: 'libs/bootstrap-datepicker/bootstrap-datepicker',
-      datepicker_zh: 'libs/bootstrap-datepicker/bootstrap-datepicker.zh-CN'
+			webuploader: 'libs/webUpload/webuploader',
+			datepicker: 'libs/bootstrap-datepicker/bootstrap-datepicker',
+			datepicker_zh: 'libs/bootstrap-datepicker/bootstrap-datepicker.zh-CN'
 		},
 		shim: {                     //引入没有使用requirejs模块写法的类库。backbone依赖underscore
 			'underscore': {

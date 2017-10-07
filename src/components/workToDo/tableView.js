@@ -66,7 +66,11 @@ define(['../../common/query/index'], function (QUERY) {
                     title: '时间',
                     width: '33.3%',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row, index) {
+                       return value ? ncjwUtil.timeTurn(value) : "";
+                    }
+
                 }],
                 responseHandler: function(res) {
                     return {

@@ -15,12 +15,6 @@ define([
             'click #submitBtn': 'submitForm'
         },
         initialize: function () {
-            $('.startDate,.endDate').datepicker({
-                language: 'zh-CN',
-                autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
-            });
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
             Backbone.off('itemAdd').on('itemAdd', this.addToCard, this);
@@ -45,6 +39,12 @@ define([
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
+            $('.startDate,.endDate').datepicker({
+                language: 'zh-CN',
+                autoclose: true,
+                todayHighlight: true,
+                format: 'yyyy-mm-dd'
+            });
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
