@@ -2,11 +2,11 @@
 var ncjwUtil = (function ($) {
     'use strict';
     //提示信息
-    var showInfo = function(title, detail){
+    var showInfo = function (title, detail) {
         $('#info-success-id').html("<strong><i class='icon-ok'></i> " + title + "</strong>");
         $('#info-success-id').show().delay(5000).fadeOut();
     }
-    var showError = function(title,detail){
+    var showError = function (title, detail) {
         $('#info-error-id').html("<strong><i class='icon-remove'></i> " + title + "</strong>");
         $('#info-error-id').show().delay(5000).fadeOut();
     }
@@ -16,12 +16,12 @@ var ncjwUtil = (function ($) {
         var curWwwPath = window.document.location.href;
         //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
         var pathName = window.document.location.pathname;
-        var pos=curWwwPath.indexOf(pathName);
+        var pos = curWwwPath.indexOf(pathName);
         //获取主机地址，如： http://localhost:8083
         var localhostPaht = curWwwPath.substring(0, pos);
         //获取带"/"的项目名，如：/uimcardprj
         var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
-        return(localhostPaht + projectName);
+        return (localhostPaht + projectName);
     }
 
     var context = _getRootPath();
@@ -45,7 +45,7 @@ var ncjwUtil = (function ($) {
             'success': function (result) {
                 if (result.rc == 0 || !result.rc) {
                     successCbk(result);
-                }else {
+                } else {
                     //ajax 返回错误时的 处理
                     if (options && options.handleError) {
                         options.handleError(result);
@@ -117,12 +117,12 @@ var ncjwUtil = (function ($) {
      * @returns {*|string}
      */
     var formatTime = function (timeStr, fmt) {
-        if(!timeStr){
+        if (!timeStr) {
             return "";
         }
         var fmt = fmt || "yyyy-MM-dd hh:mm:ss";
         var time = {};
-        if(Object.prototype.toString.call(timeStr) !== "[object Date]") {
+        if (Object.prototype.toString.call(timeStr) !== "[object Date]") {
             time = /^\d*$/.test(timeStr) ? new Date(timeStr) : parseDate(timeStr);
         } else {
             time = timeStr;
@@ -159,6 +159,21 @@ var ncjwUtil = (function ($) {
             }
         }
     }
+    //全部选中
+    var sellectAll = function (parentEle) {
+        parentEle.find('input').attr("checked", true);
+    }
+    //全不选
+    var unSellectAll = function (parentEle) {
+        parentEle.find('input').attr("checked", false);
+    }
+    //部分选中
+    var selectSome = function (parentEle, obj) {
+        for (var i in obj) {
+            parentEle.find("[name=" + i + "]").attr('checked', true)
+        }
+    }
+
     return {
         //将方法暴露出来 JSON格式数
         showInfo: showInfo,
@@ -166,13 +181,16 @@ var ncjwUtil = (function ($) {
         getData: getData,
         postData: postData,
         setFiledsValue: setFiledsValue,
-        timeTurn: timeTurn
+        timeTurn: timeTurn,
+        sellectAll: sellectAll,
+        unSellectAll: unSellectAll,
+        selectSome: selectSome
     };
 })(jQuery);
 
 var serializeJSON = function (data) {
-   data=data.replace(/&/g,"\",\"");
-   data=data.replace(/=/g,"\":\"");
-   data="{\""+data+"\"}";
-   return data;
+    data = data.replace(/&/g, "\",\"");
+    data = data.replace(/=/g, "\":\"");
+    data = "{\"" + data + "\"}";
+    return data;
 }
