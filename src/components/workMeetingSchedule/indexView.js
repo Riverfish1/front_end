@@ -1,11 +1,12 @@
 /*global define*/
 define([
+    'backbone',
     'src/components/workMeetingSchedule/tableView',
     'text!./index.html',
     'text!./dialog.html',
     'text!./select.html',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, selectTpl, QUERY) {
+], function (Backbone, BaseTableView, tpl, dialogTpl, selectTpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',

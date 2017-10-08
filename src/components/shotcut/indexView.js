@@ -24,7 +24,12 @@ define([
             this.getData();
             return this;
         },
+        removeActiveClass: function () {
+            this.$el.find('li').removeClass('active');
+            debugger;
+        },
         active: function(e) {
+            debugger;
             var $el = $(e.target);
             $el = $el.hasClass('item') ? $el : $el.parents('.item');
             var $subNav = $el.next(),
@@ -51,10 +56,21 @@ define([
         getData: function () {
             var self = this;
             ncjwUtil.getData("api/shotcut/list", {}, function (res) {
-                debugger;
                 var list = {list: res.data}
                 if (res.success) {
                     self.$el.empty().html(self.template(list));
+                    self.removeActiveClass();
+                } else {
+                    ncjwUtil.showError(res.errorMsg);
+                }
+            })
+        },
+        getEditData: function () {
+            var self = this;
+            ncjwUtil.getData("api/shotcut/list", {}, function (res) {
+                var list = {list: res.data}
+                if (res.success) {
+                    self.$officeDialogPanel.empty().html(self.getDialogContent(list))
                 } else {
                     ncjwUtil.showError(res.errorMsg);
                 }
@@ -66,7 +82,7 @@ define([
             var row = initData.areaName ? row : initData;
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
-            this.$officeDialogPanel.empty().html(this.getDialogContent(row))
+            this.getEditData();
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },

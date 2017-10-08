@@ -12,13 +12,14 @@ define([
 		tagName:  'div',
 		template: _.template(tpl),
         events: {
-            'mouseover .shotcutWrap':   'mouseoverShotcutMenu',
-            'mouseout .shotcutWrap':    'mouseoutShotcutMenu',
+            'mouseover .shotcutWrap': 'mouseoverShotcutMenu',
+            'mouseout .shotcutWrap':  'mouseoutShotcutMenu',
             'click .shotcutBtn': 'addShotcut'
         },
         initialize:function(){
 			window.loginName = 'hello';
 			Backbone.off('routeChange').on('routeChange', this.updateNavSideBar);
+			this.isFirst = true;
 		},
         updateNavSideBar: function (hash) {
             var hashFirst = hash.split('/')[1];
@@ -32,8 +33,12 @@ define([
             })
         },
         mouseoverShotcutMenu: function (e) {
+            if(this.isFirst){
+                this.$menu.find('li').removeClass('active');
+            }
             this.$menu.show();
             this.$shotcutBtn.show();
+            this.isFirst = false;
         },
         mouseoutShotcutMenu: function (e) {
             this.$menu.hide();
