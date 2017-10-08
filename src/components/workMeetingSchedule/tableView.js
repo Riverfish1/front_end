@@ -21,7 +21,7 @@ define(['../../common/query/index'], function (QUERY) {
         },
         init: function () {
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_OFFICEAREA_QUERY, //请求后台的URL（*）
+                url: QUERY.WORK_MEETING_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -46,28 +46,28 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'areaName',
+                    field: 'appointmentTime',
                     title: '时间',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'areaUsage',
-                    title: '会议室',
-                    align: 'center',
-                    valign: "middle",
-                }, {
-                    field: 'areaSize',
-                    title: '地点',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row, index) {
-                        return value ? value + "㎡" : "";
+                        return value ? ncjwUtil.timeTurn(value) : "";
                     }
                 }, {
-                    field: 'areaAddress',
+                    field: 'place',
+                    title: '地点',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'conferenceRoom',
+                    title: '会议室',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'conferenceTheme',
                     title: '主题',
                     align: 'center',
-                    valign: "middle",
+                    valign: "middle"
                 }, {
                     field: 'status',
                     title: '操作',
@@ -87,8 +87,8 @@ define(['../../common/query/index'], function (QUERY) {
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        // "rows": res.data && res.data[0]
-                        "rows": res.data && res.data
+                        "rows": res.data && res.data[0]
+                        // "rows": res.data && res.data
                     }
                 }
             });

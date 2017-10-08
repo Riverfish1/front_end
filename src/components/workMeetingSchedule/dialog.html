@@ -1,29 +1,30 @@
 <div class="loading" style="width: 95%"></div>
 
 <form class="form-horizontal" id="editForm" >
+    <input type="hidden" name="userId" id="userId" value="<%= userId %>">
     <input type="hidden" name="id" id="id" value="<%= id %>">
     <div class="form-group">
         <label class="col-md-3 control-label">选择办公区</label>
         <div class="col-md-9">
-            <select class="mw316"  name="officeArea" id="officeAreaSel"></select>
+            <select class="mw316 w316"  name="place" id="officeAreaSel"></select>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">选择会议室</label>
         <div class="col-md-9">
-            <select class="mw316"  name="officeRoom" id="officeRoomSel"></select>
+            <select class="mw316 w316"  name="conferenceRoom" id="officeRoomSel"></select>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3  control-label">选择时间</label>
         <div class="col-md-9">
-            <input placeholder="请输入面积数字，如23.5" type="text" name="areaSize" class="form-control" value="<%= areaSize %>">
+            <input placeholder="请选择时间" type="text" name="appointmentTime" id="appointmentTime" class="form-control" value="<%= appointmentTime %>">
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">会议主题</label>
         <div class="col-md-9">
-            <input type="text" name="areaAddress" class="form-control" value="<%= areaAddress %>">
+            <input type="text" name="conferenceTheme" id="conferenceTheme" class="form-control" value="<%= conferenceTheme %>">
         </div>
     </div>
 </form>

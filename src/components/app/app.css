@@ -655,6 +655,7 @@ input:-webkit-autofill {
 
 /*会议预定*/
 .mw316{ max-width: 316px;}
+.w316{ width: 316px;}
 .tipInfo{line-height: 34px; text-align: center; font-size: 24px;}
 .tipInfo > p{font-size: 16px;}
 .tipInfo > p >span{margin-right: 30px;}

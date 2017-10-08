@@ -55,9 +55,29 @@ define([], function () {
         WORK_SUMMARY_UPDATE: '/api/personalSummary/updateById',
         WORK_SUMMARY_DELETE: '/api/personalSummary/deleteById',
         WORK_SUMMARY_QUERY: '/api/personalSummary/query',
-        WORK_SUMMARY_SELECT_BY_ID: '/api/personalSummary/selectById'
+        WORK_SUMMARY_SELECT_BY_ID: '/api/personalSummary/selectById',
         // 信访管理
+
         // 领导预约
+
+        //会议预定
+        WORK_MEETING_INSERT: '/api/myBooking/insert',
+        WORK_MEETING_UPDATE: '/api/myBooking/updateById',
+        WORK_MEETING_DELETE: '/api/myBooking/deleteById',
+        WORK_MEETING_QUERY: '/api/myBooking/query',
+        WORK_MEETING_SELECT_BY_ID: '/api/myBooking/selectById',
+        //待办事宜
+        WORK_TODO_INSERT: '/api/personalTodo/insert',
+        WORK_TODO_UPDATE: '/api/personalTodo/updateById',
+        WORK_TODO_DELETE: '/api/personalTodo/deleteById',
+        WORK_TODO_QUERY: '/api/personalTodo/query',
+        WORK_TODO_SELECT_BY_ID: '/api/personalTodo/selectById',
+        //快捷方式
+        WORK_TODO_INSERT: '/api/personalTodo/insert',
+        WORK_TODO_UPDATE: '/api/personalTodo/updateById',
+        WORK_TODO_DELETE: '/api/personalTodo/deleteById',
+        WORK_TODO_QUERY: '/api/personalTodo/query',
+        WORK_TODO_SELECT_BY_ID: '/api/personalTodo/selectById',
     };
     return QUERY;
 })
