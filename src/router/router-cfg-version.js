@@ -21,16 +21,18 @@ define(['backbone'], function (Backbone) {
         'register/post': 'src/components/postRecord/indexController.js',
         // 外来人员登记
         'register/visitors': 'src/components/visitorsRecord/indexController.js',
-        // 'work/department': 'src/components/list/listController.js',
-        // 'work/department': 'src/components/list/listController.js',
+        // 部门档案
         'work/department': 'src/components/workDepartment/indexController.js',
+        // 人员档案
         'work/staff': 'src/components/workStaff/indexController.js',
         // 会议预定
         'work/meeting': 'src/components/workMeetingSchedule/indexController.js',
         // 待办事宜
         'work/todo': 'src/components/workToDo/indexController.js',
         // 个人小结
-        'work/mySummary': 'src/components/workSummary/indexController.js'
+        'work/mySummary': 'src/components/workSummary/indexController.js',
+        // 信访管理
+        'work/petitionMng': 'src/components/petitionMng/indexController.js'
 
 
         // '*actions': 'defaultAction'

@@ -2,13 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f35dcadc-155c-437a-b1b8-44d45963930a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/petitionMng/dialog.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/petitionMng/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/petitionMng/indexController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/petitionMng/indexView.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/petitionMng/tableView.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/query/index.js" afterPath="$PROJECT_DIR$/src/common/query/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/app/app.css" afterPath="$PROJECT_DIR$/src/components/app/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workMeetingSchedule/dialog.html" afterPath="$PROJECT_DIR$/src/components/workMeetingSchedule/dialog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workMeetingSchedule/indexView.js" afterPath="$PROJECT_DIR$/src/components/workMeetingSchedule/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workMeetingSchedule/tableView.js" afterPath="$PROJECT_DIR$/src/components/workMeetingSchedule/tableView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/header/header.js" afterPath="$PROJECT_DIR$/src/components/header/header.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/peopleRecord/index.html" afterPath="$PROJECT_DIR$/src/components/peopleRecord/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/peopleRecord/indexView.js" afterPath="$PROJECT_DIR$/src/components/peopleRecord/indexView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/peopleRecord/tableView.js" afterPath="$PROJECT_DIR$/src/components/peopleRecord/tableView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" afterPath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workStaff/index.html" afterPath="$PROJECT_DIR$/src/components/workStaff/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workStaff/indexView.js" afterPath="$PROJECT_DIR$/src/components/workStaff/indexView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workStaff/tableView.js" afterPath="$PROJECT_DIR$/src/components/workStaff/tableView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workSummary/indexView.js" afterPath="$PROJECT_DIR$/src/components/workSummary/indexView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workSummary/tableView.js" afterPath="$PROJECT_DIR$/src/components/workSummary/tableView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/router-cfg-version.js" afterPath="$PROJECT_DIR$/src/router/router-cfg-version.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,11 +34,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/workMeetingSchedule/indexView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="192" column="40" lean-forward="true" selection-start-line="192" selection-start-column="40" selection-end-line="192" selection-end-column="40" />
+            <state relative-caret-position="136">
+              <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -68,7 +79,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1105">
               <caret line="65" column="17" lean-forward="false" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
-              <folding />
+              <folding>
+                <marker date="1507445357000" expanded="true" signature="72:4322" ph="{...}" />
+                <marker date="1507445357000" expanded="true" signature="129:4300" ph="{&quot;el&quot;: '##tb_officeArea'...}" />
+                <marker date="1507445357000" expanded="true" signature="634:3711" ph="{...}" />
+                <marker date="1507445357000" expanded="true" signature="1935:3304" ph="[...]" />
+                <marker date="1507445357000" expanded="true" signature="1936:2263" ph="{&quot;field&quot;: 'appointmentTime'...}" />
+                <marker date="1507445357000" expanded="true" signature="2152:2245" ph="{...}" />
+                <marker date="1507445357000" expanded="true" signature="3459:3685" ph="{...}" />
+                <marker date="1507445357000" expanded="true" signature="3488:3667" ph="{&quot;total&quot;: res.total...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,7 +118,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
               <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
-              <folding />
+              <folding>
+                <marker date="1507449471000" expanded="true" signature="189:1917" ph="{...}" />
+                <marker date="1507449471000" expanded="true" signature="245:1893" ph="{&quot;el&quot;: '##header'...}" />
+                <marker date="1507449471000" expanded="true" signature="539:670" ph="{...}" />
+                <marker date="1507449471000" expanded="true" signature="1152:1370" ph="{...}" />
+                <marker date="1507449471000" expanded="true" signature="1514:1728" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -119,7 +145,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/workMeetingSchedule/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="19" column="53" lean-forward="true" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+              <caret line="19" column="53" lean-forward="false" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -129,7 +155,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/workMeetingSchedule/indexController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+              <caret line="5" column="36" lean-forward="false" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -149,17 +175,17 @@
         <entry file="file://$PROJECT_DIR$/src/components/app/app.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="353">
-              <caret line="656" column="26" lean-forward="true" selection-start-line="656" selection-start-column="26" selection-end-line="656" selection-end-column="26" />
+              <caret line="656" column="26" lean-forward="false" selection-start-line="656" selection-start-column="26" selection-end-line="656" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/common/query/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="73" column="21" lean-forward="true" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
+            <state relative-caret-position="385">
+              <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -169,7 +195,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>input.on</find>
       <find>console</find>
       <find>label.on</find>
       <find>id</find>
@@ -199,6 +224,7 @@
       <find>btn-cancel</find>
       <find>getOfficeAreaList</find>
       <find>changeMeeting</find>
+      <find>render</find>
     </findStrings>
     <replaceStrings>
       <replace>OFFICEROOM</replace>
@@ -270,12 +296,12 @@
         <option value="$PROJECT_DIR$/src/components/shotcut/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/header/header.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/common/query/index.js" />
         <option value="$PROJECT_DIR$/src/components/workMeetingSchedule/roomSel.html" />
         <option value="$PROJECT_DIR$/src/components/app/app.css" />
         <option value="$PROJECT_DIR$/src/components/workMeetingSchedule/tableView.js" />
         <option value="$PROJECT_DIR$/src/components/workMeetingSchedule/dialog.html" />
         <option value="$PROJECT_DIR$/src/components/workMeetingSchedule/indexView.js" />
+        <option value="$PROJECT_DIR$/src/common/query/index.js" />
       </list>
     </option>
   </component>
@@ -1120,12 +1146,12 @@
       <workItem from="1506041729804" duration="230000" />
       <workItem from="1506213183908" duration="15433000" />
       <workItem from="1506300377907" duration="842000" />
-      <workItem from="1507197670464" duration="46126000" />
+      <workItem from="1507197670464" duration="46211000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84462000" />
+    <option name="totallyTimeSpent" value="84547000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1300,10 +1326,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#2;n#!!top" expanded="false" />
-            <element signature="e#649#656#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1320,15 +1343,15 @@
         <state relative-caret-position="272">
           <caret line="19" column="55" lean-forward="false" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="55" />
           <folding>
-            <marker date="1507375847000" expanded="true" signature="52:2236" ph="{...}" />
-            <marker date="1507375847000" expanded="true" signature="70:822" ph="[...]" />
-            <marker date="1507375847000" expanded="true" signature="835:2234" ph="[...]" />
-            <marker date="1507375847000" expanded="true" signature="1073:1311" ph="{&quot;className&quot;: 'icon_homePage'...}" />
-            <marker date="1507375847000" expanded="true" signature="1137:1310" ph="[...]" />
-            <marker date="1507375847000" expanded="true" signature="1321:1723" ph="{&quot;className&quot;: 'icon_homePage'...}" />
-            <marker date="1507375847000" expanded="true" signature="1386:1722" ph="[...]" />
-            <marker date="1507375847000" expanded="true" signature="1733:2228" ph="{&quot;className&quot;: 'icon_homePage'...}" />
-            <marker date="1507375847000" expanded="true" signature="1797:1970" ph="[...]" />
+            <marker date="1507449471000" expanded="true" signature="2097:2106" ph="{...}" />
+            <marker date="1507449471000" expanded="true" signature="70:822" ph="[...]" />
+            <marker date="1507449471000" expanded="true" signature="2097:2104" ph="[...]" />
+            <marker date="1507449471000" expanded="true" signature="1073:1311" ph="{&quot;className&quot;: 'icon_homePage'...}" />
+            <marker date="1507449471000" expanded="true" signature="1137:1310" ph="[...]" />
+            <marker date="1507449471000" expanded="true" signature="1321:1723" ph="{&quot;className&quot;: 'icon_homePage'...}" />
+            <marker date="1507449471000" expanded="true" signature="1386:1722" ph="[...]" />
+            <marker date="1507449471000" expanded="true" signature="2097:2098" ph="{&quot;className&quot;: 'icon_homePage'...}" />
+            <marker date="1507449471000" expanded="true" signature="1797:1970" ph="[...]" />
           </folding>
         </state>
       </provider>
@@ -1365,8 +1388,8 @@
         <state relative-caret-position="149">
           <caret line="97" column="11" lean-forward="false" selection-start-line="97" selection-start-column="11" selection-end-line="97" selection-end-column="11" />
           <folding>
-            <marker date="1507375847000" expanded="true" signature="25:32" ph="[...]" />
-            <marker date="1507375847000" expanded="true" signature="4327:4345" ph="{...}" />
+            <marker date="1507449471000" expanded="true" signature="25:32" ph="[...]" />
+            <marker date="1507449471000" expanded="true" signature="4327:4345" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1520,15 +1543,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/query/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="73" column="21" lean-forward="true" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
-          <folding />
+          <folding>
+            <marker date="1507449471000" expanded="true" signature="189:1917" ph="{...}" />
+            <marker date="1507449471000" expanded="true" signature="245:1893" ph="{&quot;el&quot;: '##header'...}" />
+            <marker date="1507449471000" expanded="true" signature="539:670" ph="{...}" />
+            <marker date="1507449471000" expanded="true" signature="1152:1370" ph="{...}" />
+            <marker date="1507449471000" expanded="true" signature="1514:1728" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1575,7 +1596,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/app/app.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
-          <caret line="656" column="26" lean-forward="true" selection-start-line="656" selection-start-column="26" selection-end-line="656" selection-end-column="26" />
+          <caret line="656" column="26" lean-forward="false" selection-start-line="656" selection-start-column="26" selection-end-line="656" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1592,14 +1613,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1105">
           <caret line="65" column="17" lean-forward="false" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
-          <folding />
+          <folding>
+            <marker date="1507445357000" expanded="true" signature="72:4322" ph="{...}" />
+            <marker date="1507445357000" expanded="true" signature="129:4300" ph="{&quot;el&quot;: '##tb_officeArea'...}" />
+            <marker date="1507445357000" expanded="true" signature="634:3711" ph="{...}" />
+            <marker date="1507445357000" expanded="true" signature="1935:3304" ph="[...]" />
+            <marker date="1507445357000" expanded="true" signature="1936:2263" ph="{&quot;field&quot;: 'appointmentTime'...}" />
+            <marker date="1507445357000" expanded="true" signature="2152:2245" ph="{...}" />
+            <marker date="1507445357000" expanded="true" signature="3459:3685" ph="{...}" />
+            <marker date="1507445357000" expanded="true" signature="3488:3667" ph="{&quot;total&quot;: res.total...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/workMeetingSchedule/indexController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+          <caret line="5" column="36" lean-forward="false" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1607,7 +1637,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/workMeetingSchedule/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="19" column="53" lean-forward="true" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+          <caret line="19" column="53" lean-forward="false" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -1624,8 +1654,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/workMeetingSchedule/indexView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="192" column="40" lean-forward="true" selection-start-line="192" selection-start-column="40" selection-end-line="192" selection-end-column="40" />
+        <state relative-caret-position="136">
+          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/query/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding />
         </state>
       </provider>

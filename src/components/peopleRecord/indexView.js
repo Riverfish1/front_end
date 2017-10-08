@@ -76,18 +76,37 @@ define([
 
             });
         },
-        addToCard: function (id) {
+        addToCard: function (row) {
             var that = this;
-            var params = {
-                id: id,
-                name: window.loginName
+            var peopleInfo = {
+                "ownerPeopleId": window.ownerPeopleId,
+                "targetPeopleId": row.id
             };
-            ncjwUtil.postData(QUERY.RECORD_PEOPLE_ADD, params, function (res) {
-                if (res.success) {
-                    ncjwUtil.showInfo('加入名片夹成功！');
-                    that.table.refresh();
-                } else {
-                    ncjwUtil.showError('加入名片夹失败！');
+            var datas = serializeJSON(JSON.stringify(peopleInfo)).slice(2, -2);
+            bootbox.confirm({
+               buttons: {
+                    confirm: {
+                        label: '确认'
+                    },
+                    cancel: {
+                        label: '取消'
+                    }
+                },
+                title: "加入名片夹",
+                message: '确认加入名片夹吗？',
+                callback: function (result) {
+                    if (result) {
+                        ncjwUtil.postData(QUERY.WORK_ADDRESSLIST_INSERT, datas, function (res) {
+                            if (res.success) {
+                                ncjwUtil.showInfo('加入名片夹成功！');
+                                that.table.refresh();
+                            } else {
+                                ncjwUtil.showError('加入名片夹失败！');
+                            }
+                        }, {
+                            "contentType": 'application/json'
+                        });
+                    }
                 }
             });
         },
@@ -147,8 +166,11 @@ define([
                 var that = this;
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
+                console.log(data);
                 data = decodeURIComponent(data, true);
+                console.log(data);
                 var datas = serializeJSON(data);
+                console.log(datas);
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.RECORD_PEOPLE_UPDATE : QUERY.RECORD_PEOPLE_INSERT, datas, function (res) {
                     if (res.success) {
