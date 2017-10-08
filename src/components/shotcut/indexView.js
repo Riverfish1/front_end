@@ -24,7 +24,12 @@ define([
             this.getData();
             return this;
         },
+        removeActiveClass: function () {
+            this.$el.find('li').removeClass('active');
+            debugger;
+        },
         active: function(e) {
+            debugger;
             var $el = $(e.target);
             $el = $el.hasClass('item') ? $el : $el.parents('.item');
             var $subNav = $el.next(),
@@ -51,10 +56,10 @@ define([
         getData: function () {
             var self = this;
             ncjwUtil.getData("api/shotcut/list", {}, function (res) {
-                debugger;
                 var list = {list: res.data}
                 if (res.success) {
                     self.$el.empty().html(self.template(list));
+                    self.removeActiveClass();
                 } else {
                     ncjwUtil.showError(res.errorMsg);
                 }
