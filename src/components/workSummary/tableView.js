@@ -90,7 +90,6 @@ define(['../../common/query/index'], function (QUERY) {
             });
         },
         queryParams: function (params) {
-            console.log(params);
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,

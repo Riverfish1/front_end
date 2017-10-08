@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#record_peopleRecord',
+        el: '#work_petitionMng',
         initialize: function () {
         },
         showLoading: function () {
@@ -22,7 +22,7 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_PEOPLE_QUERY, //请求后台的URL（*）
+                url: QUERY.WORK_PETITIONMNG_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,61 +47,50 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'peopleName',
-                    title: '姓名',
+                    field: 'petitionName',
+                    title: '名称',
                     align: 'center',
                     valign: "middle",
                 }, {
-                    field: 'employeeNum',
-                    title: '工号',
+                    field: 'registrantId',
+                    title: '登记人工号',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'departmentId',
-                    title: '部门',
+                    field: 'recordContent',
+                    title: '登记内容',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'positionName',
-                    title: '岗位',
+                    field: 'recordTime',
+                    title: '登记时间',
                     align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'titleName',
-                    title: '职务',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'phoneNum',
-                    title: '电话号码',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'mailAddress',
-                    title: '邮箱地址',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'officeAreaId',
-                    title: '所在办公区',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'officeRoomId',
-                    title: '所属办公室',
-                    align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function(value) {
+                        return ncjwUtil.timeTurn(value);
+                    }
                 }, {
                     field: 'status',
+                    title: '状态',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: function(value, row, index) {
+                        var status;
+                        switch (value) {
+                            case '0': status = '未处理'; break;
+                            case '1': status = '已处理'; break;
+                        }
+                        return status;
+                    }
+                }, {
+                    field: 'oper',
                     title: '操作',
                     align: 'center',
                     valign: "middle",
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
-                        str += '<p class="grid-command-p btn-add">加入名片夹</p>';
+                        str += '<p class="grid-command-p btn-view">查看</p>';
                         return str;
                     }
                 }],
@@ -114,7 +103,6 @@ define(['../../common/query/index'], function (QUERY) {
             });
         },
         queryParams: function (params) {
-            console.log(params);
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
@@ -124,14 +112,8 @@ define(['../../common/query/index'], function (QUERY) {
             return temp;
         },
         operateEvents: {
-            'click .btn-edit': function (e, value, row, index) {
-                Backbone.trigger('itemEdit', row);
-            },
-            'click .btn-delete': function (e, value, row, index) {
-                Backbone.trigger('itemDelete', row);
-            },
-            'click .btn-add': function (e, value, row, index) {
-                Backbone.trigger('itemAdd', row.id)
+            'click .btn-view': function (e, value, row, index) {
+                Backbone.trigger('itemView', row);
             }
         }
     });

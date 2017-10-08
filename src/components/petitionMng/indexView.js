@@ -11,13 +11,11 @@ define([
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
         events: {
-            'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
+            'click #btn_add': 'showContent',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
             'click #submitBtn': 'submitForm'
         },
         initialize: function () {
-            Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
-            Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
-            Backbone.off('itemAdd').on('itemAdd', this.addToCard, this);
+            Backbone.off('itemView').on('itemView', this.showContent, this);
         },
         render: function () {
             //main view
@@ -28,17 +26,10 @@ define([
             this.table.render();
             return this;
         },
-        addOne: function (row) {
+        showContent: function (row) {
             var initState = {
-                employeeNum: '',
-                peopleName: '',
-                departmentId: '',
-                positionName: '',
-                titleName: '',
-                phoneNum: '',
-                mailAddress: '',
-                officeAreaId: '',
-                officeRoomId: '',
+                petitionName: '',
+                recordContent: '',
                 id: ''
             };
             var row = row.id ? row : initState;
@@ -48,87 +39,22 @@ define([
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
-        delOne: function (row) {
-            var that = this;
-            bootbox.confirm({
-                buttons: {
-                    confirm: {
-                        label: '确认'
-                    },
-                    cancel: {
-                        label: '取消'
-                    }
-                },
-                title: "温馨提示",
-                message: '执行删除后将无法恢复，确定继续吗？',
-                callback: function (result) {
-                    if (result) {
-                        ncjwUtil.postData(QUERY.RECORD_PEOPLE_DELETE, {id: row.id}, function (res) {
-                            if (res.success) {
-                                ncjwUtil.showInfo('删除成功');
-                                that.table.refresh();
-                            } else {
-                                ncjwUtil.showError("删除失败：" + res.errorMsg);
-                            }
-                        })
-                    }
-                }
-
-            });
-        },
-        addToCard: function (id) {
-            var that = this;
-            var params = {
-                id: id,
-                name: window.loginName
-            };
-            ncjwUtil.postData(QUERY.RECORD_PEOPLE_ADD, params, function (res) {
-                if (res.success) {
-                    ncjwUtil.showInfo('加入名片夹成功！');
-                    that.table.refresh();
-                } else {
-                    ncjwUtil.showError('加入名片夹失败！');
-                }
-            });
-        },
         initSubmitForm: function () {
             this.$editForm.validate({
                 errorElement: 'span',
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    employeeNum: {
-                        required: true,
-                        number: true
+                    petitionName: {
+                        required: true
                     },
-                    peopleName: {
-
-                    },
-                    departmentId: {
-
-                    },
-                    positionName: {
-
-                    },
-                    titleName: {
-
-                    },
-                    phoneNum: {
-
-                    },
-                    mailAddress: {
-
-                    },
-                    officeAreaId: {
-
-                    },
-                    officeRoomId: {
-                        
+                    recordContent: {
+                        required: true
                     }
                 },
                 messages: {
-                    name: "请输入名称",
-                    gmtCreate: "请输入时间"
+                    petitionName: "请输入名称",
+                    recordContent: "请输入内容"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -150,7 +76,7 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.RECORD_PEOPLE_UPDATE : QUERY.RECORD_PEOPLE_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_PETITIONMNG_UPDATE : QUERY.WORK_PETITIONMNG_INSERT, datas, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');

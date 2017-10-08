@@ -17,7 +17,7 @@ define([
             'click .shotcutBtn': 'addShotcut'
         },
         initialize:function(){
-			window.loginName = 'hello';
+			window.ownerPeopleId = 1;
 			Backbone.off('routeChange').on('routeChange', this.updateNavSideBar);
 			this.isFirst = true;
 		},

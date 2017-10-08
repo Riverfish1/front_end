@@ -1,7 +1,3 @@
-/**
- * Created by yujian on 2017/08/14.
- */
-
 define({
     "register": [
         {className: 'icon_homePage', href: '#/register/officeArea', title: '办公区登记'},
@@ -14,7 +10,7 @@ define({
         {className: 'icon_homePage', href: '#/register/peopleType', title: '人员类型登记'},
         {className: 'icon_homePage', href: '#/register/visitors', title: '外来人员登记'},
     ],
-    "work":[
+    "work": [
         {className: 'icon_homePage', href: '#/work/meeting', title: '会议预定'},
         {className: 'icon_homePage', href: '#/work/todo', title: '待办事宜'},
         // {className: 'icon_homePage', href: '#/work/staff', title: '人员档案'}
@@ -28,13 +24,11 @@ define({
             {className: 'icon_homePage', href: '#/work/department', title: '已办发文'},
             {className: 'icon_homePage', href: '#/work/staff', title: '收文流程'}
         ]},
-        {className: 'icon_homePage', href: '#', title: '通讯录', children: [
-            {className: 'icon_homePage', href: '#/work/department', title: '部门档案'},
-            {className: 'icon_homePage', href: '#/work/staff', title: '人员档案'}
-        ]},
         {className: 'icon_homePage', href: '#', title: '小结', children: [
             {className: 'icon_homePage', href: '#/work/mySummary', title: '我的小结'},
             {className: 'icon_homePage', href: '#/work/summaryReceived', title: '收到的小结'}
-        ]}
+        ]},
+        {className: 'icon_homePage', href: '#/work/petitionMng', title: '信访管理'},
+        {className: 'icon_homePage', href: '#/work/appointment', title: '领导预约'}
     ]
 });

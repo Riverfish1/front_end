@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#record_peopleRecord',
+        el: '#record_people',
         initialize: function () {
         },
         showLoading: function () {
@@ -34,7 +34,7 @@ define(['../../common/query/index'], function (QUERY) {
                 sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
                 pageNumber: 1, //初始化加载第一页，默认第一页
                 pageSize: 20, //每页的记录行数（*）
-                pageList: [10, 25, 50, 100], //可供选择的每页的行数（*）
+                pageList: [20, 30, 50, 100], //可供选择的每页的行数（*）
                 search: false, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
                 strictSearch: true,
                 showColumns: true, //是否显示所有的列
@@ -131,7 +131,7 @@ define(['../../common/query/index'], function (QUERY) {
                 Backbone.trigger('itemDelete', row);
             },
             'click .btn-add': function (e, value, row, index) {
-                Backbone.trigger('itemAdd', row.id)
+                Backbone.trigger('itemAdd', row)
             }
         }
     });

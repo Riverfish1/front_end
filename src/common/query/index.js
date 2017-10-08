@@ -32,7 +32,6 @@ define([], function () {
         RECORD_PEOPLE_DELETE: '/api/people/deleteById',
         RECORD_PEOPLE_QUERY: '/api/people/query',
         RECORD_PEOPLE_SELECT_BY_ID: '/api/people/selectById',
-        RECORD_PEOPLE_ADD: '/api/people/addToCard',
         // 人员类型登记
         RECORD_PEOPLETYPE_INSERT: '/api/peopleType/insert',
         RECORD_PEOPLETYPE_UPDATE: '/api/peopleType/updateById',
@@ -46,18 +45,25 @@ define([], function () {
         RECORD_VISITORS_QUERY: '/api/visitorsRecord/query',
         RECORD_VISITORS_SELECT_BY_ID: '/api/visitorsRecord/selectById',
         // 办公
-        // 人员档案
-        WORK_STAFF_INSERT: '/api/workStaff/insert',
-        WORK_STAFF_DELETE: '/api/workStaff/delete',
-        WORK_STAFF_QUERY: '/api/workStaff/query',
+        // 通讯录
+        WORK_ADDRESSLIST_QUERY: '/api/addressList/query',
+        WORK_ADDRESSLIST_INSERT: '/api/addressList/insert',
+        WORK_ADDRESSLIST_DELETE: '/api/addressList/deleteById',
         // 工作小结
         WORK_SUMMARY_INSERT: '/api/personalSummary/insert',
         WORK_SUMMARY_UPDATE: '/api/personalSummary/updateById',
         WORK_SUMMARY_DELETE: '/api/personalSummary/deleteById',
         WORK_SUMMARY_QUERY: '/api/personalSummary/query',
-        WORK_SUMMARY_SELECT_BY_ID: '/api/personalSummary/selectById'
+        WORK_SUMMARY_SELECT_BY_ID: '/api/personalSummary/selectById',
         // 信访管理
+        WORK_PETITIONMNG_INSERT: '/api/petitionManagement/insert',
+        WORK_PETITIONMNG_QUERY: '/api/petitionManagement/query',
+        WORK_PETITIONMNG_SELECT_BY_ID: '/api/petitionManagement/selectById',
         // 领导预约
+        WORK_APPOINTMENT_INSERT: 'api/appointmentRecord/insert',
+        WORK_APPOINTMENT_REJECT: 'api/appointmentRecord/reject', // 驳回
+        WORK_APPOINTMENT_PASS: 'api/appointmentRecord/pass', // 通过
+        WORK_APPOINTMENT_SELECT_BY_ID: 'api/appointmentRecord/selectById'
     };
     return QUERY;
 })
