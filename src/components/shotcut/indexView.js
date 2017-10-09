@@ -1,8 +1,10 @@
 /*global define*/
 define([
+    'backbone',
     'text!src/components/shotcut/index.html',
-    'text!src/components/shotcut/dialog.html'
-], function (tpl, dialogTpl) {
+    'text!src/components/shotcut/dialog.html',
+    '../../common/query/index'
+], function (Backbone, tpl, dialogTpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '.shotMenu',
@@ -55,14 +57,16 @@ define([
         },
         getData: function () {
             var self = this;
-            ncjwUtil.getData("api/shotcut/list", {}, function (res) {
-                var list = {list: res.data}
+            ncjwUtil.postData(QUERY.WORK_SHOT_QUERY, JSON.stringify({userId: 1}), function (res) {
+                var list = {list: res.data[0]}
                 if (res.success) {
                     self.$el.empty().html(self.template(list));
                     self.removeActiveClass();
                 } else {
                     ncjwUtil.showError(res.errorMsg);
                 }
+            }, {
+                "contentType": 'application/json'
             })
         },
         getEditData: function () {

@@ -37,6 +37,7 @@ define([
                 this.$menu.find('li').removeClass('active');
             }
             this.$menu.show();
+            this.resetHeight();
             this.$shotcutBtn.show();
             this.isFirst = false;
         },
@@ -55,6 +56,10 @@ define([
             Backbone.trigger('shotcutBtnClick');
             this.$menu.hide();
             this.$shotcutBtn.hide();
+        },
+        resetHeight: function () {
+		    debugger;
+            this.$shotcutBtn.css('top', this.$menu.height() + 58);
         }
 	});
 	return HeaderView;
