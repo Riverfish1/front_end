@@ -144,8 +144,8 @@ var ncjwUtil = (function ($) {
 
 
     //时间戳转换（具体到秒）2016-10-9 12:00:00
-    var timeTurn = function (d) {
-        return formatTime(d);
+    var timeTurn = function (d, fmt) {
+        return formatTime(d, fmt);
     };
 
     //填充form数据

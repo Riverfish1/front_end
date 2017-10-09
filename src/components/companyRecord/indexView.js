@@ -56,7 +56,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.RECORD_POSTRECORD_DELETE, {id: row.id, parentId: 0}, function (res) {
+                        ncjwUtil.postData(QUERY.RECORD_DEPARTMENT_DELETE, {id: row.id, parentId: 0}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功！');
                                 that.table.refresh();

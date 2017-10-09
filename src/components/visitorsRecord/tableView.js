@@ -69,7 +69,10 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'gmtCreate',
                     title: '访问时间',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
+                    }
                 }, {
                     field: 'status',
                     title: '操作',
