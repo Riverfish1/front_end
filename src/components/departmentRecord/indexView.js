@@ -31,6 +31,7 @@ define([
             var initState = {
                 departmentName: '',
                 responsibility: '',
+                departmentType: '',
                 id: ''
             };
             var row = row.id ? row : initState;

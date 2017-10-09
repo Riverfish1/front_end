@@ -1,8 +1,9 @@
 /*global define*/
 define([
+    'backbone',
     'text!src/components/shotcut/index.html',
     'text!src/components/shotcut/dialog.html'
-], function (tpl, dialogTpl) {
+], function (Backbone, tpl, dialogTpl) {
     'use strict';
     var View = Backbone.View.extend({
         el: '.shotMenu',

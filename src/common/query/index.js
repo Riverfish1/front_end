@@ -83,7 +83,15 @@ define([], function () {
         WORK_APPOINTMENT_QUERY: 'api/appointmentRecord/query',
         WORK_APPOINTMENT_REJECT: 'api/appointmentRecord/deleteById', // 驳回
         WORK_APPOINTMENT_PASS: 'api/appointmentRecord/updateById', // 通过
-        WORK_APPOINTMENT_SELECT_BY_ID: 'api/appointmentRecord/selectById'
+        WORK_APPOINTMENT_SELECT_BY_ID: 'api/appointmentRecord/selectById',
+
+
+
+
+        // 一些基本正则
+        TEL_REG: /(^(13\d|15[^4,\D]|17[13678]|18\d)\d{8}|170[^346,\D]\d{7})$/,
+        EMAIL_REG: /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/,
+        ID_CARD_REG: /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X|x)$/
     };
     return QUERY;
 })

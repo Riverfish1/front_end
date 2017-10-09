@@ -5,11 +5,7 @@
     <div class="form-group">
         <label class="col-md-3 control-label">所属办公区：</label>
         <div class="col-md-9">
-            <select name="officeAreaId" class="form-control" value="<%= officeAreaId %>">
-                <% _.each(data, function(n){ %>
-                    <option><%= n.name %></option>
-                <% }); %>
-            </select>
+            <select name="officeAreaId" id="officeAreaBelong" class="form-control" value="<%= officeAreaId %>"></select>
         </div>
     </div>
     <div class="form-group">

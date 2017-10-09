@@ -37,9 +37,16 @@ define([
                 id: ''
             };
             var row = row.id ? row : initState;
+            row.gmtCreate = row.gmtCreate ? ncjwUtil.timeTurn(row.gmtCreate, 'yyyy-MM-dd') : ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd');
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
+            $('.accessTime').datepicker({
+                language: 'zh-CN',
+                autoclose: true,
+                todayHighlight: true,
+                format: 'yyyy-mm-dd'
+            });
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
@@ -81,7 +88,8 @@ define([
                         required: true
                     },
                     idCard: {
-                        maxlength: 18
+                        maxlength: 18,
+                        isIdCard: true
                     },
                     gmtCreate: {
                         required: true,
@@ -103,13 +111,15 @@ define([
                     element.parent('div').append(error);
                 }
             });
+            jQuery.validator.addMethod("isIdCard", function(value, element) {   
+                return this.optional(element) || (QUERY.ID_CARD_REG.test(value));
+            }, "请正确填写您的身份证号码");
         },
         submitForm: function (e) {
             if(this.$editForm.valid()){
                 var that = this;
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
-                data = decodeURIComponent(data, true);
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();

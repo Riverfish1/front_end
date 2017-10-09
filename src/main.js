@@ -33,6 +33,8 @@
 			viewer: 'libs/tools/viewer-jquery.min',
 			webuploader: 'libs/webUpload/webuploader',
 			datepicker: 'libs/bootstrap-datepicker/bootstrap-datepicker',
+			datetimepicker: 'libs/bootstrap-datetimepicker/bootstrap-datetimepicker.min',
+			datetimepicker_zh: 'libs/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN',
 			datepicker_zh: 'libs/bootstrap-datepicker/bootstrap-datepicker.zh-CN'
 		},
 		shim: {                     //引入没有使用requirejs模块写法的类库。backbone依赖underscore
@@ -108,6 +110,14 @@
       'datepicker_zh': {
       	deps: ['jquery', 'datepicker'],
       	exports: 'DatepickerCN'
+      },
+      'datetimepicker': {
+      	deps: ['jquery'],
+      	exports: 'Datetimepicker'
+      },
+      'datetimepicker_zh': {
+      	deps: ['jquery', 'datetimepicker'],
+      	exports: 'DatetimepickerCN'
       }
 		}
 	};
@@ -126,8 +136,10 @@
 			'viewer',
 			'webuploader',
 			'datepicker',
-			'datepicker_zh'
-		], function(Backbone, _, Bootstrap, BT, config, AppView, Bootbox, Viewer, WebUploader, Datepicker, DatepickerCN){
+			'datepicker_zh',
+			'datetimepicker',
+			'datetimepicker_zh'
+		], function(Backbone, _, Bootstrap, BT, config, AppView, Bootbox, Viewer, WebUploader, Datepicker, DatepickerCN, Datetimepicker, DatetimepickerCN){
 		new AppView();
 		window.backbone = Backbone;
 		window.bootbox = Bootbox;

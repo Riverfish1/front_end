@@ -172,6 +172,8 @@ body {
 
 .navbar-inverse {
     /*background-image: url("../../../static/images/header_bg.png");*/
+    border-color: #205c9a;
+    background-color: #205c9a;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -410,6 +412,10 @@ input:-webkit-autofill {
 
 /*v0.0.1 begin*/
 /* side bar navigation */
+
+.navbar {
+    min-height: 70px;
+}
 
 .nav-sidebar a {
     cursor: pointer;

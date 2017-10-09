@@ -3,12 +3,14 @@ define([
     './tableView',
     'text!./index.html',
     'text!./dialog.html',
+    'text!./area.html',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, QUERY) {
+], function (BaseTableView, tpl, dialogTpl, areaTpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
         template: _.template(tpl),
+        getAreaContent: _.template(areaTpl),
         getDialogContent: _.template(dialogTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
@@ -41,8 +43,27 @@ define([
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
+            this.$officeAreaBelong = this.$officeDialogPanel.find('#officeAreaBelong');
+            this.getOfficeAreaList(row);
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
+        },
+        getOfficeAreaList: function (row) {
+            var self = this;
+            var params = {
+                pageNum: 0,
+                pageSize: 10000
+            }
+            ncjwUtil.postData(QUERY.RECORD_OFFICEAREA_QUERY, JSON.stringify(params), function (res) {
+                if (res.success) {
+                    var list = {list: res.data[0]};
+                    self.$officeAreaBelong.empty().html(self.getAreaContent(list));
+                    (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {list: row.list});
+                } else {
+                }
+            }, {
+                "contentType": 'application/json'
+            })
         },
         delOne: function (row) {
             var that = this;
@@ -59,7 +80,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.RECORD_POSTRECORD_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.RECORD_OFFICEROOM_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功！');
                                 that.table.refresh();
@@ -88,10 +109,12 @@ define([
                         required: true
                     },
                     officeSize: {
-                        required: true
+                        required: true,
+                        number: true
                     },
                     officeCapacity: {
-                        required: true
+                        required: true,
+                        number: true
                     },
                     officeUsage: {
                         required: true
@@ -101,8 +124,14 @@ define([
                     officeAreaId: '请选择',
                     officeRoomName: '请输入',
                     officeRoomFunction: '请输入',
-                    officeSize: '请输入',
-                    officeCapacity: '请输入',
+                    officeSize: {
+                        required: '请输入',
+                        number: '请输入数字'
+                    },
+                    officeCapacity: {
+                        required: '请输入',
+                        number: '请输入数字'
+                    },
                     officeUsage: '请输入'
                 },
                 highlight: function (element) {

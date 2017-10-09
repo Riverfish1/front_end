@@ -56,6 +56,11 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                 }, {
+                    field: 'departmentType',
+                    title: '部门类型',
+                    align: 'center',
+                    valign: "middle",
+                }, {
                     field: 'status',
                     title: '操作',
                     align: 'center',

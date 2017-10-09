@@ -47,23 +47,23 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
+                    field: 'officeArea',
+                    title: '所属办公区',
+                    align: 'center',
+                    valign: "middle"
+                }, {
                     field: 'officeRoomName',
                     title: '办公室名称',
                     align: 'center',
                     valign: "middle"
-                // }, {
-                //     field: 'num',
-                //     title: '编号',
-                //     align: 'center',
-                //     valign: "middle",
                 }, {
                     field: 'officeRoomFunction',
                     title: '功能',
                     align: 'center',
-                    valign: "middle",
+                    valign: "middle"
                 }, {
                     field: 'officeSize',
-                    title: '面积',
+                    title: '面积（㎡）',
                     align: 'center',
                     valign: "middle"
                 }, {
