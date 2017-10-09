@@ -88,7 +88,7 @@ define([
                 if (res.success) {
                     var list = {list: res.data[0]};
                     self.$officeAreaSel.empty().html(self.getSelectContent(list));
-                    debugger;
+                    // debugger;
                     (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {place: row.place});
                 } else {
                 }

@@ -26,10 +26,10 @@ define([
         },
         removeActiveClass: function () {
             this.$el.find('li').removeClass('active');
-            debugger;
+            // debugger;
         },
         active: function(e) {
-            debugger;
+            // debugger;
             var $el = $(e.target);
             $el = $el.hasClass('item') ? $el : $el.parents('.item');
             var $subNav = $el.next(),
@@ -77,7 +77,7 @@ define([
             })
         },
         addOne: function (row) {
-            debugger;
+            // debugger;
             var initData = {areaName: '', areaUsage: ''};
             var row = initData.areaName ? row : initData;
             this.$officeDialog.modal('show');
