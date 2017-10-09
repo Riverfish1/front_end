@@ -1,6 +1,7 @@
 /*global define*/
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
+    var toDoType = 0;
     var Table = Backbone.View.extend({
         el: '#tabContent',
         initialize: function () {
@@ -19,13 +20,14 @@ define(['../../common/query/index'], function (QUERY) {
         refresh: function () {
             this.$el.bootstrapTable('refresh');
         },
+        load: function () {
+            this.$el.bootstrapTable('load');
+        },
         init: function (index) {
+            toDoType = index;
             this.$el.bootstrapTable('destroy');
-            var urlMap = {"0": '/api/workToDo/query', "1": QUERY.RECORD_DEPARTMENT_QUERY, "2": QUERY.RECORD_DEPARTMENT_QUERY}
             this.$el.bootstrapTable({
-                // url: QUERY.RECORD_DEPARTMENT_QUERY, //请求后台的URL（*）
-                // url: '/api/workToDo/query', //请求后台的URL（*）
-                url: urlMap[index], //请求后台的URL（*）
+                url: QUERY.WORK_TODO_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,36 +49,54 @@ define(['../../common/query/index'], function (QUERY) {
                 // height: 500, //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
                 uniqueId: "ID", //每一行的唯一标识，一般为主键列
                 showToggle: true, //是否显示详细视图和列表视图的切换按钮
-                // cardView: false, //是否显示详细视图
-                // detailView: false, //是否显示父子表
+                cardView: false, //是否显示详细视图
+                detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'title',
+                    field: 'eventName',
                     title: '标题',
                     width: '33.3%',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'name',
-                    title: '姓名',
+                    field: 'eventDescription',
+                    title: '描述',
                     width: '33.3%',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'time',
+                    field: 'peopleId',
+                    title: '人员',
+                    width: '10%',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'completeTime',
                     title: '时间',
-                    width: '33.3%',
+                    width: '23.3%',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row, index) {
                        return value ? ncjwUtil.timeTurn(value) : "";
                     }
 
+                }, {
+                    field: 'status',
+                    title: '操作',
+                    align: 'center',
+                    valign: "middle",
+                    events: this.operateEvents,
+                    formatter: function (value, row, index) {
+                        var str = '';
+                        str += '<p class="grid-command-p btn-edit">修改</p>';
+                        str += '<p class="grid-command-p btn-delete">删除</p>';
+                        return str;
+                    }
                 }],
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
+                        "rows": res.data ? res.data[0] : []
                         // "rows": res.data && res.data[0]
-                        "rows": res.data && res.data
                     }
                 }
             });
@@ -85,9 +105,8 @@ define(['../../common/query/index'], function (QUERY) {
         queryParams: function (params) {
             var temp = {
                 pageNum: params.offset / params.limit,
-                pageSize: params.limit
-                // departmentname: $("#txt_search_departmentname").val(),
-                // statu: $("#txt_search_statu").val()
+                pageSize: params.limit,
+                eventType: toDoType
             };
             return temp;
         },
