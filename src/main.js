@@ -131,7 +131,6 @@
 		new AppView();
 		window.backbone = Backbone;
 		window.bootbox = Bootbox;
-		console.log('WebUploader', WebUploader);
 		window.WebUploader = WebUploader;
 		Backbone.history.start();   //开始监控url变化
 	});

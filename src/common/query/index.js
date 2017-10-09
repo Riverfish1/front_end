@@ -61,8 +61,9 @@ define([], function () {
         WORK_PETITIONMNG_SELECT_BY_ID: '/api/petitionManagement/selectById',
         // 领导预约
         WORK_APPOINTMENT_INSERT: 'api/appointmentRecord/insert',
-        WORK_APPOINTMENT_REJECT: 'api/appointmentRecord/reject', // 驳回
-        WORK_APPOINTMENT_PASS: 'api/appointmentRecord/pass', // 通过
+        WORK_APPOINTMENT_QUERY: 'api/appointmentRecord/query',
+        WORK_APPOINTMENT_REJECT: 'api/appointmentRecord/deleteById', // 驳回
+        WORK_APPOINTMENT_PASS: 'api/appointmentRecord/updateById', // 通过
         WORK_APPOINTMENT_SELECT_BY_ID: 'api/appointmentRecord/selectById'
     };
     return QUERY;

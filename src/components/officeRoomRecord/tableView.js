@@ -98,7 +98,6 @@ define(['../../common/query/index'], function (QUERY) {
             });
         },
         queryParams: function (params) {
-            console.log(params);
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit
@@ -107,7 +106,6 @@ define(['../../common/query/index'], function (QUERY) {
         },
         operateEvents: {
             'click .btn-edit': function (e, value, row, index) {
-                console.log(row);
                 Backbone.trigger('itemEdit', row);
             },
             'click .btn-delete': function (e, value, row, index) {

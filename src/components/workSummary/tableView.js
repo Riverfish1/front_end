@@ -47,25 +47,45 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'summaryDate',
+                    field: 'time',
                     title: '时间',
                     align: 'center',
                     valign: "middle",
+                    formatter: function (value, row) {
+                        var date = ncjwUtil.timeTurn(new Date().getTime()) || ncjwUtil.timeTurn(row.summaryStartTime) + ' - ' + ncjwUtil.timeTurn(row.summaryEndTime);
+                        return date;
+                    }
                 }, {
                     field: 'summaryContent',
                     title: '内容',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'summaryRecordDate',
-                    title: '记录日期',
+                    field: 'summaryTitle',
+                    title: '标题',
                     align: 'center',
                     valign: "middle"
+                }, {
+                    field: 'gmtCreate',
+                    title: '记录日期',
+                    align: 'center',
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value);
+                    }
                 }, {
                     field: 'summaryStatus',
                     title: '状态',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        switch (value) {
+                            case 0: return '未审阅';
+                            case 1: return '已通过';
+                            case 2: return '已驳回';
+                            default: return '-';
+                        }
+                    }
                 }, {
                     field: 'status',
                     title: '操作',
@@ -77,7 +97,7 @@ define(['../../common/query/index'], function (QUERY) {
                         str += '<p class="grid-command-p btn-check">提交审核</p>';
                         str += '<p class="grid-command-p btn-edit">修改</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
-                        str += '<p class="grid-command-p btn-add">查看</p>';
+                        str += '<p class="grid-command-p btn-view">查看</p>';
                         return str;
                     }
                 }],
@@ -99,14 +119,17 @@ define(['../../common/query/index'], function (QUERY) {
             return temp;
         },
         operateEvents: {
+            'click .btn-check': function (e, value, row, index) {
+                Backbone.trigger('itemCheck', row);
+            },
             'click .btn-edit': function (e, value, row, index) {
                 Backbone.trigger('itemEdit', row);
             },
             'click .btn-delete': function (e, value, row, index) {
                 Backbone.trigger('itemDelete', row);
             },
-            'click .btn-add': function (e, value, row, index) {
-                Backbone.trigger('itemAdd', row.id)
+            'click .btn-view': function (e, value, row, index) {
+                Backbone.trigger('itemView', row)
             }
         }
     });

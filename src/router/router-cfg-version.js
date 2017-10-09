@@ -32,7 +32,9 @@ define(['backbone'], function (Backbone) {
         // 个人小结
         'work/mySummary': 'src/components/workSummary/indexController.js',
         // 信访管理
-        'work/petitionMng': 'src/components/petitionMng/indexController.js'
+        'work/petitionMng': 'src/components/petitionMng/indexController.js',
+        // 领导预约
+        'work/appointment': 'src/components/workAppointment/indexController.js'
 
 
         // '*actions': 'defaultAction'
@@ -43,7 +45,6 @@ define(['backbone'], function (Backbone) {
         routes: routesMap,
 
         defaultAction: function () {
-            console.log('404');
             location.hash = 'module2';
         }
 

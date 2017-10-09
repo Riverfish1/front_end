@@ -81,9 +81,7 @@ define(['../../common/query/index'], function (QUERY) {
                     }
                 }
                 // onLoadSuccess: function(res) {
-                //     console.log(that.$el);
                 //     that.$el.bootstrapTable('load', res.data && res.data[0]);
-                //     // console.log(res.data && res.data[0]);
                 //     // if (res.success) {
                 //     //     var rows = res.data && res.data[0];
                 //     //     return rows;
@@ -93,7 +91,6 @@ define(['../../common/query/index'], function (QUERY) {
             // this.hideLoading();
         },
         queryParams: function (params) {
-            console.log(params);
             var temp = {
                 pageNum: params.offset / params.limit + 1,
                 pageSize: params.limit,

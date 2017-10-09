@@ -74,7 +74,6 @@ define([
 
                         $img.attr('src', src);
                         $img.on('load', function () {
-                            // console.log($img.prop('width'));
                         })
                     }, thumbnailWidth, thumbnailHeight);
                 });
