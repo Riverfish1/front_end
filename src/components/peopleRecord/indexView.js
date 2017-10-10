@@ -142,10 +142,9 @@ define([
         addToCard: function (row) {
             var that = this;
             var peopleInfo = {
-                "ownerPeopleId": window.ownerPeopleId,
-                "targetPeopleId": row.id
+                ownerPeopleId: window.ownerPeopleId,
+                targetPeopleId: row.id
             };
-            var datas = serializeJSON(JSON.stringify(peopleInfo)).slice(2, -2);
             bootbox.confirm({
                buttons: {
                     confirm: {
@@ -159,7 +158,7 @@ define([
                 message: '确认加入名片夹吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.WORK_ADDRESSLIST_INSERT, datas, function (res) {
+                        ncjwUtil.postData(QUERY.WORK_ADDRESSLIST_INSERT, JSON.stringify(peopleInfo), function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('加入名片夹成功！');
                                 that.table.refresh();

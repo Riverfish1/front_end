@@ -3,12 +3,14 @@ define([
     './tableView',
     'text!./index.html',
     'text!./dialog.html',
+    'text!./view.html',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, QUERY) {
+], function (BaseTableView, tpl, dialogTpl, viewTpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
         template: _.template(tpl),
+        getViewContent: _.template(viewTpl),
         getDialogContent: _.template(dialogTpl),
         events: {
             'click #btn_add': 'showContent',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
@@ -17,27 +19,38 @@ define([
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.showContent, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
-            Backbone.off('itemView').on('itemView', this.showContent, this);
+            Backbone.off('itemView').on('itemView', this.viewContent, this);
             Backbone.off('itemCheck').on('itemCheck', this.reviewSummaryContent, this);
         },
         render: function () {
             //main view
             this.$el.empty().html(this.template());
             this.$officeDialog = this.$el.find('#editDialog');
+            this.$viewContent = this.$el.find('#viewContent');
             this.$officeDialogPanel = this.$el.find('#editPanel');
             this.table = new BaseTableView();
             this.table.render();
             return this;
         },
+        viewContent: function (row) {
+            row.summartEndTime = row.summartEndTime ? ncjwUtil.timeTurn(row.summartEndTime, 'yyyy-MM-dd') : '';
+            row.summartStartTime = row.summartStartTime ? ncjwUtil.timeTurn(row.summartStartTime, 'yyyy-MM-dd') : '';
+            this.$viewContent.modal('show');
+            this.$viewContent.modal({backdrop: 'static', keyboard: false});
+            this.$viewContentPanel = this.$viewContent.find('#editPanel');
+            this.$viewContentPanel.empty().html(this.getViewContent(row));
+        },
         showContent: function (row) {
             var initState = {
                 summaryContent: '',
-                summaryStartTime: '',
-                summaryEndTime: '',
+                summartStartTime: '',
+                summartEndTime: '',
                 summaryTitle: '',
                 id: ''
             };
             var row = row.id ? row : initState;
+            row.summartEndTime = row.summartEndTime ? ncjwUtil.timeTurn(row.summartEndTime, 'yyyy-MM-dd') : '';
+            row.summartStartTime = row.summartStartTime ? ncjwUtil.timeTurn(row.summartStartTime, 'yyyy-MM-dd') : '';
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
@@ -51,7 +64,38 @@ define([
             this.initSubmitForm();
         },
         reviewSummaryContent: function(row) {
-            
+            var p = this;
+            var params = {
+                id: row.id,
+                peopleId: row.peopleId,
+                summaryContentStatus: '0'
+            };
+            bootbox.confirm({
+                buttons: {
+                    confirm: {
+                        label: '确认'
+                    },
+                    cancel: {
+                        label: '取消'
+                    }
+                },
+                title: '提交审核',
+                message: '确认要提交审核吗？',
+                callback: function (result) {
+                    if (result) {
+                        ncjwUtil.postData(QUERY.WORK_SUMMARY_UPDATE, JSON.stringify(params), function (res) {
+                            if (res.success) {
+                                ncjwUtil.showInfo('提交成功！');
+                                p.table.refresh();
+                            } else {
+                                ncjwUtil.showInfo('提交失败：' + res.errorMsg);
+                            }
+                        }, {
+                            'contentType': 'application/json'
+                        });
+                    }
+                }
+            });
         },
         delOne: function (row) {
             var that = this;

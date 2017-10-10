@@ -52,17 +52,18 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row) {
-                        var date = ncjwUtil.timeTurn(new Date().getTime()) || ncjwUtil.timeTurn(row.summaryStartTime) + ' - ' + ncjwUtil.timeTurn(row.summaryEndTime);
+                        var date = ncjwUtil.timeTurn(row.summartStartTime, 'yyyy/MM/dd') +
+                        ' - ' + ncjwUtil.timeTurn(row.summartEndTime, 'yyyy/MM/dd');
                         return date;
                     }
                 }, {
-                    field: 'summaryContent',
-                    title: '内容',
+                    field: 'summaryTitle',
+                    title: '标题',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'summaryTitle',
-                    title: '标题',
+                    field: 'summaryContent',
+                    title: '内容',
                     align: 'center',
                     valign: "middle"
                 }, {
@@ -80,9 +81,9 @@ define(['../../common/query/index'], function (QUERY) {
                     valign: "middle",
                     formatter: function (value) {
                         switch (value) {
-                            case 0: return '未审阅';
-                            case 1: return '已通过';
-                            case 2: return '已驳回';
+                            case '0': return '未审阅';
+                            case '1': return '已通过';
+                            case '2': return '已驳回';
                             default: return '-';
                         }
                     }
