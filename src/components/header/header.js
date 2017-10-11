@@ -46,7 +46,6 @@ define([
             this.$shotcutBtn.hide();
         },
 		render:function(){
-            debugger;
 			this.$el.html(this.template());
             this.dropMenu = new DropMenu();
             this.$menu = this.$el.find('.shotMenu');
