@@ -34,7 +34,9 @@ define(['backbone'], function (Backbone) {
         // 信访管理
         'work/petitionMng': 'src/components/petitionMng/indexController.js',
         // 领导预约
-        'work/appointment': 'src/components/workAppointment/indexController.js'
+        'work/appointment': 'src/components/workAppointment/indexController.js',
+        // 办文管理——发文管理
+        'work/sendDocument': 'src/components/sendDocument/indexController.js'
 
 
         // '*actions': 'defaultAction'
