@@ -72,10 +72,10 @@ define([], function () {
         WORK_TODO_SELECT_BY_ID: '/api/personalTodo/selectById',
         //快捷方式
         WORK_SHOT_INSERT: '/api/shortCut/insert',
-        WORK_SHOT_UPDATE: '/api/shortCut/updateById',
-        WORK_SHOT_DELETE: '/api/shortCut/deleteById',
+        WORK_SHOT_UPDATE: '/api/shortCut/updateByUserId',
+        // WORK_SHOT_DELETE: '/api/shortCut/deleteById',
         WORK_SHOT_QUERY: '/api/shortCut/query',
-        WORK_SHOT_SELECT_BY_ID: '/api/shortCut/selectById',
+        // WORK_SHOT_SELECT_BY_ID: '/api/shortCut/selectById',
         //信访管理
         WORK_PETITIONMNG_INSERT: '/api/petitionManagement/insert',
         WORK_PETITIONMNG_UPDATE: '/api/petitionManagement/updateById',

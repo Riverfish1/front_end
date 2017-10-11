@@ -16,13 +16,14 @@ define([
             'click .shotcutBtn': 'addOne'
         },
         initialize: function () {
+            window.ownerPeopleId = 1;
             Backbone.off('shotcutBtnClick').on('shotcutBtnClick', this.addOne, this);
             this.render();
         },
         render: function () {
             var $parent = this.$el.parents('#navbar');
-            this.$officeDialog = $parent.find('#editDialog');
-            this.$officeDialogPanel = $parent.find('#editPanel');
+            this.$editDialog = $parent.find('#editDialog');
+            this.$editPanel = $parent.find('#editPanel');
             this.getData();
             return this;
         },
@@ -57,8 +58,9 @@ define([
         },
         getData: function () {
             var self = this;
-            ncjwUtil.postData(QUERY.WORK_SHOT_QUERY, JSON.stringify({userId: 1}), function (res) {
-                var list = {list: res.data[0]}
+            ncjwUtil.postData(QUERY.WORK_SHOT_QUERY, JSON.stringify({userId: window.ownerPeopleId, checked: 1}), function (res) {
+                var list = {list: (res.data && res.data[0]) || []}
+                // debugger;
                 if (res.success) {
                     self.$el.empty().html(self.template(list));
                     self.removeActiveClass();
@@ -71,79 +73,100 @@ define([
         },
         getEditData: function () {
             var self = this;
-            ncjwUtil.getData("api/shotcut/list", {}, function (res) {
-                var list = {list: res.data}
+            // ncjwUtil.postData(QUERY.WORK_SHOT_QUERY, JSON.stringify({userId: window.ownerPeopleId, checked: 0}), function (res) {
+            ncjwUtil.postData(QUERY.WORK_SHOT_QUERY, JSON.stringify({userId: window.ownerPeopleId}), function (res) {
+                var list = {list: (res.data && res.data[0]) || []}
                 if (res.success) {
-                    self.$officeDialogPanel.empty().html(self.getDialogContent(list))
+                    self.$editPanel.empty().html(self.getDialogContent(list))
                 } else {
                     ncjwUtil.showError(res.errorMsg);
                 }
+            }, {
+                "contentType": 'application/json'
             })
         },
         addOne: function (row) {
             // debugger;
             var initData = {areaName: '', areaUsage: ''};
             var row = initData.areaName ? row : initData;
-            this.$officeDialog.modal('show');
-            this.$officeDialog.modal({backdrop: 'static', keyboard: false});
+            this.$editDialog.modal('show');
+            this.$editDialog.modal({backdrop: 'static', keyboard: false});
             this.getEditData();
             this.$editForm = this.$el.find('#editForm');
-            this.initSubmitForm();
+            this.$submitBtn = this.$editDialog.find('#submitBtn');
+            this.$submitBtn.off().on('click', $.proxy(this.submitForm, this))
+            // this.initSubmitForm();
         },
-        initSubmitForm: function () {
-            this.$editForm.validate({
-                errorElement: 'span',
-                errorClass: 'help-block',
-                focusInvalid: true,
-                rules: {
-                    areaName: {
-                        required: true,
-                        maxlength: 50
-                    },
-                    areaUsage: {
-                        required: true,
-                        maxlength: 50
-                    }
-                },
-                messages: {
-                    areaName: {
-                        required: "请输入部门名称",
-                        maxlength: "最多输入50个字符"
-                    },
-                    areaUsage: {
-                        required: "请输入部门编号",
-                        maxlength: "最多输入50个字符"
-                    }
-                },
-                highlight: function (element) {
-                    $(element).closest('.form-group').addClass('has-error');
-                },
-                success: function (label) {
-                    label.closest('.form-group').removeClass('has-error');
-                    label.remove();
-                },
-                errorPlacement: function (error, element) {
-                    element.parent('div').append(error);
-                }
-            });
-        },
+        // initSubmitForm: function () {
+        //     this.$editForm.validate({
+        //         errorElement: 'span',
+        //         errorClass: 'help-block',
+        //         focusInvalid: true,
+        //         rules: {
+        //             areaName: {
+        //                 required: true,
+        //                 maxlength: 50
+        //             },
+        //             areaUsage: {
+        //                 required: true,
+        //                 maxlength: 50
+        //             }
+        //         },
+        //         messages: {
+        //             areaName: {
+        //                 required: "请输入部门名称",
+        //                 maxlength: "最多输入50个字符"
+        //             },
+        //             areaUsage: {
+        //                 required: "请输入部门编号",
+        //                 maxlength: "最多输入50个字符"
+        //             }
+        //         },
+        //         highlight: function (element) {
+        //             $(element).closest('.form-group').addClass('has-error');
+        //         },
+        //         success: function (label) {
+        //             label.closest('.form-group').removeClass('has-error');
+        //             label.remove();
+        //         },
+        //         errorPlacement: function (error, element) {
+        //             element.parent('div').append(error);
+        //         }
+        //     });
+        // },
         submitForm: function (e) {
-            if(this.$editForm.valid()){
-                var that = this;
-                var $form = $(e.target).parents('.modal-content').find('#editForm');
-                var data = $form.serialize();
-                data = decodeURIComponent(data, true);
-                var datas = serializeJSON(data);
-                var id = $('#id').val();
-                ncjwUtil.postData("/api/saveOrUpdate/register/officeArea",datas, function (res) {
+            var that = this;
+            var params = this.getCheck();
+            if(params.length > 0){
+                ncjwUtil.postData(QUERY.WORK_SHOT_UPDATE, JSON.stringify(params), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo('保存成功！');
-                        that.$officeDialog.modal('hide');
+                        that.$editDialog.modal('hide');
+                        //刷新快捷方式菜单
+                        that.getData();
                     } else {
                         ncjwUtil.showError("保存失败：" + res.errorMsg);
                     }
+                }, {
+                    "contentType": 'application/json'
                 })
+            }else{
+                ncjwUtil.showInfo('请选择快捷方式！');
             }
+        },
+        getCheck: function () {
+            var $input = this.$editPanel.find('input');
+            var params = [];
+            var obj = {};
+            $.each($input, function (k, el) {
+                obj.id = $(el).val();
+                obj.userId = window.ownerPeopleId;
+                obj.menuName = $(el).attr('data-name');
+                obj.checked = $(el).prop('checked') == true ? 1 : 0;
+                params.push(obj);
+                obj = {};
+            })
+            return params;
         }
     });
     return View;
