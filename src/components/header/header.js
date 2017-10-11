@@ -58,7 +58,7 @@ define([
             this.$shotcutBtn.hide();
         },
         resetHeight: function () {
-		    debugger;
+		    // debugger;
             this.$shotcutBtn.css('top', this.$menu.height() + 58);
         }
 	});
