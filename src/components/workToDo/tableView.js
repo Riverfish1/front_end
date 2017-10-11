@@ -76,7 +76,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row, index) {
-                       return value ? ncjwUtil.timeTurn(value) : "";
+                       return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : "";
                     }
 
                 }, {

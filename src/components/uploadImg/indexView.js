@@ -1,7 +1,8 @@
 /*global define*/
 define([
-    'text!src/components/uploadImg/index.html'
-], function (tpl) {
+    'text!src/components/uploadImg/index.html',
+    '../../common/query/index'
+], function (tpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#uploaderWrap',
@@ -38,7 +39,7 @@ define([
                     swf: 'libs/webUpload/Uploader.swf',
 
                     // 文件接收服务端。
-                    server: 'http://webuploader.duapp.com/server/fileupload.php',
+                    server: QUERY.IMG_UPLOAD,
 
                     // 选择文件的按钮。可选。
                     // 内部根据当前运行是创建，可能是input元素，也可能是flash.

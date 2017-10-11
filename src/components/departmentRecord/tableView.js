@@ -51,6 +51,11 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
+                    field: 'parentName',
+                    title: '所属单位',
+                    align: 'center',
+                    valign: 'middle'
+                }, {
                     field: 'responsibility',
                     title: '部门职责',
                     align: 'center',
@@ -85,7 +90,7 @@ define(['../../common/query/index'], function (QUERY) {
         queryParams: function (params) {
             var temp = {
                 pageNum: params.offset / params.limit,
-                pageSize: params.limit,
+                pageSize: params.limit
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()
             };

@@ -3,13 +3,15 @@ define([
     './tableView',
     'text!./index.html',
     'text!./dialog.html',
+    'text!./department.html',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, QUERY) {
+], function (BaseTableView, tpl, dialogTpl, departmentTpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
+        getDepartmentContent: _.template(departmentTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
             'click #submitBtn': 'submitForm'
@@ -38,11 +40,35 @@ define([
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
+            this.$companyBelong = this.$el.find('#companyBelong');
+            this.getDepartmentList(row);
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
+        getDepartmentList: function(row) {
+            var self = this;
+            var params = {
+                pageNum: 0,
+                pageSize: 10000,
+                parentId: 0
+            }
+            ncjwUtil.postData(QUERY.RECORD_DEPARTMENT_QUERY, JSON.stringify(params), function (res) {
+                if (res.success) {
+                    var departmentList = {departmentList: res.data[0]};
+                    self.$companyBelong.empty().html(self.getDepartmentContent(departmentList));
+                    (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {departmentList: row.departmentList});
+                } else {
+                }
+            }, {
+                "contentType": 'application/json'
+            })
+        },
         delOne: function (row) {
             var that = this;
+            var params = {
+                id: row.id,
+                parentId: row.parentId
+            };
             bootbox.confirm({
                 buttons: {
                     confirm: {
@@ -56,7 +82,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.RECORD_DEPARTMENT_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.RECORD_DEPARTMENT_DELETE, params, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功！');
                                 that.table.refresh();

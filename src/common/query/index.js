@@ -1,13 +1,15 @@
 define([], function () {
     var QUERY = {
         LOGIN: '/api/login/loginPost',
+        // 登记
         // 办公区登记
         RECORD_OFFICEAREA_INSERT: '/api/officeArea/insert',
         RECORD_OFFICEAREA_UPDATE: '/api/officeArea/updateById',
         RECORD_OFFICEAREA_DELETE: '/api/officeArea/deleteById',
         RECORD_OFFICEAREA_QUERY: '/api/officeArea/query',
         RECORD_OFFICEAREA_SELECT_BY_ID: '/api/officeArea/selectById',
-        // 登记
+        // 图片上传
+        IMG_UPLOAD: '/api/image/imageUpload',
         // 办公室登记
         RECORD_OFFICEROOM_INSERT: '/api/officeRoom/insert',
         RECORD_OFFICEROOM_UPDATE: '/api/officeRoom/updateById',
@@ -76,13 +78,14 @@ define([], function () {
         WORK_SHOT_SELECT_BY_ID: '/api/shortCut/selectById',
         //信访管理
         WORK_PETITIONMNG_INSERT: '/api/petitionManagement/insert',
+        WORK_PETITIONMNG_UPDATE: '/api/petitionManagement/updateById',
         WORK_PETITIONMNG_QUERY: '/api/petitionManagement/query',
         WORK_PETITIONMNG_SELECT_BY_ID: '/api/petitionManagement/selectById',
         // 领导预约
         WORK_APPOINTMENT_INSERT: 'api/appointmentRecord/insert',
         WORK_APPOINTMENT_QUERY: 'api/appointmentRecord/query',
-        WORK_APPOINTMENT_REJECT: 'api/appointmentRecord/deleteById', // 驳回
-        WORK_APPOINTMENT_PASS: 'api/appointmentRecord/updateById', // 通过
+        WORK_APPOINTMENT_UPDATE: 'api/appointmentRecord/updateById',
+        WORK_APPOINTMENT_DELETE: 'api/appointmentRecord/deleteById',
         WORK_APPOINTMENT_SELECT_BY_ID: 'api/appointmentRecord/selectById',
 
         // 一些基本正则

@@ -53,7 +53,7 @@ define(['../../common/query/index'], function (QUERY) {
                     valign: "middle",
                 }, {
                     field: 'registrantId',
-                    title: '登记人工号',
+                    title: '登记人',
                     align: 'center',
                     valign: "middle"
                 }, {
@@ -67,20 +67,18 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function(value) {
-                        return ncjwUtil.timeTurn(value);
+                        return ncjwUtil.timeTurn(value) || ncjwUtil.timeTurn(new Date().getTime());
                     }
                 }, {
                     field: 'status',
-                    title: '状态',
+                    title: '处理状态',
                     align: 'center',
                     valign: 'middle',
                     formatter: function(value, row, index) {
-                        var status;
                         switch (value) {
-                            case '0': status = '未处理'; break;
-                            case '1': status = '已处理'; break;
+                            case '1': return '已处理';
+                            default: return '未处理';
                         }
-                        return status;
                     }
                 }, {
                     field: 'oper',
@@ -90,7 +88,7 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-view">查看</p>';
+                        str += '<p class="grid-command-p btn-view">处理</p>';
                         return str;
                     }
                 }],

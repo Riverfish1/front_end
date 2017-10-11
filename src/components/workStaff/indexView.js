@@ -2,14 +2,12 @@
 define([
     './tableView',
     'text!./index.html',
-    'text!./dialog.html',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, QUERY) {
+], function (BaseTableView, tpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
         template: _.template(tpl),
-        getDialogContent: _.template(dialogTpl),
         initialize: function () {
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
         },
@@ -35,7 +33,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.WORK_ADDRESSLIST_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.RECORD_PEOPLE_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();

@@ -11,8 +11,6 @@ define(['backbone'], function (Backbone) {
         'register/company': 'src/components/companyRecord/indexController.js',
         // 部门登记
         'register/department': 'src/components/departmentRecord/indexController.js',
-        // 职位登记
-        // 'register/job': 'src/components/jobRecord/indexController.js',
         // 人员信息
         'register/people': 'src/components/peopleRecord/indexController.js',
         // 人员类型
@@ -31,10 +29,12 @@ define(['backbone'], function (Backbone) {
         'work/todo': 'src/components/workToDo/indexController.js',
         // 个人小结
         'work/mySummary': 'src/components/workSummary/indexController.js',
+        // 收到的小结
+        'work/summaryReceived': 'src/components/workSummaryReceived/indexController.js',
         // 信访管理
         'work/petitionMng': 'src/components/petitionMng/indexController.js',
         // 领导预约
-        'work/appointment': 'src/components/workAppointment/indexController.js'
+        'work/myAppointment': 'src/components/workAppointment/indexController.js'
 
 
         // '*actions': 'defaultAction'

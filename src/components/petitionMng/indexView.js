@@ -19,7 +19,7 @@ define([
         },
         render: function () {
             //main view
-            this.$el.empty().html(this.template());
+            this.$el.empty().html(this.template({id: ''}));
             this.$officeDialog = this.$el.find('#editDialog');
             this.$officeDialogPanel = this.$el.find('#editPanel');
             this.table = new BaseTableView();
@@ -33,6 +33,7 @@ define([
                 id: ''
             };
             var row = row.id ? row : initState;
+            console.log(row);
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
@@ -76,13 +77,17 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_PETITIONMNG_UPDATE : QUERY.WORK_PETITIONMNG_INSERT, datas, function (res) {
+                var params = {
+                    id: id,
+                    status: 1
+                };
+                ncjwUtil.postData(id ? QUERY.WORK_PETITIONMNG_UPDATE : QUERY.WORK_PETITIONMNG_INSERT, id ? JSON.stringify(params) : datas, function (res) {
                     if (res.success) {
-                        ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
+                        ncjwUtil.showInfo(id ? '处理成功' : '新增成功！');
                         that.$officeDialog.modal('hide');
                         that.table.refresh();
                     } else {
-                        ncjwUtil.showError("保存失败：" + res.errorMsg);
+                        ncjwUtil.showError("提交失败：" + res.errorMsg);
                     }
                 }, {
                     "contentType": 'application/json'

@@ -1,94 +1,50 @@
 /*global define*/
 define([
-    'src/components/workToDo/tableView',
-    'text!src/components/workToDo/index.html',
-    'text!src/components/workToDo/detail.html',
-    'text!src/components/workToDo/dialog.html',
+    './tableView',
+    'text!./index.html',
+    'text!./dialog.html',
     '../../common/query/index'
-], function (BaseTableView, tpl, detailTpl, dialogTpl, QUERY) {
+], function (BaseTableView, tpl, dialogTpl, QUERY) {
     'use strict';
-    var TabView = Backbone.View.extend({
-        default: {
-            items: ["待办事宜", "公文待办", "日常事务"]
-        },
+    var View = Backbone.View.extend({
         el: '#main',
         template: _.template(tpl),
-        getDetailContent: _.template(detailTpl),
         getDialogContent: _.template(dialogTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
             'click #submitBtn': 'submitForm'
         },
         initialize: function () {
-            this.value = 0;
-            this._bindEvent();
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
-        },
-        _selet1stTab: function () {
-            // debugger;
-            this.$el.find("a:first").tab('show')
-        },
-        _bindEvent: function () {
-            this.$el.on('shown.bs.tab', $.proxy(this._doShowBSTab, this));
-        },
-        _doShowBSTab: function (e) {
-            // debugger;
-            var $el = $(e.target);
-            if ($el.length > 0) {
-                this.value = $el.attr('data-value');
-                this.onTabClick(this.value);
-            }
-        },
-        onTabClick: function (index) {
-            this.createDetailView(index);
-        },
-        createDetailView: function (index) {
-            this.table = new BaseTableView();
-            this.table.render(index);
-        },
-        // getData: function () {
-        //     var self = this;
-        //     ncjwUtil.getData('/api/workToDo/query', {index: 1}, function (res) {
-        //         // ncjwUtil.getData("/api/del/register/officeArea", {id: row.id}, function (res) {
-        //         if (res.success) {
-        //             var list = {list: res.data};
-        //             self.$tabContent.empty().html(self.getDetailContent(list));
-        //         } else {
-        //             ncjwUtil.showError(res.errorMsg);
-        //         }
-        //     })
-        // },
-        getValue: function () {
-            return this.value;
-        },
-        getTab: function (witch) {
-            this.$el.find('li:eq('+witch+') a').tab('show');
+            Backbone.off('itemAdd').on('itemAdd', this.addToCard, this);
         },
         render: function () {
             //main view
-            this.$el.empty().html(this.template(this.default));
+            this.$el.empty().html(this.template());
             this.$officeDialog = this.$el.find('#editDialog');
             this.$officeDialogPanel = this.$el.find('#editPanel');
-            this.$tabContent = this.$el.find('#tabContent');
-            this._selet1stTab();
-            this.createDetailView(0);
+            this.table = new BaseTableView();
+            this.table.render();
             return this;
         },
         addOne: function (row) {
-            // debugger;
-            var initData = {id: '', peopleId: '1', eventName: '', eventDescription: '', completeTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'), eventType: this.getValue()};
-            var row = row.id ? row : initData;
-            row.completeTime = row.id && ncjwUtil.timeTurn(row.completeTime, 'yyyy-MM-dd');
+            var initState = {
+                employeeNum: '',
+                peopleName: '',
+                departmentId: '',
+                positionName: '',
+                titleName: '',
+                phoneNum: '',
+                mailAddress: '',
+                officeAreaId: '',
+                officeRoomId: '',
+                id: ''
+            };
+            var row = row.id ? row : initState;
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
-            $('#completeTime').datepicker({
-                language: 'zh-CN',
-                autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
-            });
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
@@ -107,9 +63,9 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.getData(QUERY.WORK_TODO_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.RECORD_PEOPLE_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
-                                ncjwUtil.showInfo("删除成功");
+                                ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();
                             } else {
                                 ncjwUtil.showError("删除失败：" + res.errorMsg);
@@ -120,36 +76,78 @@ define([
 
             });
         },
+        addToCard: function (row) {
+            var that = this;
+            var peopleInfo = {
+                "ownerPeopleId": window.ownerPeopleId,
+                "targetPeopleId": row.id
+            };
+            var datas = serializeJSON(JSON.stringify(peopleInfo)).slice(2, -2);
+            bootbox.confirm({
+               buttons: {
+                    confirm: {
+                        label: '确认'
+                    },
+                    cancel: {
+                        label: '取消'
+                    }
+                },
+                title: "加入名片夹",
+                message: '确认加入名片夹吗？',
+                callback: function (result) {
+                    if (result) {
+                        ncjwUtil.postData(QUERY.WORK_ADDRESSLIST_INSERT, datas, function (res) {
+                            if (res.success) {
+                                ncjwUtil.showInfo('加入名片夹成功！');
+                                that.table.refresh();
+                            } else {
+                                ncjwUtil.showError('加入名片夹失败！');
+                            }
+                        }, {
+                            "contentType": 'application/json'
+                        });
+                    }
+                }
+            });
+        },
         initSubmitForm: function () {
             this.$editForm.validate({
                 errorElement: 'span',
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    eventName: {
+                    employeeNum: {
                         required: true,
-                        maxlength: 50
+                        number: true
                     },
-                    eventDescription: {
-                        required: true,
-                        maxlength: 100
+                    peopleName: {
+
                     },
-                    completeTime: {
-                        required: true
+                    departmentId: {
+
+                    },
+                    positionName: {
+
+                    },
+                    titleName: {
+
+                    },
+                    phoneNum: {
+
+                    },
+                    mailAddress: {
+
+                    },
+                    officeAreaId: {
+
+                    },
+                    officeRoomId: {
+                        
                     }
                 },
                 messages: {
-                    eventName: {
-                        required: "请输入标题",
-                         maxlength: "最多输入50个字符"
-                    },
-                    eventDescription: {
-                        required: "请输入描述",
-                         maxlength: "最多输入100个字符"
-                    },
-                    completeTime: {
-                        required: "请选择时间",
-                    }
+                    name: "请输入名称",
+                    gmtCreate: "请输入时间"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -169,10 +167,9 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
-                data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_TODO_UPDATE : QUERY.WORK_TODO_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.RECORD_PEOPLE_UPDATE : QUERY.RECORD_PEOPLE_INSERT, datas, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
@@ -186,6 +183,5 @@ define([
             }
         }
     });
-
-    return TabView;
+    return View;
 });

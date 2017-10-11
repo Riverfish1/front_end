@@ -57,7 +57,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'departmentName',
+                    field: 'departmentId',
                     title: '部门',
                     align: 'center',
                     valign: "middle"
@@ -82,12 +82,12 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'officeAreaName',
-                    title: '所属办公区',
+                    field: 'officeAreaId',
+                    title: '所在办公区',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'officeRoomName',
+                    field: 'officeRoomId',
                     title: '所属办公室',
                     align: 'center',
                     valign: "middle"

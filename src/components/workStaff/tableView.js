@@ -22,7 +22,7 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.WORK_ADDRESSLIST_QUERY, //请求后台的URL（*）
+                url: QUERY.RECORD_PEOPLE_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -57,7 +57,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'departmentId',
+                    field: 'departmentName',
                     title: '部门',
                     align: 'center',
                     valign: "middle"
@@ -82,12 +82,12 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'officeAreaId',
-                    title: '所在办公区',
+                    field: 'officeAreaName',
+                    title: '所属办公区',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'officeRoomId',
+                    field: 'officeRoomName',
                     title: '所属办公室',
                     align: 'center',
                     valign: "middle"
