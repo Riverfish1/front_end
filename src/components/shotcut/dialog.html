@@ -7,7 +7,12 @@
             <div class="row">
         <% } %>
                 <div class="col-md-4">
-                    <input type="checkbox" value="<%= n.id %>" data-name="<%= n.menuName %>" > <%= n.menuName %>
+                    <% if(n.checked == 0){ %>
+                        <input type="checkbox" value="<%= n.id %>" data-name="<%= n.menuName %>" > <%= n.menuName %>
+                    <% } %>
+                    <% if(n.checked == 1){ %>
+                    <input type="checkbox" checked value="<%= n.id %>" data-name="<%= n.menuName %>" > <%= n.menuName %>
+                    <% } %>
                 </div>
         <% if(i%3 == 2){ %>
             </div>

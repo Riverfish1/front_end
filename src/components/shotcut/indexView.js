@@ -73,7 +73,8 @@ define([
         },
         getEditData: function () {
             var self = this;
-            ncjwUtil.postData(QUERY.WORK_SHOT_QUERY, JSON.stringify({userId: window.ownerPeopleId, checked: 0}), function (res) {
+            // ncjwUtil.postData(QUERY.WORK_SHOT_QUERY, JSON.stringify({userId: window.ownerPeopleId, checked: 0}), function (res) {
+            ncjwUtil.postData(QUERY.WORK_SHOT_QUERY, JSON.stringify({userId: window.ownerPeopleId}), function (res) {
                 var list = {list: (res.data && res.data[0]) || []}
                 if (res.success) {
                     self.$editPanel.empty().html(self.getDialogContent(list))
@@ -134,13 +135,15 @@ define([
         //     });
         // },
         submitForm: function (e) {
+            var that = this;
             var params = this.getCheck();
-            debugger;
             if(params.length > 0){
                 ncjwUtil.postData(QUERY.WORK_SHOT_UPDATE, JSON.stringify(params), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo('保存成功！');
                         that.$editDialog.modal('hide');
+                        //刷新快捷方式菜单
+                        that.getData();
                     } else {
                         ncjwUtil.showError("保存失败：" + res.errorMsg);
                     }

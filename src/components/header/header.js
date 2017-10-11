@@ -46,6 +46,7 @@ define([
             this.$shotcutBtn.hide();
         },
 		render:function(){
+            debugger;
 			this.$el.html(this.template());
             this.dropMenu = new DropMenu();
             this.$menu = this.$el.find('.shotMenu');
@@ -58,7 +59,6 @@ define([
             this.$shotcutBtn.hide();
         },
         resetHeight: function () {
-		    // debugger;
             this.$shotcutBtn.css('top', this.$menu.height() + 58);
         }
 	});
