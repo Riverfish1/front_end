@@ -75,6 +75,7 @@ define([
             }
         },
         addOne: function (row) {
+            //id不存在与staus==3都是新建；
             var initState = {
                 creatorId: 1,
                 opertorId: 2,
@@ -155,6 +156,11 @@ define([
             });
         },
         submitForm: function (e) {
+            var $btn = $(e.target), $status = $('#status'), index = $btn.attr('data-status');
+            //根据点击按钮-修改status隐藏域值；
+            $status.val(index);
+            //驳回状态-草稿或提交时，清空反馈意见+审批流程相关数据；
+            //已提交状态-通过与驳回，row + 新状态
             if (this.$editForm.valid()) {
                 var that = this;
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
