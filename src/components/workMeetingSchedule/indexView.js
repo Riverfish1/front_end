@@ -33,8 +33,9 @@ define([
             return this;
         },
         changeMeeting: function (row) {
-            var initState = {id: '', userId: 100, appointmentTime: new Date().getTime(), place: '', conferenceRoom: '', conferenceTheme: ''};
+            var initState = {id: '', userId: 100, appointmentTime: '', place: '', conferenceRoom: '', conferenceTheme: ''};
             var row = row.id ? row : initState
+            row.appointmentTime = row.id ? ncjwUtil.timeTurn(row.appointmentTime, 'yyyy-MM-dd') : ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd')
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row));
@@ -46,6 +47,12 @@ define([
             this.getOfficeRoomList(row);
             this.$editForm = this.$el.find('#editForm');
             row.id  && ncjwUtil.setFiledsValue(this.$officeDialogPanel, row);
+            $('#appointmentTime').datepicker({
+                autoclose: true,
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                todayHighlight: true
+            });
             this.initSubmitForm();
         },
         cangelMeeting: function (row) {
