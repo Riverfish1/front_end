@@ -12,7 +12,10 @@ define([
         getDialogContent: _.template(dialogTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
-            'click #submitBtn': 'submitForm'
+            'click #btn-draft': 'submitForm',
+            'click #btn-submit': 'submitForm',
+            'click #btn-ok': 'submitForm',
+            'click #btn-no': 'submitForm'
         },
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
@@ -21,8 +24,8 @@ define([
         render: function () {
             //main view
             this.$el.empty().html(this.template());
-            this.$officeDialog = this.$el.find('#editDialog');
-            this.$officeDialogPanel = this.$el.find('#editPanel');
+            this.$editDialog = this.$el.find('#editDialog');
+            this.$editDialogPanel = this.$el.find('#editPanel');
             this.table = new BaseTableView();
             this.table.render();
             return this;
@@ -73,16 +76,20 @@ define([
         },
         addOne: function (row) {
             var initState = {
+                creatorId: 1,
+                opertorId: 2,
+                status: 10,
                 postName: '',
                 dutyDescription: '',
                 staffingLevel: '',
                 id: ''
             };
-            var row = row.postName ? row : initState;
-            this.$officeDialog.modal('show');
-            this.$officeDialog.modal({backdrop: 'static', keyboard: false});
-            this.$officeDialogPanel.empty().html(this.getDialogContent(row));
-            this.$suggestWrap = this.$officeDialogPanel.find('.test');
+            var row = row.id ? row : initState;
+            this.showOrhideBtn(row);
+            this.$editDialog.modal('show');
+            this.$editDialog.modal({backdrop: 'static', keyboard: false});
+            this.$editDialogPanel.empty().html(this.getDialogContent(row));
+            this.$suggestWrap = this.$editDialogPanel.find('.test');
             this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
             this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
@@ -158,7 +165,7 @@ define([
                 ncjwUtil.postData(id ? QUERY.RECORD_POSTRECORD_UPDATE : QUERY.RECORD_POSTRECORD_INSERT, datas, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
-                        that.$officeDialog.modal('hide');
+                        that.$editDialog.modal('hide');
                         that.table.refresh();
                     } else {
                         ncjwUtil.showError("保存失败：" + res.errorMsg);
@@ -167,6 +174,24 @@ define([
                     "contentType": 'application/json'
                 })
             }
+        },
+        showOrhideBtn: function (row) {
+            debugger;
+            this.$editDialog.find('.status-button').hide();
+            // 创建人：新建、草稿、驳回状态显示-草稿与提交按钮
+            if(this.isCreater(row) && (row.status == 10 || row.status == 0)){
+                this.$editDialog.find("#btn-draft,#btn-submit").show();
+            }
+            // 处理人：已提交状态显示-通过与驳回按钮
+            if(this.isOpertor(row) && (row.status == 1)){
+                this.$editDialog.find("#btn-ok,#btn-on").show();
+            }
+        },
+        isCreater: function (row) {
+            return window.ownerPeopleId == row.creatorId;
+        },
+        isOpertor: function (row) {
+            return window.ownerPeopleId == row.opertorId;
         }
     });
     return View;
