@@ -712,3 +712,4 @@ input:-webkit-autofill {
     top: 10px;
     background: url(../../../static/images/arrow_left.png) -6px center no-repeat;
 }
+.hidden{display: none;}
