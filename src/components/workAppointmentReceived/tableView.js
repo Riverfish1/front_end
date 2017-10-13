@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#record_people',
+        el: '#work_appointmentReceived',
         initialize: function () {
         },
         showLoading: function () {
@@ -22,7 +22,7 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_PEOPLE_QUERY, //请求后台的URL（*）
+                url: QUERY.WORK_APPOINTMENT_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,61 +47,59 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'peopleName',
-                    title: '姓名',
+                    field: 'recordName',
+                    title: '访客姓名',
                     align: 'center',
                     valign: "middle",
                 }, {
-                    field: 'employeeNum',
-                    title: '工号',
+                    field: 'recordResult',
+                    title: '原因',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'departmentId',
-                    title: '部门',
+                    field: 'startTime',
+                    title: '访问开始时间',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function(value) {
+                        return ncjwUtil.timeTurn(value);
+                    }
                 }, {
-                    field: 'positionName',
-                    title: '岗位',
+                    field: 'endTime',
+                    title: '访问结束时间',
                     align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'titleName',
-                    title: '职务',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'phoneNum',
-                    title: '电话号码',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'mailAddress',
-                    title: '邮箱地址',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'officeAreaId',
-                    title: '所在办公区',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'officeRoomId',
-                    title: '所属办公室',
-                    align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function(value) {
+                        return ncjwUtil.timeTurn(value);
+                    }
                 }, {
                     field: 'status',
+                    title: '状态',
+                    align: 'center',
+                    valign: "middle",
+                    formatter: function(value) {
+                        switch (value) {
+                            case '0': return '未处理';
+                            case '1': return '已通过';
+                            case '2': return '已驳回';
+                            default: return '-';
+                        }
+                    }
+                }, {
+                    field: 'oper',
                     title: '操作',
                     align: 'center',
                     valign: "middle",
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
-                        str += '<p class="grid-command-p btn-add">加入名片夹</p>';
+                        if (row.status === '0') {
+                            str += '<p class="grid-command-p btn-pass">通过</p>';
+                            str += '<p class="grid-command-p btn-reject">驳回</p>';
+                            str += '<p class="grid-command-p btn-view">查看</p>';
+                        } else {
+                            str += '<p class="grid-command-p btn-view">查看</p>';
+                        }
                         return str;
                     }
                 }],
@@ -123,14 +121,14 @@ define(['../../common/query/index'], function (QUERY) {
             return temp;
         },
         operateEvents: {
-            'click .btn-edit': function (e, value, row, index) {
-                Backbone.trigger('itemEdit', row);
+            'click .btn-pass': function (e, value, row, index) {
+                Backbone.trigger('itemPass', row, 'pass');
             },
-            'click .btn-delete': function (e, value, row, index) {
-                Backbone.trigger('itemDelete', row);
+            'click .btn-reject': function (e, value, row, index) {
+                Backbone.trigger('itemReject', row, 'reject');
             },
-            'click .btn-add': function (e, value, row, index) {
-                Backbone.trigger('itemAdd', row)
+            'click .btn-view': function (e, value, row, index) {
+                Backbone.trigger('itemView', row)
             }
         }
     });

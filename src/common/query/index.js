@@ -82,11 +82,11 @@ define([], function () {
         WORK_PETITIONMNG_QUERY: '/api/petitionManagement/query',
         WORK_PETITIONMNG_SELECT_BY_ID: '/api/petitionManagement/selectById',
         // 领导预约
-        WORK_APPOINTMENT_INSERT: 'api/appointmentRecord/insert',
-        WORK_APPOINTMENT_QUERY: 'api/appointmentRecord/query',
-        WORK_APPOINTMENT_UPDATE: 'api/appointmentRecord/updateById',
-        WORK_APPOINTMENT_DELETE: 'api/appointmentRecord/deleteById',
-        WORK_APPOINTMENT_SELECT_BY_ID: 'api/appointmentRecord/selectById',
+        WORK_APPOINTMENT_INSERT: '/api/appointmentRecord/insert',
+        WORK_APPOINTMENT_QUERY: '/api/appointmentRecord/query',
+        WORK_APPOINTMENT_UPDATE: '/api/appointmentRecord/updateById',
+        WORK_APPOINTMENT_DELETE: '/api/appointmentRecord/deleteById',
+        WORK_APPOINTMENT_SELECT_BY_ID: '/api/appointmentRecord/selectById',
 
         // 一些基本正则
         TEL_REG: /(^(13\d|15[^4,\D]|17[13678]|18\d)\d{8}|170[^346,\D]\d{7})$/,

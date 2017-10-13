@@ -30,9 +30,9 @@ define({
             {className: 'icon_homePage', href: '#/work/summaryReceived', title: '收到的小结'}
         ]},
         {className: 'icon_homePage', href: '#/work/petitionMng', title: '信访管理'},
-        // {className: 'icon_homePage', href: '#', title: '领导预约', children: [
-        //     {className: 'icon_homePage', href: '#/work/appointmentReceived', title: '收到的预约'},
-        //     {className: 'icon_homePage', href: '#/work/myAppointment', title: '我的预约'}
-        // ]}
+        {className: 'icon_homePage', href: '#', title: '领导预约', children: [
+            {className: 'icon_homePage', href: '#/work/appointmentReceived', title: '收到的预约'},
+            {className: 'icon_homePage', href: '#/work/myAppointment', title: '我的预约'}
+        ]}
     ]
 });

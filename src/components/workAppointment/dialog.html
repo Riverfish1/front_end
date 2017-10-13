@@ -3,62 +3,25 @@
 <form class="form-horizontal" id="editForm">
     <input type="hidden" name="id" value="<%= id %>" id="id" />
     <div class="form-group">
-        <label class="col-md-3 control-label">姓名</label>
+        <label class="col-md-3 control-label">访客姓名：</label>
         <div class="col-md-9">
-            <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
-            <input type="text" name="peopleName" class="form-control" value="<%= peopleName %>">
+            <input class="form-control" type="text" name="recordName" value="<%= recordName %>" />
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">原因</label>
+        <label class="col-md-3 control-label">访问原因：</label>
         <div class="col-md-9">
-            <input type="text" name="employeeNum" class="form-control" value="<%= employeeNum %>">
+            <input class="form-control" type="text" name="recordResult" value="<%= recordResult %>" />
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">时间</label>
+        <label class="col-md-3 control-label">访问时间：</label>
         <div class="col-md-9">
             <div class="row">
-                <span class="col-md-5"><input name="summartStartTime" class="form-control startDate" type="text" value="<%= summartStartTime %>"></span>
+                <span class="col-md-5"><input name="startTime" class="form-control startTime" type="text" value="<%= startTime %>"></span>
                 <span class="col-md-2" style="text-align: center;line-height: 30px;">至</span>
-                <span class="col-md-5"><input name="summartEndTime" class="form-control endDate" type="text" value="<%= summartEndTime %>"></span>
+                <span class="col-md-5"><input name="endTime" class="form-control endTime" type="text" value="<%= endTime %>"></span>
             </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">岗位</label>
-        <div class="col-md-9">
-            <input type="text" name="positionName" class="form-control" value="<%= positionName %>">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">职务</label>
-        <div class="col-md-9">
-            <input type="text" name="titleName" class="form-control" value="<%= titleName %>">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">电话号码</label>
-        <div class="col-md-9">
-            <input type="text" name="phoneNum" class="form-control" value="<%= phoneNum %>">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">邮箱地址</label>
-        <div class="col-md-9">
-            <input type="text" name="mailAddress" class="form-control" value="<%= mailAddress %>">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">所在办公区</label>
-        <div class="col-md-9">
-            <input type="text" name="officeAreaId" class="form-control" value="<%= officeAreaId %>">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">所在办公室</label>
-        <div class="col-md-9">
-            <input type="text" name="officeRoomId" class="form-control" value="<%= officeRoomId %>">
         </div>
     </div>
 </form>
