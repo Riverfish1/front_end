@@ -47,7 +47,6 @@ define([
 			}
 		},
         updateSideBar: function (header) {
-			// debugger;
 			var key = header.split('/')[1];
 			this.model = modelMap[key];
 			this.render();
@@ -55,9 +54,16 @@ define([
             $li.removeClass('active');
 			$li.each(function (k, el) {
 				var $el = $(el);
-				var href = $el.find('a').prop('href').split('#')[1]
+				var href = $el.find('a').prop('href').split('#')[1];
 				if(href == header){
 					$el.addClass('active');
+                    var $parentUl = $el.parent(),
+                        $ancestorLi = $parentUl.parent(),
+                        level = $parentUl.hasClass('nav-sub') ? 1 : 0;
+                    if(level == 1){
+                        $ancestorLi.addClass('active open');
+                        $parentUl.slideDown('slow');
+					}
 				}
             })
         }
