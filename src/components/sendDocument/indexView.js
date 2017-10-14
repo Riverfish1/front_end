@@ -182,7 +182,6 @@ define([
             }
         },
         showOrhideBtn: function (row) {
-            debugger;
             this.$editDialog.find('.status-button').hide();
             // 创建人：新建、草稿、驳回状态显示-草稿与提交按钮
             if(this.isCreater(row) && (row.status == 10 || row.status == 0)){
