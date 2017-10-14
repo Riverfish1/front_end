@@ -87,6 +87,13 @@ define([], function () {
         WORK_APPOINTMENT_UPDATE: '/api/appointmentRecord/updateById',
         WORK_APPOINTMENT_DELETE: '/api/appointmentRecord/deleteById',
         WORK_APPOINTMENT_SELECT_BY_ID: '/api/appointmentRecord/selectById',
+        // 工作授权
+        WORK_AUTH_INSERT: '/api/workAuth/insert',
+        WORK_AUTH_UPDATE: '/api/workAuth/updateById',
+        WORK_AUTH_QUERY: '/api/workAuth/query',
+        WORK_AUTH_DELETE: '/api/workAuth/deleteById',
+        WORK_AUTH_QUERY_BY_ID: '/api/workAuth/queryByUserId',
+        WORK_AUTH_SELECT_BY_ID: '/api/workAuth/selectById',
 
         // 一些基本正则
         TEL_REG: /(^(13\d|15[^4,\D]|17[13678]|18\d)\d{8}|170[^346,\D]\d{7})$/,

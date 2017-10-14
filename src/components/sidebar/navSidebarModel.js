@@ -34,6 +34,7 @@ define({
         {className: 'icon_homePage', href: '#', title: '领导预约', children: [
             {className: 'icon_homePage', href: '#/work/appointmentReceived', title: '收到的预约'},
             {className: 'icon_homePage', href: '#/work/myAppointment', title: '我的预约'}
-        ]}
+        ]},
+        {className: 'icon_homePage', href: '#work/auth', title: '工作授权'}
     ]
 });
