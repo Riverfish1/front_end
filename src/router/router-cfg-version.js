@@ -45,6 +45,10 @@ define(['backbone'], function (Backbone) {
         'work/receiveDocument': 'src/components/receiveDocument/indexController.js',
         // 请示报告
         'work/requestDocument': 'src/components/requestDocument/indexController.js',
+        // 交办协办
+        'work/workAssign': 'src/components/workAssign/indexController.js',
+        // 通知管理
+        'work/noticeManage': 'src/components/noticeManage/indexController.js'
 
 
         // '*actions': 'defaultAction'
