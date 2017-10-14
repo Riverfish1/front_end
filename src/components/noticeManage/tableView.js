@@ -53,25 +53,15 @@ define(['../../common/query/index'], function (QUERY) {
                     valign: "middle"
                 }, {
                     field: 'dutyDescription',
-                    title: '开始时间',
+                    title: '创建人',
                     align: 'center',
                     valign: "middle"
                 }, {
                     field: 'dutyDescription',
-                    title: '结束时间',
+                    title: '通知时间',
                     align: 'center',
                     valign: "middle"
-                }, {
-                    field: 'staffingLevel',
-                    title: '接收者',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'dutyDescription',
-                    title: '状态',
-                    align: 'center',
-                    valign: "middle"
-                }, {
+                },{
                     field: 'status',
                     title: '操作',
                     align: 'center',

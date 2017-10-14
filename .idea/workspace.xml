@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f35dcadc-155c-437a-b1b8-44d45963930a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/noticeManage/data.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/noticeManage/dialog.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/noticeManage/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/noticeManage/indexController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/noticeManage/indexView.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/noticeManage/tableView.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/workAssign/data.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/workAssign/dialog.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/workAssign/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/workAssign/indexController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/workAssign/indexView.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/workAssign/tableView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" afterPath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/router-cfg-version.js" afterPath="$PROJECT_DIR$/src/router/router-cfg-version.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/noticeManage/dialog.html" afterPath="$PROJECT_DIR$/src/components/noticeManage/dialog.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/noticeManage/index.html" afterPath="$PROJECT_DIR$/src/components/noticeManage/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/noticeManage/tableView.js" afterPath="$PROJECT_DIR$/src/components/noticeManage/tableView.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,18 +38,6 @@
             <state relative-caret-position="221">
               <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/sendDocument/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="75" lean-forward="false" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="75" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#2;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -111,14 +87,58 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dialog.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dialog.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/noticeManage/dialog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-325">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="440">
+              <caret line="51" column="52" lean-forward="false" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/noticeManage/indexController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/noticeManage/indexView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2074">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tableView.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/noticeManage/tableView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="51" column="36" lean-forward="true" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/noticeManage/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="60" lean-forward="false" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -331,26 +351,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/sendDocument/indexView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1479">
-              <caret line="87" column="6" lean-forward="false" selection-start-line="87" selection-start-column="6" selection-end-line="87" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="indexController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/sendDocument/indexController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -415,9 +415,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/companyRecord/index.html" />
-        <option value="$PROJECT_DIR$/src/components/companyRecord/tableView.js" />
-        <option value="$PROJECT_DIR$/src/components/companyRecord/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/companyRecord/dialog.html" />
         <option value="$PROJECT_DIR$/src/components/officeAreaRecord/index.html" />
         <option value="$PROJECT_DIR$/src/components/workMeetingSchedule/indexController.js" />
@@ -466,6 +463,9 @@
         <option value="$PROJECT_DIR$/src/components/assignDocument/tableView.js" />
         <option value="$PROJECT_DIR$/src/router/router-cfg-version.js" />
         <option value="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" />
+        <option value="$PROJECT_DIR$/src/components/noticeManage/index.html" />
+        <option value="$PROJECT_DIR$/src/components/noticeManage/dialog.html" />
+        <option value="$PROJECT_DIR$/src/components/noticeManage/tableView.js" />
       </list>
     </option>
   </component>
@@ -1168,16 +1168,16 @@
       <workItem from="1507769701680" duration="37000" />
       <workItem from="1507806893212" duration="9638000" />
       <workItem from="1507856033329" duration="22000" />
-      <workItem from="1507943863960" duration="3960000" />
+      <workItem from="1507943863960" duration="4302000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129191000" />
+    <option name="totallyTimeSpent" value="129533000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="23" y="12" width="1234" height="777" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1193,7 +1193,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35486576" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35486576" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1224,34 +1224,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/app/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="190" column="4" lean-forward="false" selection-start-line="190" selection-start-column="4" selection-end-line="190" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/workToDo/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/visitorsRecord/tableView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="78" column="32" lean-forward="false" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/visitorsRecord/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2329">
-          <caret line="137" column="9" lean-forward="false" selection-start-line="121" selection-start-column="43" selection-end-line="137" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/workDepartment/indexView.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1228">
@@ -1628,12 +1600,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/noticeManage/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="60" lean-forward="false" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/noticeManage/dialog.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-325">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="440">
+          <caret line="51" column="52" lean-forward="false" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/noticeManage/indexController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/noticeManage/indexView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2074">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/noticeManage/tableView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="51" column="36" lean-forward="true" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
