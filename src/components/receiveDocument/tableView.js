@@ -48,7 +48,7 @@ define(['../../common/query/index'], function (QUERY) {
                 detailView: false, //是否显示父子表
                 columns: [{
                     field: 'postName',
-                    title: '发文标题',
+                    title: '收文标题',
                     align: 'center',
                     valign: "middle"
                 }, {
@@ -63,7 +63,7 @@ define(['../../common/query/index'], function (QUERY) {
                     valign: "middle"
                 }, {
                     field: 'staffingLevel',
-                    title: '创建日期',
+                    title: '接收日期',
                     align: 'center',
                     valign: "middle"
                 }, {

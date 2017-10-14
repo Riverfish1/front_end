@@ -40,7 +40,9 @@ define(['backbone'], function (Backbone) {
         // 收到的预约
         'work/appointmentReceived': 'src/components/workAppointmentReceived/indexController.js',
         // 办文管理——发文管理
-        'work/sendDocument': 'src/components/sendDocument/indexController.js'
+        'work/sendDocument': 'src/components/sendDocument/indexController.js',
+        // 办文管理——收文管理
+        'work/sendDocument': 'src/components/receiveDocument/indexController.js'
 
 
         // '*actions': 'defaultAction'
