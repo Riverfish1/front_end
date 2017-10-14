@@ -19,6 +19,7 @@ define({
             {className: 'icon_homePage', href: '#/work/sendDocument', title: '发文管理'},
             {className: 'icon_homePage', href: '#/work/receiveDocument', title: '收文管理'}
         ]},
+        {className: 'icon_homePage', href: '#/work/requestDocument', title: '请示报告'},
         {className: 'icon_homePage', href: '#', title: '办文管理', children: [
             {className: 'icon_homePage', href: '#/work/department', title: '待办收文'},
             {className: 'icon_homePage', href: '#/work/staff', title: '我的发文'},

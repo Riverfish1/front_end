@@ -42,7 +42,9 @@ define(['backbone'], function (Backbone) {
         // 办文管理——发文管理
         'work/sendDocument': 'src/components/sendDocument/indexController.js',
         // 办文管理——收文管理
-        'work/sendDocument': 'src/components/receiveDocument/indexController.js'
+        'work/receiveDocument': 'src/components/receiveDocument/indexController.js',
+        // 请示报告
+        'work/requestDocument': 'src/components/requestDocument/indexController.js',
 
 
         // '*actions': 'defaultAction'

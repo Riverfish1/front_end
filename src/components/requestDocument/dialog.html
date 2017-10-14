@@ -1,0 +1,180 @@
+<div class="loading" style="width:95%"></div>
+
+<form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
+    <input type="hidden" name="id" value="<%= id %>" id="id" />
+    <input type="hidden" name="status" value="<%= status %>" id="status" />
+    <div class="form-group">
+        <label class="col-md-2 control-label">标题</label>
+        <div class="col-md-9">
+            <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
+            <input type="text" name="postName" class="form-control" value="<%= postName %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">报告类型</label>
+        <div class="col-md-9">
+            <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
+            <select name="" id="">
+                <option value="">请示工作</option>
+                <option value="">工作请示</option>
+            </select>
+        </div>
+    </div>
+    <!--详情-->
+    <% if(id && status != 3){ %>
+    <div class="form-group">
+        <label class="col-md-2 control-label">创建时间</label>
+        <div class="col-md-9">
+            <input type="text" name="postName" class="form-control" value="<%= postName %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">创建人</label>
+        <div class="col-md-9">
+            <input type="text" name="postName" class="form-control" value="<%= postName %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">待操作人</label>
+        <div class="col-md-9">
+            <input type="text" name="postName" class="form-control" value="<%= postName %>">
+        </div>
+    </div>
+    <% } %>
+    <div class="form-group">
+        <label class="col-md-2 control-label">正文</label>
+        <div class="col-md-9">
+            <textarea type="text" name="dutyDescription" class="form-control" value="<%= dutyDescription %>"></textarea>
+        </div>
+    </div>
+    <!--新建-->
+    <% if(!id || status == 3){ %>
+    <div class="row">
+        <label class="col-md-2 control-label">报告流转</label>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label"></label>
+        <div class="col-md-9">
+            <div class="flowWrap">
+                <div class="row">
+                    <div class="col-md-2 title-wrap">
+                        <span class="flow-title">发起人</span>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <input type="text" class="form-control test">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                    </div>
+                    <div class="arrow-down"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 title-wrap">
+                        <span class="flow-title">部门签署</span>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <input type="text" class="form-control test">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                    </div>
+                    <div class="arrow-down"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 title-wrap">
+                        <span class="flow-title">办公室签署</span>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <input type="text" class="form-control test">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                    </div>
+                    <div class="arrow-down"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 title-wrap">
+                        <span class="flow-title">领导批示</span>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <input type="text" class="form-control test">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <!--详情-->
+    <% if(id && status != 3){ %>
+    <div class="row">
+        <label class="col-md-2 control-label">流程状态</label>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label"></label>
+        <div class="col-md-9">
+            <div class="flowWrapDetail">
+                <div class="row">
+                    <div class="col-md-2 title-wrap">
+                        <div class="flow-title">发起人</div>
+                        <span class="opertor">张晓军</span>
+                        <div class="arrow-down"></div>
+                    </div>
+                    <div class="col-md-2 title-wrap">
+                        <div class="flow-title">部门签署</div>
+                        <span class="opertor">李强</span>
+                        <div class="arrow-down"></div>
+                    </div>
+                    <div class="col-md-2 title-wrap">
+                        <div class="flow-title">办公室签署</div>
+                        <span class="opertor">余健</span>
+                        <div class="arrow-down"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 title-wrap">
+                        <div class="flow-title">领导批示</div>
+                        <span class="opertor">张晓军</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 control-label">部门意见</label>
+        <div class="col-md-9">
+            <textarea type="text" name="dutyDescription" class="form-control" value="<%= dutyDescription %>"></textarea>
+        </div>
+    </div>
+    <% } %>
+</form>
