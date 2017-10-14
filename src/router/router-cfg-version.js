@@ -46,7 +46,11 @@ define(['backbone'], function (Backbone) {
         // 请示报告
         'work/requestDocument': 'src/components/requestDocument/indexController.js',
         // 工作授权
-        'work/auth': 'src/components/workAuth/indexController.js'
+        'work/auth': 'src/components/workAuth/indexController.js',
+        // 交办协办
+        'work/workAssign': 'src/components/workAssign/indexController.js',
+        // 通知管理
+        'work/noticeManage': 'src/components/noticeManage/indexController.js'
 
 
         // '*actions': 'defaultAction'
