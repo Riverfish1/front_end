@@ -48,7 +48,9 @@ define([
                 }).on('onDataRequestSuccess', function (e, result) {
                     console.log('onDataRequestSuccess: ', result);
                 }).on('onSetSelectValue', function (e, keyword, data) {
-                    console.log('onSetSelectValue: ', keyword, data);
+                    var $operatorId = $(e.target).parents('.row').find('input[name=operatorId]');
+                    $operatorId.val(data.userId);
+                    console.log('onSetSelectValue: ', keyword, data, $operatorId.val());
                 }).on('onUnsetSelectValue', function () {
                     console.log('onUnsetSelectValue');
                 });
@@ -79,11 +81,25 @@ define([
             //id不存在与staus==3都是新建；
             var initState = {
                 creatorId: 1,
-                opertorId: 2,
+                operatorId: 2,
                 content: "",
+                title: "",
                 status: 10,
-                workFlow: '',
+                workFlow: {
+                    currentNode: {operatorId: window.ownerPeopleId, nodeName: '拟稿', nodeStatus: '0', comment: '', nodeIndex: '0'},
+                    nodeList: [
+                        {operatorId: window.ownerPeopleId, nodeName: '拟稿'},
+                        {operatorId: "", nodeName: '领导审批'},
+                        {operatorId: "", nodeName: '会签'},
+                        {operatorId: "", nodeName: '审核'},
+                        {operatorId: "", nodeName: '签发'},
+                        {operatorId: "", nodeName: '印发'},
+                        {operatorId: "", nodeName: '归档'},
+                        {operatorId: "", nodeName: '承办'}
+                    ]
+                },
                 id: ''
+
             };
             var row = row.id ? row : initState;
             this.showOrhideBtn(row);
@@ -163,12 +179,28 @@ define([
             //已提交状态-通过与驳回，row + 新状态
             if (this.$editForm.valid()) {
                 var that = this;
-                var $form = $(e.target).parents('.modal-content').find('#editForm');
-                var data = $form.serialize();
-                data = decodeURIComponent(data, true);
-                var datas = serializeJSON(data);
+                // var $form = $(e.target).parents('.modal-content').find('#editForm');
+                // var data = $form.serialize();
+                // data = decodeURIComponent(data, true);
+                // var datas = serializeJSON(data);
+                var $inputs = that.$editForm.find('.submit-assist');
+                var params = {nodeList: []};
+
+                $.each($inputs, function (k, el) {
+                    var node = {};
+                    var $el = $(el), val = $el.val(), name = $el.attr('name');
+                    if(name == "operatorId"){
+                        node[name] = val;
+                        node.nodeName = $el.parents('.row').find('.flow-title').html();
+                        params.nodeList.push(node);
+                    }else if(name == 'status'){
+
+                    }else{
+                        params[name] = val;
+                    }
+                })
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.RECORD_POSTRECORD_UPDATE : QUERY.RECORD_POSTRECORD_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_SENDDOCUMENT_UPDATE : QUERY.WORK_SENDDOCUMENT_NEW, JSON.stringify(params), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$editDialog.modal('hide');
@@ -180,6 +212,9 @@ define([
                     "contentType": 'application/json'
                 })
             }
+        },
+        parseFlowData: function () {
+
         },
         showOrhideBtn: function (row) {
             this.$editDialog.find('.status-button').hide();
