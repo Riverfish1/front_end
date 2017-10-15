@@ -182,8 +182,9 @@ define([
         submitForm: function (e) {
             var $btn = $(e.target), $status = $('#status'), index = $btn.attr('data-status');
             //根据点击按钮-修改status隐藏域值；
+            var id = $('#id').val();
             var urlMap = {
-                "0": QUERY.WORK_SENDDOCUMENT_NEW,
+                "0": id ? QUERY.WORK_SENDDOCUMENT_NEW : QUERY.WORK_SENDDOCUMENT_UPDATE,
                 "1": QUERY.WORK_SENDDOCUMENT_SUBMIT,
                 "2": QUERY.WORK_SENDDOCUMENT_AGREE,
                 "3": QUERY.WORK_SENDDOCUMENT_REJECT
@@ -231,31 +232,31 @@ define([
             }
         },
         showOrhideBtn: function (row) {
-            // this.$editDialog.find('.status-button').hide();
-            // // 创建人：新建、草稿、驳回状态显示-草稿与提交按钮
-            // if(this.isCreater(row) && (row.status == 10 || row.status == 0)){
-            //     this.$editDialog.find("#btn-draft,#btn-submit").show();
-            // }
-            // // 处理人：已提交状态显示-通过与驳回按钮
-            // if(this.isOpertor(row) && (row.status == 1)){
-            //     this.$editDialog.find("#btn-ok,#btn-on").show();
-            // }
             this.$editDialog.find('.status-button').hide();
-            if(this.isCreater(row)){
-               if(row.role == "current"){
-                    this.$editDialog.find("#btn-draft,#btn-submit").show();
-               }
-            }else{
-                 if(row.role == "current"){
-                    this.$editDialog.find("#btn-ok,#btn-on").show();
-                }
+            // 创建人：新建、草稿、驳回状态显示-草稿与提交按钮
+            if(this.isCreater(row) && (row.workFlow.currentNode.nodeIndex == 0)){
+                this.$editDialog.find("#btn-draft,#btn-submit").show();
             }
+            // 处理人：已提交状态显示-通过与驳回按钮
+            if(this.isOpertor(row) && (row.workFlow.currentNode.nodeIndex != 0)){
+                this.$editDialog.find("#btn-ok,#btn-no").show();
+            }
+            // this.$editDialog.find('.status-button').hide();
+            // if(this.isCreater(row)){
+            //    if(row.role == "current"){
+            //         this.$editDialog.find("#btn-draft,#btn-submit").show();
+            //    }
+            // }else{
+            //      if(row.role == "current"){
+            //         this.$editDialog.find("#btn-ok,#btn-on").show();
+            //     }
+            // }
         },
         isCreater: function (row) {
             return window.ownerPeopleId == row.creatorId;
         },
         isOpertor: function (row) {
-            return window.ownerPeopleId == row.opertorId;
+            return window.ownerPeopleId == row.currentOperatorId;
         }
     });
     return View;

@@ -65,6 +65,14 @@ define(['../../common/query/index'], function (QUERY) {
                         return value ? ncjwUtil.timeTurn(value) : "";
                     }
                 }, {
+                    field: 'workflowData',
+                    title: '当前节点',
+                    align: 'center',
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return value ? JSON.parse(value).currentNode.nodeName : '';
+                    }
+                }, {
                     field: 'currentOperatorId',
                     title: '待操作人',
                     align: 'center',
