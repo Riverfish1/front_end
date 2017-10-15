@@ -186,11 +186,15 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
+                console.log(data);
                 var datas = serializeJSON(data);
+                console.log(datas);
+                var JSONData = JSON.parse(datas);
                 var id = $('#id').val();
                 var place = this.$officeAreaSel.val();
                 var conferenceRoom = this.$officeRoomSel.val();
-                var startTime = Number(this.$startTime.val());
+                var startTime = this.$startTime.val();
+                var endTime = this.$endTime.val();
                 var conferenceTheme = this.$conferenceTheme.val();
                 bootbox.confirm({
                     buttons: {
@@ -205,13 +209,13 @@ define([
                     message: '<div class="tipInfo tipConfirm"><p>' + place + "——" + conferenceRoom + '</p><p>'+ ncjwUtil.timeTurn(startTime) + '至' + ncjwUtil.timeTurn(endTime) + '</p><p>会议主题：' + conferenceTheme + '</p></div>',
                     callback: function (result) {
                         if (result) {
-                            ncjwUtil.postData(id ? QUERY.WORK_MEETING_UPDATE : QUERY.WORK_MEETING_INSERT, datas, function (res) {
+                            ncjwUtil.postData(id ? QUERY.WORK_MEETING_UPDATE : QUERY.WORK_MEETING_INSERT, JSON.stringify(JSONData), function (res) {
                                 if (res.success) {
                                     ncjwUtil.showInfo('预定成功！');
                                     that.$officeDialog.modal('hide');
                                     that.table.refresh();
                                 } else {
-                                    ncjwUtil.showError("修改失败：" + res.errorMsg);
+                                    ncjwUtil.showError("预定失败：" + res.errorMsg);
                                 }
                             }, {
                                 "contentType": 'application/json'

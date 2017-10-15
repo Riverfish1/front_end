@@ -87,8 +87,7 @@ define(['../../common/query/index'], function (QUERY) {
                     valign: "middle",
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
-                        var str = '';
-                        str += '<p class="grid-command-p btn-view">处理</p>';
+                        var str = row.status === '1' ? '' : '<p class="grid-command-p btn-view">处理</p>';
                         return str;
                     }
                 }],

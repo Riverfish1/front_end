@@ -22,7 +22,7 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_PEOPLE_QUERY, //请求后台的URL（*）
+                url: QUERY.WORK_ADDRESSLIST_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -115,6 +115,7 @@ define(['../../common/query/index'], function (QUERY) {
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
+                ownerPeopleId: window.ownerPeopleId
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()
             };

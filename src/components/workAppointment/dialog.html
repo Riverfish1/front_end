@@ -9,6 +9,19 @@
         </div>
     </div>
     <div class="form-group">
+        <label class="col-md-3 control-label">被访问者姓名：</label>
+        <div class="col-md-9">
+            <input class="form-control test" type="text" name="intervieweeId" value="<%= intervieweeId %>" id="peopleName" />
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
         <label class="col-md-3 control-label">访问原因：</label>
         <div class="col-md-9">
             <input class="form-control" type="text" name="recordResult" value="<%= recordResult %>" />
@@ -17,11 +30,9 @@
     <div class="form-group">
         <label class="col-md-3 control-label">访问时间：</label>
         <div class="col-md-9">
-            <div class="row">
-                <span class="col-md-5"><input name="startTime" class="form-control startTime" type="text" value="<%= startTime %>"></span>
-                <span class="col-md-2" style="text-align: center;line-height: 30px;">至</span>
-                <span class="col-md-5"><input name="endTime" class="form-control endTime" type="text" value="<%= endTime %>"></span>
-            </div>
+            <span class="col-md-5"><input name="startTime" class="form-control startTime" type="text" value="<%= startTime %>"></span>
+            <span class="col-md-2" style="text-align: center;line-height: 30px;">至</span>
+            <span class="col-md-5"><input name="endTime" class="form-control endTime" type="text" value="<%= endTime %>"></span>
         </div>
     </div>
 </form>

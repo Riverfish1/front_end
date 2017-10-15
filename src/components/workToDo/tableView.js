@@ -71,7 +71,7 @@ define(['../../common/query/index'], function (QUERY) {
                     valign: "middle"
                 }, {
                     field: 'completeTime',
-                    title: '时间',
+                    title: '预计完成时间',
                     width: '23.3%',
                     align: 'center',
                     valign: "middle",
