@@ -61,7 +61,7 @@
                 <% $.each(workFlow.nodeList, function(k, node){ console.log("node1", node) %>
                     <% if(k == 0){ %>
                         <div class="row">
-                            <div class="col-md-3 title-wrap">
+                           <div class="<%= workFlow.currentNode.nodeIndex == 0 ? 'col-md-3 title-wrap' : 'col-md-3 title-wrap active' %>">
                                 <span class="flow-title"><%= node.nodeName %></span>
                             </div>
                             <div class="col-md-9">
@@ -114,10 +114,10 @@
                 <div class="row">
                     <% $.each(workFlow.nodeList, function(k, node){ %>
                         <div class="col-md-2 title-wrap">
-                            <div class="flow-title"><%= node.nodeName %></div>
+                            <div class="<%= workFlow.currentNode.nodeIndex == k ? 'flow-title active' : 'flow-title' %>"> <%= node.nodeName %></div>
                             <span class="opertor"><%= node.operatorId %></span>
                             <% if(k < workFlow.nodeList.length-1){ %>
-                                <div class="arrow-down"></div>
+                                <div class="<%= workFlow.currentNode.nodeIndex > k ? 'arrow-right active' : 'arrow-right' %>"></div>
                             <% } %>
                         </div>
                     <% }); %>

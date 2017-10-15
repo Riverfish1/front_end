@@ -117,9 +117,16 @@ define([
             this.$suggestWrap = this.$editDialogPanel.find('.test');
             this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
+            this.setBssuggestValue(row);
             this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
+        },
+        setBssuggestValue: function (row) {
+            $.each(this.$suggestWrap, function (k, el) {
+                $(el).val(row.workFlow.nodeList[k].operatorId);
+                console.log("el", $(el), $(el).val())
+            });
         },
         delOne: function (row) {
             var that = this;
