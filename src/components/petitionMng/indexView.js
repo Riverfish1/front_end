@@ -33,7 +33,6 @@ define([
                 id: ''
             };
             var row = row.id ? row : initState;
-            console.log(row);
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
@@ -75,13 +74,13 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
+                console.log(data);
                 var datas = serializeJSON(data);
+                console.log(datas);
+                var JSONData = JSON.parse(datas);
+                JSONData.status = 1;
                 var id = $('#id').val();
-                var params = {
-                    id: id,
-                    status: 1
-                };
-                ncjwUtil.postData(id ? QUERY.WORK_PETITIONMNG_UPDATE : QUERY.WORK_PETITIONMNG_INSERT, id ? JSON.stringify(params) : datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_PETITIONMNG_UPDATE : QUERY.WORK_PETITIONMNG_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '处理成功' : '新增成功！');
                         that.$officeDialog.modal('hide');

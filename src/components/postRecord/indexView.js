@@ -75,17 +75,12 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    name: {
-                        required: true
-                    },
-
-                    gmtCreate: {
+                    postName: {
                         required: true
                     }
                 },
                 messages: {
-                    name: "请输入名称",
-                    gmtCreate: "请输入时间"
+                    name: "请输入职位名称"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

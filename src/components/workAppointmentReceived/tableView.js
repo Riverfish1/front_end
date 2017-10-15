@@ -93,11 +93,11 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        if (row.status === '0') {
-                            str += '<p class="grid-command-p btn-pass">通过</p>';
-                            str += '<p class="grid-command-p btn-reject">驳回</p>';
+                        if (row.status === '1') {
                             str += '<p class="grid-command-p btn-view">查看</p>';
                         } else {
+                            str += '<p class="grid-command-p btn-pass">通过</p>';
+                            str += '<p class="grid-command-p btn-reject">驳回</p>';
                             str += '<p class="grid-command-p btn-view">查看</p>';
                         }
                         return str;

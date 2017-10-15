@@ -46,9 +46,12 @@ define([
                 recordResult: '',
                 startTime: '',
                 endTime: '',
+                intervieweeId: '',
                 id: ''
             };
             var row = row.id ? row : initState;
+            row.startTime = ncjwUtil.timeTurn(row.startTime);
+            row.endTime = ncjwUtil.timeTurn(row.endTime);
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
@@ -58,8 +61,60 @@ define([
                 autoclose: true,
                 todayHighlight: true
             });
+            this.$suggestWrap = this.$officeDialogPanel.find('.test');
+            this.$suggestBtn = this.$suggestWrap.find('button');
+            this.initSuggest();
+            this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
+        },
+        initSuggest: function () {
+            $.each(this.$suggestWrap, function (k, el) {
+                $(el).bsSuggest('init', {
+                    type: 'post',
+                    /*url: "/rest/sys/getuserlist?keyword=",
+                     effectiveFields: ["userName", "email"],
+                     searchFields: [ "shortAccount"],
+                     effectiveFieldsAlias:{userName: "姓名"},*/
+                    effectiveFieldsAlias:{peopleName: "姓名", id: "ID", employeeNum: "工号"},
+                    clearable: true,
+                    showHeader: true,
+                    showBtn: false,
+                    data: {
+                        peopleName: $('#peopleName').val()
+                    },
+                    url: QUERY.FUZZY_QUERY,
+                    idField: "id",
+                    keyField: "peopleName"
+                }).on('onDataRequestSuccess', function (e, result) {
+                    console.log('onDataRequestSuccess: ', result);
+                }).on('onSetSelectValue', function (e, keyword, data) {
+                    console.log('onSetSelectValue: ', keyword, data);
+                }).on('onUnsetSelectValue', function () {
+                    console.log('onUnsetSelectValue');
+                });
+            })
+        },
+        initBtnEvent: function () {
+            var method = $(this).text();
+            var $i;
+
+            if (method === 'init') {
+                this.initSuggest();
+            } else {
+                $i = this.$suggestWrap.bsSuggest(method);
+                if (typeof $i === 'object') {
+                    $i = $i.data('bsSuggest');
+                }
+                console.log(method, $i);
+                if (!$i) {
+                    alert('未初始化或已销毁');
+                }
+            }
+
+            if (method === 'version') {
+                alert($i);
+            }
         },
         delOne: function (row) {
             var that = this;
@@ -132,9 +187,15 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
+                data += "&visitorId=" + window.ownerPeopleId;
                 var datas = serializeJSON(data);
+                var JSONData = JSON.parse(datas);
+                JSONData.visitorId = Number(JSONData.visitorId);
+                JSONData.intervieweeId = Number(JSONData.intervieweeId);
+                JSONData.startTime = JSONData.startTime.replace(/\+/, ' ');
+                JSONData.endTime = JSONData.endTime.replace(/\+/, ' ');
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_APPOINTMENT_UPDATE : QUERY.RECORD_PEOPLE_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_APPOINTMENT_UPDATE : QUERY.WORK_APPOINTMENT_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');

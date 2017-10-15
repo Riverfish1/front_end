@@ -26,8 +26,8 @@ define([
             return this;
         },
         viewContent: function (row) {
-            row.summartEndTime = row.summartEndTime ? ncjwUtil.timeTurn(row.summartEndTime, 'yyyy.MM.dd') : '';
-            row.summartStartTime = row.summartStartTime ? ncjwUtil.timeTurn(row.summartStartTime, 'yyyy.MM.dd') : '';
+            row.summaryEndTime = row.summaryEndTime ? ncjwUtil.timeTurn(row.summaryEndTime, 'yyyy.MM.dd') : '';
+            row.summaryStartTime = row.summaryStartTime ? ncjwUtil.timeTurn(row.summaryStartTime, 'yyyy.MM.dd') : '';
             this.$viewContent.modal('show');
             this.$viewContent.modal({backdrop: 'static', keyboard: false});
             this.$viewContentPanel = this.$viewContent.find('#editPanel');
