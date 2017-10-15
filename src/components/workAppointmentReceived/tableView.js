@@ -47,15 +47,15 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'recordName',
-                    title: '访客姓名',
-                    align: 'center',
-                    valign: "middle",
-                }, {
                     field: 'recordResult',
                     title: '原因',
                     align: 'center',
                     valign: "middle"
+                }, {
+                    field: 'recordName',
+                    title: '访客姓名',
+                    align: 'center',
+                    valign: "middle",
                 }, {
                     field: 'startTime',
                     title: '访问开始时间',
@@ -115,6 +115,7 @@ define(['../../common/query/index'], function (QUERY) {
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
+                intervieweeId: window.ownerPeopleId
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()
             };

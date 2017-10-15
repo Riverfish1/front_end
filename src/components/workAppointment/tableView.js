@@ -94,8 +94,8 @@ define(['../../common/query/index'], function (QUERY) {
                     formatter: function (value, row, index) {
                         var str = '';
                         if (row.status === '0') {
-                            str += '<p class="grid-command-p btn-delete">取消</p>';
-                            str += '<p class="grid-command-p btn-update">变更</p>';
+                            str += '<p class="grid-command-p btn-reject">驳回</p>';
+                            str += '<p class="grid-command-p btn-pass">通过</p>';
                             str += '<p class="grid-command-p btn-view">查看</p>';
                         } else {
                             str += '<p class="grid-command-p btn-view">查看</p>';
@@ -115,21 +115,21 @@ define(['../../common/query/index'], function (QUERY) {
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
-                ownerPeopleId: window.ownerPeopleId
+                visitorId: window.ownerPeopleId
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()
             };
             return temp;
         },
         operateEvents: {
-            'click .btn-update': function (e, value, row, index) {
-                Backbone.trigger('itemUpdate', row);
+            'click .btn-reject': function (e, value, row, index) {
+                Backbone.trigger('itemUpdate', row, 'reject');
             },
-            'click .btn-delete': function (e, value, row, index) {
-                Backbone.trigger('itemDelete', row);
+            'click .btn-pass': function (e, value, row, index) {
+                Backbone.trigger('itemUpdate', row, 'pass');
             },
             'click .btn-view': function (e, value, row, index) {
-                Backbone.trigger('itemView', row)
+                Backbone.trigger('itemView', row);
             }
         }
     });
