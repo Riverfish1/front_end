@@ -53,7 +53,7 @@ define([
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
             $('.startTime, .endTime').datetimepicker({
-                format: 'yyyy-mm-dd hh:mm:ss',
+                format: 'yyyy-mm-dd hh:ii:00',
                 language: 'zh-CN',
                 autoclose: true,
                 todayHighlight: true

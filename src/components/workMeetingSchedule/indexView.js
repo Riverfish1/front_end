@@ -33,32 +33,42 @@ define([
             return this;
         },
         changeMeeting: function (row) {
-            var initState = {id: '', userId: 100, appointmentTime: '', place: '', conferenceRoom: '', conferenceTheme: ''};
+            var initState = {id: '', userId: 100, startTime: '', endTime: '', place: '', conferenceRoom: '', conferenceTheme: ''};
             var row = row.id ? row : initState
-            row.appointmentTime = row.id ? ncjwUtil.timeTurn(row.appointmentTime, 'yyyy-MM-dd') : ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd')
+            row.startTime = row.id ? ncjwUtil.timeTurn(row.startTime) : '';
+            row.endTime = row.id ? ncjwUtil.timeTurn(row.endTime) : '';
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row));
             this.$officeAreaSel = this.$officeDialogPanel.find('#officeAreaSel');
             this.$officeRoomSel = this.$officeDialogPanel.find('#officeRoomSel');
             this.$conferenceTheme = this.$officeDialogPanel.find('#conferenceTheme');
-            this.$appointmentTime = this.$officeDialogPanel.find('#appointmentTime');
+            this.$startTime = this.$officeDialogPanel.find('.startTime');
+            this.$endTime = this.$officeDialogPanel.find('.endTime');
             this.getOfficeAreaList(row);
             this.getOfficeRoomList(row);
             this.$editForm = this.$el.find('#editForm');
             row.id  && ncjwUtil.setFiledsValue(this.$officeDialogPanel, row);
-            $('#appointmentTime').datepicker({
+            $('.startTime, .endTime').datetimepicker({
                 autoclose: true,
-                format: 'yyyy-mm-dd',
+                format: 'yyyy-mm-dd hh:ii:00',
                 language: 'zh-CN',
                 todayHighlight: true
+            });
+            $('.startTime').datetimepicker({
+                startDate: true
+            });
+            $('.endTime').datetimepicker({
+                endDate: true
             });
             this.initSubmitForm();
         },
         cangelMeeting: function (row) {
             var that = this;
-            var time = ncjwUtil.timeTurn(row.appointmentTime);
-            var week = "星期" + "日一二三四五六".charAt(new Date(time).getDay());
+            var startTime = ncjwUtil.timeTurn(row.startTime);
+            var endTime = ncjwUtil.timeTurn(row.endTime);
+            var startWeek = "周" + "日一二三四五六".charAt(new Date(startTime).getDay());
+            var endWeek = "周" + "日一二三四五六".charAt(new Date(endTime).getDay());
             bootbox.confirm({
                 buttons: {
                     confirm: {
@@ -69,7 +79,7 @@ define([
                     }
                 },
                 title: "退订会议",
-                message: '<div class="tipInfo">你确定退订会议室？<p><span>'+ time + '('+ week +')</span><span>' + row.place + "——" + row.conferenceRoom +'</span></p></div>',
+                message: '<div class="tipInfo">你确定退订会议室？<p><span>'+ startTime + '('+ startWeek +')' + '至' + endTime + '(' + endWeek + ')</span><span>' + row.place + "——" + row.conferenceRoom +'</span></p></div>',
                 callback: function (result) {
                     if (result) {
                         ncjwUtil.getData(QUERY.WORK_MEETING_DELETE, {id: row.id}, function (res) {
@@ -136,7 +146,7 @@ define([
                         required: true,
                         maxlength: 50
                     },
-                    appointmentTime: {
+                    startTime: {
                         required: true
                     }
                 },
@@ -151,7 +161,10 @@ define([
                         required: "请填写会议主题",
                         maxlength: "最多输入50个字符"
                     },
-                    appointmentTime: {
+                    startTime: {
+                        required: "请选择时间"
+                    },
+                    endTime: {
                         required: "请选择时间"
                     }
                 },
@@ -177,7 +190,7 @@ define([
                 var id = $('#id').val();
                 var place = this.$officeAreaSel.val();
                 var conferenceRoom = this.$officeRoomSel.val();
-                var appointmentTime = Number(this.$appointmentTime.val());
+                var startTime = Number(this.$startTime.val());
                 var conferenceTheme = this.$conferenceTheme.val();
                 bootbox.confirm({
                     buttons: {
@@ -189,7 +202,7 @@ define([
                         }
                     },
                     title: "预定确认",
-                    message: '<div class="tipInfo tipConfirm"><p>' + place + "——" + conferenceRoom + '</p><p>'+ ncjwUtil.timeTurn(appointmentTime) +'</p><p>会议主题：' + conferenceTheme + '</p></div>',
+                    message: '<div class="tipInfo tipConfirm"><p>' + place + "——" + conferenceRoom + '</p><p>'+ ncjwUtil.timeTurn(startTime) + '至' + ncjwUtil.timeTurn(endTime) + '</p><p>会议主题：' + conferenceTheme + '</p></div>',
                     callback: function (result) {
                         if (result) {
                             ncjwUtil.postData(id ? QUERY.WORK_MEETING_UPDATE : QUERY.WORK_MEETING_INSERT, datas, function (res) {
