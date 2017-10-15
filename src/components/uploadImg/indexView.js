@@ -33,7 +33,7 @@ define([
                 uploader = WebUploader.create({
 
                     // 自动上传。
-                    auto: false,
+                    auto: true,
 
                     // swf文件路径
                     swf: 'libs/webUpload/Uploader.swf',
@@ -96,12 +96,14 @@ define([
 
                 // 文件上传成功，给item添加成功class, 用样式标记上传成功。
                 uploader.on('uploadSuccess', function (file) {
+                    debugger;
                     var abc = $.extend({}, file);
                     $('#' + file.id).addClass('upload-state-done');
                 });
 
                 // 文件上传失败，现实上传出错。
                 uploader.on('uploadError', function (file) {
+                    debugger;
                     var $li = $('#' + file.id),
                         $error = $li.find('div.error');
 
@@ -115,6 +117,7 @@ define([
 
                 // 完成上传完了，成功或者失败，先删除进度条。
                 uploader.on('uploadComplete', function (file) {
+                    debugger;
                     var abc = $.extend({}, file);
                     $('#' + file.id).find('.progress').remove();
                 });

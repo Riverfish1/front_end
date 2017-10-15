@@ -38,6 +38,7 @@ define([
                      effectiveFields: ["userName", "email"],
                      searchFields: [ "shortAccount"],
                      effectiveFieldsAlias:{userName: "姓名"},*/
+                    effectiveFieldsAlias:{userName: "姓名", userId: "ID", number: "工号"},
                     clearable: true,
                     showHeader: true,
                     showBtn: false,
@@ -79,10 +80,9 @@ define([
             var initState = {
                 creatorId: 1,
                 opertorId: 2,
+                content: "",
                 status: 10,
-                postName: '',
-                dutyDescription: '',
-                staffingLevel: '',
+                workFlow: '',
                 id: ''
             };
             var row = row.id ? row : initState;
