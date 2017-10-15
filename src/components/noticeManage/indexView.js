@@ -84,6 +84,7 @@ define([
             };
             var row = row.id ? row : initState;
             // this.showOrhideBtn(row);
+            // row.gmtCreate = row.gmtCreate ? ncjwUtil.timeTurn(row.gmtCreate, 'yyyy-MM-dd') : ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd');
             this.$editDialog.modal('show');
             this.$editDialog.modal({backdrop: 'static', keyboard: false});
             this.$editDialogPanel.empty().html(this.getDialogContent(row));
@@ -91,6 +92,12 @@ define([
             this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
             this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
+            $('.accessTime').datepicker({
+                language: 'zh-CN',
+                autoclose: true,
+                todayHighlight: true,
+                format: 'yyyy-mm-dd'
+            });
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
