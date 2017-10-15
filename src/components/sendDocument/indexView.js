@@ -108,6 +108,7 @@ define([
             var row = row.id ? row : initState;
             if(row.id){
                 row.workFlow = JSON.parse(row.workflowData);
+                row.gmtCreate = ncjwUtil.timeTurn(row.gmtCreate);
             }
             console.log("row", row);
             this.showOrhideBtn(row);
@@ -162,17 +163,21 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    name: {
+                    title: {
                         required: true
                     },
 
                     gmtCreate: {
                         required: true
+                    },
+                    comment: {
+                        required: true
                     }
                 },
                 messages: {
-                    name: "请输入名称",
-                    gmtCreate: "请输入时间"
+                    title: "请填写标题",
+                    gmtCreate: "请输入时间",
+                    comment: "请填写审核意见"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -204,6 +209,7 @@ define([
                 var $inputs = that.$editForm.find('.submit-assist');
                 var id = $('#id').val();
                 var currentOperatorId = $('#currentOperatorId').val();
+                var comment = $('#comment').val();
                 //保存
                 if(index == 0){
                     var params = {workFlow:{nodeList: []}};
@@ -222,7 +228,7 @@ define([
                         }
                     })
                 }else{
-                    var params = {recordId: id, operatorId: currentOperatorId, comment: ""};
+                    var params = {recordId: id, operatorId: currentOperatorId, comment: comment };
                 }
 
                 ncjwUtil.postData(urlMap[index], JSON.stringify(params), function (res) {

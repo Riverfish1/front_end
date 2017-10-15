@@ -85,7 +85,11 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">处理</p>';
+                        if(row.creatorId != row.currentOperatorId){
+                            str += '<p class="grid-command-p btn-edit">查看</p>';
+                        }else{
+                            str += '<p class="grid-command-p btn-edit">处理</p>';
+                        }
                         str += '<p class="grid-command-p btn-delete">删除</p>';
                         return str;
                     }

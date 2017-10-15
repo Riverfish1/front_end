@@ -116,6 +116,7 @@
                         <div class="col-md-2 title-wrap">
                             <div class="<%= workFlow.currentNode.nodeIndex == k ? 'flow-title active' : 'flow-title' %>"> <%= node.nodeName %></div>
                             <span class="opertor"><%= node.operatorId %></span>
+                            <div class="comment"><%= node.comment %></div>
                             <% if(k < workFlow.nodeList.length-1){ %>
                                 <div class="<%= workFlow.currentNode.nodeIndex > k ? 'arrow-right active' : 'arrow-right' %>"></div>
                             <% } %>
@@ -130,7 +131,7 @@
         <div class="row">
             <label class="col-md-3 control-label">意见反馈</label>
             <div class="col-md-9">
-                <textarea type="text" name="comment" class="form-control"></textarea>
+                <textarea type="text" name="comment" id="comment" class="form-control"></textarea>
             </div>
         </div>
     <% } %>

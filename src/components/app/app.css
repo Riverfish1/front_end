@@ -730,3 +730,17 @@ input:-webkit-autofill {
 .flowWrapDetail .row{width: 1150px !important;}
 .flowWrapDetail .row .title-wrap{width: 80px; height: 100px !important; float: left;}
 .hidden{display: none;}
+.flowWrapDetail .row .comment{
+    max-height: 40px;
+    width: 120px;
+    overflow: auto;
+    margin-left: -35px;
+}
+
+
+
+
+
+.help-block {
+    color: rgb(217, 83, 79);
+}
