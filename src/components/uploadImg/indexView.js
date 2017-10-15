@@ -40,6 +40,7 @@ define([
 
                     // 文件接收服务端。
                     server: QUERY.IMG_UPLOAD,
+                    formData: { "path": "officeAreaRecord"},
 
                     // 选择文件的按钮。可选。
                     // 内部根据当前运行是创建，可能是input元素，也可能是flash.
@@ -95,15 +96,16 @@ define([
                 });
 
                 // 文件上传成功，给item添加成功class, 用样式标记上传成功。
-                uploader.on('uploadSuccess', function (file) {
-                    debugger;
+                uploader.on('uploadSuccess', function (file, response) {
                     var abc = $.extend({}, file);
                     $('#' + file.id).addClass('upload-state-done');
+                    if(response.success == true){
+                        $('#areaPhotoAddress').val(response.data[0]);
+                    }
                 });
 
                 // 文件上传失败，现实上传出错。
                 uploader.on('uploadError', function (file) {
-                    debugger;
                     var $li = $('#' + file.id),
                         $error = $li.find('div.error');
 

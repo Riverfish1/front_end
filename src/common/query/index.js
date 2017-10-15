@@ -94,6 +94,16 @@ define([], function () {
         WORK_AUTH_DELETE: '/api/workAuth/deleteById',
         WORK_AUTH_QUERY_BY_ID: '/api/workAuth/queryByUserId',
         WORK_AUTH_SELECT_BY_ID: '/api/workAuth/selectById',
+        //发文管理
+        WORK_SENDDOCUMENT_NEW: '/api/docsend/new',
+        WORK_SENDDOCUMENT_SUBMIT: '/api/docsend/submit',
+        WORK_SENDDOCUMENT_AGREE: '/api/docsend/agree',
+        WORK_SENDDOCUMENT_REJECT: '/api/docsend/reject',
+        WORK_SENDDOCUMENT_QUERY_BY_ID: '/api/docsend/queryByUserId',
+        WORK_SENDDOCUMENT_SELECT_BY_ID: '/api/docsend/selectById',
+        WORK_SENDDOCUMENT_UPDATE: '/api/docsend/updateById',
+        WORK_SENDDOCUMENT_DELETE: '/api/docsend/deleteById',
+
 
         // 一些基本正则
         TEL_REG: /(^(13\d|15[^4,\D]|17[13678]|18\d)\d{8}|170[^346,\D]\d{7})$/,

@@ -1,13 +1,13 @@
 <div class="loading" style="width:95%"></div>
 
 <form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
-    <input type="hidden" name="id" value="<%= id %>" id="id" />
-    <input type="hidden" name="status" value="<%= status %>" id="status" />
+    <input type="hidden" name="id" class="submit-assist" value="<%= id %>" id="id" />
+    <input type="hidden" name="status" class="submit-assist" value="<%= status %>" id="status" />
     <div class="form-group">
         <label class="col-md-3 control-label">标题</label>
         <div class="col-md-9">
             <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
-            <input type="text" name="title" class="form-control" value="<%= title %>">
+            <input type="text" name="title" class="form-control submit-assist" value="<%= title %>">
         </div>
     </div>
     <!--详情-->
@@ -36,7 +36,7 @@
     <div class="form-group">
         <label class="col-md-3 control-label">正文</label>
         <div class="col-md-9">
-            <textarea type="text" name="content" class="form-control" value="<%= content %>"></textarea>
+            <textarea type="text" name="content" class="form-control submit-assist" value="<%= content %>"></textarea>
         </div>
     </div>
     <!--新建-->
@@ -48,147 +48,46 @@
         <label class="col-md-3 control-label"></label>
         <div class="col-md-9">
             <div class="flowWrap">
-                <div class="row">
-                    <div class="col-md-3 title-wrap">
-                        <span class="flow-title">拟稿</span>
-                    </div>
-                    <div class="col-md-9">
-                        <span class="opertor">张晓军</span>
-                    </div>
-                    <div class="arrow-down"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 title-wrap">
-                        <span class="flow-title">领导审批</span>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="input-group">
-                            <input type="text" class="form-control test">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                </ul>
+                <% $.each(workFlow.nodeList, function(k, node){ %>
+                    <% if(k == 0){ %>
+                        <div class="row">
+                            <div class="col-md-3 title-wrap">
+                                <span class="flow-title"><%= node.nodeName %></span>
                             </div>
-                            <!-- /btn-group -->
-                        </div>
-                    </div>
-                    <div class="arrow-down"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 title-wrap">
-                        <span class="flow-title">会签</span>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="input-group">
-                            <input type="text" class="form-control test">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                </ul>
+                            <div class="col-md-9">
+                                <span class="opertor"><%= node.operatorId %></span>
                             </div>
-                            <!-- /btn-group -->
+                            <div class="arrow-down"></div>
+                            <!--<input type="hidden" name="nodeName" value="<%= node.nodeName %>">-->
+                            <input type="hidden" name="operatorId" class="submit-assist" value="<%= node.operatorId %>">
                         </div>
-                    </div>
-                    <div class="arrow-down"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 title-wrap">
-                        <span class="flow-title">审核</span>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="input-group">
-                            <input type="text" class="form-control test">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                </ul>
+                    <% } %>
+                    <% if(k > 0){ %>
+                        <div class="row">
+                            <div class="col-md-3 title-wrap">
+                                <span class="flow-title"><%= node.nodeName %></span>
                             </div>
-                            <!-- /btn-group -->
-                        </div>
-                    </div>
-                    <div class="arrow-down"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 title-wrap">
-                        <span class="flow-title">签发</span>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="input-group">
-                            <input type="text" class="form-control test">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                </ul>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <input type="text" class="form-control test">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                        </ul>
+                                    </div>
+                                    <!-- /btn-group -->
+                                </div>
                             </div>
-                            <!-- /btn-group -->
+                            <% if(k < workFlow.nodeList.length-1){ %>
+                                <div class="arrow-down"></div>
+                            <% } %>
+                            <!--<input type="hidden" name="nodeName" value="<%= node.nodeName %>">-->
+                            <input type="hidden" name="operatorId" class="submit-assist" value="<%= node.operatorId %>">
                         </div>
-                    </div>
-                    <div class="arrow-down"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 title-wrap">
-                        <span class="flow-title">印发</span>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="input-group">
-                            <input type="text" class="form-control test">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                </ul>
-                            </div>
-                            <!-- /btn-group -->
-                        </div>
-                    </div>
-                    <div class="arrow-down"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 title-wrap">
-                        <span class="flow-title">归档</span>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="input-group">
-                            <input type="text" class="form-control test">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                </ul>
-                            </div>
-                            <!-- /btn-group -->
-                        </div>
-                    </div>
-                    <div class="arrow-down"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 title-wrap">
-                        <span class="flow-title">承办</span>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="input-group">
-                            <input type="text" class="form-control test">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                </ul>
-                            </div>
-                            <!-- /btn-group -->
-                        </div>
-                    </div>
-                </div>
+                    <% } %>
+                <% }); %>
             </div>
         </div>
     </div>
@@ -259,7 +158,7 @@
     <div class="row">
         <label class="col-md-3 control-label">意见反馈</label>
         <div class="col-md-9">
-            <textarea type="text" name="dutyDescription" class="form-control" value="<%= dutyDescription %>"></textarea>
+            <textarea type="text" name="comment" class="form-control submit-assist" value="<%= comment %>"></textarea>
         </div>
     </div>
     <% } %>
