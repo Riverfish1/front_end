@@ -69,29 +69,41 @@ define([
             this.initSubmitForm();
         },
         initSuggest: function () {
+            var $data = [];
             $.each(this.$suggestWrap, function (k, el) {
-                $(el).bsSuggest('init', {
-                    type: 'post',
+                $(el).bsSuggest({
                     /*url: "/rest/sys/getuserlist?keyword=",
                      effectiveFields: ["userName", "email"],
                      searchFields: [ "shortAccount"],
                      effectiveFieldsAlias:{userName: "姓名"},*/
-                    effectiveFieldsAlias:{peopleName: "姓名", id: "ID", employeeNum: "工号"},
+                    effectiveFieldsAlias: {peopleName: "姓名", employeeNum: "工号"},
+                    effectiveFields: ['peopleName', 'employeeNum'],
                     clearable: true,
                     showHeader: true,
                     showBtn: false,
-                    data: {
-                        peopleName: $('#peopleName').val()
+                    getDataMethod: 'url',
+                    fnAdjustAjaxParam: function(keywords, opts) {
+                        return {
+                            method: 'post',
+                            data: JSON.stringify({
+                                peopleName: $('#peopleName').val()
+                            }),
+                            'contentType': 'application/json'
+                        };
+                    },
+                    processData: function(json) {
+                        var data = { value: [] };  
+                        $.each(json.data && json.data[0], function (i, r) {  
+                            data.value.push({ peopleName: r.peopleName, employeeNum: r.employeeNum, id: r.id })  
+                        })  
+                        return data;  
                     },
                     url: QUERY.FUZZY_QUERY,
                     idField: "id",
                     keyField: "peopleName"
-                }).on('onDataRequestSuccess', function (e, result) {
-                    console.log('onDataRequestSuccess: ', result);
                 }).on('onSetSelectValue', function (e, keyword, data) {
-                    console.log('onSetSelectValue: ', keyword, data);
-                }).on('onUnsetSelectValue', function () {
-                    console.log('onUnsetSelectValue');
+                    $('#intervieweeId').val(data.id);
+                    $('#intervieweeName').val(data.peopleName);
                 });
             })
         },

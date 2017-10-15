@@ -3,8 +3,6 @@
 define(['backbone'], function (Backbone) {
 
     var routesMap = {
-        // 首页
-        'index': 'src/components/home/indexController.js',
         // 办公区登记
         'register/officeArea': 'src/components/officeAreaRecord/indexController.js',
         // 办公室登记
