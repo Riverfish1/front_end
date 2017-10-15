@@ -3,6 +3,7 @@
 <form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
     <input type="hidden" name="id" class="submit-assist" value="<%= id %>" id="id" />
     <input type="hidden" name="status" class="submit-assist" value="<%= status %>" id="status" />
+    <input type="hidden" name="creatorId" class="submit-assist" value="<%= creatorId %>" id="creatorId" />
     <div class="form-group">
         <label class="col-md-3 control-label">标题</label>
         <div class="col-md-9">
@@ -11,36 +12,34 @@
         </div>
     </div>
     <!--详情-->
-    <% if(id && status != 3){ %>
+    <% if(workFlow.currentNode.nodeIndex != 0){ %>
     <div class="form-group">
         <label class="col-md-3 control-label">创建时间</label>
         <div class="col-md-9">
-            <input type="text" name="title" class="form-control" value="<%= title %>">
+            <input type="text" name="gmtCreate" class="form-control" value="<%= gmtCreate %>">
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">创建人</label>
         <div class="col-md-9">
             <input type="text" name="creatorName" class="form-control" value="<%= creatorName %>">
-            <input type="hidden" name="creatorId" value="<%= creatorId %>">
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">待操作人</label>
         <div class="col-md-9">
-            <input type="text" name="operatorId" class="form-control" value="<%= operatorId %>">
-            <input type="hidden" name="operatorName" value="<%= operatorName %>">
+            <input type="text" id="currentOperatorId" name="currentOperatorId" class="form-control" value="<%= currentOperatorId %>">
         </div>
     </div>
     <% } %>
     <div class="form-group">
         <label class="col-md-3 control-label">正文</label>
         <div class="col-md-9">
-            <textarea type="text" name="content" class="form-control submit-assist" value="<%= content %>"></textarea>
+            <textarea type="text" name="content" class="form-control submit-assist" value="<%= content %>"><%= content %></textarea>
         </div>
     </div>
     <!--新建-->
-    <% if(!id || status == 3){ %>
+    <% if(workFlow.currentNode.nodeIndex == 0){ %>
     <div class="row">
         <label class="col-md-3 control-label">审批流程设置</label>
     </div>
@@ -48,7 +47,7 @@
         <label class="col-md-3 control-label"></label>
         <div class="col-md-9">
             <div class="flowWrap">
-                <% $.each(workFlow.nodeList, function(k, node){ %>
+                <% $.each(workFlow.nodeList, function(k, node){ console.log("node1", node) %>
                     <% if(k == 0){ %>
                         <div class="row">
                             <div class="col-md-3 title-wrap">
@@ -93,7 +92,7 @@
     </div>
     <% } %>
     <!--详情-->
-    <% if(id && status != 3){ %>
+    <% if(workFlow.currentNode.nodeIndex != 0){ %>
     <div class="row">
         <label class="col-md-3 control-label">流程状态</label>
     </div>
@@ -102,64 +101,26 @@
         <div class="col-md-9">
             <div class="flowWrapDetail">
                 <div class="row">
-                    <div class="col-md-2 title-wrap">
-                        <div class="flow-title">拟稿</div>
-                        <span class="opertor">张晓军</span>
-                        <div class="arrow-down"></div>
-                    </div>
-                    <div class="col-md-2 title-wrap">
-                        <div class="flow-title">审批</div>
-                        <span class="opertor">李强</span>
-                        <div class="arrow-down"></div>
-                    </div>
-                    <div class="col-md-2 title-wrap">
-                        <div class="flow-title">会签</div>
-                        <span class="opertor">余健</span>
-                        <div class="arrow-down"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2 title-wrap">
-                        <div class="flow-title">审核</div>
-                        <span class="opertor">张晓军</span>
-                        <div class="arrow-left"></div>
-                    </div>
-                    <div class="col-md-2 title-wrap">
-                        <div class="flow-title">领导签发</div>
-                        <span class="opertor">李强</span>
-                        <div class="arrow-left"></div>
-                    </div>
-                    <div class="col-md-2 title-wrap">
-                        <div class="flow-title">印发</div>
-                        <span class="opertor">余健</span>
-                        <div class="arrow-left"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2 title-wrap">
-                        <div class="flow-title">发布</div>
-                        <span class="opertor">张晓军</span>
-                        <div class="arrow-down"></div>
-                    </div>
-                    <div class="col-md-2 title-wrap">
-                        <div class="flow-title">归档</div>
-                        <span class="opertor">李强</span>
-                        <div class="arrow-down"></div>
-                    </div>
-                    <div class="col-md-2 title-wrap">
-                        <div class="flow-title">承办</div>
-                        <span class="opertor">余健</span>
-                        <div class="arrow-down"></div>
-                    </div>
+                    <% $.each(workFlow.nodeList, function(k, node){ %>
+                        <div class="col-md-2 title-wrap">
+                            <div class="flow-title"><%= node.nodeName %></div>
+                            <span class="opertor"><%= node.operatorId %></span>
+                            <% if(k < workFlow.nodeList.length-1){ %>
+                                <div class="arrow-down"></div>
+                            <% } %>
+                        </div>
+                    <% }); %>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <label class="col-md-3 control-label">意见反馈</label>
-        <div class="col-md-9">
-            <textarea type="text" name="comment" class="form-control submit-assist" value="<%= comment %>"></textarea>
+    <% } %>
+    <% if((window.ownerPeopleId !=creatorId) && (role == "current")){ %>
+        <div class="row">
+            <label class="col-md-3 control-label">意见反馈</label>
+            <div class="col-md-9">
+                <textarea type="text" name="comment" class="form-control"></textarea>
+            </div>
         </div>
-    </div>
     <% } %>
 </form>

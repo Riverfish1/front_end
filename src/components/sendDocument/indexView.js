@@ -18,6 +18,7 @@ define([
             'click #btn-no': 'submitForm'
         },
         initialize: function () {
+            window.ownerPeopleId = 5;
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
         },
@@ -80,10 +81,13 @@ define([
         addOne: function (row) {
             //id不存在与staus==3都是新建；
             var initState = {
-                creatorId: 1,
-                operatorId: 2,
+                creatorId: 5,
+                currentOperatorId: 2,
+                creatorName: "张建军",
+                role: "current",
                 content: "",
                 title: "",
+                comment: "",
                 status: 10,
                 workFlow: {
                     currentNode: {operatorId: window.ownerPeopleId, nodeName: '拟稿', nodeStatus: '0', comment: '', nodeIndex: '0'},
@@ -102,6 +106,10 @@ define([
 
             };
             var row = row.id ? row : initState;
+            if(row.id){
+                row.workFlow = JSON.parse(row.workflowData);
+            }
+            console.log("row", row);
             this.showOrhideBtn(row);
             this.$editDialog.modal('show');
             this.$editDialog.modal({backdrop: 'static', keyboard: false});
@@ -128,7 +136,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.RECORD_POSTRECORD_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.WORK_SENDDOCUMENT_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();
@@ -174,33 +182,42 @@ define([
         submitForm: function (e) {
             var $btn = $(e.target), $status = $('#status'), index = $btn.attr('data-status');
             //根据点击按钮-修改status隐藏域值；
+            var urlMap = {
+                "0": QUERY.WORK_SENDDOCUMENT_NEW,
+                "1": QUERY.WORK_SENDDOCUMENT_SUBMIT,
+                "2": QUERY.WORK_SENDDOCUMENT_AGREE,
+                "3": QUERY.WORK_SENDDOCUMENT_REJECT
+            }
             $status.val(index);
             //驳回状态-草稿或提交时，清空反馈意见+审批流程相关数据；
             //已提交状态-通过与驳回，row + 新状态
             if (this.$editForm.valid()) {
                 var that = this;
-                // var $form = $(e.target).parents('.modal-content').find('#editForm');
-                // var data = $form.serialize();
-                // data = decodeURIComponent(data, true);
-                // var datas = serializeJSON(data);
                 var $inputs = that.$editForm.find('.submit-assist');
-                var params = {nodeList: []};
-
-                $.each($inputs, function (k, el) {
-                    var node = {};
-                    var $el = $(el), val = $el.val(), name = $el.attr('name');
-                    if(name == "operatorId"){
-                        node[name] = val;
-                        node.nodeName = $el.parents('.row').find('.flow-title').html();
-                        params.nodeList.push(node);
-                    }else if(name == 'status'){
-
-                    }else{
-                        params[name] = val;
-                    }
-                })
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_SENDDOCUMENT_UPDATE : QUERY.WORK_SENDDOCUMENT_NEW, JSON.stringify(params), function (res) {
+                var currentOperatorId = $('#currentOperatorId').val();
+                //保存
+                if(index == 0){
+                    var params = {workFlow:{nodeList: []}};
+                    $.each($inputs, function (k, el) {
+                        var node = {};
+                        var $el = $(el), val = $el.val(), name = $el.attr('name');
+                        if(name == "operatorId"){
+                            node[name] = val;
+                            node.nodeName = $el.parents('.row').find('.flow-title').html();
+                            params.workFlow.nodeList.push(node);
+                            // }else if(name == 'status' || name == "id"){
+                        }else if(name == 'status' || name == "id"){
+
+                        }else{
+                            params[name] = val;
+                        }
+                    })
+                }else{
+                    var params = {recordId: id, operatorId: currentOperatorId, comment: ""};
+                }
+
+                ncjwUtil.postData(urlMap[index], JSON.stringify(params), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$editDialog.modal('hide');
@@ -213,18 +230,25 @@ define([
                 })
             }
         },
-        parseFlowData: function () {
-
-        },
         showOrhideBtn: function (row) {
+            // this.$editDialog.find('.status-button').hide();
+            // // 创建人：新建、草稿、驳回状态显示-草稿与提交按钮
+            // if(this.isCreater(row) && (row.status == 10 || row.status == 0)){
+            //     this.$editDialog.find("#btn-draft,#btn-submit").show();
+            // }
+            // // 处理人：已提交状态显示-通过与驳回按钮
+            // if(this.isOpertor(row) && (row.status == 1)){
+            //     this.$editDialog.find("#btn-ok,#btn-on").show();
+            // }
             this.$editDialog.find('.status-button').hide();
-            // 创建人：新建、草稿、驳回状态显示-草稿与提交按钮
-            if(this.isCreater(row) && (row.status == 10 || row.status == 0)){
-                this.$editDialog.find("#btn-draft,#btn-submit").show();
-            }
-            // 处理人：已提交状态显示-通过与驳回按钮
-            if(this.isOpertor(row) && (row.status == 1)){
-                this.$editDialog.find("#btn-ok,#btn-on").show();
+            if(this.isCreater(row)){
+               if(row.role == "current"){
+                    this.$editDialog.find("#btn-draft,#btn-submit").show();
+               }
+            }else{
+                 if(row.role == "current"){
+                    this.$editDialog.find("#btn-ok,#btn-on").show();
+                }
             }
         },
         isCreater: function (row) {

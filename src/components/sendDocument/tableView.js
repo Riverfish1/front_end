@@ -22,8 +22,8 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_POSTRECORD_QUERY, //请求后台的URL（*）
-                method: 'post', //请求方式（*）
+                url: QUERY.WORK_SENDDOCUMENT_QUERY_BY_ID, //请求后台的URL（*）
+                method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
                 cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -47,27 +47,25 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'postName',
+                    field: 'title',
                     title: '发文标题',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'dutyDescription',
-                    title: '状态',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'dutyDescription',
+                    field: 'creatorId',
                     title: '创建人',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'staffingLevel',
+                    field: 'gmtCreate',
                     title: '创建日期',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return value ? ncjwUtil.timeTurn(value) : "";
+                    }
                 }, {
-                    field: 'dutyDescription',
+                    field: 'currentOperatorId',
                     title: '待操作人',
                     align: 'center',
                     valign: "middle"
@@ -95,7 +93,9 @@ define(['../../common/query/index'], function (QUERY) {
         queryParams: function (params) {
             var temp = {
                 pageNum: params.offset / params.limit,
-                pageSize: params.limit
+                pageSize: params.limit,
+                id: window.ownerPeopleId
+
             };
             return temp;
         },
