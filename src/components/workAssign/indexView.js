@@ -35,6 +35,7 @@ define([
                      effectiveFields: ["userName", "email"],
                      searchFields: [ "shortAccount"],
                      effectiveFieldsAlias:{userName: "姓名"},*/
+                    effectiveFieldsAlias:{userName: "姓名", userId: "ID", number: "工号"},
                     clearable: true,
                     showHeader: true,
                     showBtn: false,
