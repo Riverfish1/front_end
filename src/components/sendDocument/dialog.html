@@ -80,7 +80,8 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <input type="text" class="form-control test">
-                                    <input type="text"  name="operatorId" class="submit-assist operatorId" value="<%= node.operatorId %>">
+                                    <input type="text"  name="<%= 'operator_valid' + k %>" class="operatorId" value="<%= node.operatorId %>">
+                                    <input type="hidden"  name="operatorId" class="submit-assist" value="<%= node.operatorId %>">
                                     <div class="input-group-btn">
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
