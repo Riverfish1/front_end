@@ -53,12 +53,17 @@ define(['backbone'], function (Backbone) {
         '*actions': 'defaultAction'
     };
 
+    var isFirst = true;
+
     var Router = Backbone.Router.extend({
 
         routes: routesMap,
 
         defaultAction: function () {
-            location.hash = '#/register/officeArea';
+            if(isFirst){
+                location.hash = '#/register/officeArea';
+                isFirst = false;
+            }
         }
 
     });

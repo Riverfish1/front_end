@@ -105,6 +105,42 @@ define([], function () {
         WORK_SENDDOCUMENT_SELECT_BY_ID: '/api/docsend/selectById',
         WORK_SENDDOCUMENT_UPDATE: '/api/docsend/updateById',
         WORK_SENDDOCUMENT_DELETE: '/api/docsend/deleteById',
+        //收文管理
+        WORK_RECEIVEDOCUMENT_NEW: '/api/docrecv/new',
+        WORK_RECEIVEDOCUMENT_SUBMIT: '/api/docrecv/submit',
+        WORK_RECEIVEDOCUMENT_AGREE: '/api/docrecv/agree',
+        WORK_RECEIVEDOCUMENT_REJECT: '/api/docrecv/reject',
+        WORK_RECEIVEDOCUMENT_QUERY_BY_ID: '/api/docrecv/queryByUserId',
+        WORK_RECEIVEDOCUMENT_SELECT_BY_ID: '/api/docrecv/selectById',
+        WORK_RECEIVEDOCUMENT_UPDATE: '/api/docrecv/updateById',
+        WORK_RECEIVEDOCUMENT_DELETE: '/api/docrecv/deleteById',
+        //请示报告
+        WORK_REQUESTDOCUMENT_NEW: '/api/workReport/new',
+        WORK_REQUESTDOCUMENT_SUBMIT: '/api/workReport/submit',
+        WORK_REQUESTDOCUMENT_AGREE: '/api/workReport/agree',
+        WORK_REQUESTDOCUMENT_REJECT: '/api/workReport/reject',
+        WORK_REQUESTDOCUMENT_QUERY_BY_ID: '/api/workReport/queryByUserId',
+        WORK_REQUESTDOCUMENT_SELECT_BY_ID: '/api/workReport/selectById',
+        WORK_REQUESTDOCUMENT_UPDATE: '/api/workReport/updateById',
+        WORK_REQUESTDOCUMENT_DELETE: '/api/workReport/deleteById',
+        //交办协办
+        WORK_WORKASSIGN_NEW: '/api/cooperation/new',
+        WORK_WORKASSIGN_SUBMIT: '/api/cooperation/submit',
+        WORK_WORKASSIGN_AGREE: '/api/cooperation/agree',
+        WORK_WORKASSIGN_REJECT: '/api/cooperation/reject',
+        WORK_WORKASSIGN_QUERY_BY_ID: '/api/cooperation/queryByUserId',
+        WORK_WORKASSIGN_SELECT_BY_ID: '/api/cooperation/selectById',
+        WORK_WORKASSIGN_UPDATE: '/api/cooperation/updateById',
+        WORK_WORKASSIGN_DELETE: '/api/cooperation/deleteById',
+        //通知管理
+        WORK_NOTICEMANAGE_NEW: '/api/noticeRecord/new',
+        WORK_NOTICEMANAGE_SUBMIT: '/api/noticeRecord/submit',
+        WORK_NOTICEMANAGE_AGREE: '/api/noticeRecord/agree',
+        WORK_NOTICEMANAGE_REJECT: '/api/noticeRecord/reject',
+        WORK_NOTICEMANAGE_QUERY_BY_ID: '/api/noticeRecord/queryByUserId',
+        WORK_NOTICEMANAGE_SELECT_BY_ID: '/api/noticeRecord/selectById',
+        WORK_NOTICEMANAGE_UPDATE: '/api/noticeRecord/updateById',
+        WORK_NOTICEMANAGE_DELETE: '/api/noticeRecord/deleteById',
 
 
         // 一些基本正则
