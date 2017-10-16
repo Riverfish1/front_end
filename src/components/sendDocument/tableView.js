@@ -20,7 +20,6 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable('refresh');
         },
         init: function () {
-            var that = this;
             this.$el.bootstrapTable({
                 url: QUERY.WORK_SENDDOCUMENT_QUERY_BY_ID, //请求后台的URL（*）
                 method: 'get', //请求方式（*）
@@ -52,7 +51,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'creatorId',
+                    field: 'creatorName',
                     title: '创建人',
                     align: 'center',
                     valign: "middle"
@@ -73,7 +72,7 @@ define(['../../common/query/index'], function (QUERY) {
                         return value ? JSON.parse(value).currentNode.nodeName : '';
                     }
                 }, {
-                    field: 'currentOperatorId',
+                    field: 'currentOperatorName',
                     title: '待操作人',
                     align: 'center',
                     valign: "middle"

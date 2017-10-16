@@ -19,6 +19,7 @@ define([
         },
         initialize: function () {
             window.ownerPeopleId = 4;
+            window.ownerPeopleName = "张三";
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
         },
@@ -70,10 +71,12 @@ define([
                 }).on('onSetSelectValue', function (e, keyword, data) {
                     var $row = $(e.target).parents('.row')
                     var $operatorId = $row.find('input[name=operatorId]');
+                    var $operatorName = $row.find('input[name=operatorName]');
                     var $validInput = $row.find('.operatorId');
                     var $helpBlock = $row.find('.help-block');
                     $validInput.val(data.id);
                     $operatorId.val(data.id);
+                    $operatorName.val(data.peopleName);
                     $helpBlock.remove();
                     // console.log('onSetSelectValue: ', keyword, data, $validInput.val(data.id), $operatorId.val());
                 }).on('onUnsetSelectValue', function () {
@@ -106,24 +109,25 @@ define([
             //id不存在与staus==3都是新建；
             var initState = {
                 creatorId: window.ownerPeopleId,
+                creatorName: window.ownerPeopleName,
                 currentOperatorId: window.ownerPeopleId,
-                creatorName: "张建军",
+                currentOperatorName: window.ownerPeopleName,
                 role: "current",
                 content: "",
                 title: "",
                 comment: "",
                 status: 10,
                 workFlow: {
-                    currentNode: {operatorId: window.ownerPeopleId, nodeName: '拟稿', nodeStatus: '0', comment: '', nodeIndex: '0'},
+                    currentNode: {operatorId: window.ownerPeopleId, nodeName: '拟稿', operatorName: window.ownerPeopleName, nodeStatus: '0', comment: '', nodeIndex: '0'},
                     nodeList: [
-                        {operatorId: window.ownerPeopleId, nodeName: '拟稿'},
-                        {operatorId: "", nodeName: '领导审批'},
-                        {operatorId: "", nodeName: '会签'},
-                        {operatorId: "", nodeName: '审核'},
-                        {operatorId: "", nodeName: '签发'},
-                        {operatorId: "", nodeName: '印发'},
-                        {operatorId: "", nodeName: '归档'},
-                        {operatorId: "", nodeName: '承办'}
+                        {operatorId: window.ownerPeopleId, nodeName: '拟稿', operatorName: window.ownerPeopleName},
+                        {operatorId: "", nodeName: '领导审批', operatorName: ""},
+                        {operatorId: "", nodeName: '会签', operatorName: ""},
+                        {operatorId: "", nodeName: '审核', operatorName: ""},
+                        {operatorId: "", nodeName: '签发', operatorName: ""},
+                        {operatorId: "", nodeName: '印发', operatorName: ""},
+                        {operatorId: "", nodeName: '归档', operatorName: ""},
+                        {operatorId: "", nodeName: '承办', operatorName: ""}
                     ]
                 },
                 id: ''
@@ -134,7 +138,6 @@ define([
                 row.workFlow = JSON.parse(row.workflowData);
                 row.gmtCreate = ncjwUtil.timeTurn(row.gmtCreate);
             }
-            console.log("row", row);
             this.showOrhideBtn(row);
             this.$editDialog.modal('show');
             this.$editDialog.modal({backdrop: 'static', keyboard: false});
@@ -149,8 +152,7 @@ define([
         },
         setBssuggestValue: function (row) {
             $.each(this.$suggestWrap, function (k, el) {
-                $(el).val(row.workFlow.nodeList[k].operatorId);
-                console.log("el", $(el), $(el).val())
+                $(el).val(row.workFlow.nodeList[k].operatorName);
             });
         },
         delOne: function (row) {
@@ -269,6 +271,7 @@ define([
                         var $el = $(el), val = $el.val(), name = $el.attr('name');
                         if (name == "operatorId") {
                             node[name] = val;
+                            node.operatorName = $el.parents('.row').find('input[name=operatorName]').val();
                             node.nodeName = $el.parents('.row').find('.flow-title').html();
                             params.workFlow.nodeList.push(node);
                             // }else if(name == 'status' || name == "id"){
@@ -282,7 +285,7 @@ define([
                     //提交也是创建人；
                     if(index == 1){
                         currentOperatorId = window.ownerPeopleId;
-                        comment = "可以提交了";
+                        comment = "";
                     }
                     var params = {recordId: id, operatorId: currentOperatorId, comment: comment};
                 }
