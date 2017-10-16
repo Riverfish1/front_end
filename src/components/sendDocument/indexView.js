@@ -18,7 +18,7 @@ define([
             'click #btn-no': 'submitForm'
         },
         initialize: function () {
-            window.ownerPeopleId = 5;
+            window.ownerPeopleId = 4;
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
         },
@@ -38,7 +38,7 @@ define([
                      effectiveFields: ["userName", "email"],
                      searchFields: [ "shortAccount"],
                      effectiveFieldsAlias:{userName: "姓名"},*/
-                    effectiveFieldsAlias: {peopleName: "姓名", id: "ID", number: "工号"},
+                    effectiveFieldsAlias: {peopleName: "姓名", id: "ID", employeeNum: "工号"},
                     clearable: true,
                     showHeader: true,
                     showBtn: false,
@@ -46,9 +46,9 @@ define([
                     getDataMethod: "url",
                     delayUntilKeyup: true,
                     // url: "src/components/sendDocument/data.json",
-                    // idField: "userId",
-                    // keyField: "userName",
-                    // url: QUERY.FUZZY_QUERY,
+                    url: QUERY.FUZZY_QUERY,
+                    idField: "id",
+                    keyField: "peopleName",
                     fnAdjustAjaxParam: function (keyword, opts) {
                         return {
                             method: 'post',
@@ -64,19 +64,18 @@ define([
                             data.value.push({peopleName: r.peopleName, employeeNum: r.employeeNum, id: r.id})
                         })
                         return data;
-                    },
-                    url: QUERY.FUZZY_QUERY,
-                    idField: "id",
-                    keyField: "peopleName"
+                    }
                 }).on('onDataRequestSuccess', function (e, result) {
-                    console.log('onDataRequestSuccess: ', result);
+                    // console.log('onDataRequestSuccess: ', result);
                 }).on('onSetSelectValue', function (e, keyword, data) {
                     var $row = $(e.target).parents('.row')
                     var $operatorId = $row.find('input[name=operatorId]');
                     var $validInput = $row.find('.operatorId');
+                    var $helpBlock = $row.find('.help-block');
                     $validInput.val(data.id);
                     $operatorId.val(data.id);
-                    console.log('onSetSelectValue: ', keyword, data, $validInput.val(data.id), $operatorId.val());
+                    $helpBlock.remove();
+                    // console.log('onSetSelectValue: ', keyword, data, $validInput.val(data.id), $operatorId.val());
                 }).on('onUnsetSelectValue', function () {
                     console.log('onUnsetSelectValue');
                 });
@@ -106,8 +105,8 @@ define([
         addOne: function (row) {
             //id不存在与staus==3都是新建；
             var initState = {
-                creatorId: 5,
-                currentOperatorId: 2,
+                creatorId: window.ownerPeopleId,
+                currentOperatorId: window.ownerPeopleId,
                 creatorName: "张建军",
                 role: "current",
                 content: "",
@@ -248,7 +247,7 @@ define([
             //根据点击按钮-修改status隐藏域值；
             var id = $('#id').val();
             var urlMap = {
-                "0": id ? QUERY.WORK_SENDDOCUMENT_NEW : QUERY.WORK_SENDDOCUMENT_UPDATE,
+                "0": id ? QUERY.WORK_SENDDOCUMENT_UPDATE : QUERY.WORK_SENDDOCUMENT_NEW,
                 "1": QUERY.WORK_SENDDOCUMENT_SUBMIT,
                 "2": QUERY.WORK_SENDDOCUMENT_AGREE,
                 "3": QUERY.WORK_SENDDOCUMENT_REJECT
@@ -273,13 +272,18 @@ define([
                             node.nodeName = $el.parents('.row').find('.flow-title').html();
                             params.workFlow.nodeList.push(node);
                             // }else if(name == 'status' || name == "id"){
-                        } else if (name == 'status' || name == "id") {
+                        } else if (name == 'status') {
 
                         } else {
                             params[name] = val;
                         }
                     })
                 } else {
+                    //提交也是创建人；
+                    if(index == 1){
+                        currentOperatorId = window.ownerPeopleId;
+                        comment = "可以提交了";
+                    }
                     var params = {recordId: id, operatorId: currentOperatorId, comment: comment};
                 }
 
