@@ -37,8 +37,6 @@ define([
             var p = this;
             var params = {
                 id: row.id,
-                peopleId: row.peopleId,
-                summaryContentStatus: type === 'pass' ? 1 : 2
             };
             bootbox.confirm({
                 buttons: {
@@ -53,7 +51,7 @@ define([
                 message: '确认' + (type === 'pass' ? '通过' : '驳回') + '吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.WORK_SUMMARY_UPDATE, JSON.stringify(params), function (res) {
+                        ncjwUtil.postData(type === 'pass' ? QUERY.WORK_SUMMARY_AGREE : QUERY.WORK_SUMMARY_REJECT, JSON.stringify(params), function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('成功' + (type === 'pass' ? '通过！' : '驳回！'));
                                 p.table.refresh();

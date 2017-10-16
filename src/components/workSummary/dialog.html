@@ -11,6 +11,20 @@
         </div>
     </div>
     <div class="form-group">
+        <label class="col-md-2 control-label">领导姓名：</label>
+        <div class="col-md-9">
+            <input type="text" id="leaderName" class="form-control test" value="<%= leaderName %>">
+            <input type="hidden" name="leaderId" value="<%= leaderId %>">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
         <label class="col-md-2 control-label">标题：</label>
         <div class="col-md-9">
             <input type="text" name="summaryTitle" class="form-control" value="<%= summaryTitle %>">

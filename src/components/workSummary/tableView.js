@@ -22,8 +22,8 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.WORK_SUMMARY_QUERY, //请求后台的URL（*）
-                method: 'post', //请求方式（*）
+                url: QUERY.WORK_SUMMARY_QUERY_BY_PEOPLE, //请求后台的URL（*）
+                method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
                 cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -57,6 +57,11 @@ define(['../../common/query/index'], function (QUERY) {
                         return date;
                     }
                 }, {
+                    field: 'leaderName',
+                    title: '领导姓名',
+                    align: 'center',
+                    valign: 'middle'
+                }, {
                     field: 'summaryTitle',
                     title: '标题',
                     align: 'center',
@@ -81,9 +86,9 @@ define(['../../common/query/index'], function (QUERY) {
                     valign: "middle",
                     formatter: function (value) {
                         switch (value) {
-                            case '0': return '未审阅';
-                            case '1': return '已通过';
-                            case '2': return '已驳回';
+                            case 'create': return '未审阅';
+                            case 'agree': return '已通过';
+                            case 'reject': return '已驳回';
                             default: return '-';
                         }
                     }
@@ -95,7 +100,6 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-check">提交审核</p>';
                         str += '<p class="grid-command-p btn-edit">修改</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
                         str += '<p class="grid-command-p btn-view">查看</p>';
@@ -114,15 +118,13 @@ define(['../../common/query/index'], function (QUERY) {
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
+                id: window.ownerPeopleId
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()
             };
             return temp;
         },
         operateEvents: {
-            'click .btn-check': function (e, value, row, index) {
-                Backbone.trigger('itemCheck', row);
-            },
             'click .btn-edit': function (e, value, row, index) {
                 Backbone.trigger('itemEdit', row);
             },
