@@ -691,6 +691,17 @@ input:-webkit-autofill {
     top: 30px;
     background: url(../../../static/images/arrow_down.png) no-repeat -12px -110px;)
 }
+.flowWrap .row .operatorId{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.flowWrap .row .input-group .help-block{
+    position: absolute;
+    width: 100px;
+    top: 29px;
+    left: 0;
+}
 .flowWrapDetail .title-wrap{position: relative; margin-right: 60px;text-align: center; font-size: 14px; padding-right: 0;}
 .flowWrapDetail .flow-title{
     width: 60px;
@@ -736,6 +747,7 @@ input:-webkit-autofill {
     overflow: auto;
     margin-left: -35px;
 }
+
 
 
 

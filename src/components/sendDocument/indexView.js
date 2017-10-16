@@ -118,7 +118,7 @@ define([
             this.$suggestWrap = this.$editDialogPanel.find('.test');
             this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
-            this.setBssuggestValue(row);
+            row.id && (this.setBssuggestValue(row));
             this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
@@ -166,8 +166,10 @@ define([
                     title: {
                         required: true
                     },
-
-                    gmtCreate: {
+                    content: {
+                         required: true
+                    },
+                    operatorId: {
                         required: true
                     },
                     comment: {
@@ -176,7 +178,8 @@ define([
                 },
                 messages: {
                     title: "请填写标题",
-                    gmtCreate: "请输入时间",
+                    content: "请填写正文",
+                    operatorId: "请选择接收人",
                     comment: "请填写审核意见"
                 },
                 highlight: function (element) {

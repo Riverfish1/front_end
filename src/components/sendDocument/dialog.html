@@ -69,7 +69,7 @@
                             </div>
                             <div class="arrow-down"></div>
                             <!--<input type="hidden" name="nodeName" value="<%= node.nodeName %>">-->
-                            <input type="hidden" name="operatorId" class="submit-assist" value="<%= node.operatorId %>">
+                            <input type="hidden"  name="operatorId" class="submit-assist" value="<%= node.operatorId %>">
                         </div>
                     <% } %>
                     <% if(k > 0){ %>
@@ -80,6 +80,7 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <input type="text" class="form-control test">
+                                    <input type="text"  name="operatorId" class="submit-assist operatorId" value="<%= node.operatorId %>">
                                     <div class="input-group-btn">
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
@@ -94,7 +95,6 @@
                                 <div class="arrow-down"></div>
                             <% } %>
                             <!--<input type="hidden" name="nodeName" value="<%= node.nodeName %>">-->
-                            <input type="hidden" name="operatorId" class="submit-assist" value="<%= node.operatorId %>">
                         </div>
                     <% } %>
                 <% }); %>
