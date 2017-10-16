@@ -27,13 +27,13 @@
     <div class="form-group">
         <label class="col-md-3 control-label">创建人</label>
         <div class="col-md-9">
-            <input type="text" name="creatorId" disabled class="form-control" value="<%= creatorId %>">
+            <input type="text" name="creatorName" disabled class="form-control" value="<%= creatorName %>">
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">待操作人</label>
         <div class="col-md-9">
-            <input type="text" id="currentOperatorId" disabled name="currentOperatorId" class="form-control" value="<%= currentOperatorId %>">
+            <input type="text" id="currentOperatorName" disabled name="currentOperatorName" class="form-control" value="<%= currentOperatorName %>">
         </div>
     </div>
     <div class="form-group">
@@ -65,11 +65,12 @@
                                 <span class="flow-title"><%= node.nodeName %></span>
                             </div>
                             <div class="col-md-9">
-                                <span class="opertor"><%= node.operatorId %></span>
+                                <span class="opertor"><%= node.operatorName %></span>
                             </div>
                             <div class="arrow-down"></div>
                             <!--<input type="hidden" name="nodeName" value="<%= node.nodeName %>">-->
-                            <input type="hidden" name="operatorId" class="submit-assist" value="<%= node.operatorId %>">
+                            <input type="hidden"  name="operatorId" class="submit-assist" value="<%= node.operatorId %>">
+                            <input type="hidden"  name="operatorName" class="submit-assist" value="<%= node.operatorName %>">
                         </div>
                     <% } %>
                     <% if(k > 0){ %>
@@ -80,6 +81,9 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <input type="text" class="form-control test">
+                                    <input type="text"  name="<%= 'operator_valid' + k %>" class="operatorId" value="<%= node.operatorId %>">
+                                    <input type="hidden"  name="operatorId" class="submit-assist" value="<%= node.operatorId %>">
+                                    <input type="hidden"  name="operatorName" class="submit-assist" value="<%= node.operatorName %>">
                                     <div class="input-group-btn">
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
@@ -94,7 +98,6 @@
                                 <div class="arrow-down"></div>
                             <% } %>
                             <!--<input type="hidden" name="nodeName" value="<%= node.nodeName %>">-->
-                            <input type="hidden" name="operatorId" class="submit-assist" value="<%= node.operatorId %>">
                         </div>
                     <% } %>
                 <% }); %>
@@ -115,7 +118,8 @@
                     <% $.each(workFlow.nodeList, function(k, node){ %>
                         <div class="col-md-2 title-wrap">
                             <div class="<%= workFlow.currentNode.nodeIndex == k ? 'flow-title active' : 'flow-title' %>"> <%= node.nodeName %></div>
-                            <span class="opertor"><%= node.operatorId %></span>
+                            <span class="opertor"><%= node.operatorName %></span>
+                            <div class="comment"><%= node.comment %></div>
                             <% if(k < workFlow.nodeList.length-1){ %>
                                 <div class="<%= workFlow.currentNode.nodeIndex > k ? 'arrow-right active' : 'arrow-right' %>"></div>
                             <% } %>
@@ -130,7 +134,7 @@
         <div class="row">
             <label class="col-md-3 control-label">意见反馈</label>
             <div class="col-md-9">
-                <textarea type="text" name="comment" class="form-control"></textarea>
+                <textarea type="text" name="comment" id="comment" class="form-control"></textarea>
             </div>
         </div>
     <% } %>

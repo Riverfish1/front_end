@@ -147,6 +147,7 @@
         window.bootbox = Bootbox;
         window.WebUploader = WebUploader;
         Backbone.history.start();   //开始监控url变化
+        // window.location.href = "/#/register/officeArea";
     });
 
 })(window);

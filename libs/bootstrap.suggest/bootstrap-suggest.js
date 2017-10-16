@@ -71,7 +71,6 @@
      * 设置选中的值
      */
     function setValue($input, keywords, options) {
-        debugger;
         if (!keywords || !keywords.key) {
             return;
         }

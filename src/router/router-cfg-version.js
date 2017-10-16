@@ -48,10 +48,9 @@ define(['backbone'], function (Backbone) {
         // 交办协办
         'work/workAssign': 'src/components/workAssign/indexController.js',
         // 通知管理
-        'work/noticeManage': 'src/components/noticeManage/indexController.js'
+        'work/noticeManage': 'src/components/noticeManage/indexController.js',
 
-
-        // '*actions': 'defaultAction'
+        '*actions': 'defaultAction'
     };
 
     var Router = Backbone.Router.extend({
@@ -59,7 +58,7 @@ define(['backbone'], function (Backbone) {
         routes: routesMap,
 
         defaultAction: function () {
-            location.hash = 'module2';
+            location.hash = '#/register/officeArea';
         }
 
     });

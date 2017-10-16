@@ -691,6 +691,17 @@ input:-webkit-autofill {
     top: 30px;
     background: url(../../../static/images/arrow_down.png) no-repeat -12px -110px;)
 }
+.flowWrap .row .operatorId{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.flowWrap .row .input-group .help-block{
+    position: absolute;
+    width: 100px;
+    top: 29px;
+    left: 0;
+}
 .flowWrapDetail .title-wrap{position: relative; margin-right: 60px;text-align: center; font-size: 14px; padding-right: 0;}
 .flowWrapDetail .flow-title{
     width: 60px;
@@ -730,3 +741,18 @@ input:-webkit-autofill {
 .flowWrapDetail .row{width: 1150px !important;}
 .flowWrapDetail .row .title-wrap{width: 80px; height: 100px !important; float: left;}
 .hidden{display: none;}
+.flowWrapDetail .row .comment{
+    max-height: 40px;
+    width: 120px;
+    overflow: auto;
+    margin-left: -35px;
+}
+
+
+
+
+
+
+.help-block {
+    color: rgb(217, 83, 79);
+}
