@@ -22,8 +22,8 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.WORK_SUMMARY_QUERY, //请求后台的URL（*）
-                method: 'post', //请求方式（*）
+                url: QUERY.WORK_SUMMARY_QUERY_BY_LEADER, //请求后台的URL（*）
+                method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
                 cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -81,28 +81,32 @@ define(['../../common/query/index'], function (QUERY) {
                     }
                 }, {
                     field: 'summaryStatus',
-                    title: '状态',
+                    title: '小结状态',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value) {
                         switch (value) {
-                            case '0': return '未审阅';
-                            case '1': return '已通过';
-                            case '2': return '已驳回';
+                            case 'create': return '未审阅';
+                            case 'agree': return '已通过';
+                            case 'reject': return '已驳回';
                             default: return '-';
                         }
                     }
                 }, {
-                    field: 'status',
+                    field: 'oper',
                     title: '操作',
                     align: 'center',
                     valign: "middle",
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-pass">通过</p>';
-                        str += '<p class="grid-command-p btn-reject">驳回</p>';
-                        str += '<p class="grid-command-p btn-view">查看</p>';
+                        if (row.summaryStatus === 'create') {
+                            str += '<p class="grid-command-p btn-pass">通过</p>';
+                            str += '<p class="grid-command-p btn-reject">驳回</p>';
+                            str += '<p class="grid-command-p btn-view">查看</p>';
+                        } else {
+                            str += '<p class="grid-command-p btn-view">查看</p>';
+                        }
                         return str;
                     }
                 }],
@@ -118,7 +122,7 @@ define(['../../common/query/index'], function (QUERY) {
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
-                peopleId: window.ownerPeopleId
+                id: window.ownerPeopleId
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()
             };

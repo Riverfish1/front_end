@@ -13,8 +13,8 @@ define([
         events: {
             'click #btn_add': 'showContent',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
             'click #submitBtn': 'submitForm',
-            'change #assignor': 'searchAssignor',
-            'change #assignee': 'searchAssignee'
+            'change #creatorId': 'searchAssignor',
+            'change #targetId': 'searchAssignee'
         },
         initialize: function () {
             Backbone.off('itemUpdate').on('itemUpdate', this.showContent, this);
@@ -29,24 +29,10 @@ define([
             this.table.render();
             return this;
         },
-        searchAssignor: function (value) {
-            var p = this;
-            var params = {
-                id: window.ownerPeopleId,
-                value: value
-            };
-            // ncjwUtil.postData(QUERY.WORK_AUTH_QUERY_BY_ID, JSON.stringify(params), function() {
-            //     if (res.success) {
-            //         p.$officeDialogPanel.html(getDialogContent({}))
-            //     }
-            // }, {
-            //     'contentType': 'application/json'
-            // });
-        },
         showContent: function (row) {
             var initState = {
-                assignor: '',
-                asignee: '',
+                creatorId: '',
+                targetId: '',
                 startTime: '',
                 endTime: '',
                 id: ''
@@ -63,8 +49,75 @@ define([
                 todayHighlight: true,
                 format: 'yyyy-mm-dd'
             });
+            this.$suggestWrap = this.$officeDialogPanel.find('.test');
+            this.$suggestBtn = this.$suggestWrap.find('button');
+            this.initSuggest();
+            this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
+        },
+
+        initSuggest: function () {
+            var $data = [];
+            $.each(this.$suggestWrap, function (k, el) {
+                console.log(k, el);
+                $(el).bsSuggest({
+                    /*url: "/rest/sys/getuserlist?keyword=",
+                     effectiveFields: ["userName", "email"],
+                     searchFields: [ "shortAccount"],
+                     effectiveFieldsAlias:{userName: "姓名"},*/
+                    effectiveFieldsAlias: {peopleName: "姓名", employeeNum: "工号"},
+                    effectiveFields: ['peopleName', 'employeeNum'],
+                    clearable: true,
+                    showHeader: true,
+                    showBtn: false,
+                    getDataMethod: 'url',
+                    fnAdjustAjaxParam: function(keywords, opts) {
+                        return {
+                            method: 'post',
+                            data: JSON.stringify({
+                                peopleName: $(el).val()
+                            }),
+                            'contentType': 'application/json'
+                        };
+                    },
+                    processData: function(json) {
+                        var data = { value: [] };  
+                        $.each(json.data && json.data[0], function (i, r) {  
+                            data.value.push({ peopleName: r.peopleName, employeeNum: r.employeeNum, id: r.id })  
+                        })  
+                        return data;  
+                    },
+                    url: QUERY.FUZZY_QUERY,
+                    idField: "id",
+                    keyField: "peopleName"
+                }).on('onSetSelectValue', function (e, keyword, data) {
+                    console.log(data);
+                    $(el).next('input').val(data.id);
+                    $(el).val(data.peopleName);
+                });
+            })
+        },
+        initBtnEvent: function () {
+            var method = $(this).text();
+            var $i;
+
+            if (method === 'init') {
+                this.initSuggest();
+            } else {
+                $i = this.$suggestWrap.bsSuggest(method);
+                if (typeof $i === 'object') {
+                    $i = $i.data('bsSuggest');
+                }
+                console.log(method, $i);
+                if (!$i) {
+                    alert('未初始化或已销毁');
+                }
+            }
+
+            if (method === 'version') {
+                alert($i);
+            }
         },
         delOne: function (row) {
             var that = this;
@@ -83,10 +136,10 @@ define([
                     if (result) {
                         ncjwUtil.postData(QUERY.WORK_AUTH_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
-                                ncjwUtil.showInfo('删除成功');
+                                ncjwUtil.showInfo('取消成功');
                                 that.table.refresh();
                             } else {
-                                ncjwUtil.showError("删除失败：" + res.errorMsg);
+                                ncjwUtil.showError("取消失败：" + res.errorMsg);
                             }
                         })
                     }
@@ -131,11 +184,11 @@ define([
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.WORK_AUTH_UPDATE : QUERY.WORK_AUTH_INSERT, datas, function (res) {
                     if (res.success) {
-                        ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
+                        ncjwUtil.showInfo(id ? '变更成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
                         that.table.refresh();
                     } else {
-                        ncjwUtil.showError("保存失败：" + res.errorMsg);
+                        ncjwUtil.showError("提交失败：" + res.errorMsg);
                     }
                 }, {
                     "contentType": 'application/json'

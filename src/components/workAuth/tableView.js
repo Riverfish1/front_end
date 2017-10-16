@@ -23,7 +23,7 @@ define(['../../common/query/index'], function (QUERY) {
             var that = this;
             this.$el.bootstrapTable({
                 url: QUERY.WORK_AUTH_QUERY, //请求后台的URL（*）
-                method: 'post', //请求方式（*）
+                method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
                 cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -63,12 +63,12 @@ define(['../../common/query/index'], function (QUERY) {
                         return ncjwUtil.timeTurn(value);
                     }
                 }, {
-                    field: 'assignor',
+                    field: 'creatorName',
                     title: '授权者',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'assignee',
+                    field: 'targetName',
                     title: '被授权者',
                     align: 'center',
                     valign: "middle"
@@ -76,14 +76,7 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'status',
                     title: '状态',
                     align: 'center',
-                    valign: "middle",
-                    formatter: function (value) {
-                        switch (value) {
-                            case '0': return '授权中';
-                            case '1': return '已过期';
-                            default: return '-';
-                        }
-                    }
+                    valign: "middle"
                 }, {
                     field: 'oper',
                     title: '操作',
@@ -92,7 +85,7 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        if (row.status === '0') {
+                        if (row.status === '授权中') {
                             str += '<p class="grid-command-p btn-cancel">取消</p>';
                             str += '<p class="grid-command-p btn-change">变更</p>';
                         } else {
@@ -113,6 +106,7 @@ define(['../../common/query/index'], function (QUERY) {
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
+                id: 5
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()
             };

@@ -33,7 +33,7 @@ define([
             return this;
         },
         changeMeeting: function (row) {
-            var initState = {id: '', userId: 100, startTime: '', endTime: '', place: '', conferenceRoom: '', conferenceTheme: ''};
+            var initState = {id: '', startTime: '', endTime: '', place: '', conferenceRoom: '', conferenceTheme: ''};
             var row = row.id ? row : initState
             row.startTime = row.id ? ncjwUtil.timeTurn(row.startTime) : '';
             row.endTime = row.id ? ncjwUtil.timeTurn(row.endTime) : '';
@@ -186,10 +186,11 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
-                console.log(data);
                 var datas = serializeJSON(data);
-                console.log(datas);
                 var JSONData = JSON.parse(datas);
+                JSONData.startTime = JSONData.startTime.replace(/\+/, ' ');
+                JSONData.endTime = JSONData.endTime.replace(/\+/, ' ');
+                JSONData.userId = window.ownerPeopleId;
                 var id = $('#id').val();
                 var place = this.$officeAreaSel.val();
                 var conferenceRoom = this.$officeRoomSel.val();

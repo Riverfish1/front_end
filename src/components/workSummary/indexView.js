@@ -20,7 +20,6 @@ define([
             Backbone.off('itemEdit').on('itemEdit', this.showContent, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
             Backbone.off('itemView').on('itemView', this.viewContent, this);
-            Backbone.off('itemCheck').on('itemCheck', this.reviewSummaryContent, this);
         },
         render: function () {
             //main view
@@ -42,6 +41,8 @@ define([
         },
         showContent: function (row) {
             var initState = {
+                leaderName: '',
+                leaderId: '',
                 summaryContent: '',
                 summaryStartTime: '',
                 summaryEndTime: '',
@@ -60,42 +61,72 @@ define([
                 todayHighlight: true,
                 format: 'yyyy-mm-dd'
             });
+            this.$suggestWrap = this.$officeDialogPanel.find('.test');
+            this.$suggestBtn = this.$suggestWrap.find('button');
+            this.initSuggest();
+            this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
-        reviewSummaryContent: function(row) {
-            var p = this;
-            var params = {
-                id: row.id,
-                peopleId: row.peopleId,
-                summaryContentStatus: '0'
-            };
-            bootbox.confirm({
-                buttons: {
-                    confirm: {
-                        label: '确认'
-                    },
-                    cancel: {
-                        label: '取消'
-                    }
-                },
-                title: '提交审核',
-                message: '确认要提交审核吗？',
-                callback: function (result) {
-                    if (result) {
-                        ncjwUtil.postData(QUERY.WORK_SUMMARY_UPDATE, JSON.stringify(params), function (res) {
-                            if (res.success) {
-                                ncjwUtil.showInfo('提交成功！');
-                                p.table.refresh();
-                            } else {
-                                ncjwUtil.showInfo('提交失败：' + res.errorMsg);
-                            }
-                        }, {
+        initSuggest: function () {
+            var $data = [];
+            $.each(this.$suggestWrap, function (k, el) {
+                $(el).bsSuggest({
+                    /*url: "/rest/sys/getuserlist?keyword=",
+                     effectiveFields: ["userName", "email"],
+                     searchFields: [ "shortAccount"],
+                     effectiveFieldsAlias:{userName: "姓名"},*/
+                    effectiveFieldsAlias: {peopleName: "姓名", employeeNum: "工号"},
+                    effectiveFields: ['peopleName', 'employeeNum'],
+                    clearable: true,
+                    showHeader: true,
+                    showBtn: false,
+                    getDataMethod: 'url',
+                    fnAdjustAjaxParam: function(keywords, opts) {
+                        return {
+                            method: 'post',
+                            data: JSON.stringify({
+                                peopleName: $(el).val()
+                            }),
                             'contentType': 'application/json'
-                        });
-                    }
+                        };
+                    },
+                    processData: function(json) {
+                        var data = { value: [] };  
+                        $.each(json.data && json.data[0], function (i, r) {  
+                            data.value.push({ peopleName: r.peopleName, employeeNum: r.employeeNum, id: r.id })  
+                        })  
+                        return data;  
+                    },
+                    url: QUERY.FUZZY_QUERY,
+                    idField: "id",
+                    keyField: "leaderName"
+                }).on('onSetSelectValue', function (e, keyword, data) {
+                    $(el).val(data.peopleName);
+                    $(el).next('input').val(data.id);
+                });
+            })
+        },
+        initBtnEvent: function () {
+            var method = $(this).text();
+            var $i;
+
+            if (method === 'init') {
+                this.initSuggest();
+            } else {
+                $i = this.$suggestWrap.bsSuggest(method);
+                if (typeof $i === 'object') {
+                    $i = $i.data('bsSuggest');
                 }
-            });
+                console.log(method, $i);
+                if (!$i) {
+                    alert('未初始化或已销毁');
+                }
+            }
+
+            if (method === 'version') {
+                alert($i);
+            }
         },
         delOne: function (row) {
             var that = this;
@@ -131,14 +162,24 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    employeeNum: {
-                        required: true,
-                        number: true
+                    summaryStartTime: {
+                        required: true
+                    },
+                    summaryEndTime: {
+                        required: true
+                    },
+                    summaryTitle: {
+                        required: true
+                    },
+                    summaryContent: {
+                        required: true
                     }
                 },
                 messages: {
-                    name: "请输入名称",
-                    gmtCreate: "请输入时间"
+                    summaryStartTime: "请选择开始时间",
+                    summaryEndTime: "请选择结束时间",
+                    summaryTitle: '请输入标题',
+                    summaryContent: '请输入内容'
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

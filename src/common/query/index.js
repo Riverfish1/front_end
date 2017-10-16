@@ -57,8 +57,11 @@ define([], function () {
         WORK_SUMMARY_INSERT: '/api/personalSummary/insert',
         WORK_SUMMARY_UPDATE: '/api/personalSummary/updateById',
         WORK_SUMMARY_DELETE: '/api/personalSummary/deleteById',
-        WORK_SUMMARY_QUERY: '/api/personalSummary/query',
+        WORK_SUMMARY_QUERY_BY_PEOPLE: '/api/personalSummary/queryByPeopleId',
+        WORK_SUMMARY_QUERY_BY_LEADER: '/api/personalSummary/queryByLeaderId',
         WORK_SUMMARY_SELECT_BY_ID: '/api/personalSummary/selectById',
+        WORK_SUMMARY_AGREE: '/api/personalSummary/agree',
+        WORK_SUMMARY_REJECT: '/api/personalSummary/reject',
 
         //会议预定
         WORK_MEETING_INSERT: '/api/myBooking/insert',
@@ -92,9 +95,8 @@ define([], function () {
         // 工作授权
         WORK_AUTH_INSERT: '/api/workAuth/insert',
         WORK_AUTH_UPDATE: '/api/workAuth/updateById',
-        WORK_AUTH_QUERY: '/api/workAuth/query',
         WORK_AUTH_DELETE: '/api/workAuth/deleteById',
-        WORK_AUTH_QUERY_BY_ID: '/api/workAuth/queryByUserId',
+        WORK_AUTH_QUERY: '/api/workAuth/queryByUserId',
         WORK_AUTH_SELECT_BY_ID: '/api/workAuth/selectById',
         //发文管理
         WORK_SENDDOCUMENT_NEW: '/api/docsend/new',

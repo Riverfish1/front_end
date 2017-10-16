@@ -52,6 +52,11 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                 }, {
+                    field: 'intervieweeName',
+                    title: '被访问者姓名',
+                    align: 'center',
+                    valign: 'middle'
+                }, {
                     field: 'recordResult',
                     title: '原因',
                     align: 'center',
