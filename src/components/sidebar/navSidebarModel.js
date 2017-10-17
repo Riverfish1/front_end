@@ -15,22 +15,25 @@ define({
         {className: 'icon_homePage', href: '#/work/todo', title: '待办事宜'},
         {className: 'icon_homePage', href: '#/work/staff', title: '通讯录'},
         // {className: 'icon_homePage', href: '#/work/staff', title: '人员档案'}
-        {className: 'icon_homePage', href: '#', title: '发文管理', children: [
+        {className: 'icon_homePage', href: '#/work/sendDocument', title: '发文管理', children: [
             {className: 'icon_homePage', href: '#/work/sendDocument', title: '发文管理'},
             {className: 'icon_homePage', href: '#/work/receiveDocument', title: '收文管理'}
         ]},
         {className: 'icon_homePage', href: '#/work/requestDocument', title: '请示报告'},
         {className: 'icon_homePage', href: '#/work/noticeManage', title: '通知管理'},
         {className: 'icon_homePage', href: '#/work/workAssign', title: '交办协办'},
-        {className: 'icon_homePage', href: '#', title: '小结', children: [
+        {className: 'icon_homePage', href: '#/work/mySummary', title: '小结', children: [
             {className: 'icon_homePage', href: '#/work/mySummary', title: '我的小结'},
             {className: 'icon_homePage', href: '#/work/summaryReceived', title: '收到的小结'}
         ]},
         {className: 'icon_homePage', href: '#/work/petitionMng', title: '信访管理'},
-        {className: 'icon_homePage', href: '#', title: '领导预约', children: [
+        {className: 'icon_homePage', href: '#/work/appointmentReceived', title: '领导预约', children: [
             {className: 'icon_homePage', href: '#/work/appointmentReceived', title: '收到的预约'},
             {className: 'icon_homePage', href: '#/work/myAppointment', title: '我的预约'}
         ]},
         {className: 'icon_homePage', href: '#/work/auth', title: '工作授权'}
+    ],
+    "assess": [
+        {className: 'icon_homePage', href: '#/assess/leaderCommunicate', title: '领导沟通'}
     ]
 });

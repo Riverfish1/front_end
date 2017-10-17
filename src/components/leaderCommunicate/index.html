@@ -1,0 +1,45 @@
+<form>
+		<div class="accordion">
+				<div class="panel panel-default">
+						<div class="panel-heading">
+							  <h4 class="panel-title">
+							      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><%= people %>周总结 <span style="top: 3px;" class="glyphicon glyphicon-chevron-down"></span></a>
+							      <button class="col-md-2 btn btn-primary rate">评价</button>
+							  </h4>
+						</div>
+					  <div id="collapseOne" class="panel-collapse collapse in">
+			          <textarea><%= weekSummary %></textarea>
+					  </div>
+				</div>
+			  <div class="panel panel-default">
+			      <div class="panel-heading">
+			          <h4 class="panel-title">
+			              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><%= people %>月总结 <span style="top: 3px;" class="glyphicon glyphicon-chevron-down"></span></a><button class="col-md-2 btn btn-primary rate">评价</button>
+			          </h4>
+			      </div>
+			      <div id="collapseTwo" class="panel-collapse collapse ">
+	              <textarea><%= monthSummary %></textarea>
+			      </div>
+			  </div>
+			  <div class="panel panel-default">
+			      <div class="panel-heading">
+			          <h4 class="panel-title">
+			              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><%= people %>季度总结 <span style="top: 3px;" class="glyphicon glyphicon-chevron-down"></span></a><button class="col-md-2 btn btn-primary rate">评价</button>
+			          </h4>
+			      </div>
+			      <div id="collapseThree" class="panel-collapse collapse">
+	              <textarea><%= quarterlySummary %></textarea>
+			      </div>
+			  </div>
+			  <div class="panel panel-default">
+			      <div class="panel-heading">
+			          <h4 class="panel-title">
+			              <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><%= people %>年总结 <span style="top: 3px;" class="glyphicon glyphicon-chevron-down"></span></a><button class="col-md-2 btn btn-primary rate">评价</button>
+			          </h4>
+			      </div>
+			      <div id="collapseFour" class="panel-collapse collapse">
+	              <textarea><%= annualSummary %></textarea>
+			      </div>
+			  </div>
+		</div>
+</form>
