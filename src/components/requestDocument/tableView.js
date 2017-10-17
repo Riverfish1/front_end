@@ -51,10 +51,13 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 },{
-                    field: 'title',
+                    field: 'type',
                     title: '请示类型',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return value == 0 ? "工作请示" : "请示工作";
+                    }
                 }, {
                     field: 'creatorName',
                     title: '创建人',

@@ -10,6 +10,8 @@ define([], function () {
         RECORD_OFFICEAREA_SELECT_BY_ID: '/api/officeArea/selectById',
         // 图片上传
         IMG_UPLOAD: '/api/image/imageUpload',
+        // 文件上传
+        FILE_UPLOAD: '/api/file/fileUpload',
         // 模糊人员查询
         FUZZY_QUERY: '/api/people/fuzzyQuery',
         // 办公室登记

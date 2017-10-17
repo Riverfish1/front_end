@@ -3,33 +3,36 @@
 <form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
     <input type="hidden" name="id" value="<%= id %>" id="id" />
     <input type="hidden" name="status" value="<%= status %>" id="status" />
+    <input type="hidden" name="creatorId" value="<%= creatorId %>" id="creatorId" />
+    <!--<input type="hidden" name="creatorName" value="<%= creatorName %>" id="creatorName" />-->
     <div class="form-group">
         <label class="col-md-3 control-label">标题</label>
         <div class="col-md-9">
             <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
-            <input type="text" name="postName" class="form-control" value="<%= postName %>">
+            <input type="text" name="title" class="form-control" value="<%= title %>">
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">内容</label>
         <div class="col-md-9">
-            <textarea type="text" name="dutyDescription" class="form-control" value="<%= dutyDescription %>"></textarea>
+            <textarea type="text" name="content" class="form-control" value="<%= content %>"></textarea>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">时间</label>
+        <label class="col-md-3 control-label">时间范围</label>
         <div class="col-md-4">
-            <input type="text" name="dutyDescription" class="form-control accessTime" value="<%= dutyDescription %>">
+            <input type="text" name="startTime" class="form-control accessTime" value="<%= startTime %>">
         </div>
         <div class="col-md-1">-</div>
         <div class="col-md-4">
-            <input type="text" name="dutyDescription" class="form-control accessTime" value="<%= dutyDescription %>">
+            <input type="text" name="endTime" class="form-control accessTime" value="<%= endTime %>">
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">附件</label>
         <div class="col-md-9">
-            <input type="text" name="id" class="form-control" value="{{id}}">
+            <div id="uploaderWrap"></div>
+            <input type="hidden" name="filePath" id="filePath" class="form-control" value="<%= filePath %>">
         </div>
     </div>
     <div class="form-group">
@@ -38,7 +41,10 @@
         </label>
         <div class="col-md-9">
             <div class="input-group">
-                <input type="text" class="form-control test">
+                <input type="text"  class="form-control test">
+                <input type="text"  name="operator_valid" class="targetId" value="<%= targetName %>">
+                <input type="hidden"  name="targetId">
+                <input type="hidden"  name="targetName">
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
@@ -46,9 +52,7 @@
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                     </ul>
                 </div>
-                <!-- /btn-group -->
             </div>
         </div>
-        <div class="arrow-down"></div>
     </div>
 </form>

@@ -113,6 +113,7 @@ define([
                 currentOperatorId: window.ownerPeopleId,
                 currentOperatorName: window.ownerPeopleName,
                 role: "current",
+                type: "0",
                 content: "",
                 title: "",
                 comment: "",
