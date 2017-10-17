@@ -782,11 +782,17 @@ input:-webkit-autofill {
 
 
 
-
-
-
-
-
+#editForm .targetId{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+#editForm .input-group .help-block{
+    position: absolute;
+    width: 100px;
+    top: 29px;
+    left: 0;
+}
 
 
 

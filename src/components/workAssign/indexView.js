@@ -3,8 +3,9 @@ define([
     './tableView',
     'text!./index.html',
     'text!./dialog.html',
+    './upload',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, QUERY) {
+], function (BaseTableView, tpl, dialogTpl, FileUploadView, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
@@ -12,11 +13,13 @@ define([
         getDialogContent: _.template(dialogTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
-            'click #btn-submit': 'submitForm',
+            'click #btn-submit': 'submitForm'
         },
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
+            window.ownerPeopleId = 4;
+            window.ownerPeopleName = "张三";
         },
         render: function () {
             //main view
@@ -27,29 +30,45 @@ define([
             this.table.render();
             return this;
         },
-
         initSuggest: function () {
-            $.each(this.$suggestWrap, function (k, el) {
-                $(el).bsSuggest('init', {
-                    /*url: "/rest/sys/getuserlist?keyword=",
-                     effectiveFields: ["userName", "email"],
-                     searchFields: [ "shortAccount"],
-                     effectiveFieldsAlias:{userName: "姓名"},*/
-                    effectiveFieldsAlias:{userName: "姓名", userId: "ID", number: "工号"},
-                    clearable: true,
-                    showHeader: true,
-                    showBtn: false,
-                    url: "src/components/sendDocument/data.json",
-                    idField: "userId",
-                    keyField: "userName"
-                }).on('onDataRequestSuccess', function (e, result) {
-                    console.log('onDataRequestSuccess: ', result);
-                }).on('onSetSelectValue', function (e, keyword, data) {
-                    console.log('onSetSelectValue: ', keyword, data);
-                }).on('onUnsetSelectValue', function () {
-                    console.log('onUnsetSelectValue');
-                });
-            })
+            this.$suggestWrap.bsSuggest('init', {
+                effectiveFieldsAlias: {peopleName: "姓名", id: "ID", employeeNum: "工号"},
+                clearable: true,
+                showHeader: true,
+                showBtn: false,
+                allowNoKeyword: false,
+                getDataMethod: "url",
+                delayUntilKeyup: true,
+                // url: "src/components/sendDocument/data.json",
+                url: QUERY.FUZZY_QUERY,
+                idField: "id",
+                keyField: "peopleName",
+                fnAdjustAjaxParam: function (keyword, opts) {
+                    return {
+                        method: 'post',
+                        data: JSON.stringify({
+                            peopleName: keyword
+                        }),
+                        'contentType': 'application/json'
+                    };
+                },
+                processData: function (json) {
+                    var data = {value: []};
+                    $.each(json.data && json.data[0], function (i, r) {
+                        data.value.push({peopleName: r.peopleName, employeeNum: r.employeeNum, id: r.id})
+                    })
+                    return data;
+                }
+            }).on('onDataRequestSuccess', function (e, result) {
+            }).on('onSetSelectValue', function (e, keyword, data) {
+                var $row = $(e.target).parents('.input-group')
+                var $operatorName = $row.find('input[name=targetName]');
+                var $validInput = $row.find('.targetId');
+                var $helpBlock = $row.find('.help-block');
+                $validInput.val(data.id);
+                $operatorName.val(data.peopleName);
+                $helpBlock.remove();
+            }).on('onUnsetSelectValue', function () {});
         },
         initBtnEvent: function () {
             var method = $(this).text();
@@ -75,23 +94,30 @@ define([
         addOne: function (row) {
             //id不存在与staus==3都是新建；
             var initState = {
-                creatorId: 1,
-                opertorId: 2,
-                status: 10,
-                postName: '',
-                dutyDescription: '',
-                staffingLevel: '',
+                title: '',
+                content: '',
+                startTime: '',
+                endTime: '',
+                filePath: '',
+                creatorId: window.ownerPeopleId,
+                creatorName: window.ownerPeopleName,
+                targetId: '',
+                targetName: '',
                 id: ''
             };
             var row = row.id ? row : initState;
-            // row.gmtCreate = row.gmtCreate ? ncjwUtil.timeTurn(row.gmtCreate, 'yyyy-MM-dd') : ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd');
-            // this.showOrhideBtn(row);
+            if(row.id){
+                row.startTime = ncjwUtil.timeTurn(row.startTime, 'yyyy-MM-dd');
+                row.endTime = ncjwUtil.timeTurn(row.endTime, 'yyyy-MM-dd');
+            }
             this.$editDialog.modal('show');
             this.$editDialog.modal({backdrop: 'static', keyboard: false});
             this.$editDialogPanel.empty().html(this.getDialogContent(row));
+            this.fileUpload = new FileUploadView();
             this.$suggestWrap = this.$editDialogPanel.find('.test');
             this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
+            row.id && (this.setBssuggestValue(row));
             this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             $('.accessTime').datepicker({
                 language: 'zh-CN',
@@ -101,6 +127,10 @@ define([
             });
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
+        },
+        setBssuggestValue: function (row) {
+            this.$suggestWrap.val(row.targetId);
+            // this.$suggestWrap.val(row.targetName);
         },
         delOne: function (row) {
             var that = this;
@@ -117,7 +147,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.RECORD_POSTRECORD_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.WORK_WORKASSIGN_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();
@@ -136,17 +166,28 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    name: {
+                    title: {
                         required: true
                     },
-
-                    gmtCreate: {
+                    content: {
+                        required: true
+                    },
+                    startTime: {
+                        required: true
+                    },
+                    endTime: {
+                        required: true
+                    },
+                    targetId: {
                         required: true
                     }
                 },
                 messages: {
-                    name: "请输入名称",
-                    gmtCreate: "请输入时间"
+                    title: "请填写标题",
+                    content: "请填写正文",
+                    startTime: "请选择开始时间",
+                    endTime: "请选择结束时间",
+                    targetId: "请选择交办人"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -161,11 +202,6 @@ define([
             });
         },
         submitForm: function (e) {
-            var $btn = $(e.target), $status = $('#status'), index = $btn.attr('data-status');
-            //根据点击按钮-修改status隐藏域值；
-            $status.val(index);
-            //驳回状态-草稿或提交时，清空反馈意见+审批流程相关数据；
-            //已提交状态-通过与驳回，row + 新状态
             if (this.$editForm.valid()) {
                 var that = this;
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
@@ -173,7 +209,7 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.RECORD_POSTRECORD_UPDATE : QUERY.RECORD_POSTRECORD_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_WORKASSIGN_UPDATE : QUERY.WORK_WORKASSIGN_INSERT, datas, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$editDialog.modal('hide');
@@ -185,24 +221,7 @@ define([
                     "contentType": 'application/json'
                 })
             }
-        },
-        // showOrhideBtn: function (row) {
-        //     this.$editDialog.find('.status-button').hide();
-        //     // 创建人：新建、草稿、驳回状态显示-草稿与提交按钮
-        //     if(this.isCreater(row) && (row.status == 10 || row.status == 0)){
-        //         this.$editDialog.find("#btn-draft,#btn-submit").show();
-        //     }
-        //     // 处理人：已提交状态显示-通过与驳回按钮
-        //     if(this.isOpertor(row) && (row.status == 1)){
-        //         this.$editDialog.find("#btn-ok,#btn-on").show();
-        //     }
-        // },
-        // isCreater: function (row) {
-        //     return window.ownerPeopleId == row.creatorId;
-        // },
-        // isOpertor: function (row) {
-        //     return window.ownerPeopleId == row.opertorId;
-        // }
+        }
     });
     return View;
 });
