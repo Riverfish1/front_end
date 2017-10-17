@@ -61,13 +61,11 @@ define([
                 }
             }).on('onDataRequestSuccess', function (e, result) {
             }).on('onSetSelectValue', function (e, keyword, data) {
-                var $row = $(e.target).parents('.row')
-                var $operatorId = $row.find('input[name=targetId]');
+                var $row = $(e.target).parents('.input-group')
                 var $operatorName = $row.find('input[name=targetName]');
                 var $validInput = $row.find('.targetId');
                 var $helpBlock = $row.find('.help-block');
                 $validInput.val(data.id);
-                $operatorId.val(data.id);
                 $operatorName.val(data.peopleName);
                 $helpBlock.remove();
             }).on('onUnsetSelectValue', function () {});
@@ -149,7 +147,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.RECORD_POSTRECORD_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.WORK_WORKASSIGN_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();
@@ -180,7 +178,7 @@ define([
                     endTime: {
                         required: true
                     },
-                    operator_valid: {
+                    targetId: {
                         required: true
                     }
                 },
@@ -189,7 +187,7 @@ define([
                     content: "请填写正文",
                     startTime: "请选择开始时间",
                     endTime: "请选择结束时间",
-                    operator_valid: "请选择交办人"
+                    targetId: "请选择交办人"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -211,7 +209,7 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.RECORD_POSTRECORD_UPDATE : QUERY.RECORD_POSTRECORD_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_WORKASSIGN_UPDATE : QUERY.WORK_WORKASSIGN_INSERT, datas, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$editDialog.modal('hide');
