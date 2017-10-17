@@ -97,7 +97,7 @@ define([
                 title: '',
                 content: '',
                 startTime: '',
-                endTime: '',
+                entTime: '',
                 filePath: '',
                 creatorId: window.ownerPeopleId,
                 creatorName: window.ownerPeopleName,
