@@ -36,6 +36,7 @@ define({
         {className: 'icon_homePage', href: '#/work/auth', title: '工作授权'}
     ],
     "assess": [
-        {className: 'icon_homePage', href: '#/assess/leaderCommunicate', title: '领导沟通'}
+        {className: 'icon_homePage', href: '#/assess/leaderCommunicate', title: '领导沟通'},
+        {className: 'icon_homePage', href: '#/assess/kpiManage', title: '考核指标管理'}
     ]
 });

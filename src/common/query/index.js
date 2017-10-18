@@ -144,6 +144,10 @@ define([], function () {
         WORK_NOTICEMANAGE_SELECT_BY_ID: '/api/noticeRecord/selectById',
         WORK_NOTICEMANAGE_UPDATE: '/api/noticeRecord/updateById',
         WORK_NOTICEMANAGE_DELETE: '/api/noticeRecord/deleteById',
+        //考核指标管理
+        KPI_MANAGE_INSERT: '/api/kpiManage/insert',
+        KPI_ITEM_SELECT: '/api/kpiItems/query',
+        TARGET_NUM_ITEMS_SELECT: '/api/targetNumItems/query',
 
 
         // 一些基本正则
