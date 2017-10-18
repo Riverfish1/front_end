@@ -1,0 +1,25 @@
+<form class="form-horizontal" id="submitForm" >
+    <input type="hidden" name="userId" id="userId" value="100">
+    <div class="form-group">
+        <label class="col-md-2 control-label">交办时间</label>
+        <div class="col-md-9">
+            <input placeholder="请选择交办时间" type="text" name="assignTime" id="assignTime" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">交办对象：</label>
+        <div class="col-md-9">
+            <input type="text" name="assignUserName" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">交办任务：</label>
+        <div class="col-md-9">
+            <textarea name="assignTask" class="form-control"></textarea>
+        </div>
+    </div>
+</form>
+
+<div class="modal-footer">
+    <button id="btn-submit" data-status="1" class="btn btn-primary status-button" >提交</button>
+</div>

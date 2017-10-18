@@ -21,7 +21,7 @@ define(['../../common/query/index'], function (QUERY) {
         },
         init: function () {
             this.$el.bootstrapTable({
-                url: QUERY.WORK_RECEIVEDOCUMENT_QUERY_BY_ID, //请求后台的URL（*）
+                url: QUERY.WORK_REQUESTDOCUMENT_QUERY_BY_ID, //请求后台的URL（*）
                 method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -51,7 +51,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 },{
-                    field: 'type',
+                    field: 'extension',
                     title: '请示类型',
                     align: 'center',
                     valign: "middle",

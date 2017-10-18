@@ -171,6 +171,9 @@ define([], function () {
         KPI_ITEM_SELECT: '/api/kpiItems/query',
         TARGET_NUM_ITEMS_SELECT: '/api/targetNumItems/query',
 
+        //临时交办工作管理
+        ASSIGN_MANAGE_INSERT: 'api/assignManage/insert',
+
 
         // 一些基本正则
         TEL_REG: /(^(13\d|15[^4,\D]|17[13678]|18\d)\d{8}|170[^346,\D]\d{7})$/,

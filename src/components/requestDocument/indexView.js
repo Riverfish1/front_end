@@ -46,7 +46,7 @@ define([
                     allowNoKeyword: false,
                     getDataMethod: "url",
                     delayUntilKeyup: true,
-                    // url: "src/components/RECEIVEDOCUMENT/data.json",
+                    // url: "src/components/REQUESTDOCUMENT/data.json",
                     url: QUERY.FUZZY_QUERY,
                     idField: "id",
                     keyField: "peopleName",
@@ -113,7 +113,7 @@ define([
                 currentOperatorId: window.ownerPeopleId,
                 currentOperatorName: window.ownerPeopleName,
                 role: "current",
-                type: "0",
+                extension: "0",
                 content: "",
                 title: "",
                 comment: "",
@@ -167,7 +167,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.WORK_RECEIVEDOCUMENT_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.WORK_REQUESTDOCUMENT_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();
@@ -230,10 +230,10 @@ define([
             //根据点击按钮-修改status隐藏域值；
             var id = $('#id').val();
             var urlMap = {
-                "0": id ? QUERY.WORK_RECEIVEDOCUMENT_UPDATE : QUERY.WORK_RECEIVEDOCUMENT_NEW,
-                "1": QUERY.WORK_RECEIVEDOCUMENT_SUBMIT,
-                "2": QUERY.WORK_RECEIVEDOCUMENT_AGREE,
-                "3": QUERY.WORK_RECEIVEDOCUMENT_REJECT
+                "0": id ? QUERY.WORK_REQUESTDOCUMENT_UPDATE : QUERY.WORK_REQUESTDOCUMENT_NEW,
+                "1": QUERY.WORK_REQUESTDOCUMENT_SUBMIT,
+                "2": QUERY.WORK_REQUESTDOCUMENT_AGREE,
+                "3": QUERY.WORK_REQUESTDOCUMENT_REJECT
             }
             $status.val(index);
             //驳回状态-草稿或提交时，清空反馈意见+审批流程相关数据；
