@@ -20,10 +20,9 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable('refresh');
         },
         init: function () {
-            var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_POSTRECORD_QUERY, //请求后台的URL（*）
-                method: 'post', //请求方式（*）
+                url: QUERY.WORK_NOTICERECORD_QUERY_BY_ID, //请求后台的URL（*）
+                method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
                 cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -47,21 +46,44 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'postName',
+                    field: 'title',
                     title: '标题',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'dutyDescription',
+                    field: 'creatorName',
                     title: '创建人',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'dutyDescription',
-                    title: '通知时间',
+                    field: 'startTime',
+                    title: '开始时间',
                     align: 'center',
-                    valign: "middle"
-                },{
+                    valign: "middle",
+                    formatter: function(value) {
+                        return value ? ncjwUtil.timeTurn(value) : "";
+                    }
+                }, {
+                    field: 'endTime',
+                    title: '结束时间',
+                    align: 'center',
+                    valign: "middle",
+                    formatter: function(value) {
+                        return value ? ncjwUtil.timeTurn(value) : "";
+                    }
+                }, {
+                    field: 'status',
+                    title: '状态',
+                    align: 'center',
+                    valign: "middle",
+                    formatter: function (value, row, index) {
+                        var statusMap = {
+                            "finish": "已办",
+                            "submit": "未办"
+                        }
+                        return statusMap[value];
+                    }
+                }, {
                     field: 'status',
                     title: '操作',
                     align: 'center',
@@ -69,8 +91,12 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">处理</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
+                        if(value == "submit"){
+                            str += '<p class="grid-command-p btn-edit">编辑</p>';
+                            str += '<p class="grid-command-p btn-delete">删除</p>';
+                        }else{
+                            str += '<p class="grid-command-p btn-edit">查看</p>';
+                        }
                         return str;
                     }
                 }],
@@ -85,7 +111,8 @@ define(['../../common/query/index'], function (QUERY) {
         queryParams: function (params) {
             var temp = {
                 pageNum: params.offset / params.limit,
-                pageSize: params.limit
+                pageSize: params.limit,
+                id: window.ownerPeopleId
             };
             return temp;
         },

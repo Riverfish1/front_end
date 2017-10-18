@@ -50,7 +50,7 @@ define(['backbone'], function (Backbone) {
         // 我收到的交办协办
         'work/receiveCooperation': 'src/components/receiveCooperation/indexController.js',
         // 通知管理
-        'work/noticeManage': 'src/components/noticeManage/indexController.js',
+        'work/noticeRecord': 'src/components/noticeRecord/indexController.js',
         // 领导考核
         'assess/leaderCommunicate': 'src/components/leaderCommunicate/indexController.js',
 

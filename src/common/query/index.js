@@ -136,14 +136,13 @@ define([], function () {
         WORK_COOPERATION_DELETE: '/api/cooperation/deleteById',
         WORK_COOPERATION_TARGETCLOSE: '/api/cooperation/targetClose',
         //通知管理
-        WORK_NOTICEMANAGE_NEW: '/api/noticeRecord/new',
-        WORK_NOTICEMANAGE_SUBMIT: '/api/noticeRecord/submit',
-        WORK_NOTICEMANAGE_AGREE: '/api/noticeRecord/agree',
-        WORK_NOTICEMANAGE_REJECT: '/api/noticeRecord/reject',
-        WORK_NOTICEMANAGE_QUERY_BY_ID: '/api/noticeRecord/queryByUserId',
-        WORK_NOTICEMANAGE_SELECT_BY_ID: '/api/noticeRecord/selectById',
-        WORK_NOTICEMANAGE_UPDATE: '/api/noticeRecord/updateById',
-        WORK_NOTICEMANAGE_DELETE: '/api/noticeRecord/deleteById',
+        WORK_NOTICERECORD_NEW: '/api/noticeRecord/new',
+        WORK_NOTICERECORD_SUBMIT: '/api/noticeRecord/submit',
+        WORK_NOTICERECORD_QUERY: '/api/noticeRecord/query',
+        WORK_NOTICERECORD_QUERY_BY_ID: '/api/noticeRecord/queryByUserId',
+        WORK_NOTICERECORD_SELECT_BY_ID: '/api/noticeRecord/selectById',
+        WORK_NOTICERECORD_UPDATE: '/api/noticeRecord/updateById',
+        WORK_NOTICERECORD_DELETE: '/api/noticeRecord/deleteById',
 
 
         // 一些基本正则
