@@ -96,6 +96,7 @@ define([
             var initState = {
                 title: '',
                 content: '',
+                status: 'submit',
                 startTime: '',
                 entTime: '',
                 filePath: '',
@@ -110,6 +111,7 @@ define([
                 row.startTime = ncjwUtil.timeTurn(row.startTime, 'yyyy-MM-dd');
                 row.endTime = ncjwUtil.timeTurn(row.endTime, 'yyyy-MM-dd');
             }
+            this.showOrhideBtn(row);
             this.$editDialog.modal('show');
             this.$editDialog.modal({backdrop: 'static', keyboard: false});
             this.$editDialogPanel.empty().html(this.getDialogContent(row));
@@ -127,6 +129,13 @@ define([
             });
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
+        },
+        showOrhideBtn: function (row) {
+            if(row.status == "finish"){
+                this.$editDialog.find('.status-button').hide();
+            }else{
+                this.$editDialog.find('.status-button').show();
+            }
         },
         setBssuggestValue: function (row) {
             this.$suggestWrap.val(row.targetId);
@@ -147,7 +156,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.WORK_WORKASSIGN_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.WORK_COOPERATION_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();
@@ -209,13 +218,13 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_WORKASSIGN_UPDATE : QUERY.WORK_WORKASSIGN_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_COOPERATION_TARGETCLOSE : QUERY.WORK_COOPERATION_INSERT, datas, function (res) {
                     if (res.success) {
-                        ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
+                        ncjwUtil.showInfo(id ? '处理成功！' : '新增成功！');
                         that.$editDialog.modal('hide');
                         that.table.refresh();
                     } else {
-                        ncjwUtil.showError("保存失败：" + res.errorMsg);
+                        ncjwUtil.showError("处理失败：" + res.errorMsg);
                     }
                 }, {
                     "contentType": 'application/json'

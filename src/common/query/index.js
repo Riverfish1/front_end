@@ -128,11 +128,13 @@ define([], function () {
         WORK_REQUESTDOCUMENT_UPDATE: '/api/workReport/updateById',
         WORK_REQUESTDOCUMENT_DELETE: '/api/workReport/deleteById',
         //交办协办
-        WORK_WORKASSIGN_INSERT: '/api/cooperation/insert',
-        WORK_WORKASSIGN_QUERY: '/api/cooperation/query',
-        WORK_WORKASSIGN_QUERY_BY_ID: '/api/cooperation/queryByUserId',
-        WORK_WORKASSIGN_UPDATE: '/api/cooperation/updateById',
-        WORK_WORKASSIGN_DELETE: '/api/cooperation/deleteById',
+        WORK_COOPERATION_INSERT: '/api/cooperation/insert',
+        WORK_COOPERATION_QUERY: '/api/cooperation/query',
+        WORK_COOPERATION_QUERY_BY_CREATORID: '/api/cooperation/queryByCreatorId',
+        WORK_COOPERATION_QUERY_BY_TARGETID: '/api/cooperation/queryByTargetId',
+        WORK_COOPERATION_UPDATE: '/api/cooperation/updateById',
+        WORK_COOPERATION_DELETE: '/api/cooperation/deleteById',
+        WORK_COOPERATION_TARGETCLOSE: '/api/cooperation/targetClose',
         //通知管理
         WORK_NOTICEMANAGE_NEW: '/api/noticeRecord/new',
         WORK_NOTICEMANAGE_SUBMIT: '/api/noticeRecord/submit',

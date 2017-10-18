@@ -9,30 +9,30 @@
         <label class="col-md-3 control-label">标题</label>
         <div class="col-md-9">
             <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
-            <input type="text" name="title" class="form-control" value="<%= title %>">
+            <input type="text" name="title" readonly class="form-control" value="<%= title %>">
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">内容</label>
         <div class="col-md-9">
-            <textarea type="text" name="content" class="form-control" value="<%= content %>"></textarea>
+            <textarea type="text" name="content" readonly class="form-control" value="<%= content %>"></textarea>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">时间范围</label>
         <div class="col-md-4">
-            <input type="text" name="startTime" class="form-control accessTime" value="<%= startTime %>">
+            <input type="text" name="startTime" readonly class="form-control accessTime" value="<%= startTime %>">
         </div>
         <div class="col-md-1">-</div>
         <div class="col-md-4">
-            <input type="text" name="entTime" class="form-control accessTime" value="<%= entTime %>">
+            <input type="text" name="entTime" readonly class="form-control accessTime" value="<%= entTime %>">
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">附件</label>
         <div class="col-md-9">
             <div id="uploaderWrap"></div>
-            <input type="hidden" name="filePath" id="filePath" class="form-control" value="<%= filePath %>">
+            <input type="hidden" name="filePath" readonly id="filePath" class="form-control" value="<%= filePath %>">
         </div>
     </div>
     <div class="form-group">
@@ -41,7 +41,7 @@
         </label>
         <div class="col-md-9">
             <div class="input-group">
-                <input type="text"  class="form-control test">
+                <input type="text" readonly  class="form-control test">
                 <input type="text"  name="targetId" class="targetId" value="<%= targetId %>">
                 <!--<input type="hidden"  name="targetName">-->
                 <div class="input-group-btn">

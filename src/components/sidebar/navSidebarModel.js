@@ -21,7 +21,9 @@ define({
         ]},
         {className: 'icon_homePage', href: '#/work/requestDocument', title: '请示报告'},
         {className: 'icon_homePage', href: '#/work/noticeManage', title: '通知管理'},
-        {className: 'icon_homePage', href: '#/work/workAssign', title: '交办协办'},
+        {className: 'icon_homePage', href: '#', title: '交办协办', children: [
+            {className: 'icon_homePage', href: '#/work/createCooperation', title: '我发起的交办'},
+            {className: 'icon_homePage', href: '#/work/receiveCooperation', title: '我收到的交办'}]},
         {className: 'icon_homePage', href: '#/work/mySummary', title: '小结', children: [
             {className: 'icon_homePage', href: '#/work/mySummary', title: '我的小结'},
             {className: 'icon_homePage', href: '#/work/summaryReceived', title: '收到的小结'}
