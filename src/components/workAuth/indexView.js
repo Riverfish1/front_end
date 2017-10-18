@@ -32,7 +32,9 @@ define([
         showContent: function (row) {
             var initState = {
                 creatorId: '',
+                creatorName: '',
                 targetId: '',
+                targetName: '',
                 startTime: '',
                 endTime: '',
                 id: ''
@@ -60,7 +62,6 @@ define([
         initSuggest: function () {
             var $data = [];
             $.each(this.$suggestWrap, function (k, el) {
-                console.log(k, el);
                 $(el).bsSuggest({
                     /*url: "/rest/sys/getuserlist?keyword=",
                      effectiveFields: ["userName", "email"],
@@ -92,7 +93,6 @@ define([
                     idField: "id",
                     keyField: "peopleName"
                 }).on('onSetSelectValue', function (e, keyword, data) {
-                    console.log(data);
                     $(el).next('input').val(data.id);
                     $(el).val(data.peopleName);
                 });

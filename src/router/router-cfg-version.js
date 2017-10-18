@@ -49,6 +49,8 @@ define(['backbone'], function (Backbone) {
         'work/workAssign': 'src/components/workAssign/indexController.js',
         // 通知管理
         'work/noticeManage': 'src/components/noticeManage/indexController.js',
+        // 领导考核
+        'assess/leaderCommunicate': 'src/components/leaderCommunicate/indexController.js',
 
         '*actions': 'defaultAction'
     };
