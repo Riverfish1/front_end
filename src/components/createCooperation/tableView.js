@@ -54,12 +54,18 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'startTime',
                     title: '开始时间',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function(value) {
+                        return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : "";
+                    }
                 }, {
                     field: 'entTime',
                     title: '结束时间',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function(value) {
+                        return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : "";
+                    }
                 }, {
                     field: 'creatorName',
                     title: '发起者',

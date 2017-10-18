@@ -737,6 +737,11 @@ input:-webkit-autofill {
     top: 10px;
     background: url(../../../static/images/arrow_left.png) -6px center no-repeat;
 }
+.input-group .departmentId{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
 .flowWrapDetail{overflow-x: scroll;}
 .flowWrapDetail .row{width: 1150px !important;}
 .flowWrapDetail .row .title-wrap{width: 80px; height: 100px !important; float: left;}
@@ -747,6 +752,7 @@ input:-webkit-autofill {
     overflow: auto;
     margin-left: -35px;
 }
+.
 
 .help-block {
     color: rgb(217, 83, 79);

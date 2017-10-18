@@ -40,7 +40,7 @@ define([
                 getDataMethod: "url",
                 delayUntilKeyup: true,
                 // url: "src/components/sendDocument/data.json",
-                url: QUERY.FUZZY_QUERY,
+                url: QUERY.RECORD_DEPARTMENT_QUERY,
                 idField: "id",
                 keyField: "peopleName",
                 fnAdjustAjaxParam: function (keyword, opts) {
