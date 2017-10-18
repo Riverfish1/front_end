@@ -2,24 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f35dcadc-155c-437a-b1b8-44d45963930a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/noticeRecord/upload.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/noticeRecord/upload.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/noticeManage/data.json" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/noticeManage/dialog.html" afterPath="$PROJECT_DIR$/src/components/noticeRecord/dialog.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/noticeManage/index.html" afterPath="$PROJECT_DIR$/src/components/noticeRecord/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/noticeManage/indexController.js" afterPath="$PROJECT_DIR$/src/components/noticeRecord/indexController.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/noticeManage/indexView.js" afterPath="$PROJECT_DIR$/src/components/noticeRecord/indexView.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/noticeManage/tableView.js" afterPath="$PROJECT_DIR$/src/components/noticeRecord/tableView.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/query/index.js" afterPath="$PROJECT_DIR$/src/common/query/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/app/app.css" afterPath="$PROJECT_DIR$/src/components/app/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/createCooperation/tableView.js" afterPath="$PROJECT_DIR$/src/components/createCooperation/tableView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/createCooperation/upload.js" afterPath="$PROJECT_DIR$/src/components/createCooperation/upload.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveCooperation/index.html" afterPath="$PROJECT_DIR$/src/components/receiveCooperation/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveCooperation/indexView.js" afterPath="$PROJECT_DIR$/src/components/receiveCooperation/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveCooperation/tableView.js" afterPath="$PROJECT_DIR$/src/components/receiveCooperation/tableView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" afterPath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/router-cfg-version.js" afterPath="$PROJECT_DIR$/src/router/router-cfg-version.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/requestDocument/dialog.html" afterPath="$PROJECT_DIR$/src/components/requestDocument/dialog.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/requestDocument/indexView.js" afterPath="$PROJECT_DIR$/src/components/requestDocument/indexView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/requestDocument/tableView.js" afterPath="$PROJECT_DIR$/src/components/requestDocument/tableView.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,106 +21,8 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/indexView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="60" column="7" lean-forward="true" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/departmentRecord/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tableView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/tableView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="844">
-              <caret line="57" column="15" lean-forward="false" selection-start-line="57" selection-start-column="15" selection-end-line="57" selection-end-column="15" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="upload.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/upload.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="upload.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/upload.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="35" column="51" lean-forward="true" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
-              <folding>
-                <marker date="1508326597000" expanded="true" signature="2021:2030" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/indexView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="42" column="50" lean-forward="false" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="50" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tableView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/departmentRecord/tableView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="80" column="8" lean-forward="true" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tableView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/workDepartment/tableView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="3" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/companyRecord/index.html">
+        <entry file="file://$PROJECT_DIR$/src/components/createCooperation/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
               <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
@@ -142,11 +31,55 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/companyRecord/indexView.js">
+      <file leaf-file-name="dialog.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/createCooperation/dialog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="18" column="3" lean-forward="false" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/createCooperation/indexView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="31" column="10" lean-forward="true" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
+              <folding>
+                <element signature="e#872#1189#0" expanded="false" />
+                <element signature="e#1224#3034#0" expanded="false" />
+                <element signature="e#1814#2106#0" expanded="false" />
+                <element signature="e#1843#2087#0" expanded="false" />
+                <element signature="e#1930#2005#0" expanded="false" />
+                <element signature="e#2153#2450#0" expanded="false" />
+                <element signature="e#2269#2398#0" expanded="false" />
+                <element signature="e#2514#2529#0" expanded="false" />
+                <element signature="e#3070#3627#0" expanded="false" />
+                <element signature="e#3169#3220#0" expanded="false" />
+                <element signature="e#3226#3535#0" expanded="false" />
+                <element signature="e#3330#3396#0" expanded="false" />
+                <element signature="e#3463#3521#0" expanded="false" />
+                <element signature="e#3575#3617#0" expanded="false" />
+                <element signature="e#4982#5140#0" expanded="false" />
+                <element signature="e#5540#5654#0" expanded="false" />
+                <element signature="e#5773#5970#0" expanded="false" />
+                <element signature="e#5804#5863#0" expanded="false" />
+                <element signature="e#5893#5952#0" expanded="false" />
+                <element signature="e#8564#8910#0" expanded="false" />
+                <element signature="e#8603#8795#0" expanded="false" />
+                <element signature="e#8801#8892#0" expanded="false" />
+                <element signature="e#8912#8985#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tableView.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/createCooperation/tableView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="109" column="10" lean-forward="true" selection-start-line="109" selection-start-column="10" selection-end-line="109" selection-end-column="10" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -155,98 +88,30 @@
         </entry>
       </file>
       <file leaf-file-name="tableView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/companyRecord/tableView.js">
+        <entry file="file://$PROJECT_DIR$/src/components/requestDocument/tableView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="74" column="21" lean-forward="true" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/workDepartment/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="309">
+              <caret line="98" column="12" lean-forward="false" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/workDepartment/indexView.js">
+        <entry file="file://$PROJECT_DIR$/src/components/requestDocument/indexView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dialog.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/dialog.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="47" column="48" lean-forward="false" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="340">
+              <caret line="117" column="26" lean-forward="true" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/index.html">
+        <entry file="file://$PROJECT_DIR$/src/components/requestDocument/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="42" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="indexController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/indexController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="upload.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/createCooperation/upload.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="35" column="56" lean-forward="true" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="56" />
-              <folding>
-                <marker date="1508326597000" expanded="true" signature="2026:2035" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/query/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/app/app.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="682" column="4" lean-forward="false" selection-start-line="682" selection-start-column="1" selection-end-line="682" selection-end-column="4" />
+            <state relative-caret-position="136">
+              <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -256,8 +121,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>creatorName</find>
-      <find>ajaxParam</find>
       <find>operatorId</find>
       <find>id</find>
       <find>张三</find>
@@ -284,8 +147,10 @@
       <find>QUERY</find>
       <find>WORK_</find>
       <find>peopleName</find>
-      <find>targetName</find>
       <find>padding-left: 0</find>
+      <find>targetName</find>
+      <find>type</find>
+      <find>RECEIVEDOCUMENT</find>
     </findStrings>
     <replaceStrings>
       <replace>dutyDescription</replace>
@@ -301,7 +166,6 @@
       <replace>200010</replace>
       <replace>workFlow.currentNode.nodeIndex != 0</replace>
       <replace>window.ownerPeopleName</replace>
-      <replace>REQUESTDOCUMENT</replace>
       <replace>workReport</replace>
       <replace>docrecv</replace>
       <replace>cooperation</replace>
@@ -318,6 +182,7 @@
       <replace>endTime</replace>
       <replace>NOTICERECORD</replace>
       <replace>departmentName</replace>
+      <replace>REQUESTDOCUMENT</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -355,21 +220,16 @@
         <option value="$PROJECT_DIR$/src/components/receiveDocument/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/receiveDocument/tableView.js" />
         <option value="$PROJECT_DIR$/src/components/requestDocument/index.html" />
-        <option value="$PROJECT_DIR$/src/components/requestDocument/tableView.js" />
-        <option value="$PROJECT_DIR$/src/components/requestDocument/dialog.html" />
         <option value="$PROJECT_DIR$/src/components/workAssign/index.html" />
-        <option value="$PROJECT_DIR$/src/components/requestDocument/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/workAssign/upload.html" />
         <option value="$PROJECT_DIR$/src/components/workAssign/upload.js" />
         <option value="$PROJECT_DIR$/src/components/workAssign/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/workAssign/dialog.html" />
         <option value="$PROJECT_DIR$/src/components/workAssign/tableView.js" />
         <option value="$PROJECT_DIR$/src/components/createCooperation/index.html" />
-        <option value="$PROJECT_DIR$/src/components/createCooperation/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/receiveCooperation/dialog.html" />
         <option value="$PROJECT_DIR$/src/components/createCooperation/dialog.html" />
         <option value="$PROJECT_DIR$/src/components/receiveCooperation/index.html" />
-        <option value="$PROJECT_DIR$/src/components/createCooperation/tableView.js" />
         <option value="$PROJECT_DIR$/src/components/receiveCooperation/tableView.js" />
         <option value="$PROJECT_DIR$/src/components/noticeRecord/index.html" />
         <option value="$PROJECT_DIR$/src/router/router-cfg-version.js" />
@@ -380,8 +240,13 @@
         <option value="$PROJECT_DIR$/src/components/receiveCooperation/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/noticeRecord/tableView.js" />
         <option value="$PROJECT_DIR$/src/components/noticeRecord/indexView.js" />
-        <option value="$PROJECT_DIR$/src/components/app/app.css" />
         <option value="$PROJECT_DIR$/src/components/noticeRecord/dialog.html" />
+        <option value="$PROJECT_DIR$/src/components/app/app.css" />
+        <option value="$PROJECT_DIR$/src/components/requestDocument/dialog.html" />
+        <option value="$PROJECT_DIR$/src/components/requestDocument/indexView.js" />
+        <option value="$PROJECT_DIR$/src/components/requestDocument/tableView.js" />
+        <option value="$PROJECT_DIR$/src/components/createCooperation/indexView.js" />
+        <option value="$PROJECT_DIR$/src/components/createCooperation/tableView.js" />
       </list>
     </option>
   </component>
@@ -538,7 +403,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="receiveCooperation" />
+              <option name="myItemId" value="requestDocument" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -561,28 +426,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="noticeRecord" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front_end" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front_end" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="departmentRecord" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1133,12 +976,12 @@
       <workItem from="1508239945736" duration="10758000" />
       <workItem from="1508286800654" duration="2449000" />
       <workItem from="1508289530483" duration="105000" />
-      <workItem from="1508323728252" duration="6034000" />
+      <workItem from="1508323728252" duration="8970000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198356000" />
+    <option name="totallyTimeSpent" value="201292000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1191,94 +1034,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/uploadImg/dialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/uploadImg/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1751">
-          <caret line="103" column="21" lean-forward="false" selection-start-line="101" selection-start-column="20" selection-end-line="103" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/sendDocument/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2805">
-          <caret line="325" column="10" lean-forward="false" selection-start-line="305" selection-start-column="8" selection-end-line="325" selection-end-column="10" />
-          <folding>
-            <element signature="e#25#129#0" expanded="false" />
-            <element signature="e#358#668#0" expanded="false" />
-            <element signature="e#702#942#0" expanded="false" />
-            <element signature="e#972#1289#0" expanded="false" />
-            <element signature="e#1445#1662#0" expanded="false" />
-            <element signature="e#3860#3934#0" expanded="false" />
-            <element signature="e#3997#4554#0" expanded="false" />
-            <element signature="e#4096#4147#0" expanded="false" />
-            <element signature="e#4153#4462#0" expanded="false" />
-            <element signature="e#4257#4323#0" expanded="false" />
-            <element signature="e#4390#4448#0" expanded="false" />
-            <element signature="e#4502#4544#0" expanded="false" />
-            <element signature="e#7058#8001#0" expanded="false" />
-            <element signature="e#7117#7989#0" expanded="false" />
-            <element signature="e#7144#7341#0" expanded="false" />
-            <element signature="e#7175#7234#0" expanded="false" />
-            <element signature="e#7264#7323#0" expanded="false" />
-            <element signature="e#7464#7974#0" expanded="false" />
-            <element signature="e#7498#7956#0" expanded="false" />
-            <element signature="e#7603#7933#0" expanded="false" />
-            <element signature="e#7650#7794#0" expanded="false" />
-            <element signature="e#7800#7907#0" expanded="false" />
-            <element signature="e#8039#10189#0" expanded="false" />
-            <element signature="e#8247#8309#0" expanded="false" />
-            <element signature="e#8340#8402#0" expanded="false" />
-            <element signature="e#9140#9202#0" expanded="false" />
-            <element signature="e#9248#9709#0" expanded="false" />
-            <element signature="e#9757#9853#0" expanded="false" />
-            <element signature="e#9897#10027#0" expanded="false" />
-            <element signature="e#10087#10163#0" expanded="false" />
-            <element signature="e#10722#10752#0" expanded="false" />
-            <element signature="e#12436#12782#0" expanded="false" />
-            <element signature="e#12475#12667#0" expanded="false" />
-            <element signature="e#12673#12764#0" expanded="false" />
-            <element signature="e#12784#12857#0" expanded="false" />
-            <element signature="e#13106#13193#0" expanded="false" />
-            <element signature="e#13311#13391#0" expanded="false" />
-            <element signature="e#13404#13454#0" expanded="false" />
-            <element signature="e#13968#14045#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/upload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1508250829000" expanded="true" signature="2019:2028" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/dialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="43" lean-forward="false" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/indexController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/upload/indexView.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6579">
@@ -1314,14 +1069,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="92" lean-forward="false" selection-start-line="23" selection-start-column="92" selection-end-line="23" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/createCooperation/indexController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1354,14 +1101,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/requestDocument/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/officeAreaRecord/indexController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1374,22 +1113,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/requestDocument/tableView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1955">
-          <caret line="115" column="40" lean-forward="false" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/requestDocument/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1407,38 +1130,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="6" selection-end-column="10" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="110" column="77" lean-forward="true" selection-start-line="110" selection-start-column="63" selection-end-line="110" selection-end-column="77" />
-          <folding>
-            <element signature="e#872#1189#0" expanded="false" />
-            <element signature="e#1224#3034#0" expanded="false" />
-            <element signature="e#1814#2106#0" expanded="false" />
-            <element signature="e#1843#2087#0" expanded="false" />
-            <element signature="e#1930#2005#0" expanded="false" />
-            <element signature="e#2153#2450#0" expanded="false" />
-            <element signature="e#2269#2398#0" expanded="false" />
-            <element signature="e#2514#2529#0" expanded="false" />
-            <element signature="e#3070#3627#0" expanded="false" />
-            <element signature="e#3169#3220#0" expanded="false" />
-            <element signature="e#3226#3535#0" expanded="false" />
-            <element signature="e#3330#3396#0" expanded="false" />
-            <element signature="e#3463#3521#0" expanded="false" />
-            <element signature="e#3575#3617#0" expanded="false" />
-            <element signature="e#4982#5140#0" expanded="false" />
-            <element signature="e#5540#5654#0" expanded="false" />
-            <element signature="e#5773#5970#0" expanded="false" />
-            <element signature="e#5804#5863#0" expanded="false" />
-            <element signature="e#5893#5952#0" expanded="false" />
-            <element signature="e#8564#8910#0" expanded="false" />
-            <element signature="e#8603#8795#0" expanded="false" />
-            <element signature="e#8801#8892#0" expanded="false" />
-            <element signature="e#8912#8985#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1460,14 +1151,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/dialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="3" lean-forward="false" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/noticeManage/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1484,29 +1167,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/router-cfg-version.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="52" column="26" lean-forward="false" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="22" column="51" lean-forward="false" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/tableView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="67" column="21" lean-forward="false" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1575,7 +1240,7 @@
         <state relative-caret-position="336">
           <caret line="42" column="50" lean-forward="false" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="50" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1642,14 +1307,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/query/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/tableView.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="844">
@@ -1670,20 +1327,174 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/app/app.css">
+    <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/dialog.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="682" column="4" lean-forward="false" selection-start-line="682" selection-start-column="1" selection-end-line="682" selection-end-column="4" />
+        <state relative-caret-position="70">
+          <caret line="37" column="7" lean-forward="false" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/router-cfg-version.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="44" column="29" lean-forward="false" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/dialog.html">
+    <entry file="file://$PROJECT_DIR$/src/components/receiveDocument/tableView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="47" column="48" lean-forward="false" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
+        <state relative-caret-position="391">
+          <caret line="23" column="41" lean-forward="false" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/query/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="116" column="8" lean-forward="false" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/receiveDocument/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/receiveDocument/indexView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="116" column="26" lean-forward="true" selection-start-line="116" selection-start-column="26" selection-end-line="116" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/receiveDocument/dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="70" column="43" lean-forward="false" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/requestDocument/indexController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/app/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="684" column="93" lean-forward="false" selection-start-line="684" selection-start-column="93" selection-end-line="684" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/requestDocument/dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="39" lean-forward="false" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="3" lean-forward="false" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/indexView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="31" column="10" lean-forward="true" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
+          <folding>
+            <element signature="e#872#1189#0" expanded="false" />
+            <element signature="e#1224#3034#0" expanded="false" />
+            <element signature="e#1814#2106#0" expanded="false" />
+            <element signature="e#1843#2087#0" expanded="false" />
+            <element signature="e#1930#2005#0" expanded="false" />
+            <element signature="e#2153#2450#0" expanded="false" />
+            <element signature="e#2269#2398#0" expanded="false" />
+            <element signature="e#2514#2529#0" expanded="false" />
+            <element signature="e#3070#3627#0" expanded="false" />
+            <element signature="e#3169#3220#0" expanded="false" />
+            <element signature="e#3226#3535#0" expanded="false" />
+            <element signature="e#3330#3396#0" expanded="false" />
+            <element signature="e#3463#3521#0" expanded="false" />
+            <element signature="e#3575#3617#0" expanded="false" />
+            <element signature="e#4982#5140#0" expanded="false" />
+            <element signature="e#5540#5654#0" expanded="false" />
+            <element signature="e#5773#5970#0" expanded="false" />
+            <element signature="e#5804#5863#0" expanded="false" />
+            <element signature="e#5893#5952#0" expanded="false" />
+            <element signature="e#8564#8910#0" expanded="false" />
+            <element signature="e#8603#8795#0" expanded="false" />
+            <element signature="e#8801#8892#0" expanded="false" />
+            <element signature="e#8912#8985#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/requestDocument/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/requestDocument/indexView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="117" column="26" lean-forward="true" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/requestDocument/tableView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="98" column="12" lean-forward="false" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/tableView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="109" column="10" lean-forward="true" selection-start-line="109" selection-start-column="10" selection-end-line="109" selection-end-column="10" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>

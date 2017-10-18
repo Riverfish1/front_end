@@ -682,7 +682,7 @@ input:-webkit-autofill {
 #tabNav{margin-bottom: 10px;}
 .pl0{padding-left: 0px;}
 /*办文管理*/
-.flowWrap .title-wrap{text-align: center; font-size: 16px; color: #0c8bec; }
+.flowWrap .title-wrap{text-align: center; font-size: 16px; color: #0c8bec; padding-left: 0;  padding-right:0;}
 .flowWrap .arrow-down{
     width: 30px;
     height: 100px;
