@@ -19,7 +19,7 @@ define([
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
             window.ownerPeopleId = 4;
-            window.ownerPeopleName = "张三";
+            window.ownerdepartmentName = "张三";
         },
         render: function () {
             //main view
@@ -32,22 +32,24 @@ define([
         },
         initSuggest: function () {
             this.$suggestWrap.bsSuggest('init', {
-                effectiveFieldsAlias: {peopleName: "姓名", id: "ID", employeeNum: "工号"},
+                effectiveFieldsAlias: {departmentName: "部门名称", id: "部门ID", parentName: "单位"},
                 clearable: true,
                 showHeader: true,
                 showBtn: false,
-                allowNoKeyword: false,
-                getDataMethod: "url",
+                allowNoKeyword: true,
+                // getDataMethod: "url",
+                getDataMethod: "firstByUrl",
                 delayUntilKeyup: true,
                 // url: "src/components/sendDocument/data.json",
-                url: QUERY.FUZZY_QUERY,
+                url: QUERY.RECORD_DEPARTMENT_QUERY,
                 idField: "id",
-                keyField: "peopleName",
+                keyField: "departmentName",
                 fnAdjustAjaxParam: function (keyword, opts) {
                     return {
                         method: 'post',
                         data: JSON.stringify({
-                            peopleName: keyword
+                            userPaged: false
+                            // departmentName: keyword
                         }),
                         'contentType': 'application/json'
                     };
@@ -55,18 +57,18 @@ define([
                 processData: function (json) {
                     var data = {value: []};
                     $.each(json.data && json.data[0], function (i, r) {
-                        data.value.push({peopleName: r.peopleName, employeeNum: r.employeeNum, id: r.id})
+                        data.value.push({departmentName: r.departmentName, parentName: r.parentName, id: r.id})
                     })
                     return data;
                 }
             }).on('onDataRequestSuccess', function (e, result) {
             }).on('onSetSelectValue', function (e, keyword, data) {
                 var $row = $(e.target).parents('.input-group')
-                var $operatorName = $row.find('input[name=targetName]');
-                var $validInput = $row.find('.targetId');
+                var $operatorName = $row.find('input[name=departmentName]');
+                var $validInput = $row.find('.departmentId');
                 var $helpBlock = $row.find('.help-block');
                 $validInput.val(data.id);
-                $operatorName.val(data.peopleName);
+                $operatorName.val(data.departmentName);
                 $helpBlock.remove();
             }).on('onUnsetSelectValue', function () {});
         },
@@ -96,20 +98,23 @@ define([
             var initState = {
                 title: '',
                 content: '',
+                status: 'submit',
                 startTime: '',
                 endTime: '',
                 filePath: '',
                 creatorId: window.ownerPeopleId,
-                creatorName: window.ownerPeopleName,
-                targetId: '',
-                targetName: '',
+                creatorName: window.ownerdepartmentName,
+                departmentId: '',
+                departmentName: '',
+                sNumber: '',
                 id: ''
             };
             var row = row.id ? row : initState;
             if(row.id){
-                row.startTime = ncjwUtil.timeTurn(row.startTime, 'yyyy-MM-dd');
-                row.endTime = ncjwUtil.timeTurn(row.endTime, 'yyyy-MM-dd');
+                row.startTime = ncjwUtil.timeTurn(row.startTime);
+                row.endTime = ncjwUtil.timeTurn(row.endTime);
             }
+            this.showOrhideBtn(row);
             this.$editDialog.modal('show');
             this.$editDialog.modal({backdrop: 'static', keyboard: false});
             this.$editDialogPanel.empty().html(this.getDialogContent(row));
@@ -128,9 +133,16 @@ define([
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
+        showOrhideBtn: function (row) {
+            if(row.status == "finish"){
+                this.$editDialog.find('.status-button').hide();
+            }else{
+                this.$editDialog.find('.status-button').show();
+            }
+        },
         setBssuggestValue: function (row) {
-            this.$suggestWrap.val(row.targetId);
-            // this.$suggestWrap.val(row.targetName);
+            this.$suggestWrap.val(row.departmentId);
+            // this.$suggestWrap.val(row.departmentName);
         },
         delOne: function (row) {
             var that = this;
@@ -147,7 +159,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.WORK_WORKASSIGN_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.WORK_NOTICERECORD_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();
@@ -178,7 +190,10 @@ define([
                     endTime: {
                         required: true
                     },
-                    targetId: {
+                    departmentId: {
+                        required: true
+                    },
+                    sNumber: {
                         required: true
                     }
                 },
@@ -187,7 +202,8 @@ define([
                     content: "请填写正文",
                     startTime: "请选择开始时间",
                     endTime: "请选择结束时间",
-                    targetId: "请选择交办人"
+                    departmentId: "请选择交办人",
+                    sNumber: "请填写发布次数"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -209,7 +225,7 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_WORKASSIGN_UPDATE : QUERY.WORK_WORKASSIGN_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_NOTICERECORD_UPDATE : QUERY.WORK_NOTICERECORD_NEW, datas, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$editDialog.modal('hide');

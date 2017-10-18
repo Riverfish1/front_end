@@ -149,6 +149,28 @@ define([], function () {
         ASSESS_SUMMARY_UPDATE: '/api/workSummary/updateById', 
         ASSESS_SUMMARY_INSERT: '/api/workSummary/insert', 
         ASSESS_SUMMARY_QUERY_BY_USER_ID: '/api/workSummary/queryByUserId', 
+        //交办协办
+        WORK_COOPERATION_INSERT: '/api/cooperation/insert',
+        WORK_COOPERATION_QUERY: '/api/cooperation/query',
+        WORK_COOPERATION_QUERY_BY_CREATORID: '/api/cooperation/queryByCreatorId',
+        WORK_COOPERATION_QUERY_BY_TARGETID: '/api/cooperation/queryByTargetId',
+        WORK_COOPERATION_UPDATE: '/api/cooperation/updateById',
+        WORK_COOPERATION_DELETE: '/api/cooperation/deleteById',
+        WORK_COOPERATION_TARGETCLOSE: '/api/cooperation/targetClose',
+        //通知管理
+        WORK_NOTICERECORD_NEW: '/api/noticeRecord/new',
+        WORK_NOTICERECORD_SUBMIT: '/api/noticeRecord/submit',
+        WORK_NOTICERECORD_QUERY: '/api/noticeRecord/query',
+        WORK_NOTICERECORD_QUERY_BY_ID: '/api/noticeRecord/queryByUserId',
+        WORK_NOTICERECORD_SELECT_BY_ID: '/api/noticeRecord/selectById',
+        WORK_NOTICERECORD_UPDATE: '/api/noticeRecord/updateById',
+        WORK_NOTICERECORD_DELETE: '/api/noticeRecord/deleteById',
+
+        //考核指标管理
+        KPI_MANAGE_INSERT: '/api/kpiManage/insert',
+        KPI_ITEM_SELECT: '/api/kpiItems/query',
+        TARGET_NUM_ITEMS_SELECT: '/api/targetNumItems/query',
+
 
         // 一些基本正则
         TEL_REG: /(^(13\d|15[^4,\D]|17[13678]|18\d)\d{8}|170[^346,\D]\d{7})$/,
