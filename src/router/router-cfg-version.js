@@ -53,7 +53,10 @@ define(['backbone'], function (Backbone) {
         'work/noticeRecord': 'src/components/noticeRecord/indexController.js',
         // 领导考核
         'assess/leaderCommunicate': 'src/components/leaderCommunicate/indexController.js',
-
+        // 考核指标管理
+        'assess/kpiManage': 'src/components/kpiManage/indexController.js',
+        // 临时交办工作管理
+        'assess/assignManage': 'src/components/assignManage/indexController.js',
         '*actions': 'defaultAction'
     };
 

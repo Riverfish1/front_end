@@ -144,6 +144,14 @@ define([], function () {
         WORK_NOTICERECORD_UPDATE: '/api/noticeRecord/updateById',
         WORK_NOTICERECORD_DELETE: '/api/noticeRecord/deleteById',
 
+        //考核指标管理
+        KPI_MANAGE_INSERT: '/api/kpiManage/insert',
+        KPI_ITEM_SELECT: '/api/kpiItems/query',
+        TARGET_NUM_ITEMS_SELECT: '/api/targetNumItems/query',
+
+        //临时交办工作管理
+        ASSIGN_MANAGE_INSERT: 'api/assignManage/insert',
+
 
         // 一些基本正则
         TEL_REG: /(^(13\d|15[^4,\D]|17[13678]|18\d)\d{8}|170[^346,\D]\d{7})$/,
