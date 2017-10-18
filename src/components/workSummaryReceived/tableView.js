@@ -81,7 +81,7 @@ define(['../../common/query/index'], function (QUERY) {
                     }
                 }, {
                     field: 'summaryStatus',
-                    title: '小结状态',
+                    title: '总结状态',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value) {

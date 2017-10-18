@@ -1,5 +1,6 @@
 <form>
 		<div class="accordion">
+				<% if(summaryType === 1) { %>
 				<div class="panel panel-default">
 						<div class="panel-heading">
 							  <h4 class="panel-title">
@@ -11,16 +12,26 @@
 			          <textarea><%= weekSummary %></textarea>
 					  </div>
 				</div>
+				<% } %>
+				<% if(summaryType === 2) { %>
 			  <div class="panel panel-default">
 			      <div class="panel-heading">
 			          <h4 class="panel-title">
-			              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><%= people %>月总结 <span style="top: 3px;" class="glyphicon glyphicon-chevron-down"></span></a><button class="col-md-2 btn btn-primary rate">评价</button>
+			              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><%= people %>月总结 <span style="top: 3px;" class="glyphicon glyphicon-chevron-down"></span></a>
+			              <% if(!status) { %>
+			              <button class="col-md-2 btn btn-primary rate">评价</button>
+			              <% } %>
+			              <% if(status) { %>
+			              <button disabled="true" class="col-md-2 btn btn-primary rate">已评价</button>
+			              <% } %>
 			          </h4>
 			      </div>
 			      <div id="collapseTwo" class="panel-collapse collapse ">
 	              <textarea><%= monthSummary %></textarea>
 			      </div>
 			  </div>
+			  <% } %>
+			  <% if(summaryType === 3) { %>
 			  <div class="panel panel-default">
 			      <div class="panel-heading">
 			          <h4 class="panel-title">
@@ -31,6 +42,8 @@
 	              <textarea><%= quarterlySummary %></textarea>
 			      </div>
 			  </div>
+			  <% } %>
+			  <% if(summaryType === 4) { %>
 			  <div class="panel panel-default">
 			      <div class="panel-heading">
 			          <h4 class="panel-title">
@@ -41,5 +54,6 @@
 	              <textarea><%= annualSummary %></textarea>
 			      </div>
 			  </div>
+			  <% } %>
 		</div>
 </form>

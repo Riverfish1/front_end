@@ -27,9 +27,9 @@ define(['backbone'], function (Backbone) {
         'work/meeting': 'src/components/workMeetingSchedule/indexController.js',
         // 待办事宜
         'work/todo': 'src/components/workToDo/indexController.js',
-        // 个人小结
+        // 个人总结
         'work/mySummary': 'src/components/workSummary/indexController.js',
-        // 收到的小结
+        // 收到的总结
         'work/summaryReceived': 'src/components/workSummaryReceived/indexController.js',
         // 信访管理
         'work/petitionMng': 'src/components/petitionMng/indexController.js',
