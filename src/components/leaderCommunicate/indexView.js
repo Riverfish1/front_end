@@ -23,6 +23,16 @@ define([
                 quarterlySummary: '目标数值：XXX\n关键业务指标：XXXXXXXXXXXXXXXX\n完成情况：XXX',
                 annualSummary: '目标数值：XXX\n关键业务指标：XXXXXXXXXXXXXXXX\n完成情况：XXX'
             };
+            var params = {
+                approverId: 100
+            };
+            ncjwUtil.postData(QUERY.ASSESS_SUMMARY_QUERY, JSON.stringify(params), function(res) {
+                if (res.success) {
+                    console.log(res.data[0]);
+                }
+            }, {
+                'contentType': 'application/json'
+            });
             this.$el.empty().html(this.template(initState));
             this.$editDialog = this.$el.find('#editDialog');
             this.$editDialogPanel = this.$el.find('#editPanel');

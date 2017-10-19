@@ -1,25 +1,36 @@
 <form class="form-horizontal" id="submitForm" >
-    <input type="hidden" name="userId" id="userId" value="100">
     <div class="form-group">
-        <label class="col-md-2 control-label">关键业务指标</label>
+        <label class="col-md-2 control-label">时间范围：</label>
         <div class="col-md-10">
-            <select class="mw316 w316"  name="kpi" id="kpiSel"></select>
+            <div class="row">
+                <span class="col-md-5"><input name="startDate" class="form-control startDate" type="text"></span>
+                <span class="col-md-2" style="text-align: center;line-height: 30px;">至</span>
+                <span class="col-md-5"><input name="endDate" class="form-control endDate" type="text"></span>
+            </div>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-2 control-label">目标数值</label>
+        <label class="col-md-2 control-label">关键业务指标：</label>
         <div class="col-md-10">
-            <select class="mw316 w316"  name="targetNum" id="targetNumSel"></select>
+            <select class="mw316 w316"  name="kpiId" id="kpiSel"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">目标数值：</label>
+        <div class="col-md-10">
+            <select class="mw316 w316"  name="targetNumber" id="targetNumSel"></select>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-2 control-label">完成情况：</label>
         <div class="col-md-9">
-            <textarea name="performance" class="form-control"></textarea>
+            <textarea name="performance" id="performance" class="form-control"></textarea>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-2 control-label">岗位指标设定：</label>
+        <div class="col-md-10">
+            <input type="text" name="postKpi" id="postKpi" class="form-control">
         <div class="col-md-9">
             <input type="text" name="postKpi" class="form-control">
         </div>

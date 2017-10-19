@@ -20,6 +20,17 @@ define([
         render: function () {
             //main view
             this.$el.empty().html(this.template());
+            this.$submitForm = this.$el.find('#submitForm');
+            $('.startDate, .endDate').datepicker({
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                todayHighlight: true,
+                autoclose: true
+            });
+            this.$kpiSel = this.$submitForm.find('#kpiSel');
+            this.$targetNumSel = this.$submitForm.find('#targetNumSel');
+            this.$performance = this.$submitForm.find('#performance');
+            this.$postKpi = this.$submitForm.find('#postKpi');
             this.getKpiList();
             this.getTargetNumList();
             return this;
@@ -34,7 +45,7 @@ define([
             ncjwUtil.postData(QUERY.KPI_ITEM_SELECT, JSON.stringify(params), function (res) {
                 if (res.success) {
                     var list = {list: res.data[0]};
-                    self.$kpiSel.empty().html(self.getKpiSelectContent(list));
+                    self.$kpiSel.html(self.getKpiSelectContent(list));
                 } else {
                 }
             }, {
@@ -51,7 +62,7 @@ define([
             ncjwUtil.postData(QUERY.TARGET_NUM_ITEMS_SELECT , JSON.stringify(params), function (res) {
                 if (res.success) {
                     var list = {list: res.data[0]};
-                    self.$targetNumSel.empty().html(self.getTargetNumSelectContent(list));
+                    self.$targetNumSel.html(self.getTargetNumSelectContent(list));
                 } else {
                 }
             }, {
@@ -108,14 +119,13 @@ define([
         submitForm: function (e) {
             if(this.$submitForm.valid()){
                 var that = this;
-                var $form = $(e.target).parents('.modal-content').find('#editForm');
+                var $form = this.$el.find('#submitForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
-                console.log(data);
                 var datas = serializeJSON(data);
-                console.log(datas);
                 var JSONData = JSON.parse(datas);
-                var id = $('#id').val();
+                console.log(JSONData);
+                JSONData.userId = window.ownerPeopleId;
                 var kpi = this.$kpiSel.val();
                 var targetNum = this.$targetNumSel.val();
                 var performance = this.$performance.val();
@@ -130,7 +140,7 @@ define([
                         }
                     },
                     title: "确认设定",
-                    message: '<div class="tipInfo tipConfirm"><p>' + kpi + "——" + targetNum + '</p><p>完成情况：' + performance + '</p><p>岗位指标设定：' + postKpi + '</p></div>',
+                    message: '<div class="tipInfo tipConfirm"><p>时间范围：' + JSONData.startDate + ' —— ' + JSONData.endDate + '</p><p>关键业务指标：' + kpi + "</p><p>目标数值：" + targetNum + '</p><p>完成情况：' + performance + '</p><p>岗位指标设定：' + postKpi + '</p></div>',
                     callback: function (result) {
                         if (result) {
                             ncjwUtil.postData(QUERY.KPI_MANAGE_INSERT, JSON.stringify(JSONData), function (res) {

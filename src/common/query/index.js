@@ -55,7 +55,7 @@ define([], function () {
         WORK_ADDRESSLIST_QUERY: '/api/addressList/query',
         WORK_ADDRESSLIST_INSERT: '/api/addressList/insert',
         WORK_ADDRESSLIST_DELETE: '/api/addressList/deleteById',
-        // 工作小结
+        // 工作总结
         WORK_SUMMARY_INSERT: '/api/personalSummary/insert',
         WORK_SUMMARY_UPDATE: '/api/personalSummary/updateById',
         WORK_SUMMARY_DELETE: '/api/personalSummary/deleteById',
@@ -83,7 +83,7 @@ define([], function () {
         // WORK_SHOT_DELETE: '/api/shortCut/deleteById',
         WORK_SHOT_QUERY: '/api/shortCut/query',
         // WORK_SHOT_SELECT_BY_ID: '/api/shortCut/selectById',
-        //信访管理
+        // 信访管理
         WORK_PETITIONMNG_INSERT: '/api/petitionManagement/insert',
         WORK_PETITIONMNG_UPDATE: '/api/petitionManagement/updateById',
         WORK_PETITIONMNG_QUERY: '/api/petitionManagement/query',
@@ -100,7 +100,7 @@ define([], function () {
         WORK_AUTH_DELETE: '/api/workAuth/deleteById',
         WORK_AUTH_QUERY: '/api/workAuth/queryByUserId',
         WORK_AUTH_SELECT_BY_ID: '/api/workAuth/selectById',
-        //发文管理
+        // 发文管理
         WORK_SENDDOCUMENT_NEW: '/api/docsend/new',
         WORK_SENDDOCUMENT_SUBMIT: '/api/docsend/submit',
         WORK_SENDDOCUMENT_AGREE: '/api/docsend/agree',
@@ -109,7 +109,7 @@ define([], function () {
         WORK_SENDDOCUMENT_SELECT_BY_ID: '/api/docsend/selectById',
         WORK_SENDDOCUMENT_UPDATE: '/api/docsend/updateById',
         WORK_SENDDOCUMENT_DELETE: '/api/docsend/deleteById',
-        //收文管理
+        // 收文管理
         WORK_RECEIVEDOCUMENT_NEW: '/api/docrecv/new',
         WORK_RECEIVEDOCUMENT_SUBMIT: '/api/docrecv/submit',
         WORK_RECEIVEDOCUMENT_AGREE: '/api/docrecv/agree',
@@ -118,7 +118,7 @@ define([], function () {
         WORK_RECEIVEDOCUMENT_SELECT_BY_ID: '/api/docrecv/selectById',
         WORK_RECEIVEDOCUMENT_UPDATE: '/api/docrecv/updateById',
         WORK_RECEIVEDOCUMENT_DELETE: '/api/docrecv/deleteById',
-        //请示报告
+        // 请示报告
         WORK_REQUESTDOCUMENT_NEW: '/api/workReport/new',
         WORK_REQUESTDOCUMENT_SUBMIT: '/api/workReport/submit',
         WORK_REQUESTDOCUMENT_AGREE: '/api/workReport/agree',
@@ -127,6 +127,28 @@ define([], function () {
         WORK_REQUESTDOCUMENT_SELECT_BY_ID: '/api/workReport/selectById',
         WORK_REQUESTDOCUMENT_UPDATE: '/api/workReport/updateById',
         WORK_REQUESTDOCUMENT_DELETE: '/api/workReport/deleteById',
+        // 交办协办
+        WORK_WORKASSIGN_INSERT: '/api/cooperation/insert',
+        WORK_WORKASSIGN_QUERY: '/api/cooperation/query',
+        WORK_WORKASSIGN_QUERY_BY_ID: '/api/cooperation/queryByUserId',
+        WORK_WORKASSIGN_UPDATE: '/api/cooperation/updateById',
+        WORK_WORKASSIGN_DELETE: '/api/cooperation/deleteById',
+        // 通知管理
+        WORK_NOTICEMANAGE_NEW: '/api/noticeRecord/new',
+        WORK_NOTICEMANAGE_SUBMIT: '/api/noticeRecord/submit',
+        WORK_NOTICEMANAGE_AGREE: '/api/noticeRecord/agree',
+        WORK_NOTICEMANAGE_REJECT: '/api/noticeRecord/reject',
+        WORK_NOTICEMANAGE_QUERY_BY_ID: '/api/noticeRecord/queryByUserId',
+        WORK_NOTICEMANAGE_SELECT_BY_ID: '/api/noticeRecord/selectById',
+        WORK_NOTICEMANAGE_UPDATE: '/api/noticeRecord/updateById',
+        WORK_NOTICEMANAGE_DELETE: '/api/noticeRecord/deleteById',
+        // 个人绩效
+        
+        // 领导沟通
+        ASSESS_SUMMARY_QUERY: '/api/workSummary/query', 
+        ASSESS_SUMMARY_UPDATE: '/api/workSummary/updateById', 
+        ASSESS_SUMMARY_INSERT: '/api/workSummary/insert', 
+        ASSESS_SUMMARY_QUERY_BY_USER_ID: '/api/workSummary/queryByUserId', 
         //交办协办
         WORK_COOPERATION_INSERT: '/api/cooperation/insert',
         WORK_COOPERATION_QUERY: '/api/cooperation/query',
