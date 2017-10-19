@@ -156,6 +156,7 @@ define([], function () {
         WORK_COOPERATION_QUERY_BY_TARGETID: '/api/cooperation/queryByTargetId',
         WORK_COOPERATION_UPDATE: '/api/cooperation/updateById',
         WORK_COOPERATION_DELETE: '/api/cooperation/deleteById',
+        WORK_COOPERATION_PROCESS: '/api/cooperation/process',
         WORK_COOPERATION_TARGETCLOSE: '/api/cooperation/targetClose',
         //通知管理
         WORK_NOTICERECORD_NEW: '/api/noticeRecord/new',

@@ -30,13 +30,11 @@
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">附件</label>
-        <div class="col-md-9 filePathWrap" style="overflow: auto;display: none;">
-            <%= filePath %>
+        <% if(id){ %>
+        <div class="col-md-9" style="overflow: auto;">
+            <span><%= filePath %></span>
         </div>
-        <div class="col-md-9">
-            <div id="uploaderWrap"></div>
-            <input type="hidden" name="filePath" readonly id="filePath" class="form-control" value="<%= filePath %>">
-        </div>
+        <% } %>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label title-wrap">

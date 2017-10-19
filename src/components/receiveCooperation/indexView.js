@@ -13,7 +13,8 @@ define([
         getDialogContent: _.template(dialogTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
-            'click #btn-submit': 'submitForm'
+            'click #btn-submit': 'submitForm',
+            'click #btn-close': 'submitForm'
         },
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
@@ -131,15 +132,16 @@ define([
             this.initSubmitForm();
         },
         showOrhideBtn: function (row) {
-            if(row.status == "finish"){
-                this.$editDialog.find('.status-button').hide();
+            this.$editDialog.find('.status-button').hide();
+            if(row.status == "submit"){
+                this.$editDialog.find("#btn-submit,#btn-close").show();
             }else{
-                this.$editDialog.find('.status-button').show();
+                this.$editDialog.find("#btn-close").show();
             }
         },
         setBssuggestValue: function (row) {
-            this.$suggestWrap.val(row.targetId);
-            // this.$suggestWrap.val(row.targetName);
+            // this.$suggestWrap.val(row.targetId);
+            this.$suggestWrap.val(row.targetName);
         },
         delOne: function (row) {
             var that = this;
@@ -212,13 +214,15 @@ define([
         },
         submitForm: function (e) {
             if (this.$editForm.valid()) {
-                var that = this;
-                var $form = $(e.target).parents('.modal-content').find('#editForm');
-                var data = $form.serialize();
-                data = decodeURIComponent(data, true);
-                var datas = serializeJSON(data);
+                var $btn = $(e.target), index = $btn.attr('data-status');
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_COOPERATION_TARGETCLOSE : QUERY.WORK_COOPERATION_INSERT, datas, function (res) {
+                var urlMap = {
+                    "0": QUERY.WORK_COOPERATION_PROCESS,
+                    "1": QUERY.WORK_COOPERATION_TARGETCLOSE,
+                }
+                var that = this;
+                var param = {id: Number(id)};
+                ncjwUtil.getData(urlMap[index], param, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '处理成功！' : '新增成功！');
                         that.$editDialog.modal('hide');
@@ -226,8 +230,6 @@ define([
                     } else {
                         ncjwUtil.showError("处理失败：" + res.errorMsg);
                     }
-                }, {
-                    "contentType": 'application/json'
                 })
             }
         }

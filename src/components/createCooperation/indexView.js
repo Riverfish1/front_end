@@ -138,8 +138,8 @@ define([
             }
         },
         setBssuggestValue: function (row) {
-            this.$suggestWrap.val(row.targetId);
-            // this.$suggestWrap.val(row.targetName);
+            // this.$suggestWrap.val(row.targetId);
+            this.$suggestWrap.val(row.targetName);
         },
         delOne: function (row) {
             var that = this;
