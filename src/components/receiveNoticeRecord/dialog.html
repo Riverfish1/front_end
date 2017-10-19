@@ -40,15 +40,17 @@
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">附件</label>
+        <% if(!id){ %>
         <div class="col-md-9">
-            <% if(!id){ %>
             <div id="uploaderWrap"></div>
             <input type="hidden" name="filePath" id="filePath" class="form-control" value="<%= filePath %>">
-            <% } %>
-            <% if(id){ %>
-            <span><%= filePath %></span>
-            <% } %>
         </div>
+        <% } %>
+        <% if(id){ %>
+        <div class="col-md-9" style="overflow: auto;">
+            <span><%= filePath %></span>
+        </div>
+        <% } %>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label title-wrap">
@@ -57,10 +59,10 @@
         <div class="col-md-9">
             <div class="input-group">
                 <% if(id){ %>
-                <input type="text" class="form-control test">
+                <input type="text" disabled class="form-control test">
                 <% } %>
                 <% if(!id){ %>
-                <input type="text" disabled class="form-control test">
+                <input type="text" class="form-control test">
                 <% } %>
                 <input type="text" name="departmentIds" class="departmentIds" value="<%= departmentIds %>">
                 <!--<input type="hidden"  name="departmentName">-->

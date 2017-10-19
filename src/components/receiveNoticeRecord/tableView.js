@@ -21,7 +21,7 @@ define(['../../common/query/index'], function (QUERY) {
         },
         init: function () {
             this.$el.bootstrapTable({
-                url: QUERY.WORK_NOTICERECORD_QUERY_BY_CREATORID, //请求后台的URL（*）
+                url: QUERY.WORK_NOTICERECORD_QUERY_BY_TARGETID, //请求后台的URL（*）
                 method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -95,7 +95,7 @@ define(['../../common/query/index'], function (QUERY) {
                             var str = '';
                             // if(value == "submit"){
                             //     str += '<p class="grid-command-p btn-edit">编辑</p>';
-                            str += '<p class="grid-command-p btn-delete">删除</p>';
+                            // str += '<p class="grid-command-p btn-delete">删除</p>';
                             // }else{
                             str += '<p class="grid-command-p btn-edit">查看</p>';
                             // }

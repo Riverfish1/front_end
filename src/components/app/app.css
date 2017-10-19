@@ -737,7 +737,7 @@ input:-webkit-autofill {
     top: 10px;
     background: url(../../../static/images/arrow_left.png) -6px center no-repeat;
 }
-.input-group .departmentId{
+.input-group .departmentIds{
     width: 0;
     height: 0;
     opacity: 0;

@@ -116,6 +116,7 @@ define([
                 //yj测试
                 row.departmentIds = [13];
                 row.filePath = row.filePath ? row.filePath : "";
+                row.content = row.content ? row.content : "";
             }
             this.showOrhideBtn(row);
             this.$editDialog.modal('show');
