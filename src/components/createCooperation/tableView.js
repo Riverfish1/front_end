@@ -20,6 +20,7 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable('refresh');
         },
         init: function () {
+            //field字段不能重复
             this.$el.bootstrapTable({
                 url: QUERY.WORK_COOPERATION_QUERY_BY_CREATORID, //请求后台的URL（*）
                 method: 'get', //请求方式（*）
@@ -84,12 +85,13 @@ define(['../../common/query/index'], function (QUERY) {
                         return statusMap[value];
                     }
                 }, {
-                    field: 'status',
+                    field: 'targetName',
                     title: '操作',
                     align: 'center',
                     valign: "middle",
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
+                        var value = row.status;
                         var str = '';
                         if(value == "submit"){
                             str += '<p class="grid-command-p btn-edit">编辑</p>';

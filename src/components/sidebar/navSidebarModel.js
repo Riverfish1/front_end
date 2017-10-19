@@ -15,14 +15,17 @@ define({
         {className: 'icon_homePage', href: '#/work/todo', title: '待办事宜'},
         {className: 'icon_homePage', href: '#/work/staff', title: '通讯录'},
         // {className: 'icon_homePage', href: '#/work/staff', title: '人员档案'}
-        {className: 'icon_homePage', href: '#/work/sendDocument', title: '发文管理', children: [
+        {className: 'icon_homePage', href: '#', title: '发文管理', children: [
             {className: 'icon_homePage', href: '#/work/sendDocument', title: '发文管理'},
             {className: 'icon_homePage', href: '#/work/receiveDocument', title: '收文管理'}
         ]},
         {className: 'icon_homePage', href: '#/work/requestDocument', title: '请示报告'},
-        {className: 'icon_homePage', href: '#/work/noticeManage', title: '通知管理'},
-        {className: 'icon_homePage', href: '#/work/workAssign', title: '交办协办'},
-        {className: 'icon_homePage', href: '#/work/mySummary', title: '总结', children: [
+        {className: 'icon_homePage', href: '#/work/noticeRecord', title: '通知管理'},
+        {className: 'icon_homePage', href: '#', title: '交办协办', children: [
+            {className: 'icon_homePage', href: '#/work/createCooperation', title: '我发起的交办协办'},
+            {className: 'icon_homePage', href: '#/work/receiveCooperation', title: '我收到的交办协办'}
+        ]},
+        {className: 'icon_homePage', href: '#', title: '总结', children: [
             {className: 'icon_homePage', href: '#/work/mySummary', title: '我的总结'},
             {className: 'icon_homePage', href: '#/work/summaryReceived', title: '收到的总结'}
         ]},

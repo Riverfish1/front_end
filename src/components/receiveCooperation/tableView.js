@@ -84,12 +84,13 @@ define(['../../common/query/index'], function (QUERY) {
                         return statusMap[value];
                     }
                 }, {
-                    field: 'status',
+                    field: 'targetName',
                     title: '操作',
                     align: 'center',
                     valign: "middle",
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
+                        var value = row.status;
                         var str = '';
                         if(value == "submit"){
                             str += '<p class="grid-command-p btn-edit">处理</p>';
