@@ -2,19 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f35dcadc-155c-437a-b1b8-44d45963930a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/noticeRecord/dialog.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/noticeRecord/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/noticeRecord/indexController.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/noticeRecord/indexView.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/noticeRecord/tableView.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/noticeRecord/upload.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/noticeRecord/upload.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/query/index.js" afterPath="$PROJECT_DIR$/src/common/query/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/createCooperation/dialog.html" afterPath="$PROJECT_DIR$/src/components/createCooperation/dialog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/createCooperation/indexView.js" afterPath="$PROJECT_DIR$/src/components/createCooperation/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveCooperation/dialog.html" afterPath="$PROJECT_DIR$/src/components/receiveCooperation/dialog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveCooperation/index.html" afterPath="$PROJECT_DIR$/src/components/receiveCooperation/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveCooperation/indexView.js" afterPath="$PROJECT_DIR$/src/components/receiveCooperation/indexView.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/indexView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="140" column="10" lean-forward="true" selection-start-line="140" selection-start-column="10" selection-end-line="140" selection-end-column="10" />
+            <state relative-caret-position="336">
+              <caret line="112" column="59" lean-forward="false" selection-start-line="112" selection-start-column="59" selection-end-line="112" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -269,11 +256,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dialog.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dialog.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/createCooperation/dialog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="76" column="6" lean-forward="true" selection-start-line="76" selection-start-column="6" selection-end-line="76" selection-end-column="6" />
+            <state relative-caret-position="374">
+              <caret line="74" column="6" lean-forward="false" selection-start-line="74" selection-start-column="6" selection-end-line="74" selection-end-column="6" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#3;n#form#0;n#!!top" expanded="true" />
               </folding>
@@ -294,8 +281,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="38" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="38" />
+            <state relative-caret-position="272">
+              <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -437,10 +424,10 @@
         <option value="$PROJECT_DIR$/src/components/sendNoticeRecord/dialog.html" />
         <option value="$PROJECT_DIR$/src/common/query/index.js" />
         <option value="$PROJECT_DIR$/src/components/receiveCooperation/index.html" />
-        <option value="$PROJECT_DIR$/src/components/receiveCooperation/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/createCooperation/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/receiveCooperation/dialog.html" />
         <option value="$PROJECT_DIR$/src/components/createCooperation/dialog.html" />
+        <option value="$PROJECT_DIR$/src/components/receiveCooperation/indexView.js" />
       </list>
     </option>
   </component>
@@ -1215,12 +1202,12 @@
       <workItem from="1508286800654" duration="2449000" />
       <workItem from="1508289530483" duration="105000" />
       <workItem from="1508323728252" duration="12337000" />
-      <workItem from="1508410338439" duration="13313000" />
+      <workItem from="1508410338439" duration="13507000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="217972000" />
+    <option name="totallyTimeSpent" value="218166000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1613,26 +1600,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/tableView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="99" column="25" lean-forward="true" selection-start-line="99" selection-start-column="25" selection-end-line="99" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/createCooperation/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="140" column="10" lean-forward="true" selection-start-line="140" selection-start-column="10" selection-end-line="140" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1652,14 +1623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="438">
           <caret line="70" column="43" lean-forward="false" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="38" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -1702,11 +1665,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/createCooperation/dialog.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="76" column="6" lean-forward="true" selection-start-line="76" selection-start-column="6" selection-end-line="76" selection-end-column="6" />
+        <state relative-caret-position="374">
+          <caret line="74" column="6" lean-forward="false" selection-start-line="74" selection-start-column="6" selection-end-line="74" selection-end-column="6" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#3;n#form#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/tableView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="99" column="25" lean-forward="true" selection-start-line="99" selection-start-column="25" selection-end-line="99" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/indexView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="112" column="59" lean-forward="false" selection-start-line="112" selection-start-column="59" selection-end-line="112" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>
