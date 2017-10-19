@@ -162,7 +162,7 @@ define([], function () {
         WORK_NOTICERECORD_SUBMIT: '/api/noticeRecord/submit',
         WORK_NOTICERECORD_QUERY: '/api/noticeRecord/query',
         WORK_NOTICERECORD_QUERY_BY_CREATORID: '/api/noticeRecord/queryByCreatorId',
-        WORK_NOTICERECORD_QUERY_BY_TARGETID: '/api/noticeRecord/queryByCreatorId',
+        WORK_NOTICERECORD_QUERY_BY_TARGETID: '/api/noticeRecord/queryByTargetId',
         WORK_NOTICERECORD_QUERY_BY_ID: '/api/noticeRecord/queryByUserId',
         WORK_NOTICERECORD_SELECT_BY_ID: '/api/noticeRecord/selectById',
         WORK_NOTICERECORD_UPDATE: '/api/noticeRecord/updateById',

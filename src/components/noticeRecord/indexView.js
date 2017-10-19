@@ -113,6 +113,9 @@ define([
             if(row.id){
                 row.startTime = ncjwUtil.timeTurn(row.startTime);
                 row.endTime = ncjwUtil.timeTurn(row.endTime);
+                //yj测试
+                row.content = "余健测试";
+                row.departmentId = [13];
             }
             this.showOrhideBtn(row);
             this.$editDialog.modal('show');
@@ -141,7 +144,7 @@ define([
             }
         },
         setBssuggestValue: function (row) {
-            this.$suggestWrap.val(row.departmentId);
+            this.$suggestWrap.val(row.departmentId[0]);
             // this.$suggestWrap.val(row.departmentName);
         },
         delOne: function (row) {
@@ -232,7 +235,6 @@ define([
 
                 }
                 console.log("datas", datas);
-                return false;
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.WORK_NOTICERECORD_UPDATE : QUERY.WORK_NOTICERECORD_NEW, datas, function (res) {
                     if (res.success) {
