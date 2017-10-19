@@ -199,11 +199,11 @@ define([
                 },
                 messages: {
                     title: "请填写标题",
+                    sNumber: "请填写编号",
                     content: "请填写正文",
                     startTime: "请选择开始时间",
                     endTime: "请选择结束时间",
-                    departmentId: "请选择交办人",
-                    sNumber: "请填写发布次数"
+                    departmentId: "请选择交办人"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -224,6 +224,15 @@ define([
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
+                try{
+                    datas = JSON.parse(datas);
+                    datas.departmentId = [datas.departmentId];
+                    datas = JSON.stringify(datas);
+                }catch(e){
+
+                }
+                console.log("datas", datas);
+                return false;
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.WORK_NOTICERECORD_UPDATE : QUERY.WORK_NOTICERECORD_NEW, datas, function (res) {
                     if (res.success) {

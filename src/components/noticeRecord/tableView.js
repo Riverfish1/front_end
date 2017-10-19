@@ -21,7 +21,7 @@ define(['../../common/query/index'], function (QUERY) {
         },
         init: function () {
             this.$el.bootstrapTable({
-                url: QUERY.WORK_NOTICERECORD_QUERY_BY_ID, //请求后台的URL（*）
+                url: QUERY.WORK_NOTICERECORD_QUERY_BY_CREATORID, //请求后台的URL（*）
                 method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -71,19 +71,21 @@ define(['../../common/query/index'], function (QUERY) {
                     formatter: function(value) {
                         return value ? ncjwUtil.timeTurn(value) : "";
                     }
-                }, {
-                    field: 'status',
-                    title: '状态',
-                    align: 'center',
-                    valign: "middle",
-                    formatter: function (value, row, index) {
-                        var statusMap = {
-                            "finish": "已办",
-                            "submit": "未办"
-                        }
-                        return statusMap[value];
-                    }
-                }, {
+                }
+                // , {
+                //     field: 'status',
+                //     title: '状态',
+                //     align: 'center',
+                //     valign: "middle",
+                //     formatter: function (value, row, index) {
+                //         var statusMap = {
+                //             "finish": "已办",
+                //             "submit": "未办"
+                //         }
+                //         return statusMap[value];
+                //     }
+                // }
+                , {
                     field: 'status',
                     title: '操作',
                     align: 'center',
