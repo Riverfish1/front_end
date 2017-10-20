@@ -250,6 +250,7 @@ define([
         calendarClick: function (e) {
             console.log("calendar.getDate()", calendar.getDate());
             timeUtil.setNow(calendar.getDate());
+            this.createDetailView(this.getValue());
         },
         initSubmitForm: function () {
             this.$editForm.validate({
