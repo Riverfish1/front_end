@@ -1,12 +1,15 @@
-<!--<div class="row">-->
-    <!--<div id="toolbar" class="btn-group">-->
-        <!--<button id="btn_add" type="button" class="btn btn-default">-->
-            <!--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增-->
-        <!--</button>-->
-    <!--</div>-->
-<!--</div>-->
 <div class="row">
-    <table id="tableWrap"></table>
+    <div id="toolbar" class="btn-group">
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div id="calendarWrap"></div>
+    </div>
+    <div class="col-md-9">
+        <div id="workSummaryWrap"></div>
+    </div>
 </div>
 <!--dialog-->
 <div class="modal fade bs-example-modal-lg" id="editDialog" tabindex="-1" role="dialog" aria-hidden="true">
@@ -14,15 +17,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h5 class="modal-title" >我收到的交办协办</h5>
+                <h5 class="modal-title" >个人绩效管理</h5>
             </div>
             <div class="modal-body" >
                 <div id="editPanel"></div>
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-                <button id="btn-submit" data-status="0" class="btn btn-primary status-button" >处理</button>
-                <button id="btn-close" data-status="1" class="btn btn-primary status-button" >结束通知</button>
+                <button id="submitBtn" class="btn btn-primary" onclick="">保存</button>
             </div>
         </div>
     </div>

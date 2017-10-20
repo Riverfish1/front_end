@@ -21,7 +21,7 @@ define(['../../common/query/index'], function (QUERY) {
         },
         init: function () {
             this.$el.bootstrapTable({
-                url: QUERY.WORK_NOTICERECORD_QUERY_BY_ID, //请求后台的URL（*）
+                url: QUERY.WORK_NOTICERECORD_QUERY_BY_TARGETID, //请求后台的URL（*）
                 method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -60,47 +60,49 @@ define(['../../common/query/index'], function (QUERY) {
                     title: '开始时间',
                     align: 'center',
                     valign: "middle",
-                    formatter: function(value) {
-                        return value ? ncjwUtil.timeTurn(value) : "";
+                    formatter: function (value) {
+                        return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : "";
                     }
                 }, {
                     field: 'endTime',
                     title: '结束时间',
                     align: 'center',
                     valign: "middle",
-                    formatter: function(value) {
-                        return value ? ncjwUtil.timeTurn(value) : "";
+                    formatter: function (value) {
+                        return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : "";
                     }
-                }, {
-                    field: 'status',
-                    title: '状态',
-                    align: 'center',
-                    valign: "middle",
-                    formatter: function (value, row, index) {
-                        var statusMap = {
-                            "finish": "已办",
-                            "submit": "未办"
-                        }
-                        return statusMap[value];
-                    }
-                }, {
-                    field: 'status',
-                    title: '操作',
-                    align: 'center',
-                    valign: "middle",
-                    events: this.operateEvents,
-                    formatter: function (value, row, index) {
-                        var str = '';
-                        if(value == "submit"){
-                            str += '<p class="grid-command-p btn-edit">编辑</p>';
-                            str += '<p class="grid-command-p btn-delete">删除</p>';
-                        }else{
+                }
+                    // , {
+                    //     field: 'status',
+                    //     title: '状态',
+                    //     align: 'center',
+                    //     valign: "middle",
+                    //     formatter: function (value, row, index) {
+                    //         var statusMap = {
+                    //             "finish": "已办",
+                    //             "submit": "未办"
+                    //         }
+                    //         return statusMap[value];
+                    //     }
+                    // }
+                    , {
+                        field: 'status',
+                        title: '操作',
+                        align: 'center',
+                        valign: "middle",
+                        events: this.operateEvents,
+                        formatter: function (value, row, index) {
+                            var str = '';
+                            // if(value == "submit"){
+                            //     str += '<p class="grid-command-p btn-edit">编辑</p>';
+                            // str += '<p class="grid-command-p btn-delete">删除</p>';
+                            // }else{
                             str += '<p class="grid-command-p btn-edit">查看</p>';
+                            // }
+                            return str;
                         }
-                        return str;
-                    }
-                }],
-                responseHandler: function(res) {
+                    }],
+                responseHandler: function (res) {
                     return {
                         "total": res.total,
                         "rows": res.data && res.data[0]

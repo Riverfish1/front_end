@@ -65,7 +65,7 @@ define([
             }).on('onSetSelectValue', function (e, keyword, data) {
                 var $row = $(e.target).parents('.input-group')
                 var $operatorName = $row.find('input[name=departmentName]');
-                var $validInput = $row.find('.departmentId');
+                var $validInput = $row.find('.departmentIds');
                 var $helpBlock = $row.find('.help-block');
                 $validInput.val(data.id);
                 $operatorName.val(data.departmentName);
@@ -104,15 +104,18 @@ define([
                 filePath: '',
                 creatorId: window.ownerPeopleId,
                 creatorName: window.ownerdepartmentName,
-                departmentId: '',
+                departmentIds: '',
                 departmentName: '',
                 sNumber: '',
                 id: ''
             };
             var row = row.id ? row : initState;
             if(row.id){
-                row.startTime = ncjwUtil.timeTurn(row.startTime);
-                row.endTime = ncjwUtil.timeTurn(row.endTime);
+                row.startTime = ncjwUtil.timeTurn(row.startTime, 'yyyy-MM-dd');
+                row.endTime = ncjwUtil.timeTurn(row.endTime, 'yyyy-MM-dd');
+                //yj测试
+                row.departmentIds = [13];
+                row.filePath = row.filePath ? row.filePath : "";
             }
             this.showOrhideBtn(row);
             this.$editDialog.modal('show');
@@ -123,6 +126,7 @@ define([
             this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
             row.id && (this.setBssuggestValue(row));
+            row.id && ($('#uploader').hide());
             this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             $('.accessTime').datepicker({
                 language: 'zh-CN',
@@ -134,15 +138,15 @@ define([
             this.initSubmitForm();
         },
         showOrhideBtn: function (row) {
-            if(row.status == "finish"){
+            if(row.id){
                 this.$editDialog.find('.status-button').hide();
             }else{
                 this.$editDialog.find('.status-button').show();
             }
         },
         setBssuggestValue: function (row) {
-            this.$suggestWrap.val(row.departmentId);
-            // this.$suggestWrap.val(row.departmentName);
+            // this.$suggestWrap.val(row.departmentIds[0]);
+            this.$suggestWrap.val(row.departmentNames[0]);
         },
         delOne: function (row) {
             var that = this;
@@ -190,7 +194,7 @@ define([
                     endTime: {
                         required: true
                     },
-                    departmentId: {
+                    departmentIds: {
                         required: true
                     },
                     sNumber: {
@@ -199,11 +203,11 @@ define([
                 },
                 messages: {
                     title: "请填写标题",
+                    sNumber: "请填写编号",
                     content: "请填写正文",
                     startTime: "请选择开始时间",
                     endTime: "请选择结束时间",
-                    departmentId: "请选择交办人",
-                    sNumber: "请填写发布次数"
+                    departmentIds: "请选择交办人"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -224,6 +228,14 @@ define([
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
+                try{
+                    datas = JSON.parse(datas);
+                    datas.departmentIds = [Number(datas.departmentIds)];
+                    datas = JSON.stringify(datas);
+                }catch(e){
+
+                }
+                console.log("datas", datas);
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.WORK_NOTICERECORD_UPDATE : QUERY.WORK_NOTICERECORD_NEW, datas, function (res) {
                     if (res.success) {

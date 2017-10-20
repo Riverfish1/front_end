@@ -109,7 +109,7 @@ define([
             var row = row.id ? row : initState;
             if(row.id){
                 row.startTime = ncjwUtil.timeTurn(row.startTime, 'yyyy-MM-dd');
-                row.endTime = ncjwUtil.timeTurn(row.endTime, 'yyyy-MM-dd');
+                row.entTime = ncjwUtil.timeTurn(row.entTime, 'yyyy-MM-dd');
             }
             this.showOrhideBtn(row);
             this.$editDialog.modal('show');
@@ -138,8 +138,8 @@ define([
             }
         },
         setBssuggestValue: function (row) {
-            this.$suggestWrap.val(row.targetId);
-            // this.$suggestWrap.val(row.targetName);
+            // this.$suggestWrap.val(row.targetId);
+            this.$suggestWrap.val(row.targetName);
         },
         delOne: function (row) {
             var that = this;

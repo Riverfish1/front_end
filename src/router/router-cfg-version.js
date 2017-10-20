@@ -51,6 +51,12 @@ define(['backbone'], function (Backbone) {
         'work/receiveCooperation': 'src/components/receiveCooperation/indexController.js',
         // 通知管理
         'work/noticeRecord': 'src/components/noticeRecord/indexController.js',
+        //我发布的通知
+        'work/sendNoticeRecord': 'src/components/sendNoticeRecord/indexController.js',
+        //收到的通知
+        'work/receiveNoticeRecord': 'src/components/receiveNoticeRecord/indexController.js',
+        //个人绩效管理
+        'work/workSulmmary': 'src/components/workSulmmary/indexController.js',
         // 领导考核
         'assess/leaderCommunicate': 'src/components/leaderCommunicate/indexController.js',
         // 考核指标管理
@@ -83,6 +89,7 @@ define(['backbone'], function (Backbone) {
             if (router.currentController && router.currentController !== controller) {
                 router.currentController.onRouteChange && router.currentController.onRouteChange();
             }
+            isFirst = false;
             var hash = window.location.href.split('#')[1];
             var hashFirst = hash.split('/')[1]
             if(hashFirst != oldHashFirst){

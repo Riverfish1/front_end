@@ -1,8 +1,9 @@
 /*global define*/
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
+    var toDoType = 0;
     var Table = Backbone.View.extend({
-        el: '#tableWrap',
+        el: '#tabContent',
         initialize: function () {
         },
         showLoading: function () {
@@ -13,17 +14,21 @@ define(['../../common/query/index'], function (QUERY) {
         hideLoading: function () {
             this.$el.bootstrapTable('hideLoading');
         },
-        render: function () {
-            this.init();
+        render: function (index) {
+            this.init(index);
         },
         refresh: function () {
             this.$el.bootstrapTable('refresh');
         },
-        init: function () {
-            //field字段不能重复
+        load: function () {
+            this.$el.bootstrapTable('load');
+        },
+        init: function (index) {
+            toDoType = index;
+            this.$el.bootstrapTable('destroy');
             this.$el.bootstrapTable({
-                url: QUERY.WORK_COOPERATION_QUERY_BY_CREATORID, //请求后台的URL（*）
-                method: 'get', //请求方式（*）
+                url: QUERY.WORK_TODO_QUERY, //请求后台的URL（*）
+                method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
                 cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -33,8 +38,8 @@ define(['../../common/query/index'], function (QUERY) {
                 queryParams: this.queryParams,//传递参数（*）
                 sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
                 pageNumber: 1, //初始化加载第一页，默认第一页
-                pageSize: 20, //每页的记录行数（*）
-                pageList: [10, 25, 50, 100], //可供选择的每页的行数（*）
+                pageSize: 10, //每页的记录行数（*）
+                pageList: [20, 50, 100], //可供选择的每页的行数（*）
                 search: false, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
                 strictSearch: true,
                 showColumns: true, //是否显示所有的列
@@ -47,74 +52,61 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'title',
+                    field: 'eventName',
                     title: '标题',
+                    width: '33.3%',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'startTime',
-                    title: '开始时间',
-                    align: 'center',
-                    valign: "middle",
-                    formatter: function(value) {
-                        return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : "";
-                    }
-                }, {
-                    field: 'entTime',
-                    title: '结束时间',
-                    align: 'center',
-                    valign: "middle",
-                    formatter: function(value) {
-                        return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : "";
-                    }
-                }, {
-                    field: 'creatorName',
-                    title: '发起者',
+                    field: 'eventDescription',
+                    title: '描述',
+                    width: '33.3%',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'status',
-                    title: '状态',
+                    field: 'peopleId',
+                    title: '人员',
+                    width: '10%',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'completeTime',
+                    title: '预计完成时间',
+                    width: '23.3%',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row, index) {
-                        var statusMap = {
-                            "finish": "已办",
-                            "submit": "未办"
-                        }
-                        return statusMap[value];
+                       return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : "";
                     }
+
                 }, {
-                    field: 'targetName',
+                    field: 'status',
                     title: '操作',
                     align: 'center',
                     valign: "middle",
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
-                        var value = row.status;
                         var str = '';
-                        if(value == "submit"){
-                            str += '<p class="grid-command-p btn-edit">编辑</p>';
-                            str += '<p class="grid-command-p btn-delete">删除</p>';
-                        }else{
-                            str += '<p class="grid-command-p btn-edit">查看</p>';
-                        }
+                        str += '<p class="grid-command-p btn-edit">修改</p>';
+                        str += '<p class="grid-command-p btn-delete">删除</p>';
                         return str;
                     }
                 }],
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data && res.data[0]
+                        "rows": res.data ? res.data[0] : []
+                        // "rows": res.data && res.data[0]
                     }
                 }
             });
+            // this.hideLoading();
         },
         queryParams: function (params) {
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
-                id: window.ownerPeopleId
+                eventType: toDoType
             };
             return temp;
         },

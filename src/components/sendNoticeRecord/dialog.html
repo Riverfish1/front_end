@@ -1,0 +1,105 @@
+<div class="loading" style="width:95%"></div>
+
+<form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
+    <input type="hidden" name="id" value="<%= id %>" id="id"/>
+    <input type="hidden" name="status" value="<%= status %>" id="status"/>
+    <input type="hidden" name="creatorId" value="<%= creatorId %>" id="creatorId"/>
+    <!--<input type="hidden" name="creatorName" value="<%= creatorName %>" id="creatorName" />-->
+    <div class="form-group">
+        <label class="col-md-3 control-label">标题</label>
+        <div class="col-md-9">
+            <% if(id){ %>
+            <input type="text" name="title" disabled class="form-control" value="<%= title %>">
+            <% } %>
+            <% if(!id){ %>
+            <input type="text" name="title" class="form-control" value="<%= title %>">
+            <% } %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">编号</label>
+        <div class="col-md-9">
+            <% if(id){ %>
+            <input type="text" name="sNumber" disabled class="form-control" value="<%= sNumber %>">
+            <% } %>
+            <% if(!id){ %>
+            <input type="text" name="sNumber" class="form-control" value="<%= sNumber %>">
+            <% } %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">正文</label>
+        <div class="col-md-9">
+            <% if(id){ %>
+            <textarea type="text" disabled name="content" class="form-control" value="<%= content %>"><%= content %></textarea>
+            <% } %>
+            <% if(!id){ %>
+            <textarea type="text" name="content" class="form-control" value="<%= content %>"><%= content %></textarea>
+            <% } %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">附件</label>
+        <% if(!id){ %>
+        <div class="col-md-9">
+            <div id="uploaderWrap"></div>
+            <input type="hidden" name="filePath" id="filePath" class="form-control" value="<%= filePath %>">
+        </div>
+        <% } %>
+        <% if(id){ %>
+        <div class="col-md-9" style="overflow: auto;">
+            <span><%= filePath %></span>
+        </div>
+        <% } %>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label title-wrap">
+            <span class="flow-title">通知范围</span>
+        </label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <% if(id){ %>
+                <input type="text" class="form-control test">
+                <% } %>
+                <% if(!id){ %>
+                <input type="text" disabled class="form-control test">
+                <% } %>
+                <input type="text" name="departmentIds" class="departmentIds" value="<%= departmentIds %>">
+                <!--<input type="hidden"  name="departmentName">-->
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label pl0">发布起止时间</label>
+        <div class="col-md-4">
+            <% if(id){ %>
+            <input type="text" readonly name="startTime" class="form-control accessTime" value="<%= startTime %>">
+            <% } %>
+            <% if(!id){ %>
+            <input type="text" name="startTime" class="form-control accessTime" value="<%= startTime %>">
+            <% } %>
+        </div>
+        <div class="col-md-1">-</div>
+        <div class="col-md-4">
+            <% if(id){ %>
+            <input type="text" readonly name="endTime" class="form-control accessTime" value="<%= endTime %>">
+            <% } %>
+            <% if(!id){ %>
+            <input type="text" name="endTime" class="form-control accessTime" value="<%= endTime %>">
+            <% } %>
+        </div>
+    </div>
+    <!--<div class="form-group">-->
+    <!--<label class="col-md-3 control-label">标题</label>-->
+    <!--<div class="col-md-9">-->
+    <!--<input type="text" name="sNumber"  class="form-control" value="<%= sNumber %>">-->
+    <!--</div>-->
+    <!--</div>-->
+</form>
