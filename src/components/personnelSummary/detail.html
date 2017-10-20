@@ -1,13 +1,100 @@
-<% $.each(list, function(i, n){ %>
 <div class="row">
-    <div class="col-md-4">
-        <%= n.title %>
-    </div>
-    <div class="col-md-4">
-        <%= n.name %>
-    </div>
-    <div class="col-md-4">
-        <%= n.time %>
-    </div>
+    <button type="button" id="btn_summary" style="margin-left: 15px; margin-bottom: 10px" class="btn btn-primary">个人总结</button>
 </div>
-<% }); %>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <% $.each(list, function(i, n){ %>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id=" <%= 'headingTwo' + i  %>">
+            <h4 class="panel-title">
+                <% if(i=="0"){ %>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="<%= '#collapse' + i  %>" aria-expanded="true" aria-controls="<%= 'collapse' + i  %>">
+                    <% if(n.summaryType == "0"){ %>
+                    <span><%=  ncjwUtil.getCurrentDate(n.gmtCreate) %></span>
+                    <% } %>
+                    <% if(n.summaryType != "0"){ %>
+                    <span><%= ncjwUtil.getCurrentDate(n.startDate) %></span>
+                    —
+                    <span><%= ncjwUtil.getCurrentDate(n.endDate) %></span>
+                    <% } %>
+                </a>
+                <% } %>
+                <% if(i != "0"){ %>
+                <a  class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="<%= '#collapse' + i  %>" aria-expanded="false" aria-controls="<%= 'collapse' + i  %>">
+                    <% if(n.summaryType == "0"){ %>
+                    <span><%=  ncjwUtil.getCurrentDate(n.gmtCreate) %></span>
+                    <% } %>
+                    <% if(n.summaryType != "0"){ %>
+                    <span><%= ncjwUtil.getCurrentDate(n.startDate) %></span>
+                    —
+                    <span><%= ncjwUtil.getCurrentDate(n.endDate) %></span>
+                    <% } %>
+                </a>
+                <% } %>
+            </h4>
+        </div>
+        <% if(i=="0"){ %>
+        <div id="<%= 'collapse' + i  %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="<%= 'headingTwo' + i  %>">
+        <% } %>
+            <% if(i!="0"){ %>
+            <div id="<%= 'collapse' + i  %>" class="panel-collapse collapse " role="tabpanel" aria-labelledby="<%= 'headingTwo' + i  %>">
+            <% } %>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">关键业务指标</label>
+                        <div class="col-md-9">
+                            <%= n.kpiName %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">目标数值</label>
+                        <div class="col-md-9">
+                            <%= n.targetNumber %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">完成情况</label>
+                        <div class="col-md-9">
+                            <%= n.performance %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+
+    <!--<div class="panel panel-default">-->
+    <!--<div class="panel-heading" role="tab" id="headingTwo">-->
+    <!--<h4 class="panel-title">-->
+    <!--<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">-->
+    <!--Collapsible Group Item #2-->
+    <!--</a>-->
+    <!--</h4>-->
+    <!--</div>-->
+    <!--<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">-->
+    <!--<div class="panel-body">-->
+    <!--Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="panel panel-default">-->
+    <!--<div class="panel-heading" role="tab" id="headingThree">-->
+    <!--<h4 class="panel-title">-->
+    <!--<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">-->
+    <!--Collapsible Group Item #3-->
+    <!--</a>-->
+    <!--</h4>-->
+    <!--</div>-->
+    <!--<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">-->
+    <!--<div class="panel-body">-->
+    <!--Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>

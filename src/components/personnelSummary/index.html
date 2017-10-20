@@ -1,10 +1,15 @@
-<div class="row">
-    <div id="toolbar" class="btn-group">
-
-    </div>
+<div class="tabbable">
+    <button type="button" id="btn_add" style="float: right" class="btn btn-primary">新增日程</button>
+    <ul class="nav nav-tabs" id="tabNav">
+        <% $.each(items, function(i, n){ %>
+        <li><a href="#" data-value="<%= i %>" data-toggle="tab"><%= n %></a></li>
+        <% }); %>
+    </ul>
 </div>
 <div class="row">
     <div class="col-md-3">
+        <div class="currentDay"><%= currentDay %></div>
+        <div class="currentTime"><%= currentTime %></div>
         <div id="calendarWrap"></div>
     </div>
     <div class="col-md-9">

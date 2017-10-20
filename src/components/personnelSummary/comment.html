@@ -8,30 +8,25 @@
     <div class="form-group">
         <label class="col-md-3 control-label">时间范围</label>
         <div class="col-md-4">
-            <input type="text" name="startDate" class="form-control accessTime" value="<%= startDate %>">
+            <span><%= ncjwUtil.getCurrentDate(startDate) %></span>
+            <input type="hidden" name="startDate" class="form-control " value="<%= startDate %>">
         </div>
         <div class="col-md-1">-</div>
         <div class="col-md-4">
-            <input type="text" name="endDate" class="form-control accessTime" value="<%= endDate %>">
+            <span><%= ncjwUtil.getCurrentDate(endDate) %></span>
+            <input type="hidden" name="endDate" class="form-control " value="<%= endDate %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label pl0">关键业务指标</label>
+        <label class="col-md-3  control-label pl0">工作总结</label>
         <div class="col-md-9">
-            <select class="w294"  name="kpiId" id="kpiSel"></select>
-            <input type="hidden" name="kpiName" id="kpiName" value="<%= kpiName %>">
+            <textarea placeholder="请输入内容"  name="workSummary" id="workSummary" class="form-control" value="<%= workSummary %>"><%= workSummary %> </textarea>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3  control-label pl0">目标数值</label>
+        <label class="col-md-3  control-label pl0">自我评价</label>
         <div class="col-md-9">
-            <select class="w294"  name="targetNumber" id="targetNumSel"></select>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3  control-label pl0">完成情况</label>
-        <div class="col-md-9">
-            <textarea placeholder="请输入完成情况"  name="performance" id="performance" class="form-control" value="<%= performance %>"><%= performance %> </textarea>
+            <textarea placeholder="请输入内容"  name="selfEvaluation" id="selfEvaluation" class="form-control" value="<%= selfEvaluation %>"><%= selfEvaluation %> </textarea>
         </div>
     </div>
     <div class="form-group">
