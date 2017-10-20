@@ -56,7 +56,7 @@ define(['backbone'], function (Backbone) {
         //收到的通知
         'work/receiveNoticeRecord': 'src/components/receiveNoticeRecord/indexController.js',
         //个人绩效管理
-        'work/workSulmmary': 'src/components/workSulmmary/indexController.js',
+        'assess/personnelSummary': 'src/components/personnelSummary/indexController.js',
         // 领导考核
         'assess/leaderCommunicate': 'src/components/leaderCommunicate/indexController.js',
         // 考核指标管理
