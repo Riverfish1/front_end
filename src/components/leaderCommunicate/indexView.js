@@ -16,15 +16,9 @@ define([
         },
         render: function () {
             //main view
-            var initState = {
-                people: '张三',
-                weekSummary: '目标数值：XXX\n关键业务指标：XXXXXXXXXXXXXXXX\n完成情况：XXX',
-                monthSummary: '目标数值：XXX\n关键业务指标：XXXXXXXXXXXXXXXX\n完成情况：XXX',
-                quarterlySummary: '目标数值：XXX\n关键业务指标：XXXXXXXXXXXXXXXX\n完成情况：XXX',
-                annualSummary: '目标数值：XXX\n关键业务指标：XXXXXXXXXXXXXXXX\n完成情况：XXX'
-            };
             var params = {
-                approverId: 100
+                approverId: 100,
+                status: 0
             };
             ncjwUtil.postData(QUERY.ASSESS_SUMMARY_QUERY, JSON.stringify(params), function(res) {
                 if (res.success) {

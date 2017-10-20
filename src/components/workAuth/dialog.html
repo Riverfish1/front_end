@@ -5,28 +5,32 @@
     <div class="form-group">
         <label class="col-md-2 control-label">授权者：</label>
         <div class="col-md-9">
-            <input type="text" id="creatorId" class="form-control test" value="<%= creatorName %>">
-            <input type="hidden" name="creatorId" value="<%= creatorId %>">
-            <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                </ul>
+            <div class="input-group">
+                <input type="text" id="creatorId" class="form-control test" value="<%= creatorName %>">
+                <input type="hidden" name="creatorId" value="<%= creatorId %>">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-2 control-label">被授权者：</label>
         <div class="col-md-9">
-            <input type="text" id="targetId" value="<%= targetName %>" class="form-control test">
-            <input type="hidden" name="targetId" value="<%= targetId %>">
-            <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                </ul>
+            <div class="input-group">
+                <input type="text" id="targetId" value="<%= targetName %>" class="form-control test">
+                <input type="hidden" name="targetId" value="<%= targetId %>">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
