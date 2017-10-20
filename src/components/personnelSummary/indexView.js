@@ -27,7 +27,8 @@ define([
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
             'click #submitBtn': 'submitForm',
             'click #btn_summary': 'addSummary',
-            'click #btn-check': 'sendCheck',
+            'click .btn-check': 'sendCheck',
+            'click .ui-datepicker-body td': 'calendarClick'
         },
         initialize: function () {
             this.value = 0;
@@ -171,7 +172,8 @@ define([
         },
         addOne: function (row) {
             // debugger;
-            var initData = {id: '', startDate: '', endDate: '', kpiName: '', kpiId: '', targetNumber: '', performance: '', approverId: '', summaryType: '0', operatorId: window.ownerPeopleId, operatorName: window.ownerPeopleName};
+            var gmtCreate = ncjwUtil.timeTurn(calendar.getDate(), 'yyyy-MM-dd');
+            var initData = {id: '', startDate: '', endDate: '', gmtCreate: gmtCreate, kpiName: '', kpiId: '', targetNumber: '', performance: '', approverId: '', summaryType: '0', operatorId: window.ownerPeopleId, operatorName: window.ownerPeopleName};
             var row = row.id ? row : initData;
             row.completeTime = row.id && ncjwUtil.timeTurn(row.completeTime, 'yyyy-MM-dd');
             this.$editDialog.modal('show');
@@ -198,13 +200,14 @@ define([
         addSummary: function (row) {
             // debugger;
             var index = $('#btn_summary').val();
+            var gmtCreate = ncjwUtil.timeTurn(calendar.getDate(), 'yyyy-MM-dd');
             var commentTimeMap = {
                 "1": {startDate: timeUtil.getWeekStartDate(), endDate: timeUtil.getWeekEndDate(),summaryType: 1},
                 "2": {startDate: timeUtil.getMonthStartDate(), endDate: timeUtil.getMonthEndDate(),summaryType: 2},
                 "3": {startDate: timeUtil.getQuarterStartDate(), endDate: timeUtil.getQuarterEndDate(),summaryType: 3},
                 "4": {startDate: timeUtil.getYearStartDate(), endDate: timeUtil.getYearEndDate(),summaryType: 4}
             }
-            var initData = {id: '', startDate: commentTimeMap[index].startDate, endDate: commentTimeMap[index].endDate, selfEvaluation: '', workSummary: '', kpiName: '', kpiId: '', targetNumber: '', performance: '', approverId: '', summaryType: commentTimeMap[index].summaryType, operatorId: window.ownerPeopleId, operatorName: window.ownerPeopleName};
+            var initData = {id: '', gmtCreate: gmtCreate, startDate: commentTimeMap[index].startDate, endDate: commentTimeMap[index].endDate, selfEvaluation: '', workSummary: '', kpiName: '', kpiId: '', targetNumber: '', performance: '', approverId: '', summaryType: commentTimeMap[index].summaryType, operatorId: window.ownerPeopleId, operatorName: window.ownerPeopleName};
             var row = row.id ? row : initData;
             row.completeTime = row.id && ncjwUtil.timeTurn(row.completeTime, 'yyyy-MM-dd');
             this.$editDialog.modal('show');
@@ -229,16 +232,24 @@ define([
             this.initSubmitForm();
         },
         sendCheck: function (e) {
+            var that = this;
             var $el = $(e.target);
-            ncjwUtil.getData(QUERY.ASSESS_SUMMARY_UPDATE, {id: $el.val()}, function (res) {
+            var param = {id: $el.val(), status: 0};
+            ncjwUtil.postData(QUERY.ASSESS_SUMMARY_UPDATE, JSON.stringify(param) , function (res) {
                 if (res.success) {
                     ncjwUtil.showInfo("提交成功");
                     that.createDetailView(that.getValue());
                 } else {
                     ncjwUtil.showError("提交失败：" + res.errorMsg);
                 }
+            }, {
+                "contentType": 'application/json'
             })
 
+        },
+        calendarClick: function (e) {
+            console.log("calendar.getDate()", calendar.getDate());
+            timeUtil.setNow(calendar.getDate());
         },
         initSubmitForm: function () {
             this.$editForm.validate({

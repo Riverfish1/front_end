@@ -881,6 +881,10 @@ input:-webkit-autofill {
     height: 30px;
     text-align: center;
 }
+.ui-datepicker-wrapper .ui-datepicker-body td.active{
+    background: #a7a5a5;
+    color: #fff;
+}
 
 .ui-datepicker-wrapper .ui-datepicker-body th{
     font-size: 12px;

@@ -31,7 +31,7 @@
                 </a>
                 <% } %>
                 <span class="title"><%= n.summaryType == 0 ? "": n.summaryType == 1 ? "本周总结"  : n.summaryType == 2 ? "本月总结" : n.summaryType == 3 ? "本季总结" : "本年总结" %></span>
-                <button value="<%= n.id %>" class='<%= n.status == "0" ? "btn btn-success : n.status == 1 ? "btn"  : "btn btn-primary btn-check%>'><%= n.status == "0" ? "待审核": n.status == 1 ? "已审核"  : "提交" %></button>
+                <button value="<%= n.id %>" class='<%= n.status == "0" ? "btn" : n.status == 1 ? "btn btn-success"  : "btn btn-primary btn-check" %>'><%= n.status == "0" ? "待审核": n.status == 1 ? "已审核"  : "提交" %></button>
             </h4>
         </div>
         <% if(i=="0"){ %>
