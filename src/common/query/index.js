@@ -168,7 +168,12 @@ define([], function () {
         WORK_NOTICERECORD_SELECT_BY_ID: '/api/noticeRecord/selectById',
         WORK_NOTICERECORD_UPDATE: '/api/noticeRecord/updateById',
         WORK_NOTICERECORD_DELETE: '/api/noticeRecord/deleteById',
-
+        // 考勤
+        ASSESS_ATTENDANCE_INSERT: '/api/admApplication/insert',
+        // 我的考勤
+        ASSESS_ATTENDANCE_MY_QUERY: '/api/admApplication/query',
+        // 自动签到
+        ASSESS_ATTENDANCE_CHECK: '/api/attendanceCheck/insert',
         //考核指标管理
         KPI_MANAGE_INSERT: '/api/kpiManage/insert',
         KPI_ITEM_SELECT: '/api/kpiItems/query',

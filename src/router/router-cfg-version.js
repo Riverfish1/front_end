@@ -63,6 +63,11 @@ define(['backbone'], function (Backbone) {
         'assess/kpiManage': 'src/components/kpiManage/indexController.js',
         // 临时交办工作管理
         'assess/assignManage': 'src/components/assignManage/indexController.js',
+        // 考勤
+        'assess/attendance': 'src/components/assessAttendance/indexController.js',
+        // 我的考勤
+        'assess/myAttendance': 'src/components/myAttendance/indexController.js',
+
         '*actions': 'defaultAction'
     };
 

@@ -114,8 +114,7 @@ body {
 
 @media (min-width: 768px) {
     #main {
-        padding-right: 40px;
-        padding-left: 40px;
+        padding: 20px 40px;
         margin-top: 80px;
     }
     #sidebar {
@@ -132,6 +131,7 @@ body {
 @media (min-width: 806px) {
     #main {
         margin-top: 40px;
+        padding: 20px 40px;
     }
     #sidebar {
         top: 80px;
@@ -141,6 +141,7 @@ body {
 @media (min-width: 946px) {
     #main {
         margin-top: 30px;
+        padding: 20px 40px;
     }
     #sidebar {
         top: 70px;
@@ -176,6 +177,23 @@ body {
 /*
  * custom
  */
+.btn-ghost {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.btn-ghost:hover {
+    color: #333;
+    text-decoration: none;
+    background-position: 0 -15px;
+    background-color: #e6e6e6;
+    -webkit-transition: background-position .1s linear;
+    -moz-transition: background-position .1s linear;
+    -o-transition: background-position .1s linear;
+    transition: background-position .1s linear;
+}
+
 .f_b_box {
     width: 770px;
     margin: 0 auto;
@@ -870,5 +888,41 @@ input:-webkit-autofill {
     width:14%;
     cursor: pointer;
 }
+/* 考勤 */
+.attendance .btn {
+    margin-right: 20px;
+}
+
+.timeNow {
+    border-radius: 50%;
+    border: 1px solid #000;
+    position: relative;
+    color: #000;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+}
+
+.timeNow p {
+    position: absolute;
+    top: 30%;
+    left: 35%;
+}
+
+.timeNow .btn-link {
+    position: absolute;
+    color: #000;
+    top: 40%;
+    left: 35%;
+}
+
+.mark .timeNow {
+    background-color: rgb(46, 109, 164);
+}
+
+.markOK .timeNow {
+    background-color: #eee;
+}
+
 
 

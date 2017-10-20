@@ -174,6 +174,11 @@ var ncjwUtil = (function ($) {
             parentEle.find("[name=" + i + "]").attr('checked', true)
         }
     }
+    // 获得周几
+    var getDate = function (date) {
+        var week = "星期" + "日一二三四五六".charAt(new Date(date).getDay());
+        return week;
+    }
 
     return {
         //将方法暴露出来 JSON格式数
@@ -183,6 +188,7 @@ var ncjwUtil = (function ($) {
         postData: postData,
         setFiledsValue: setFiledsValue,
         timeTurn: timeTurn,
+        getDate: getDate,
         sellectAll: sellectAll,
         unSellectAll: unSellectAll,
         selectSome: selectSome
