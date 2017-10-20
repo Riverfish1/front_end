@@ -26,7 +26,8 @@ define([
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
             'click #submitBtn': 'submitForm',
-            'click #btn_summary': 'addSummary'
+            'click #btn_summary': 'addSummary',
+            'click #btn-check': 'sendCheck',
         },
         initialize: function () {
             this.value = 0;
@@ -52,10 +53,6 @@ define([
             }
         },
         onTabClick: function (index) {
-            //个人评论
-            if(index != 0){
-                $('#btn_summary').val(index);
-            }
             this.createDetailView(index);
         },
         createDetailView: function (index) {
@@ -102,10 +99,16 @@ define([
                 }
             };
             console.log("param", JSON.stringify(paramMap[index]))
-            ncjwUtil.postData(QUERY.ASSESS_SUMMARY_QUERY, JSON.stringify(paramMap[index]), function (res) {
+            ncjwUtil.postData(QUERY.ASSESS_SUMMARY_QUERY_BY_USER_ID, JSON.stringify(paramMap[index]), function (res) {
                 if (res.success) {
                     var list = {list: res.data[0]};
                     self.$tabContent.empty().html(self.getDetailContent(list));
+                    //个人评论按钮
+                    if(index != 0){
+                        $('#btn_summary').val(index).show();
+                    }else{
+                        $('#btn_summary').hide();
+                    }
                 } else {
                     self.$tabContent.empty().html("暂无数据！");
                     // ncjwUtil.showError(res.errorMsg);
@@ -194,7 +197,7 @@ define([
         },
         addSummary: function (row) {
             // debugger;
-            var index = $('#btn_summary').val() || 1;
+            var index = $('#btn_summary').val();
             var commentTimeMap = {
                 "1": {startDate: timeUtil.getWeekStartDate(), endDate: timeUtil.getWeekEndDate(),summaryType: 1},
                 "2": {startDate: timeUtil.getMonthStartDate(), endDate: timeUtil.getMonthEndDate(),summaryType: 2},
@@ -225,33 +228,17 @@ define([
             this.getTargetNumList();
             this.initSubmitForm();
         },
-        delOne: function (row) {
-            var that = this;
-            bootbox.confirm({
-                buttons: {
-                    confirm: {
-                        label: '确认'
-                    },
-                    cancel: {
-                        label: '取消'
-                    }
-                },
-                title: "温馨提示",
-                message: '执行删除后将无法恢复，确定继续吗？',
-                callback: function (result) {
-                    if (result) {
-                        ncjwUtil.getData(QUERY.WORK_TODO_DELETE, {id: row.id}, function (res) {
-                            if (res.success) {
-                                ncjwUtil.showInfo("删除成功");
-                                that.table.refresh();
-                            } else {
-                                ncjwUtil.showError("删除失败：" + res.errorMsg);
-                            }
-                        })
-                    }
+        sendCheck: function (e) {
+            var $el = $(e.target);
+            ncjwUtil.getData(QUERY.ASSESS_SUMMARY_UPDATE, {id: $el.val()}, function (res) {
+                if (res.success) {
+                    ncjwUtil.showInfo("提交成功");
+                    that.createDetailView(that.getValue());
+                } else {
+                    ncjwUtil.showError("提交失败：" + res.errorMsg);
                 }
+            })
 
-            });
         },
         initSubmitForm: function () {
             this.$editForm.validate({
@@ -313,7 +300,8 @@ define([
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$editDialog.modal('hide');
-                        that.table.refresh();
+                        // that.table.refresh();
+                        that.createDetailView(that.getValue());
                     } else {
                         ncjwUtil.showError("保存失败：" + res.errorMsg);
                     }

@@ -890,5 +890,11 @@ input:-webkit-autofill {
 }
 #workSummaryWrap{margin-top: 42px;}
 .w294{width: 294px;}
+#workSummaryWrap a{
+    color: #00a2d4;
+}#workSummaryWrap .title{
+    line-height: 28px;
+    padding-left: 10px;
+}
 
 

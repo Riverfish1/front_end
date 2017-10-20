@@ -163,7 +163,7 @@ define({
 
             var date = new Date(self.monthDate.year,self.monthDate.month -1,$target.dataset.date);
             console.log("data==>", date);
-            console.log("formatdata==>", format(date));
+            console.log("formatdata==>", this.format(date));
             // $input.value = format(date);
         },false);
     },

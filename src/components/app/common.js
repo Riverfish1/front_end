@@ -151,7 +151,7 @@ var ncjwUtil = (function ($) {
 
     //获取当前的日期 2012-05-03 星期三
     var getCurrentDate = function (d) {
-        var d =  d ? new Date(d) : new Date();
+        var d = d ? new Date(d) : new Date();
         return timeTurn(d.getTime(), 'yyyy-MM-dd') + "&nbsp;&nbsp;星期" + "日一二三四五六".charAt(d.getDay())
     }
 
@@ -235,10 +235,27 @@ var timeUtil = (function ($) {
         return (myyear + "-" + mymonth + "-" + myweekday);
     }
 
+    function setNow(d) {
+        now = new Date(d);
+        nowDayOfWeek = now.getDay(); //今天本周的第几天
+        nowDay = now.getDate(); //当前日
+        nowMonth = now.getMonth(); //当前月
+        nowYear = now.getYear(); //当前年
+        nowYear += (nowYear < 2000) ? 1900 : 0; //
+
+        lastMonthDate = new Date(); //上月日期
+        lastMonthDate.setDate(1);
+        lastMonthDate.setMonth(lastMonthDate.getMonth() - 1);
+        lastYear = lastMonthDate.getYear();
+        lastMonth = lastMonthDate.getMonth();
+        console.log(now);
+    }
+
     //获得当前日期
     function getCurrentDay(myMonth) {
-        return ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd');
+        return ncjwUtil.timeTurn(now.getTime(), 'yyyy-MM-dd');
     }
+
     //获得某月的天数
     function getMonthDays(myMonth) {
         var monthStartDate = new Date(nowYear, myMonth, 1);
@@ -314,9 +331,11 @@ var timeUtil = (function ($) {
         var quarterStartDate = new Date(nowYear, quarterEndMonth, getMonthDays(quarterEndMonth));
         return formatDate(quarterStartDate);
     }
+
     function getYearStartDate() {
         return nowYear + "-01-01"
     }
+
     function getYearEndDate() {
         return nowYear + "-12-31"
     }
@@ -324,6 +343,7 @@ var timeUtil = (function ($) {
 
     return {
         //将方法暴露出来 JSON格式数
+        setNow: setNow,
         getCurrentDay: getCurrentDay,
         getWeekStartDate: getWeekStartDate,
         getWeekEndDate: getWeekEndDate,
