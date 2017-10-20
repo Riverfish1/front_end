@@ -12,18 +12,18 @@
                 <input placeholder="请选择完成时间" type="text" name="endDate" id="endDate" class="form-control" value="<%= endDate %>">
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
             <button class="btn btn-primary" id="submitBtn">查询</button>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <span class="col-md-4">请假天数：</span>
-            <span class="col-md-8"><%= leaveDays %></span>
+            <span class="col-md-8" style="color: #00f"><%= leaveDays %> 天</span>
         </div>
         <div class="col-md-6">
-            <span class="col-md-4">请假天数：</span>
-            <span class="col-md-8"><%= overDays %></span>
+            <span class="col-md-4">加班天数：</span>
+            <span class="col-md-8" style="color: #00f"><%= overDays %> 天</span>
         </div>
     </div>
 </form>

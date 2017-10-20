@@ -5,22 +5,22 @@ define([
 ], function (tpl, QUERY) {
     'use strict';
     var TabView = Backbone.View.extend({
-        el: '#toolbar',
+        el: '#main',
         template: _.template(tpl),
         events: {
             'click #submitBtn': 'submitForm'
         },
         render: function () {
             //main view
-            var initState = {
+            this.initState = {
                 startDate: '',
                 endDate: '',
                 leaveDays: 0,
                 overDays: 0
             };
-            this.$el.empty().html(this.template());
+            this.$el.empty().html(this.template(this.initState));
             this.$editForm = this.$el.find('#editForm');
-            $('.startDate, .endDate').datepicker({
+            $('#startDate, #endDate').datepicker({
                 format: 'yyyy-mm-dd',
                 language: 'zh-CN',
                 autoclose: true,
@@ -63,6 +63,7 @@ define([
             });
         },
         submitForm: function (e) {
+            e.preventDefault();
             if(this.$editForm.valid()){
                 var that = this;
                 var data = this.$editForm.serialize();
@@ -70,28 +71,32 @@ define([
                 var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
                 JSONData.userId = window.ownerPeopleId;
+                var JSONData1 = JSON.parse(datas);
+                JSONData1.userId = window.ownerPeopleId;
                 JSONData.status = 0;
-                ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_MY_QUERY, JSON.stringify(datas), function (res) {
+                JSONData1.status = 2;
+                ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_MY_QUERY, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
-                        var total = res.total;
-                        that.$el.html(that.template({leaveDays: total}));
-                        JSONData.status = 2;
-                        ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_MY_QUERY, JSON.stringify(datas), function (r) {
-                            if (r.success) {
-                                var total = r.total;
-                                that.$el.html(that.template({overDays: total}));
-                            } else {
-                                ncjwUtil.showError("请求数据失败：" + res.errorMsg);
-                            }
-                        }, {
-                            "contentType": 'application/json'
-                        })
+                        var leaveDays = res.total;
+                        that.initState.leaveDays = leaveDays;
+                        that.$el.html(that.template(that.initState));
                     } else {
                         ncjwUtil.showError("请求数据失败：" + res.errorMsg);
                     }
                 }, {
                     "contentType": 'application/json'
-                })
+                });
+                ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_MY_QUERY, JSON.stringify(JSONData1), function (r) {
+                    if (r.success) {
+                        var overDays = r.total;
+                        that.initState.overDays = overDays;
+                        that.$el.html(that.template(that.initState));
+                    } else {
+                        ncjwUtil.showError("请求数据失败：" + r.errorMsg);
+                    }
+                }, {
+                    "contentType": 'application/json'
+                });
             }
         }
     });

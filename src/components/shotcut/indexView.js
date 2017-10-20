@@ -16,7 +16,6 @@ define([
             'click .shotcutBtn': 'addOne'
         },
         initialize: function () {
-            window.ownerPeopleId = 1;
             Backbone.off('shotcutBtnClick').on('shotcutBtnClick', this.addOne, this);
             this.render();
         },

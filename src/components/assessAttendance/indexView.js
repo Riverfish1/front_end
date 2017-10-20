@@ -33,14 +33,20 @@ define([
             'click #mark': 'autoMark'
         },
         initialize: function () {
-        	Backbone.off('autoMark').on()
         },
         render: function () {
             //main view
             // this.$el.empty().html(this.getDetailTpl());
-            this.$el.empty().html(this.template(this.default));
-            this.$editForm = this.$el.find('#editForm');
-            this.initSubmitForm();
+            var id = window.ownerPeopleId;
+            var that = this;
+            ncjwUtil.postData(QUERY.RECORD_PEOPLE_SELECT_BY_ID, {id: id}, function(res) {
+            	if (res.success) {
+            		var data = res.data && res.data[0];
+            		that.default.peopleName = data.peopleName;
+            		that.default.departmentName = data.departmentName;
+		            that.$el.empty().html(that.template(that.default));
+            	}
+            });
             return this;
         },
         initSubmitForm: function () {
@@ -59,17 +65,15 @@ define([
                         required: true
                     },
                     days: {
-                        required: true
-                    },
-                    remark: {
-                    	required: true
+                        required: true,
+                        number: true
                     }
                 },
                 messages: {
-                    recordName: "请输入姓名",
-                    recordResult: "请输入原因",
-                    startTime: '请选择开始时间',
-                    endTime: '请选择结束时间'
+                    origin: "请输入事由",
+                    startDate: "请选择开始日期",
+                    endDate: '请选择结束日期',
+                    days: '请输入天数'
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -93,8 +97,18 @@ define([
         		}
         	});
         	this.$el.html(this.template(this.default));
+            this.$editForm = this.$el.find('#editForm');
+            this.initSubmitForm();
+        	
+            $('#startDate, #endDate').datepicker({
+            	language: 'zh-CN',
+            	format: 'yyyy-mm-dd',
+            	autoclose: true,
+            	todayHighlight: true
+            });
         },
-        autoMark: function () {
+        autoMark: function (e) {
+        	e.preventDefault();
         	var that = this;
         	var params = {
         		userId: window.ownerPeopleId,
@@ -116,7 +130,7 @@ define([
 			        	ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_CHECK, JSON.stringify(params), function(res) {
 			        		if (res.success) {
 			        			that.default.isMark = true;
-			        			that.$editForm.html(that.template(that.default));
+			        			that.$el.html(that.template(that.default));
 			        		}
 			        	}, {
 			        		'contentType': 'application/json'
@@ -126,7 +140,47 @@ define([
 
             });
         },
-        submitForm: function () {}
+        submitForm: function (e) {
+        	e.preventDefault();
+        	if(this.$editForm.valid()){
+                var that = this;
+                var data = this.$editForm.serialize();
+                data = decodeURIComponent(data, true);
+                var datas = serializeJSON(data);
+                var JSONData = JSON.parse(datas);
+                JSONData.days = Number(JSONData.days);
+                JSONData.userId = window.ownerPeopleId;
+                JSONData.status = Number(this.$el.find('.J_att').val());
+                bootbox.confirm({
+	                buttons: {
+	                    confirm: {
+	                        label: '确认'
+	                    },
+	                    cancel: {
+	                        label: '取消'
+	                    }
+	                },
+	                title: "温馨提示",
+	                message: '确定提交吗？',
+	                callback: function (result) {
+	                    if (result) {
+				        	ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_INSERT, JSON.stringify(JSONData), function (res) {
+			                    if (res.success) {
+                                    ncjwUtil.showInfo("提交成功！");
+			                        that.$el.html(that.template(that.default));
+			                    } else {
+			                        ncjwUtil.showError("请求数据失败：" + res.errorMsg);
+			                    }
+			                }, {
+			                    "contentType": 'application/json'
+			                });
+	                    }
+	                }
+
+	            });
+                
+            }
+        }
     });
 
     return View;

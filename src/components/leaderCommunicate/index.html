@@ -1,59 +1,106 @@
-<form>
-		<div class="accordion">
-				<% if(summaryType === 1) { %>
-				<div class="panel panel-default">
-						<div class="panel-heading">
-							  <h4 class="panel-title">
-							      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><%= people %>周总结 <span style="top: 3px;" class="glyphicon glyphicon-chevron-down"></span></a>
-							      <button class="col-md-2 btn btn-primary rate">评价</button>
-							  </h4>
-						</div>
-					  <div id="collapseOne" class="panel-collapse collapse in">
-			          <textarea><%= weekSummary %></textarea>
-					  </div>
-				</div>
-				<% } %>
-				<% if(summaryType === 2) { %>
-			  <div class="panel panel-default">
-			      <div class="panel-heading">
-			          <h4 class="panel-title">
-			              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><%= people %>月总结 <span style="top: 3px;" class="glyphicon glyphicon-chevron-down"></span></a>
-			              <% if(!status) { %>
-			              <button class="col-md-2 btn btn-primary rate">评价</button>
-			              <% } %>
-			              <% if(status) { %>
-			              <button disabled="true" class="col-md-2 btn btn-primary rate">已评价</button>
-			              <% } %>
-			          </h4>
-			      </div>
-			      <div id="collapseTwo" class="panel-collapse collapse ">
-	              <textarea><%= monthSummary %></textarea>
-			      </div>
-			  </div>
-			  <% } %>
-			  <% if(summaryType === 3) { %>
-			  <div class="panel panel-default">
-			      <div class="panel-heading">
-			          <h4 class="panel-title">
-			              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><%= people %>季度总结 <span style="top: 3px;" class="glyphicon glyphicon-chevron-down"></span></a><button class="col-md-2 btn btn-primary rate">评价</button>
-			          </h4>
-			      </div>
-			      <div id="collapseThree" class="panel-collapse collapse">
-	              <textarea><%= quarterlySummary %></textarea>
-			      </div>
-			  </div>
-			  <% } %>
-			  <% if(summaryType === 4) { %>
-			  <div class="panel panel-default">
-			      <div class="panel-heading">
-			          <h4 class="panel-title">
-			              <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><%= people %>年总结 <span style="top: 3px;" class="glyphicon glyphicon-chevron-down"></span></a><button class="col-md-2 btn btn-primary rate">评价</button>
-			          </h4>
-			      </div>
-			      <div id="collapseFour" class="panel-collapse collapse">
-	              <textarea><%= annualSummary %></textarea>
-			      </div>
-			  </div>
-			  <% } %>
-		</div>
-</form>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <% $.each(list, function(i, n){ %>
+    <% if(n.summaryType != 0) {%>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="<%= 'headingTwo' + i %>">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="<%= '#collapse' + i  %>" aria-expanded="true" aria-controls="<%= 'collapse' + i  %>">
+                		<% if(n.summaryType == 1) {%>
+                			<h4>周总结</h4>
+                		<% } %>
+                		<% if(n.summaryType == 2) {%>
+                			<h4>月总结</h4>
+                		<% } %>
+                		<% if(n.summaryType == 3) {%>
+                			<h4>季度总结</h4>
+                		<% } %>
+                		<% if(n.summaryType == 4) {%>
+                			<h4>年总结</h4>
+                		<% } %>
+                    <span style="color: #00f">(<%= ncjwUtil.getCurrentDate(n.startDate) %></span>
+                     至 
+                    <span style="color: #00f"><%= ncjwUtil.getCurrentDate(n.endDate) %></span>)
+                </a>
+                
+                <% if(!n.status) {%>
+                <button class="btn btn-primary" id="evaluate">评价</button>
+                <% } %>
+                <% if(n.status) {%>
+                <button class="btn" disabled="true">已评价</button>
+                <% } %>
+            
+            </h4>
+        </div>
+        <% if(i=="0"){ %>
+        <div id="<%= 'collapse' + i  %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="<%= 'headingTwo' + i  %>">
+        <% } %>
+            <% if(i!="0"){ %>
+            <div id="<%= 'collapse' + i  %>" class="panel-collapse collapse " role="tabpanel" aria-labelledby="<%= 'headingTwo' + i  %>">
+            <% } %>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">关键业务指标：</label>
+                        <div class="col-md-9">
+                            <%= n.kpiName %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">目标数值：</label>
+                        <div class="col-md-9">
+                            <%= n.targetNumber %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">完成情况：</label>
+                        <div class="col-md-9">
+                            <%= n.performance %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">工作总结：</label>
+                        <div class="col-md-9">
+                            <%= n.workSummary %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">个人评价：</label>
+                        <div class="col-md-9">
+                            <%= n.selfEvaluation %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <% }); %>
+</div>
+
+<!--dialog-->
+<div class="modal fade bs-example-modal-lg" id="editDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" style="width: 450px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title" >评价</h5>
+            </div>
+            <div class="modal-body" >
+                <div id="editPanel"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <button id="submitBtn" class="btn btn-primary" onclick="">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
