@@ -2,15 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f35dcadc-155c-437a-b1b8-44d45963930a" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/workSulmmary/detail.html" afterPath="$PROJECT_DIR$/src/components/personnelSummary/detail.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/workSulmmary/dialog.html" afterPath="$PROJECT_DIR$/src/components/personnelSummary/dialog.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/workSulmmary/index.html" afterPath="$PROJECT_DIR$/src/components/personnelSummary/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/workSulmmary/indexController.js" afterPath="$PROJECT_DIR$/src/components/personnelSummary/indexController.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/workSulmmary/indexView.js" afterPath="$PROJECT_DIR$/src/components/personnelSummary/indexView.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/workSulmmary/tableView.js" afterPath="$PROJECT_DIR$/src/components/personnelSummary/tableView.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/personnelSummary/kpiSelect.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/personnelSummary/targetSelect.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/personnelSummary/tableView.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/workToDo/detail.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" afterPath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/router-cfg-version.js" afterPath="$PROJECT_DIR$/src/router/router-cfg-version.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/app/app.css" afterPath="$PROJECT_DIR$/src/components/app/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/app/common.js" afterPath="$PROJECT_DIR$/src/components/app/common.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/personnelSummary/detail.html" afterPath="$PROJECT_DIR$/src/components/personnelSummary/detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/personnelSummary/dialog.html" afterPath="$PROJECT_DIR$/src/components/personnelSummary/dialog.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/personnelSummary/index.html" afterPath="$PROJECT_DIR$/src/components/personnelSummary/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/personnelSummary/indexController.js" afterPath="$PROJECT_DIR$/src/components/personnelSummary/indexController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/personnelSummary/indexView.js" afterPath="$PROJECT_DIR$/src/components/personnelSummary/indexView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workToDo/index.html" afterPath="$PROJECT_DIR$/src/components/workToDo/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workToDo/indexView.js" afterPath="$PROJECT_DIR$/src/components/workToDo/indexView.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,36 +30,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/baseTable/indexView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1534">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <marker date="1507552729000" expanded="true" signature="3047:3072" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/uploadImg/indexView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1394">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="dialog.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/uploadImg/dialog.html">
+        <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/dialog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+            <state relative-caret-position="170">
+              <caret line="10" column="78" lean-forward="false" selection-start-line="10" selection-start-column="68" selection-end-line="10" selection-end-column="78" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -62,48 +42,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upload.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/createCooperation/upload.js">
+      <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/app/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-72">
-              <caret line="75" column="36" lean-forward="false" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="36" />
-              <folding>
-                <marker date="1508425946000" expanded="true" signature="2026:2035" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="calendar.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/calendar/calendar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="176" column="5" lean-forward="true" selection-start-line="176" selection-start-column="5" selection-end-line="176" selection-end-column="5" />
-              <folding>
-                <element signature="e#1778#3099#0" expanded="false" />
-                <element signature="e#3145#3857#0" expanded="false" />
-                <marker date="1508471149000" expanded="true" signature="1968:1972" ph="&amp;lt;" />
-                <marker date="1508471149000" expanded="true" signature="2053:2057" ph="&amp;gt;" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/workToDo/detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="259">
+              <caret line="876" column="20" lean-forward="true" selection-start-line="876" selection-start-column="20" selection-end-line="876" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="router-cfg-version.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/router/router-cfg-version.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="61" column="4" lean-forward="false" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+            <state relative-caret-position="170">
+              <caret line="10" column="55" lean-forward="false" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/common/query/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="149" column="29" lean-forward="false" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -112,6 +77,16 @@
       <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/detail.html">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detail1.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/detail1.html">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
@@ -119,33 +94,71 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dialog.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/dialog.html">
+      <file leaf-file-name="indexController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/indexController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/indexView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="214" column="24" lean-forward="true" selection-start-line="214" selection-start-column="24" selection-end-line="214" selection-end-column="24" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#1625#1842#0" expanded="false" />
+                <element signature="e#1719#1832#0" expanded="false" />
+                <element signature="e#1993#2055#0" expanded="false" />
+                <element signature="e#2288#3486#0" expanded="false" />
+                <element signature="e#3980#4022#0" expanded="false" />
+                <element signature="e#4057#4133#0" expanded="false" />
+                <element signature="e#10506#10597#0" expanded="false" />
+                <element signature="e#10617#10690#0" expanded="false" />
+                <element signature="e#13357#13534#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/index.html">
+      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/app/common.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="29" />
+            <state relative-caret-position="302">
+              <caret line="326" column="37" lean-forward="true" selection-start-line="326" selection-start-column="37" selection-end-line="326" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kpiSelect.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/kpiManage/kpiSelect.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kpiSelect.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/kpiSelect.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/indexView.js">
+        <entry file="file://$PROJECT_DIR$/src/components/kpiManage/indexView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+            <state relative-caret-position="80">
+              <caret line="30" column="72" lean-forward="true" selection-start-line="29" selection-start-column="11" selection-end-line="30" selection-end-column="72" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -153,31 +166,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upload.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/createCooperation/upload.html">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/kpiManage/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="navSidebarModel.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
-              <caret line="49" column="3" lean-forward="true" selection-start-line="49" selection-start-column="3" selection-end-line="49" selection-end-column="3" />
+            <state relative-caret-position="340">
+              <caret line="20" column="87" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="87" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="dialog.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/workSummary/dialog.html">
+        <entry file="file://$PROJECT_DIR$/src/components/createCooperation/dialog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+            <state relative-caret-position="225">
+              <caret line="67" column="37" lean-forward="false" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/createCooperation/indexView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="69" column="36" lean-forward="true" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -187,48 +200,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>发文</find>
-      <find>workReport</find>
-      <find>SENDDOCUMENT</find>
-      <find>发文管理</find>
-      <find>UploadImgView</find>
-      <find>uploadImg</find>
-      <find>state</find>
-      <find>ownerPeopleId</find>
-      <find>POSTRECORD</find>
-      <find>RECORD_</find>
-      <find>thumbnailWidth</find>
-      <find>WORKASSIGN</find>
-      <find>noticeManage</find>
-      <find>entTime</find>
-      <find>COOPERATION</find>
-      <find>QUERY</find>
-      <find>WORK_</find>
-      <find>peopleName</find>
-      <find>padding-left: 0</find>
-      <find>targetName</find>
-      <find>type</find>
-      <find>RECEIVEDOCUMENT</find>
-      <find>row.</find>
-      <find>departmentId</find>
       <find>选择文件</find>
       <find>$wrapper</find>
       <find>datepicker.</find>
       <find>workSulmmary</find>
-      <find>monthDate</find>
       <find>personnelSulmmary</find>
+      <find>monthDate</find>
+      <find>BaseTableView</find>
+      <find>.//</find>
+      <find>items</find>
+      <find>template</find>
+      <find>getDetailContent</find>
+      <find>$tabContent</find>
+      <find>workSummary</find>
+      <find>debu</find>
+      <find>entTime</find>
+      <find>eventDescription</find>
+      <find>eventName</find>
+      <find>targetId</find>
+      <find>getKpiSelectContent</find>
+      <find>getKpiList</find>
+      <find>$suggestWrap</find>
+      <find>initBtnEvent</find>
+      <find>$suggestBtn</find>
+      <find>$editDialogPanel</find>
+      <find>workS</find>
+      <find>targetName</find>
+      <find>eventType</find>
+      <find>_selet1stTab</find>
+      <find>getData</find>
+      <find>createDetailView</find>
     </findStrings>
     <replaceStrings>
-      <replace>(window.ownerPeopleId !=creatorId) &amp;&amp; (role == &quot;current&quot;)</replace>
-      <replace>!(window.ownerPeopleId == creatorId) &amp;&amp; (role == &quot;current&quot;)</replace>
-      <replace>!((window.ownerPeopleId == creatorId) &amp;&amp; (role == &quot;current&quot;))</replace>
-      <replace>200010</replace>
-      <replace>workFlow.currentNode.nodeIndex != 0</replace>
-      <replace>window.ownerPeopleName</replace>
-      <replace>workReport</replace>
-      <replace>docrecv</replace>
-      <replace>cooperation</replace>
-      <replace>NOTICEMANAGE</replace>
       <replace>登记</replace>
       <replace>收文</replace>
       <replace>发起人</replace>
@@ -247,8 +250,18 @@
       <replace>this.$wrapper</replace>
       <replace>this</replace>
       <replace>workSummary</replace>
-      <replace>this.</replace>
       <replace>personnelSummary</replace>
+      <replace>this.</replace>
+      <replace>./</replace>
+      <replace>endDate</replace>
+      <replace>kpiName</replace>
+      <replace>targetNumber</replace>
+      <replace>operatorId</replace>
+      <replace>operatorName</replace>
+      <replace>$editDialog</replace>
+      <replace>approverId</replace>
+      <replace>summaryType</replace>
+      <replace>approverName</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -262,14 +275,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/sendDocument/data_flow.json" />
-        <option value="$PROJECT_DIR$/src/components/officeAreaRecord/dialog.html" />
-        <option value="$PROJECT_DIR$/src/components/uploadImg/indexView.js" />
-        <option value="$PROJECT_DIR$/src/components/sendDocument/data.json" />
-        <option value="$PROJECT_DIR$/libs/bootstrap.suggest/bootstrap-suggest.js" />
-        <option value="$PROJECT_DIR$/src/components/sendDocument/tableView.js" />
-        <option value="$PROJECT_DIR$/src/components/sendDocument/dialog.html" />
-        <option value="$PROJECT_DIR$/src/components/sendDocument/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/header/header.html" />
         <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/components/receiveDocument/index.html" />
@@ -307,12 +312,20 @@
         <option value="$PROJECT_DIR$/src/components/receiveCooperation/dialog.html" />
         <option value="$PROJECT_DIR$/src/components/createCooperation/dialog.html" />
         <option value="$PROJECT_DIR$/src/components/receiveCooperation/indexView.js" />
-        <option value="$PROJECT_DIR$/src/components/app/app.css" />
         <option value="$PROJECT_DIR$/src/components/calendar/date.js" />
         <option value="$PROJECT_DIR$/src/components/workSulmmary/index.html" />
         <option value="$PROJECT_DIR$/src/components/workSulmmary/indexView.js" />
         <option value="$PROJECT_DIR$/src/router/router-cfg-version.js" />
         <option value="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" />
+        <option value="$PROJECT_DIR$/src/components/personnelSummary/indexController.js" />
+        <option value="$PROJECT_DIR$/src/components/workToDo/index.html" />
+        <option value="$PROJECT_DIR$/src/components/workToDo/indexView.js" />
+        <option value="$PROJECT_DIR$/src/components/personnelSummary/detail.html" />
+        <option value="$PROJECT_DIR$/src/components/app/app.css" />
+        <option value="$PROJECT_DIR$/src/components/personnelSummary/dialog.html" />
+        <option value="$PROJECT_DIR$/src/components/personnelSummary/index.html" />
+        <option value="$PROJECT_DIR$/src/components/app/common.js" />
+        <option value="$PROJECT_DIR$/src/components/personnelSummary/indexView.js" />
       </list>
     </option>
   </component>
@@ -471,6 +484,50 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="workMeetingSchedule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workAppointment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="sidebar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -494,6 +551,72 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="personnelSummary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kpiManage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="createCooperation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -552,7 +675,7 @@
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
-    <property name="SearchEverywhereHistoryKey" value="navS&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/navSidebarModel.js&#10;upload&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/createCooperation/upload.js&#10;app.css&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/app.css&#10;nav-&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.js&#10;nav&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/navSidebarModel.js&#10;nav-si&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.js&#10;appc&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/app.css&#10;header.html&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;head&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;nav-s&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.js&#10;hea&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.js&#10;header.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.js&#10;nav-si.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.js&#10;app&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/app.css&#10;header&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;navM&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/navSidebarModel.js&#10;common.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/common.js&#10;main.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/main.js&#10;head.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.js&#10;nav-si.&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.html&#10;nav-si.html&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.html&#10;APP&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/app.css&#10;hea.htm&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;index.j&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/common/query/index.js&#10;webuploader.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/libs/webUpload/webuploader.js&#10;prox&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/proxy.config.js" />
+    <property name="SearchEverywhereHistoryKey" value="co&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/common.js&#10;app.css&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/app.css&#10;navS&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/navSidebarModel.js&#10;upload&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/createCooperation/upload.js&#10;nav-&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.js&#10;nav&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/navSidebarModel.js&#10;nav-si&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.js&#10;appc&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/app.css&#10;header.html&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;head&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;nav-s&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.js&#10;hea&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.js&#10;header.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.js&#10;nav-si.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.js&#10;app&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/app.css&#10;header&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;navM&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/navSidebarModel.js&#10;common.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/common.js&#10;main.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/main.js&#10;head.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.js&#10;nav-si.&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.html&#10;nav-si.html&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.html&#10;APP&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/app.css&#10;hea.htm&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;index.j&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/common/query/index.js&#10;webuploader.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/libs/webUpload/webuploader.js&#10;prox&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/proxy.config.js" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/components/officeAreaRecord/tableView.js" />
     <property name="FullScreen" value="true" />
   </component>
@@ -561,11 +684,11 @@
       <recent name="$PROJECT_DIR$/src/common" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/personnelSummary" />
       <recent name="$PROJECT_DIR$/src/components/workSulmmary" />
       <recent name="$PROJECT_DIR$/src/components/calendar" />
       <recent name="$PROJECT_DIR$/src/components/receiveNoticeRecord" />
       <recent name="$PROJECT_DIR$/src/components/sendNoticeRecord" />
-      <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
@@ -1003,12 +1126,12 @@
       <workItem from="1508289530483" duration="105000" />
       <workItem from="1508323728252" duration="12337000" />
       <workItem from="1508410338439" duration="13564000" />
-      <workItem from="1508460727668" duration="6262000" />
+      <workItem from="1508460727668" duration="18135000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224485000" />
+    <option name="totallyTimeSpent" value="236358000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1028,9 +1151,10 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4273021" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1041,7 +1165,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1057,7 +1180,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/personnelSummary/indexView.js</url>
-          <line>22</line>
+          <line>27</line>
           <properties />
         </line-breakpoint>
       </breakpoints>
@@ -1070,83 +1193,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/tableView.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/upload.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/assignManage/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="39" column="38" lean-forward="false" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/assignManage/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/upload.html" />
-    <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/indexView.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/dialog.html" />
-    <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/dialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="36" column="15" lean-forward="true" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/noticeRecord/index.html" />
-    <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/tableView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
-          <caret line="99" column="25" lean-forward="false" selection-start-line="99" selection-start-column="25" selection-end-line="99" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/sendDocument/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/receiveCooperation/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="103" column="10" lean-forward="true" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/query/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2686">
-          <caret line="158" column="32" lean-forward="false" selection-start-line="158" selection-start-column="8" selection-end-line="158" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/sendDocument/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5253">
-          <caret line="309" column="15" lean-forward="false" selection-start-line="309" selection-start-column="15" selection-end-line="309" selection-end-column="71" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/tableView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="9" lean-forward="false" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/receiveNoticeRecord/dialog.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -1250,32 +1296,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2125">
-          <caret line="125" column="8" lean-forward="false" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/dialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="74" column="6" lean-forward="false" selection-start-line="74" selection-start-column="6" selection-end-line="74" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#3;n#form#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/receiveDocument/dialog.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
@@ -1296,14 +1316,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/app/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="871" column="1" lean-forward="true" selection-start-line="871" selection-start-column="1" selection-end-line="871" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1329,7 +1341,7 @@
         <state relative-caret-position="-1534">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
             <marker date="1507552729000" expanded="true" signature="3047:3072" ph="..." />
           </folding>
         </state>
@@ -1340,7 +1352,7 @@
         <state relative-caret-position="-1394">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1348,9 +1360,9 @@
     <entry file="file://$PROJECT_DIR$/src/components/uploadImg/dialog.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1389,6 +1401,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/workSummary/dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="27" column="10" lean-forward="false" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+          <folding>
+            <marker date="1508475430000" expanded="true" signature="1382:1401" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="49" column="3" lean-forward="false" selection-start-line="49" selection-start-column="3" selection-end-line="49" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/router-cfg-version.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="61" column="4" lean-forward="false" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/tableView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/workToDo/detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1397,7 +1443,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/detail.html">
+    <entry file="file://$PROJECT_DIR$/src/components/workToDo/dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/workToDo/indexController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1405,46 +1461,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/dialog.html">
+    <entry file="file://$PROJECT_DIR$/src/components/workToDo/indexView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="47" column="13" lean-forward="false" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/workSummary/dialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/common/calendar/calendar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="176" column="5" lean-forward="true" selection-start-line="176" selection-start-column="5" selection-end-line="176" selection-end-column="5" />
+        <state relative-caret-position="357">
+          <caret line="142" column="8" lean-forward="false" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="8" />
           <folding>
             <element signature="e#1778#3099#0" expanded="false" />
             <element signature="e#3145#3857#0" expanded="false" />
@@ -1454,19 +1484,175 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/router-cfg-version.js">
+    <entry file="file://$PROJECT_DIR$/src/components/workToDo/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="61" column="4" lean-forward="false" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js">
+    <entry file="file://$PROJECT_DIR$/src/components/workMeetingSchedule/indexView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="49" column="3" lean-forward="true" selection-start-line="49" selection-start-column="3" selection-end-line="49" selection-end-column="3" />
+        <state relative-caret-position="68">
+          <caret line="56" column="15" lean-forward="true" selection-start-line="56" selection-start-column="15" selection-end-line="56" selection-end-column="15" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/workAppointment/indexView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3060">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/kpiManage/kpiSelect.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/kpiManage/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="87" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/kpiManage/indexView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="30" column="72" lean-forward="true" selection-start-line="29" selection-start-column="11" selection-end-line="30" selection-end-column="72" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/detail1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/app/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="876" column="20" lean-forward="true" selection-start-line="876" selection-start-column="20" selection-end-line="876" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/kpiSelect.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="67" column="37" lean-forward="false" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/createCooperation/indexView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="69" column="36" lean-forward="true" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/query/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="149" column="29" lean-forward="false" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/indexController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="55" lean-forward="false" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="78" lean-forward="false" selection-start-line="10" selection-start-column="68" selection-end-line="10" selection-end-column="78" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/app/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="326" column="37" lean-forward="true" selection-start-line="326" selection-start-column="37" selection-end-line="326" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/indexView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="214" column="24" lean-forward="true" selection-start-line="214" selection-start-column="24" selection-end-line="214" selection-end-column="24" />
+          <folding>
+            <element signature="e#1625#1842#0" expanded="false" />
+            <element signature="e#1719#1832#0" expanded="false" />
+            <element signature="e#1993#2055#0" expanded="false" />
+            <element signature="e#2288#3486#0" expanded="false" />
+            <element signature="e#3980#4022#0" expanded="false" />
+            <element signature="e#4057#4133#0" expanded="false" />
+            <element signature="e#10506#10597#0" expanded="false" />
+            <element signature="e#10617#10690#0" expanded="false" />
+            <element signature="e#13357#13534#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -793,6 +793,11 @@ input:-webkit-autofill {
     height: 0;
     opacity: 0;
 }
+.approverId{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
 #editForm .input-group .help-block{
     position: absolute;
     width: 100px;
@@ -810,7 +815,8 @@ input:-webkit-autofill {
     -moz-box-shadow: 2px 2px 8px 2px rgba(128, 128, 128, .3);
     box-shadow: 2px 2px 8px 2px rgba(128, 128, 128, .3);
     display: none;
-    position: absolute;
+    margin-left: -20px;
+    /*position: absolute;*/
 }
 
 .ui-datepicker-wrapper-show{
@@ -870,5 +876,19 @@ input:-webkit-autofill {
     width:14%;
     cursor: pointer;
 }
+
+#main .currentDay{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+#main .currentTime{
+    line-height: 36px;
+    text-align: center;
+    font-size: 16px;
+}
+#workSummaryWrap{margin-top: 42px;}
+.w294{width: 294px;}
 
 

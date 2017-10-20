@@ -2,10 +2,9 @@
 define([
     'src/components/workToDo/tableView',
     'text!src/components/workToDo/index.html',
-    'text!src/components/workToDo/detail.html',
     'text!src/components/workToDo/dialog.html',
     '../../common/query/index'
-], function (BaseTableView, tpl, detailTpl, dialogTpl, QUERY) {
+], function (BaseTableView, tpl, dialogTpl, QUERY) {
     'use strict';
     var TabView = Backbone.View.extend({
         default: {
@@ -13,7 +12,6 @@ define([
         },
         el: '#main',
         template: _.template(tpl),
-        getDetailContent: _.template(detailTpl),
         getDialogContent: _.template(dialogTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
@@ -47,18 +45,6 @@ define([
             this.table = new BaseTableView();
             this.table.render(index);
         },
-        // getData: function () {
-        //     var self = this;
-        //     ncjwUtil.getData('/api/workToDo/query', {index: 1}, function (res) {
-        //         // ncjwUtil.getData("/api/del/register/officeArea", {id: row.id}, function (res) {
-        //         if (res.success) {
-        //             var list = {list: res.data};
-        //             self.$tabContent.empty().html(self.getDetailContent(list));
-        //         } else {
-        //             ncjwUtil.showError(res.errorMsg);
-        //         }
-        //     })
-        // },
         getValue: function () {
             return this.value;
         },
