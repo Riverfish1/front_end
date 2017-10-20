@@ -150,7 +150,7 @@ define([
                 var JSONData = JSON.parse(datas);
                 JSONData.days = Number(JSONData.days);
                 JSONData.userId = window.ownerPeopleId;
-                JSONData.status = this.$el.find('.J_att').val();
+                JSONData.status = Number(this.$el.find('.J_att').val());
                 bootbox.confirm({
 	                buttons: {
 	                    confirm: {
@@ -166,7 +166,7 @@ define([
 	                    if (result) {
 				        	ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_INSERT, JSON.stringify(JSONData), function (res) {
 			                    if (res.success) {
-			                        var total = res.total;
+                                    ncjwUtil.showInfo("提交成功！");
 			                        that.$el.html(that.template(that.default));
 			                    } else {
 			                        ncjwUtil.showError("请求数据失败：" + res.errorMsg);

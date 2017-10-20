@@ -71,32 +71,32 @@ define([
                 var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
                 JSONData.userId = window.ownerPeopleId;
-                var JSONData1 = JSONData;
+                var JSONData1 = JSON.parse(datas);
+                JSONData1.userId = window.ownerPeopleId;
                 JSONData.status = 0;
                 JSONData1.status = 2;
                 ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_MY_QUERY, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
-                        var data = res.data && res.data[0];
-                        var leaveDays = data.total;
-                        ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_MY_QUERY, JSON.stringify(JSONData1), function (r) {
-                            if (r.success) {
-                                var data1 = r.data1 && r.data1[0];
-                                var overDays = data1.total;
-                                that.initState.leaveDays = leaveDays;
-                                that.initState.overDays = overDays;
-                                that.$el.html(that.template(that.initState));
-                            } else {
-                                ncjwUtil.showError("请求数据失败：" + res.errorMsg);
-                            }
-                        }, {
-                            "contentType": 'application/json'
-                        })
+                        var leaveDays = res.total;
+                        that.initState.leaveDays = leaveDays;
+                        that.$el.html(that.template(that.initState));
                     } else {
                         ncjwUtil.showError("请求数据失败：" + res.errorMsg);
                     }
                 }, {
                     "contentType": 'application/json'
-                })
+                });
+                ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_MY_QUERY, JSON.stringify(JSONData1), function (r) {
+                    if (r.success) {
+                        var overDays = r.total;
+                        that.initState.overDays = overDays;
+                        that.$el.html(that.template(that.initState));
+                    } else {
+                        ncjwUtil.showError("请求数据失败：" + r.errorMsg);
+                    }
+                }, {
+                    "contentType": 'application/json'
+                });
             }
         }
     });

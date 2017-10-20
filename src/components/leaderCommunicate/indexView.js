@@ -49,7 +49,7 @@ define([
         submitForm: function () {
             var params = {
                 evaluation: $('#evaluation').val(),
-                staus: '1',
+                status: '1',
                 approverId: window.ownerPeopleId
             };
             var that = this;
