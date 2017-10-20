@@ -2,12 +2,13 @@
 define([
     'text!./index.html',
     'text!./detail.html',
+    'text!./comment.html',
     'text!./dialog.html',
     'text!./kpiSelect.html',
     'text!./targetSelect.html',
     '../../common/calendar/calendar',
     '../../common/query/index'
-], function (tpl, detailTpl, dialogTpl, kpiSelect, targetSelect, calendar, QUERY) {
+], function (tpl, detailTpl,commentTpl, dialogTpl, kpiSelect, targetSelect, calendar, QUERY) {
     'use strict';
     var TabView = Backbone.View.extend({
         default: {
@@ -18,12 +19,14 @@ define([
         el: '#main',
         template: _.template(tpl),
         getDetailContent: _.template(detailTpl),
+        getCommentContent: _.template(commentTpl),
         getDialogContent: _.template(dialogTpl),
         getKpiSelectContent: _.template(kpiSelect),
         getTargetNumSelectContent: _.template(targetSelect),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
-            'click #submitBtn': 'submitForm'
+            'click #submitBtn': 'submitForm',
+            'click #btn_summary': 'addSummary'
         },
         initialize: function () {
             this.value = 0;
@@ -49,6 +52,10 @@ define([
             }
         },
         onTabClick: function (index) {
+            //个人评论
+            if(index != 0){
+                $('#btn_summary').val(index);
+            }
             this.createDetailView(index);
         },
         createDetailView: function (index) {
@@ -63,39 +70,45 @@ define([
                 "0": {
                     summaryType: index,
                     gmtCreate: timeUtil.getCurrentDay(),
-                    userId: window.ownerPeopleId
+                    operatorId: window.ownerPeopleId
                 },
                 "1": {
                     summaryType: index,
+                    gmtCreate: timeUtil.getCurrentDay(),
                     startDate: timeUtil.getWeekStartDate(),
                     endDate: timeUtil.getWeekEndDate(),
-                    userId: window.ownerPeopleId
+                    operatorId: window.ownerPeopleId
                 },
                 "2": {
                     summaryType: index,
+                    gmtCreate: timeUtil.getCurrentDay(),
                     startDate: timeUtil.getMonthStartDate(),
                     endDate: timeUtil.getMonthEndDate(),
-                    userId: window.ownerPeopleId
+                    operatorId: window.ownerPeopleId
                 },
                 "3": {
                     summaryType: index,
+                    gmtCreate: timeUtil.getCurrentDay(),
                     startDate: timeUtil.getQuarterStartDate(),
                     endDate: timeUtil.getQuarterEndDate(),
-                    userId: window.ownerPeopleId
+                    operatorId: window.ownerPeopleId
                 },
                 "4": {
                     summaryType: index,
+                    gmtCreate: timeUtil.getCurrentDay(),
                     startDate: timeUtil.getYearStartDate(),
                     endDate: timeUtil.getYearEndDate(),
-                    userId: window.ownerPeopleId
+                    operatorId: window.ownerPeopleId
                 }
             };
+            console.log("param", JSON.stringify(paramMap[index]))
             ncjwUtil.postData(QUERY.ASSESS_SUMMARY_QUERY, JSON.stringify(paramMap[index]), function (res) {
                 if (res.success) {
-                    var list = {list: res.data};
+                    var list = {list: res.data[0]};
                     self.$tabContent.empty().html(self.getDetailContent(list));
                 } else {
-                    ncjwUtil.showError(res.errorMsg);
+                    self.$tabContent.empty().html("暂无数据！");
+                    // ncjwUtil.showError(res.errorMsg);
                 }
             }, {
                 "contentType": 'application/json'
@@ -161,6 +174,39 @@ define([
             this.$editDialog.modal('show');
             this.$editDialog.modal({backdrop: 'static', keyboard: false});
             this.$editDialogPanel.empty().html(this.getDialogContent(row))
+            this.$suggestWrap = this.$editDialogPanel.find('.test');
+            this.$suggestBtn = this.$suggestWrap.find('button');
+            this.initSuggest();
+            row.id && (this.setBssuggestValue(row));
+            this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
+            $('.accessTime').datepicker({
+                language: 'zh-CN',
+                autoclose: true,
+                todayHighlight: true,
+                format: 'yyyy-mm-dd'
+            });
+            this.$editForm = this.$el.find('#editForm');
+            this.$kpiSel = this.$editDialogPanel.find('#kpiSel');
+            this.$targetNumSel = this.$editDialogPanel.find('#targetNumSel');
+            this.getKpiList();
+            this.getTargetNumList();
+            this.initSubmitForm();
+        },
+        addSummary: function (row) {
+            // debugger;
+            var index = $('#btn_summary').val() || 1;
+            var commentTimeMap = {
+                "1": {startDate: timeUtil.getWeekStartDate(), endDate: timeUtil.getWeekEndDate(),summaryType: 1},
+                "2": {startDate: timeUtil.getMonthStartDate(), endDate: timeUtil.getMonthEndDate(),summaryType: 2},
+                "3": {startDate: timeUtil.getQuarterStartDate(), endDate: timeUtil.getQuarterEndDate(),summaryType: 3},
+                "4": {startDate: timeUtil.getYearStartDate(), endDate: timeUtil.getYearEndDate(),summaryType: 4}
+            }
+            var initData = {id: '', startDate: commentTimeMap[index].startDate, endDate: commentTimeMap[index].endDate, selfEvaluation: '', workSummary: '', kpiName: '', kpiId: '', targetNumber: '', performance: '', approverId: '', summaryType: commentTimeMap[index].summaryType, operatorId: window.ownerPeopleId, operatorName: window.ownerPeopleName};
+            var row = row.id ? row : initData;
+            row.completeTime = row.id && ncjwUtil.timeTurn(row.completeTime, 'yyyy-MM-dd');
+            this.$editDialog.modal('show');
+            this.$editDialog.modal({backdrop: 'static', keyboard: false});
+            this.$editDialogPanel.empty().html(this.getCommentContent(row))
             this.$suggestWrap = this.$editDialogPanel.find('.test');
             this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
@@ -251,6 +297,10 @@ define([
             });
         },
         submitForm: function (e) {
+            //设置kpiName
+            var $kpiSel = $('#kpiSel'), val = $kpiSel.val();
+            var kpiName = $.trim($kpiSel.find('option[value=' + val + ']').html())
+            $('#kpiName').val(kpiName);
             if (this.$editForm.valid()) {
                 var that = this;
                 var $form = $(e.target).parents('.modal-content').find('#editForm');

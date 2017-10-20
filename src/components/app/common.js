@@ -150,8 +150,8 @@ var ncjwUtil = (function ($) {
     };
 
     //获取当前的日期 2012-05-03 星期三
-    var getCurrentDate = function () {
-        var d = new Date();
+    var getCurrentDate = function (d) {
+        var d =  d ? new Date(d) : new Date();
         return timeTurn(d.getTime(), 'yyyy-MM-dd') + "&nbsp;&nbsp;星期" + "日一二三四五六".charAt(d.getDay())
     }
 
