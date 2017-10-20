@@ -26,8 +26,8 @@ define({
             {className: 'icon_homePage', href: '#/work/receiveNoticeRecord', title: '我收到的通知'}
         ]},
         {className: 'icon_homePage', href: '#', title: '交办协办', children: [
-            {className: 'icon_homePage', href: '#/work/createCooperation', title: '我发起的交办协办'},
-            {className: 'icon_homePage', href: '#/work/receiveCooperation', title: '我收到的交办协办'}
+            {className: 'icon_homePage', href: '#/work/createCooperation', title: '我发起的交办'},
+            {className: 'icon_homePage', href: '#/work/receiveCooperation', title: '我收到的交办'}
         ]},
 
         {className: 'icon_homePage', href: '#', title: '总结', children: [
@@ -42,6 +42,7 @@ define({
         {className: 'icon_homePage', href: '#/work/auth', title: '工作授权'}
     ],
     "assess": [
+        {className: 'icon_homePage', href: '#/assess/workSulmmary', title: '个人绩效'},
         {className: 'icon_homePage', href: '#/assess/leaderCommunicate', title: '领导沟通'},
         {className: 'icon_homePage', href: '#/assess/kpiManage', title: '考核指标管理'},
         {className: 'icon_homePage', href: '#/assess/assignManage', title: '临时交办工作管理'}
