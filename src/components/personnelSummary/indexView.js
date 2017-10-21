@@ -35,8 +35,6 @@ define([
             this._bindEvent();
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
-            window.ownerPeopleId = 4;
-            window.ownerPeopleName = "张三";
         },
         _selet1stTab: function () {
             // debugger;

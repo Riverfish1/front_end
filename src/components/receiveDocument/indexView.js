@@ -18,8 +18,6 @@ define([
             'click #btn-no': 'submitForm'
         },
         initialize: function () {
-            window.ownerPeopleId = 4;
-            window.ownerPeopleName = "张三";
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
         },

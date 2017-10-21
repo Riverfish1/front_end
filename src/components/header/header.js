@@ -4,8 +4,9 @@ define([
 	'underscore',
 	'backbone',
 	'text!src/components/header/header.html',
-	'src/components/shotcut/indexView'
-], function ($, _, Backbone, tpl, DropMenu) {
+	'src/components/shotcut/indexView',
+    '../../common/query/index'
+], function ($, _, Backbone, tpl, DropMenu, QUERY) {
 	'use strict';
 	var HeaderView = Backbone.View.extend({
 		el: '#header',
@@ -21,8 +22,18 @@ define([
             window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + location.href;
         },
         initialize:function(){
-            window.ownerPeopleId = 5;
-            console.log(window.ownerPeopleId);
+            ncjwUtil.getData(QUERY.LOGIN, {}, function(res) {
+                console.log(res);
+                if (res.success) {
+                    var data = res.data && res.data[0];
+                    window.ownerPeopleId = data.id;
+                    window.ownerPeopleName = data.peopleName;
+                } else {
+                    window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + window.location.href;
+                }
+            }, {
+                'contentType': 'application/json'
+            });
 			Backbone.off('routeChange').on('routeChange', this.updateNavSideBar);
 			this.isFirst = true;
 		},

@@ -18,8 +18,6 @@ define([
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
-            window.ownerPeopleId = 4;
-            window.ownerdepartmentName = "张三";
         },
         render: function () {
             //main view

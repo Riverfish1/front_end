@@ -98,7 +98,7 @@ define(['../../common/query/index'], function (QUERY) {
         queryParams: function (params) {
             var temp = {
                 pageNum: params.offset / params.limit, //页面大小
-                pageSize: params.limit, //页码
+                pageSize: params.limit //页码
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()
             };

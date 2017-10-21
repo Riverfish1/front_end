@@ -14,6 +14,7 @@ define([
             'click #submitBtn': 'submitForm'
         },
         initialize: function () {
+            Backbone.off('submitForm').on('submitForm');
         },
         render: function () {
             //main view
@@ -26,7 +27,7 @@ define([
         getInitialData: function () {
             var that = this;
             var params = {
-                approverId: 100,
+                approverId: window.ownerPeopleId,
                 status: '0'
             };
             ncjwUtil.postData(QUERY.ASSESS_SUMMARY_QUERY, JSON.stringify(params), function(res) {
