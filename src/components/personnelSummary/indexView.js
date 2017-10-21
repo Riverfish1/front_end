@@ -8,11 +8,11 @@ define([
     'text!./targetSelect.html',
     '../../common/calendar/calendar',
     '../../common/query/index'
-], function (tpl, detailTpl,commentTpl, dialogTpl, kpiSelect, targetSelect, calendar, QUERY) {
+], function (tpl, detailTpl, commentTpl, dialogTpl, kpiSelect, targetSelect, calendar, QUERY) {
     'use strict';
     var TabView = Backbone.View.extend({
         default: {
-            items: ["当日","本周", "本月", "本季", "本年"],
+            items: ["当日", "本周", "本月", "本季", "本年"],
             currentDay: new Date().getDate(),
             currentTime: ncjwUtil.getCurrentDate()
         },
@@ -57,10 +57,18 @@ define([
             this.createDetailView(index);
         },
         createDetailView: function (index) {
-            // this.$tabContent.empty().html(this.getDetailContent(list));
-            // debugger;
-            // this.$tabContent.empty().html(this.getDetailContent());
+
             this.getData(index);
+            this.showOrHideSummaryBtn(index);
+        },
+        showOrHideSummaryBtn: function (index) {
+            // debugger;
+            if (index == 0) {
+                this.$summaryBtn.hide();
+            } else {
+                this.$summaryBtn.show();
+            }
+            ;
         },
         getData: function (index) {
             var self = this;
@@ -104,15 +112,8 @@ define([
                 if (res.success) {
                     var list = {list: res.data[0]};
                     self.$tabContent.empty().html(self.getDetailContent(list));
-                    //个人评论按钮
-                    if(index != 0){
-                        $('#btn_summary').val(index).show();
-                    }else{
-                        $('#btn_summary').hide();
-                    }
                 } else {
                     self.$tabContent.empty().html("暂无数据！");
-                    // ncjwUtil.showError(res.errorMsg);
                 }
             }, {
                 "contentType": 'application/json'
@@ -132,6 +133,7 @@ define([
             this.$editDialog = this.$el.find('#editDialog');
             this.$editDialogPanel = this.$el.find('#editPanel');
             this.$tabContent = this.$el.find('#workSummaryWrap');
+            this.$summaryBtn = this.$el.find('#btn_summary');
             this._selet1stTab();
             // this.createDetailView(0);
             return this;
@@ -160,7 +162,7 @@ define([
                 pageNum: 0,
                 pageSize: 10000
             }
-            ncjwUtil.postData(QUERY.TARGET_NUM_ITEMS_SELECT , JSON.stringify(params), function (res) {
+            ncjwUtil.postData(QUERY.TARGET_NUM_ITEMS_SELECT, JSON.stringify(params), function (res) {
                 if (res.success) {
                     var list = {list: res.data[0]};
                     self.$targetNumSel.html(self.getTargetNumSelectContent(list));
@@ -199,13 +201,13 @@ define([
         },
         addSummary: function (row) {
             // debugger;
-            var index = $('#btn_summary').val();
+            var index = this.getValue();
             var gmtCreate = ncjwUtil.timeTurn(calendar.getDate(), 'yyyy-MM-dd');
             var commentTimeMap = {
-                "1": {startDate: timeUtil.getWeekStartDate(), endDate: timeUtil.getWeekEndDate(),summaryType: 1},
-                "2": {startDate: timeUtil.getMonthStartDate(), endDate: timeUtil.getMonthEndDate(),summaryType: 2},
-                "3": {startDate: timeUtil.getQuarterStartDate(), endDate: timeUtil.getQuarterEndDate(),summaryType: 3},
-                "4": {startDate: timeUtil.getYearStartDate(), endDate: timeUtil.getYearEndDate(),summaryType: 4}
+                "1": {startDate: timeUtil.getWeekStartDate(), endDate: timeUtil.getWeekEndDate(), summaryType: 1},
+                "2": {startDate: timeUtil.getMonthStartDate(), endDate: timeUtil.getMonthEndDate(), summaryType: 2},
+                "3": {startDate: timeUtil.getQuarterStartDate(), endDate: timeUtil.getQuarterEndDate(), summaryType: 3},
+                "4": {startDate: timeUtil.getYearStartDate(), endDate: timeUtil.getYearEndDate(), summaryType: 4}
             }
             var initData = {id: '', gmtCreate: gmtCreate, startDate: commentTimeMap[index].startDate, endDate: commentTimeMap[index].endDate, selfEvaluation: '', workSummary: '', kpiName: '', kpiId: '', targetNumber: '', performance: '', approverId: '', summaryType: commentTimeMap[index].summaryType, operatorId: window.ownerPeopleId, operatorName: window.ownerPeopleName};
             var row = row.id ? row : initData;
@@ -218,24 +220,14 @@ define([
             this.initSuggest();
             row.id && (this.setBssuggestValue(row));
             this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
-            $('.accessTime').datepicker({
-                language: 'zh-CN',
-                autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
-            });
             this.$editForm = this.$el.find('#editForm');
-            this.$kpiSel = this.$editDialogPanel.find('#kpiSel');
-            this.$targetNumSel = this.$editDialogPanel.find('#targetNumSel');
-            this.getKpiList();
-            this.getTargetNumList();
             this.initSubmitForm();
         },
         sendCheck: function (e) {
             var that = this;
             var $el = $(e.target);
             var param = {id: $el.val(), status: 0};
-            ncjwUtil.postData(QUERY.ASSESS_SUMMARY_UPDATE, JSON.stringify(param) , function (res) {
+            ncjwUtil.postData(QUERY.ASSESS_SUMMARY_UPDATE, JSON.stringify(param), function (res) {
                 if (res.success) {
                     ncjwUtil.showInfo("提交成功");
                     that.createDetailView(that.getValue());
@@ -258,29 +250,63 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    eventName: {
-                        required: true,
-                        maxlength: 50
+                    startDate: {
+                        required: true
                     },
-                    eventDescription: {
+                    endDate: {
+                        required: true
+                        // maxlength: 100
+                    },
+                    kpiId: {
+                        required: true
+                    },
+                    targetNumber: {
+                        required: true
+                    },
+                    performance: {
                         required: true,
                         maxlength: 100
                     },
-                    completeTime: {
+                    approverId: {
                         required: true
+                    },
+                    workSummary: {
+                        required: true,
+                        maxlength: 100
+                    },
+                    selfEvaluation: {
+                        required: true,
+                        maxlength: 100
                     }
                 },
                 messages: {
-                    eventName: {
-                        required: "请输入标题",
-                        maxlength: "最多输入50个字符"
+                    startDate: {
+                        required: "请选择开始时间"
                     },
-                    eventDescription: {
-                        required: "请输入描述",
+                    endDate: {
+                        required: "请选择结束时间"
+                        // maxlength: 100
+                    },
+                    kpiId: {
+                        required: "请选择关键业务指标"
+                    },
+                    targetNumber: {
+                        required: "请选择目标数值"
+                    },
+                    performance: {
+                        required: "请填写完成情况",
                         maxlength: "最多输入100个字符"
                     },
-                    completeTime: {
-                        required: "请选择时间"
+                    approverId: {
+                        required: "请选择审批人"
+                    },
+                    workSummary: {
+                        required: "请输入工作总结",
+                        maxlength: "最多输入100个字符"
+                    },
+                    selfEvaluation: {
+                        required: "请输入自我评价",
+                        maxlength: "最多输入100个字符"
                     }
                 },
                 highlight: function (element) {
@@ -360,7 +386,8 @@ define([
                 $validInput.val(data.id);
                 $operatorName.val(data.peopleName);
                 $helpBlock.remove();
-            }).on('onUnsetSelectValue', function () {});
+            }).on('onUnsetSelectValue', function () {
+            });
         },
         initBtnEvent: function () {
             var method = $(this).text();
