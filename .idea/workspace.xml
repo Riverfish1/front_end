@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f35dcadc-155c-437a-b1b8-44d45963930a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/app/app.css" afterPath="$PROJECT_DIR$/src/components/app/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/header/header.html" afterPath="$PROJECT_DIR$/src/components/header/header.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" afterPath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/app/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="82" column="23" lean-forward="false" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
+            <state relative-caret-position="241">
+              <caret line="80" column="19" lean-forward="true" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -97,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="navSidebarModel.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="navSidebarModel.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+            <state relative-caret-position="404">
+              <caret line="43" column="15" lean-forward="true" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -153,8 +152,8 @@
       <find>.w332</find>
       <find>debugger;</find>
       <find>70px</find>
-      <find>806px</find>
       <find>安全退出</find>
+      <find>806px</find>
     </findStrings>
     <replaceStrings>
       <replace>WORKASSIGN</replace>
@@ -234,7 +233,6 @@
         <option value="$PROJECT_DIR$/src/components/calendar/date.js" />
         <option value="$PROJECT_DIR$/src/components/workSulmmary/index.html" />
         <option value="$PROJECT_DIR$/src/components/workSulmmary/indexView.js" />
-        <option value="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" />
         <option value="$PROJECT_DIR$/src/components/personnelSummary/indexController.js" />
         <option value="$PROJECT_DIR$/src/components/workToDo/index.html" />
         <option value="$PROJECT_DIR$/src/components/workToDo/indexView.js" />
@@ -251,6 +249,7 @@
         <option value="$PROJECT_DIR$/src/components/header/header.js" />
         <option value="$PROJECT_DIR$/src/components/header/header.html" />
         <option value="$PROJECT_DIR$/src/components/app/app.css" />
+        <option value="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" />
       </list>
     </option>
   </component>
@@ -942,12 +941,12 @@
       <workItem from="1508323728252" duration="12337000" />
       <workItem from="1508410338439" duration="13564000" />
       <workItem from="1508460727668" duration="37466000" />
-      <workItem from="1508550918666" duration="8525000" />
+      <workItem from="1508550918666" duration="8728000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264214000" />
+    <option name="totallyTimeSpent" value="264417000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1345,14 +1344,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1279">
@@ -1400,8 +1391,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/app/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="82" column="23" lean-forward="false" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
+        <state relative-caret-position="241">
+          <caret line="80" column="19" lean-forward="true" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="43" column="15" lean-forward="true" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
           <folding />
         </state>
       </provider>

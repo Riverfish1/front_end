@@ -45,7 +45,7 @@ define({
         {className: 'icon_homePage', href: '#/assess/personnelSummary', title: '个人绩效'},
         {className: 'icon_homePage', href: '#/assess/leaderCommunicate', title: '领导审核'},
         {className: 'icon_homePage', href: '#/assess/kpiManage', title: '考核指标管理'},
-        {className: 'icon_homePage', href: '#/assess/assignManage', title: '临时交办工作管理'},
+        {className: 'icon_homePage', href: '#/assess/assignManage', title: '临时交办管理'},
         {className: 'icon_homePage', href: '#/assess/attendance', title: '考勤', children: [
             {className: 'icon_homePage', href: '#/assess/attendance', title: '考勤'},
             {className: 'icon_homePage', href: '#/assess/myAttendance', title: '我的考勤'},
