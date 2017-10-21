@@ -37,8 +37,12 @@ body {
 /*
  * Header
  */
+#navbar li {line-height: 50px;}
+#navbar li.active{height: 50px;}
 #navbar li.active a{
-    color: #1090c6
+    color: #1090c6;
+    background-color: #fff;
+    height: 51px;
 }
 
 /*
@@ -74,9 +78,10 @@ body {
 }
 
 .nav-sidebar > li > a {
-    padding-right: 20px;
-    padding-left: 68px;
+    width: 120px;
+    margin: 0 auto;
     color: #222;
+    text-align: center;
 }
 
 .nav-sidebar > .active > a {
@@ -115,10 +120,10 @@ body {
 @media (min-width: 768px) {
     #main {
         padding: 20px 40px;
-        margin-top: 80px;
+        margin-top: 50px;
     }
     #sidebar {
-        top: 120px;
+        top: 100px;
     }
 
     .main_top {
@@ -130,7 +135,7 @@ body {
 
 @media (min-width: 806px) {
     #main {
-        margin-top: 40px;
+        margin-top: 30px;
         padding: 20px 40px;
     }
     #sidebar {
@@ -144,7 +149,16 @@ body {
         padding: 20px 40px;
     }
     #sidebar {
-        top: 70px;
+        top: 80px;
+    }
+}
+@media (min-width: 980px) {
+    #main {
+        margin-top: 0px;
+        padding: 20px 40px;
+    }
+    #sidebar {
+        top: 50px;
     }
 }
 
@@ -213,7 +227,6 @@ body {
 }
 
 .navbar-btn-group {
-    margin-top: 7px;
     padding-right: 15px;
 }
 
@@ -459,7 +472,7 @@ input:-webkit-autofill {
 /* side bar navigation */
 
 .navbar {
-    min-height: 70px;
+    min-height: 50px;
 }
 
 .nav-sidebar a {

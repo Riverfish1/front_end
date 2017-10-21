@@ -15,7 +15,11 @@ define([
         events: {
             'mouseover .shotcutWrap': 'mouseoverShotcutMenu',
             'mouseout .shotcutWrap':  'mouseoutShotcutMenu',
-            'click .shotcutBtn': 'addShotcut'
+            'click .shotcutBtn': 'addShotcut',
+            'click .logout': 'loginOut'
+        },
+        loginOut: function () {
+            window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + location.href;
         },
         initialize:function(){
             ncjwUtil.getData(QUERY.LOGIN, {}, function(res) {
