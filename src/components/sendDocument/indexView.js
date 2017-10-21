@@ -262,7 +262,7 @@ define([
                 var currentOperatorId = $('#currentOperatorId').val();
                 var comment = $('#comment').val();
                 //保存
-                if (index == 0) {
+                if (index == 0 || index == 1) {
                     var params = {workFlow: {nodeList: []}};
                     $.each($inputs, function (k, el) {
                         var node = {};
@@ -279,6 +279,12 @@ define([
                             params[name] = val;
                         }
                     })
+                    //提交也是创建人；
+                    if(index == 1){
+                        currentOperatorId = window.ownerPeopleId;
+                        comment = "";
+                    }
+                    var submitParams = {recordId: id, operatorId: currentOperatorId, comment: comment};
                 } else {
                     //提交也是创建人；
                     if(index == 1){
@@ -288,17 +294,39 @@ define([
                     var params = {recordId: id, operatorId: currentOperatorId, comment: comment};
                 }
 
-                ncjwUtil.postData(urlMap[index], JSON.stringify(params), function (res) {
-                    if (res.success) {
-                        ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
-                        that.$editDialog.modal('hide');
-                        that.table.refresh();
-                    } else {
-                        ncjwUtil.showError("保存失败：" + res.errorMsg);
-                    }
-                }, {
-                    "contentType": 'application/json'
-                })
+                if(index == 1){
+                    ncjwUtil.postData(urlMap[index], JSON.stringify(submitParams), function (res) {
+                        if (res.success) {
+                            ncjwUtil.postData(urlMap[index], JSON.stringify(params), function (res) {
+                                if (res.success) {
+                                    ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
+                                    that.$editDialog.modal('hide');
+                                    that.table.refresh();
+                                } else {
+                                    ncjwUtil.showError("保存失败：" + res.errorMsg);
+                                }
+                            }, {
+                                "contentType": 'application/json'
+                            })
+                        } else {
+                            ncjwUtil.showError("保存失败：" + res.errorMsg);
+                        }
+                    }, {
+                        "contentType": 'application/json'
+                    })
+                }else{
+                    ncjwUtil.postData(urlMap[index], JSON.stringify(params), function (res) {
+                        if (res.success) {
+                            ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
+                            that.$editDialog.modal('hide');
+                            that.table.refresh();
+                        } else {
+                            ncjwUtil.showError("保存失败：" + res.errorMsg);
+                        }
+                    }, {
+                        "contentType": 'application/json'
+                    })
+                }
             }
         },
         showOrhideBtn: function (row) {
