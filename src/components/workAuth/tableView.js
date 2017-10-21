@@ -106,7 +106,7 @@ define(['../../common/query/index'], function (QUERY) {
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
-                id: 5
+                id: window.ownerPeopleId
                 // departmentname: $("#txt_search_departmentname").val(),
                 // statu: $("#txt_search_statu").val()
             };

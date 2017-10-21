@@ -46,12 +46,14 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'appointmentTime',
+                    field: 'time',
                     title: '时间',
                     align: 'center',
                     valign: "middle",
-                    formatter: function (value, row, index) {
-                        return value ? ncjwUtil.timeTurn(value) : "";
+                    formatter: function (value, row) {
+                        var date = ncjwUtil.timeTurn(row.startTime, 'yyyy/MM/dd') +
+                        ' - ' + ncjwUtil.timeTurn(row.endTime, 'yyyy/MM/dd');
+                        return date;
                     }
                 }, {
                     field: 'place',

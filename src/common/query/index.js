@@ -1,6 +1,6 @@
 define([], function () {
     var QUERY = {
-        LOGIN: '/api/login/loginPost',
+        LOGIN: '/api/login/getCurrentUser',
         // 登记
         // 办公区登记
         RECORD_OFFICEAREA_INSERT: '/api/officeArea/insert',
@@ -144,7 +144,7 @@ define([], function () {
         WORK_NOTICEMANAGE_DELETE: '/api/noticeRecord/deleteById',
         // 个人绩效
         
-        // 领导沟通
+        // 领导审核
         ASSESS_SUMMARY_QUERY: '/api/workSummary/query', 
         ASSESS_SUMMARY_UPDATE: '/api/workSummary/updateById', 
         ASSESS_SUMMARY_INSERT: '/api/workSummary/insert', 

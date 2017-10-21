@@ -47,7 +47,7 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'officeArea',
+                    field: 'officeAreaName',
                     title: '所属办公区',
                     align: 'center',
                     valign: "middle"
