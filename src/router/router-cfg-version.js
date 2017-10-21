@@ -67,7 +67,6 @@ define(['backbone'], function (Backbone) {
         'assess/attendance': 'src/components/assessAttendance/indexController.js',
         // 我的考勤
         'assess/myAttendance': 'src/components/myAttendance/indexController.js',
-
         '*actions': 'defaultAction'
     };
 
