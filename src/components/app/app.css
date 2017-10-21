@@ -37,6 +37,7 @@ body {
 /*
  * Header
  */
+#navbar li {line-height: 50px;}
 #navbar li.active{height: 50px;}
 #navbar li.active a{
     color: #1090c6;
@@ -226,7 +227,6 @@ body {
 }
 
 .navbar-btn-group {
-    margin-top: 7px;
     padding-right: 15px;
 }
 
