@@ -947,7 +947,8 @@ input:-webkit-autofill {
     font-size: 16px;
 }
 #workSummaryWrap{margin-top: 42px;}
-.w294{width: 294px;}
+.w332{width: 332px;}
+.w334{width: 334px !important;}
 #workSummaryWrap a{
     color: #00a2d4;
 }#workSummaryWrap .title{
