@@ -106,6 +106,9 @@ define([
         addOne: function (row) {
             //id不存在与staus==3都是新建；
             var initState = {
+                departmentIds: '',
+                gmtCreate: '',
+                filePath: '',
                 creatorId: window.ownerPeopleId,
                 creatorName: window.ownerPeopleName,
                 currentOperatorId: window.ownerPeopleId,

@@ -63,7 +63,8 @@ define([
             this.calendarTableView.render(this.formaterCalendarDate());
         },
         formaterCalendarDate: function () {
-            return ncjwUtil.timeTurn(calendar.getDate(), 'yyyy-MM-dd')
+            return  ncjwUtil.timeTurn(calendar.getDate(), 'yyyy-MM-dd');
+            // return new Date(calendar.getDate()).getTime();
         },
         calendarClick: function (e) {
             console.log("this.formaterCalendarDate", calendar.getDate());
@@ -94,7 +95,7 @@ define([
             return this;
         },
         addOne: function (row) {
-            debugger;
+            // debugger;
             // debugger;
             var initData = {id: '', operatorId: window.ownerPeopleId, title: '', content: '', startDate: '', endDate: '', gmtCreate: this.formaterCalendarDate(), isRemind: 0};
             var row = row.id ? row : initData;
@@ -103,11 +104,11 @@ define([
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
-            $('.accessTime').datepicker({
-                language: 'zh-CN',
+            $('.accessTime').datetimepicker({
                 autoclose: true,
+                format: 'yyyy-mm-dd hh:ii:00',
+                language: 'zh-CN',
                 todayHighlight: true
-                // format: 'yyyy-mm-dd'
             });
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
@@ -130,7 +131,7 @@ define([
                         ncjwUtil.getData(QUERY.HOME_SCHEDULE_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo("删除成功");
-                                that.calendarTableView.refresh(this.formaterCalendarDate());
+                                that.calendarTableView.refresh(that.formaterCalendarDate());
                             } else {
                                 ncjwUtil.showError("删除失败：" + res.errorMsg);
                             }
@@ -203,9 +204,12 @@ define([
                 data = decodeURIComponent(data, true);
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
+                var datas = JSON.parse(datas);
+                datas.startDate = datas.startDate.replace(/\+/, ' ');
+                datas.endDate = datas.endDate.replace(/\+/, ' ');
                 var id = $('#id').val();
-                debugger;
-                ncjwUtil.postData(id ? QUERY.HOME_SCHEDULE_UPDATE_BY_ID : QUERY.HOME_SCHEDULE_INSERT, datas, function (res) {
+                // debugger;
+                ncjwUtil.postData(id ? QUERY.HOME_SCHEDULE_UPDATE_BY_ID : QUERY.HOME_SCHEDULE_INSERT, JSON.stringify(datas), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
