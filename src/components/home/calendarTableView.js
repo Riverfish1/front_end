@@ -29,7 +29,7 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable({
                 url: QUERY.WORK_TODO_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
-                toolbar: '#toolbar', //工具按钮用哪个容器
+                // toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
                 cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
                 // pagination: true, //是否显示分页（*）
@@ -52,17 +52,17 @@ define(['../../common/query/index'], function (QUERY) {
                 // cardView: false, //是否显示详细视图
                 // detailView: false, //是否显示父子表
                 columns: [
-                //     {
-                //     field: 'eventName',
-                //     title: '标题',
-                //     width: '33.3%',
-                //     align: 'center',
-                //     valign: "middle"
-                // },
+                    //     {
+                    //     field: 'eventName',
+                    //     title: '标题',
+                    //     width: '33.3%',
+                    //     align: 'center',
+                    //     valign: "middle"
+                    // },
                     {
                         field: 'completeTime',
                         title: '时间',
-                        width: '10%',
+                        width: '120px',
                         align: 'center',
                         valign: "middle",
                         formatter: function (value, row, index) {
@@ -72,46 +72,47 @@ define(['../../common/query/index'], function (QUERY) {
                         }
                     },
                     {
-                    field: 'eventDescription',
-                    title: '内容',
-                    width: '33.3%',
-                    align: 'center',
-                    valign: "middle"
-                },
-                //     {
-                //     field: 'completeTime',
-                //     title: '预计完成时间',
-                //     width: '10%',
-                //     align: 'center',
-                //     valign: "middle",
-                //     formatter: function (value, row, index) {
-                //         return value ? ncjwUtil.timeTurn(value) : "";
-                //     }
-                // }, {
-                //     field: 'completeTime',
-                //     title: '预计完成时间',
-                //     width: '23.3%',
-                //     align: 'center',
-                //     valign: "middle",
-                //     formatter: function (value, row, index) {
-                //        return value ? ncjwUtil.timeTurn(value) : "";
-                //     }
-                //
-                // },
+                        field: 'eventDescription',
+                        title: '内容',
+                        width: '120px',
+                        align: 'center',
+                        valign: "middle"
+                    },
+                    //     {
+                    //     field: 'completeTime',
+                    //     title: '预计完成时间',
+                    //     width: '10%',
+                    //     align: 'center',
+                    //     valign: "middle",
+                    //     formatter: function (value, row, index) {
+                    //         return value ? ncjwUtil.timeTurn(value) : "";
+                    //     }
+                    // }, {
+                    //     field: 'completeTime',
+                    //     title: '预计完成时间',
+                    //     width: '23.3%',
+                    //     align: 'center',
+                    //     valign: "middle",
+                    //     formatter: function (value, row, index) {
+                    //        return value ? ncjwUtil.timeTurn(value) : "";
+                    //     }
+                    //
+                    // },
                     {
-                    field: 'status',
-                    title: '操作',
-                    align: 'center',
-                    valign: "middle",
-                    events: this.operateEvents,
-                    formatter: function (value, row, index) {
-                        var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
-                        return str;
-                    }
-                }],
-                responseHandler: function(res) {
+                        field: 'status',
+                        title: '操作',
+                        width: '100px',
+                        align: 'center',
+                        valign: "middle",
+                        events: this.operateEvents,
+                        formatter: function (value, row, index) {
+                            var str = '';
+                            str += '<p class="grid-command-p btn-edit">修改</p>';
+                            str += '<p class="grid-command-p btn-delete">删除</p>';
+                            return str;
+                        }
+                    }],
+                responseHandler: function (res) {
                     return {
                         "total": res.total,
                         "rows": res.data ? res.data[0] : []

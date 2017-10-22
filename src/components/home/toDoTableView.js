@@ -3,7 +3,7 @@ define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var toDoType = 0;
     var Table = Backbone.View.extend({
-        el: '#tabContent',
+        el: '#home_tabContent',
         initialize: function () {
         },
         showLoading: function () {

@@ -14,7 +14,7 @@ define([
         default: {
             items: ["待办事宜", "公文待办", "日常事务"]
         },
-        el: '#app',
+        el: '.homeWrap',
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
         events: {
