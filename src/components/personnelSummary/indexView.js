@@ -352,7 +352,7 @@ define([
                 clearable: true,
                 showHeader: true,
                 showBtn: false,
-                allowNoKeyword: false,
+                allowNoKeyword: true,
                 getDataMethod: "url",
                 delayUntilKeyup: true,
                 // url: "src/components/sendDocument/data.json",

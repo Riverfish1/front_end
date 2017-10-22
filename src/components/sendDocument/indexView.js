@@ -41,7 +41,7 @@ define([
                     clearable: true,
                     showHeader: true,
                     showBtn: false,
-                    allowNoKeyword: false,
+                    allowNoKeyword: true,
                     getDataMethod: "url",
                     delayUntilKeyup: true,
                     // url: "src/components/sendDocument/data.json",
@@ -295,7 +295,7 @@ define([
                 }
 
                 if(index == 1){
-                    ncjwUtil.postData(urlMap[index], JSON.stringify(submitParams), function (res) {
+                    ncjwUtil.postData(urlMap[0], JSON.stringify(submitParams), function (res) {
                         if (res.success) {
                             ncjwUtil.postData(urlMap[index], JSON.stringify(params), function (res) {
                                 if (res.success) {

@@ -1,16 +1,19 @@
 /*global define*/
 define([
-    'src/components/workToDo/tableView',
-    'text!src/components/workToDo/index.html',
-    'text!src/components/workToDo/dialog.html',
+    './toDoTableView',
+    './workMeetingTableView',
+    './workStaffTableView',
+    '../../common/calendar/calendar',
+    'text!./index.html',
+    'text!./dialog.html',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, QUERY) {
+], function (ToDoTableView, WorkMeetingTableView, WorkStaffTableView, calendar, tpl, dialogTpl, QUERY) {
     'use strict';
     var TabView = Backbone.View.extend({
         default: {
             items: ["待办事宜", "公文待办", "日常事务"]
         },
-        el: '#main',
+        el: '#app',
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
         events: {
@@ -20,8 +23,6 @@ define([
         initialize: function () {
             this.value = 0;
             this._bindEvent();
-            Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
-            Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
         },
         _selet1stTab: function () {
             // debugger;
@@ -42,8 +43,16 @@ define([
             this.createDetailView(index);
         },
         createDetailView: function (index) {
-            this.table = new BaseTableView();
-            this.table.render(index);
+            this.todoTable = new ToDoTableView();
+            this.todoTable.render(index);
+        },
+        createWorkMeetingTableView: function () {
+            this.workMeetingTableView = new WorkMeetingTableView();
+            this.workMeetingTableView.render();
+        },
+        createWorkStaffTableView: function () {
+            this.workStaffTableView = new WorkStaffTableView();
+            this.workStaffTableView.render();
         },
         getValue: function () {
             return this.value;
@@ -59,6 +68,12 @@ define([
             this.$tabContent = this.$el.find('#tabContent');
             this._selet1stTab();
             this.createDetailView(0);
+            //生成日历
+            calendar.init('.calendarWrap');
+            //最新会议
+            this.createWorkMeetingTableView();
+            //名片
+            this.createWorkStaffTableView();
             return this;
         },
         addOne: function (row) {
@@ -77,34 +92,6 @@ define([
             });
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
-        },
-        delOne: function (row) {
-            var that = this;
-            bootbox.confirm({
-                buttons: {
-                    confirm: {
-                        label: '确认'
-                    },
-                    cancel: {
-                        label: '取消'
-                    }
-                },
-                title: "温馨提示",
-                message: '执行删除后将无法恢复，确定继续吗？',
-                callback: function (result) {
-                    if (result) {
-                        ncjwUtil.getData(QUERY.WORK_TODO_DELETE, {id: row.id}, function (res) {
-                            if (res.success) {
-                                ncjwUtil.showInfo("删除成功");
-                                that.table.refresh();
-                            } else {
-                                ncjwUtil.showError("删除失败：" + res.errorMsg);
-                            }
-                        })
-                    }
-                }
-
-            });
         },
         initSubmitForm: function () {
             this.$editForm.validate({
@@ -162,7 +149,7 @@ define([
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
-                        that.table.refresh();
+                        that.todoTable.refresh();
                     } else {
                         ncjwUtil.showError("保存失败：" + res.errorMsg);
                     }
