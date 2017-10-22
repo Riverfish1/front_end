@@ -10,6 +10,9 @@ define([
 	'use strict';
 	var HeaderView = Backbone.View.extend({
 		el: '#header',
+        default: {
+            loginName: ''
+        },
 		tagName:  'div',
 		template: _.template(tpl),
         events: {
@@ -22,12 +25,18 @@ define([
             window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + location.href;
         },
         initialize:function(){
+            var that = this;
             ncjwUtil.getData(QUERY.LOGIN, {}, function(res) {
                 console.log(res);
                 if (res.success) {
                     var data = res.data && res.data[0];
-                    window.ownerPeopleId = data.id;
-                    window.ownerPeopleName = data.peopleName;
+                    var JSONData = JSON.parse(data);
+                    window.ownerPeopleId = JSONData.id;
+                    window.ownerPeopleName = JSONData.peopleName;
+                    that.default = {
+                        loginName: JSONData.peopleName
+                    };
+                    that.$el.html(that.template(that.default));
                 } else {
                     window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + window.location.href;
                 }
@@ -62,7 +71,7 @@ define([
             this.$shotcutBtn.hide();
         },
 		render:function(){
-			this.$el.html(this.template());
+			this.$el.html(this.template(this.default));
             this.dropMenu = new DropMenu();
             this.$menu = this.$el.find('.shotMenu');
             this.$shotcutBtn = this.$el.find('.shotcutBtn');

@@ -180,10 +180,53 @@ define([], function () {
         TARGET_NUM_ITEMS_SELECT: '/api/targetNumItems/query',
 
         //临时交办工作管理
-        ASSIGN_MANAGE_INSERT: 'api/assignManage/insert',
+        ASSIGN_MANAGE_INSERT: '/api/assignManage/insert',
+
+        // 资产
+        // 资产统计
+        ASSETS_COUNT_QUERY: '/api/assetsCount/query',
+
+        // 单警装备
+        // 入库
+        EQUIP_IN_INSERT: '/api/equipIn/insert',
+        EQUIP_IN_UPDATE: '/api/equipIn/updateById',
+        EQUIP_IN_DELETE: '/api/equipIn/deleteById',
+        EQUIP_IN_QUERY: '/api/equipIn/query',
+        // 出库
+        EQUIP_OUT_INSERT: '/api/equipOut/insert',
+        EQUIP_OUT_UPDATE: '/api/equipOut/updateById',
+        EQUIP_OUT_DELETE: '/api/equipOut/deleteById',
+        EQUIP_OUT_STORE_OUT: '/api/equipOut/storeOut',
+        EQUIP_OUT_CHANGE: '/api/equipOut/change',
+        EQUIP_OUT_QUERY: '/api/equipOut/query',
+        // 调拨
+        EQUIP_ALLOT_INSERT: '/api/equipAllot/insert',
+        EQUIP_ALLOT_QUERY: '/api/equipAllot/query',
+        EQUIP_ALLOT_UPDATE: '/api/equipAllot/updateById',
+        EQUIP_ALLOT_DELETE: '/api/equipAllot/deleteById',
+        EQUIP_ALLOT_CONFIRM: '/api/equipAllot/confirm',
+        // 库存盘点
+        STORE_STOCKING_QUERY: '/api/stocking/query',
+        STORE_STOCKING_INSERT: '/api/stocking/insert',
+        STORE_STOCKING_DELETE: '/api/stocking/deleteById',
+        STORE_STOCKING_COMPLETE: '/api/stocking/complete',
+        // 库存查询
+        STORE_QUERY: 'api/storeQuery/query',
+        // 装备查询
+        EQUIP_QUERY: '/api/equipQuery/query',
+        // 装备管理
+        EQUIP_MNG_INSERT: '/api/equipMng/insert',
+        EQUIP_MNG_QUERY: '/api/equipMng/query',
+        EQUIP_MNG_UPDATE: '/api/equipMng/updateById',
+        EQUIP_MNG_DELETE: '/api/equipMng/deleteById',
+        // 仓库管理
+        STORE_MNG_INSERT: '/api/storeMng/insert',
+        STORE_MNG_QUERY: '/api/storeMng/query',
+        STORE_MNG_UPDATE: '/api/storeMng/updateById',
+        STORE_MNG_DELETE: '/api/storeMng/deleteById',
 
 
-        // 一些基本正则
+        // 正则
         TEL_REG: /(^(13\d|15[^4,\D]|17[13678]|18\d)\d{8}|170[^346,\D]\d{7})$/,
         EMAIL_REG: /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/,
         ID_CARD_REG: /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X|x)$/

@@ -67,6 +67,41 @@ define(['backbone'], function (Backbone) {
         'assess/attendance': 'src/components/assessAttendance/indexController.js',
         // 我的考勤
         'assess/myAttendance': 'src/components/myAttendance/indexController.js',
+        // 资产登记
+        'support/assetsRecord': 'src/components/assetsRecord/indexController.js',
+        // 资产维修
+        'support/assetsFix': 'src/components/assetsFix/indexController.js',
+        // 资产报废
+        'support/assetsScrap': 'src/components/assetsScrap/indexController.js',
+        // 资产预警
+        'support/assetsWarn': 'src/components/assetsWarn/indexController.js',
+        // 文件登记
+        'support/fileRecord': 'src/components/fileRecord/indexController.js',
+        // 资产统计
+        'support/assetsCount': 'src/components/assetsCount/indexController.js',
+        // 系统设置
+        'support/systemSet': 'src/components/systemSet/indexController.js',
+        // 装备入库
+        'support/equipIn': 'src/components/equipIn/indexController.js',
+        // 装备出库
+        'support/equipOut': 'src/components/equipOut/indexController.js',
+        // 装备调拨
+        'support/equipAllot': 'src/components/equipAllot/indexController.js',
+        // 库存盘点
+        'support/stocking': 'src/components/stocking/indexController.js',
+        // 装备领用
+        'support/equipCollect': 'src/components/equipCollect/indexController.js',
+        // 装备管理
+        'support/equipMng': 'src/components/equipMng/indexController.js',
+        // 仓库管理
+        'support/storeMng': 'src/components/storeMng/indexController.js',
+        // 装备查询
+        'support/equipQuery': 'src/components/equipQuery/indexController.js',
+        // 库存查询
+        'support/storeQuery': 'src/components/storeQuery/indexController.js',
+
+
+
         '*actions': 'defaultAction'
     };
 
