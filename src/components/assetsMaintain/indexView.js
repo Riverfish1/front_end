@@ -9,14 +9,7 @@ define([
     var View = Backbone.View.extend({
         el: '#main',
         initialData: {
-            id: '',
-            name: '',
-            code: '',
-            userId: '',
-            userName: '',
-            departmentList: [],
-            time: '',
-            month: ''
+            assetClass: ''
         },
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
@@ -27,109 +20,26 @@ define([
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
-            Backbone.off('itemDownload').on('itemDownload', this.downlaodFile, this);
         },
         render: function () {
-            var that = this;
-            var params = {
-                pageNum: 0,
-                pageSize: 10000
-            };
             this.$el.empty().html(this.template(this.initialData));
             this.$officeDialog = this.$el.find('#editDialog');
             this.$officeDialogPanel = this.$el.find('#editPanel');
             this.table = new BaseTableView();
             this.table.render();
-            ncjwUtil.postData(QUERY.RECORD_DEPARTMENT_QUERY, JSON.stringify(params), function (res) {
-                if (res.success) {
-                    var data = res.data && res.data[0];
-                    that.initialData.departmentList = data;
-                }
-            }, {
-                'contentType': 'application/json'
-            });
             return this;
         },
         addOne: function (row) {
-            var row = row.id ? row : this.initialData;
-            if (row.id) {
-                row.departmentList = this.initialData.departmentList;
-            }
+            var initState = {
+                assetClass: '',
+                id: ''
+            };
+            var row = row.id ? row : initState;
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
-            this.$suggestWrap = this.$officeDialogPanel.find('.test');
-            this.$suggestBtn = this.$suggestWrap.find('button');
-            this.initSuggest();
-            this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             this.$editForm = this.$el.find('#editForm');
-            $('.time').datepicker({
-                language: 'zh-CN',
-                format: 'yyyy-mm-dd',
-                autoclose: true,
-                todayHighlight: true
-            });
             this.initSubmitForm();
-        },
-
-        initSuggest: function () {
-            var $data = [];
-            $.each(this.$suggestWrap, function (k, el) {
-                $(el).bsSuggest({
-                    /*url: "/rest/sys/getuserlist?keyword=",
-                     effectiveFields: ["userName", "email"],
-                     searchFields: [ "shortAccount"],
-                     effectiveFieldsAlias:{userName: "姓名"},*/
-                    effectiveFieldsAlias: {peopleName: "姓名", employeeNum: "工号"},
-                    effectiveFields: ['peopleName', 'employeeNum'],
-                    clearable: true,
-                    showHeader: true,
-                    showBtn: false,
-                    getDataMethod: 'url',
-                    fnAdjustAjaxParam: function(keywords, opts) {
-                        return {
-                            method: 'post',
-                            data: JSON.stringify({
-                                peopleName: $(el).val()
-                            }),
-                            'contentType': 'application/json'
-                        };
-                    },
-                    processData: function(json) {
-                        var data = { value: [] };  
-                        $.each(json.data && json.data[0], function (i, r) {  
-                            data.value.push({ peopleName: r.peopleName, employeeNum: r.employeeNum, id: r.id })  
-                        })  
-                        return data;  
-                    },
-                    url: QUERY.FUZZY_QUERY,
-                    idField: "id",
-                    keyField: "peopleName"
-                }).on('onSetSelectValue', function (e, keyword, data) {
-                    $('#userId').val(data.id);
-                    $('#userName').val(data.peopleName);
-                });
-            })
-        },
-        initBtnEvent: function () {
-            var method = $(this).text();
-            var $i;
-
-            if (method === 'init') {
-                this.initSuggest();
-            } else {
-                $i = this.$suggestWrap.bsSuggest(method);
-                if (typeof $i === 'object') {
-                    $i = $i.data('bsSuggest');
-                }
-                if (!$i) {
-                    alert('未初始化或已销毁');
-                }
-            }
-
-            if (method === 'version') {
-                alert($i);
-            }
         },
         delOne: function (row) {
             var that = this;
@@ -146,7 +56,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.ASSETS_FILE_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.ASSETS_CATEGORY_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();
@@ -159,7 +69,6 @@ define([
 
             });
         },
-        downlaodFile: function () {},
         initSubmitForm: function () {
             this.$editForm.validate({
                 errorElement: 'span',
@@ -193,7 +102,7 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.ASSETS_FILE_UPDATE : QUERY.ASSETS_FILE_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.ASSETS_CATEGORY_UPDATE : QUERY.ASSETS_CATEGORY_INSERT, datas, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');

@@ -22,7 +22,7 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.ASSETS_FILE_QUERY, //请求后台的URL（*）
+                url: QUERY.ASSETS_CATEGORY_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,50 +47,20 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'name',
-                    title: '合同名称',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'code',
-                    title: '合同编号',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'user',
-                    title: '使用人',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'department',
-                    title: '使用部门',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'time',
-                    title: '购入时间',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'month',
-                    title: '使用期限（月）',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'operatorName',
-                    title: '登记人',
+                    field: 'assetClass',
+                    title: '资产类别',
                     align: 'center',
                     valign: "middle"
                 }, {
                     field: 'oper',
                     title: '操作',
                     align: 'center',
-                    valign: 'middle',
-                    formatter: function (value, row) {
+                    valign: "middle",
+                    events: this.operateEvents,
+                    formatter: function (value, row, index) {
                         var str = '';
                         str += '<p class="grid-command-p btn-edit">修改</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
-                        str += '<p class="grid-command-p btn-download">下载</p>';
                         return str;
                     }
                 }],
@@ -115,9 +85,6 @@ define(['../../common/query/index'], function (QUERY) {
             },
             'click .btn-delete': function (e, value, row, index) {
                 Backbone.trigger('itemDelete', row);
-            },
-            'click btn-download': function (e, value, row, index) {
-                Backbone.trigger('itemDownload', row);
             }
         }
     });

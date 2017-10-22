@@ -198,11 +198,12 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
-                data += '&peopleId=' + window.ownerPeopleId;
                 var datas = serializeJSON(data);
                 datas = datas.replace(/\+/g, ' ');
+                var JSONData = JSON.parse(datas);
+                JSONData.peopleId = window.ownerPeopleId;
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_SUMMARY_UPDATE : QUERY.WORK_SUMMARY_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_SUMMARY_UPDATE : QUERY.WORK_SUMMARY_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');

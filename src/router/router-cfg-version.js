@@ -71,8 +71,10 @@ define(['backbone'], function (Backbone) {
         'assess/myAttendance': 'src/components/myAttendance/indexController.js',
         // 资产登记
         'support/assetsRecord': 'src/components/assetsRecord/indexController.js',
+        // 资产领用
+        'support/assetsReceive': 'src/components/assetsReceive/indexController.js',
         // 资产维修
-        'support/assetsFix': 'src/components/assetsFix/indexController.js',
+        'support/assetsMaintain': 'src/components/assetsMaintain/indexController.js',
         // 资产报废
         'support/assetsScrap': 'src/components/assetsScrap/indexController.js',
         // 资产预警
