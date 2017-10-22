@@ -62,7 +62,7 @@ define(['../../common/query/index'], function (QUERY) {
                     {
                         field: 'completeTime',
                         title: '时间',
-                        width: '120px',
+                        width: '80px',
                         align: 'center',
                         valign: "middle",
                         formatter: function (value, row, index) {
@@ -74,7 +74,7 @@ define(['../../common/query/index'], function (QUERY) {
                     {
                         field: 'eventDescription',
                         title: '内容',
-                        width: '120px',
+                        width: '80px',
                         align: 'center',
                         valign: "middle"
                     },

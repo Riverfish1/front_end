@@ -103,7 +103,12 @@ define(['backbone'], function (Backbone) {
         'support/storeQuery': 'src/components/storeQuery/indexController.js',
 
 
-
+        // 差旅报销管理-我的报销
+        'support/createRepay': 'src/components/createRepay/indexController.js',
+        // 差旅报销管理-待处理的报销
+        'support/receiveRepay': 'src/components/receiveRepay/indexController.js',
+        // 借款或报销查询
+        'support/feeQuery': 'src/components/feeQuery/indexController.js',
         '*actions': 'defaultAction'
     };
 
