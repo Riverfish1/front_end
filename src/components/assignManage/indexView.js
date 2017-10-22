@@ -30,9 +30,7 @@ define([
                 todayHighlight: true
             });
             this.$suggestWrap = this.$submitForm.find('.test');
-            this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
-            this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             return this;
         },
         initSuggest: function () {
@@ -73,26 +71,6 @@ define([
                     $('#assignUserName').val(data.peopleName);
                 });
             })
-        },
-        initBtnEvent: function () {
-            var method = $(this).text();
-            var $i;
-
-            if (method === 'init') {
-                this.initSuggest();
-            } else {
-                $i = this.$suggestWrap.bsSuggest(method);
-                if (typeof $i === 'object') {
-                    $i = $i.data('bsSuggest');
-                }
-                if (!$i) {
-                    alert('未初始化或已销毁');
-                }
-            }
-
-            if (method === 'version') {
-                alert($i);
-            }
         },
         initSubmitForm: function () {
             this.$submitForm.validate({

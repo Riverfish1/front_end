@@ -52,7 +52,17 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'warehouse',
+                    field: 'equipName',
+                    title: '装备名称',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'num',
+                    title: '装备数量',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'storeName',
                     title: '出库仓库',
                     align: 'center',
                     valign: "middle"
@@ -60,35 +70,36 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'storeTime',
                     title: '出库日期',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
+                    }
                 }, {
-                    field: 'department',
+                    field: 'departmentName',
                     title: '领用部门',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'people',
+                    field: 'pickerName',
                     title: '领用人',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'operator',
+                    field: 'handlerName',
                     title: '经办人',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'gmtCreate',
-                    title: '经办日期',
+                    field: 'handleTime',
+                    title: '办理时间',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
+                    }
                 }, {
                     field: 'remark',
                     title: '出库备注',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'goods',
-                    title: '物品名称',
                     align: 'center',
                     valign: "middle"
                 }, {
@@ -99,7 +110,7 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
+                        // str += '<p class="grid-command-p btn-edit">修改</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
                         return str;
                     }

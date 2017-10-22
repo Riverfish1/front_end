@@ -8,6 +8,23 @@ define([
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
+        initialData: {
+            storeNo: '',
+            storeList: [],
+            departmentList: [],
+            storeTime: '',
+            handlerName: window.ownerPeopleName,
+            handlerId: '',
+            departmentId: '',
+            departmentName: '',
+            pickerName: '',
+            pickerId: '',
+            handleTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'),
+            remark: '',
+            goodsList: [],
+            num: '',
+            id: ''
+        },
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
         events: {
@@ -19,35 +36,96 @@ define([
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
         },
         render: function () {
-            //main view
+            var that = this;
             this.$el.empty().html(this.template());
             this.$officeDialog = this.$el.find('#editDialog');
             this.$officeDialogPanel = this.$el.find('#editPanel');
             this.table = new BaseTableView();
             this.table.render();
+            var params = {
+                pageNum: 0,
+                pageSize: 10000
+            };
+            ncjwUtil.postData(QUERY.STORE_MNG_QUERY, JSON.stringify(params), function(res) {
+                if (res.success) {
+                    var data = res.data && res.data[0];
+                    that.initialData.storeList = data;
+                }
+            }, {
+                'contentType': 'application/json'
+            });
+            ncjwUtil.postData(QUERY.EQUIP_MNG_QUERY, JSON.stringify(params), function(res) {
+                if (res.success) {
+                    var data = res.data && res.data[0];
+                    that.initialData.goodsList = data;
+                }
+            }, {
+                'contentType': 'application/json'
+            });
+            ncjwUtil.postData(QUERY.RECORD_DEPARTMENT_QUERY, JSON.stringify(params), function(res) {
+                if (res.success) {
+                    var data = res.data && res.data[0];
+                    that.initialData.departmentList = data;
+                }
+            }, {
+                'contentType': 'application/json'
+            });
             return this;
         },
         addOne: function (row) {
-            var initState = {
-                storeNo: '',
-                warehouse: '',
-                storeTime: '',
-                gmtCreate: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'),
-                remark: '',
-                goods: '',
-                department: '',
-                people: '',
-                operator: '',
-                id: ''
-            };
-            var row = row.id ? row : initState;
+            var row = row.id ? row : this.initialData;
+            if (row.id) row.storeList = this.initialData.storeList;
+            if (row.id) row.handleTime = ncjwUtil.timeTurn(row.handleTime, 'yyyy-MM-dd');
             if (row.id) row.storeTime = ncjwUtil.timeTurn(row.storeTime, 'yyyy-MM-dd');
-            if (row.id) row.gmtCreate = ncjwUtil.timeTurn(row.gmtCreate, 'yyyy-MM-dd');
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
-            this.$officeDialogPanel.empty().html(this.getDialogContent(row))
+            this.$officeDialogPanel.empty().html(this.getDialogContent(row));
+            this.$suggestWrap = this.$officeDialogPanel.find('.test');
+            this.initSuggest();
             this.$editForm = this.$el.find('#editForm');
+            $('#storeTime').datepicker({
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
             this.initSubmitForm();
+        },
+
+        initSuggest: function () {
+            var $data = [];
+            $.each(this.$suggestWrap, function (k, el) {
+                $(el).bsSuggest({
+                    effectiveFieldsAlias: {peopleName: "姓名", employeeNum: "工号"},
+                    effectiveFields: ['peopleName', 'employeeNum'],
+                    clearable: true,
+                    showHeader: true,
+                    showBtn: false,
+                    getDataMethod: 'url',
+                    fnAdjustAjaxParam: function(keywords, opts) {
+                        return {
+                            method: 'post',
+                            data: JSON.stringify({
+                                peopleName: $(el).val()
+                            }),
+                            'contentType': 'application/json'
+                        };
+                    },
+                    processData: function(json) {
+                        var data = { value: [] };  
+                        $.each(json.data && json.data[0], function (i, r) {  
+                            data.value.push({ peopleName: r.peopleName, employeeNum: r.employeeNum, id: r.id })  
+                        })  
+                        return data;  
+                    },
+                    url: QUERY.FUZZY_QUERY,
+                    idField: "id",
+                    keyField: "name"
+                }).on('onSetSelectValue', function (e, keyword, data) {
+                    $('#pickerId').val(data.id);
+                    $('#pickerName').val(data.peopleName);
+                });
+            })
         },
         delOne: function (row) {
             var that = this;
@@ -83,9 +161,6 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    warehouse: {
-                        required: true
-                    },
                     goods: {
                         required: true
                     },
@@ -94,8 +169,7 @@ define([
                     }
                 },
                 messages: {
-                    warehouse: "请输入仓库名称",
-                    goods: "请输入物品",
+                    goods: "请输入装备",
                     storeTime: "请选择日期"
                 },
                 highlight: function (element) {
@@ -118,6 +192,8 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
+                JSONData.creatorId = window.ownerPeopleId;
+                JSONData.handleTime = this.initialData.handleTime;
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.EQUIP_OUT_UPDATE : QUERY.EQUIP_OUT_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {

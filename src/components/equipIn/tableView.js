@@ -52,6 +52,16 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
+                    field: 'goods',
+                    title: '装备名称',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'num',
+                    title: '装备数量',
+                    align: 'center',
+                    valign: "middle"
+                }, {
                     field: 'storeName',
                     title: '入库仓库',
                     align: 'center',
@@ -83,11 +93,6 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'goods',
-                    title: '物品名称',
-                    align: 'center',
-                    valign: "middle"
-                }, {
                     field: 'oper',
                     title: '操作',
                     align: 'center',
@@ -95,7 +100,7 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
+                        // str += '<p class="grid-command-p btn-edit">修改</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
                         return str;
                     }

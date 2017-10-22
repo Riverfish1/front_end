@@ -3,7 +3,7 @@
 <form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
     <input type="hidden" name="id" value="<%= id %>" id="id" />
     <div class="form-group">
-        <label class="col-md-3 control-label">入库仓库</label>
+        <label class="col-md-3 control-label">入库仓库：</label>
         <div class="col-md-9">
             <select class="form-control" name="storeId">
                 <% $.each(storeList, function(i, n) {%>
@@ -13,33 +13,18 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">入库单号</label>
+        <label class="col-md-3 control-label">入库单号：</label>
         <div class="col-md-9">
             <input type="text" name="storeNo" class="form-control" value="<%= storeNo %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">创建人</label>
-        <div class="col-md-9">
-            <span style="border: none" name="creatorId" value="<%= window.ownerPeopleId%>" class="form-control"><%= window.ownerPeopleName %></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">经办时间</label>
-        <div class="col-md-9">
-            <span style="border: none" name="handleTime" class="form-control"><%= handleTime %></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">经办人</label>
+        <label class="col-md-3 control-label">经办人：</label>
         <div class="col-md-9">
             <div class="input-group">
                 <input type="hidden" name="handlerId" id="handlerId" name="handlerId">
                 <input class="form-control test" type="text" id="handlerName" value="<%= handlerName %>">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                    </button>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                     </ul>
                 </div>
@@ -47,21 +32,43 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">物品</label>
+        <label class="col-md-3 control-label">装备名称：</label>
         <div class="col-md-9">
-            <input type="text" name="goods" class="form-control" value="<%= goods %>">
+            <select class="form-control" name="goods">
+                <% $.each(goodsList, function(i, n) {%>
+                    <option value="<%= n.id %>"><%= n.name %></option>
+                <% }); %>
+            </select>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">入库时间</label>
+        <label class="col-md-3 control-label">入库数量：</label>
+        <div class="col-md-9">
+            <input type="text" name="num" class="form-control" value="<%= num %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">入库时间：</label>
         <div class="col-md-9">
             <input type="text" name="storeTime" id="storeTime" class="form-control" value="<%= storeTime %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">入库备注</label>
+        <label class="col-md-3 control-label">入库备注：</label>
         <div class="col-md-9">
             <input type="text" name="remark" class="form-control" value="<%= remark %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">创建人：</label>
+        <div class="col-md-9">
+            <span style="border: none" name="creatorId" class="form-control"><%= window.ownerPeopleName %></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">经办时间：</label>
+        <div class="col-md-9">
+            <span style="border: none" name="handleTime" class="form-control"><%= handleTime %></span>
         </div>
     </div>
 </form>

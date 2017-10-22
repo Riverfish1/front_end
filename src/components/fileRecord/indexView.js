@@ -13,7 +13,8 @@ define([
             name: '',
             code: '',
             userId: '',
-            userName: '',
+            user: '',
+            department: '',
             departmentList: [],
             time: '',
             month: ''
@@ -54,14 +55,14 @@ define([
             var row = row.id ? row : this.initialData;
             if (row.id) {
                 row.departmentList = this.initialData.departmentList;
+                row.time = ncjwUtil.timeTurn(row.time, 'yyyy-MM-dd');
             }
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
+            if (row.id) ncjwUtil.setFiledsValue(this.$officeDialogPanel, {department: row.department});
             this.$suggestWrap = this.$officeDialogPanel.find('.test');
-            this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
-            this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             this.$editForm = this.$el.find('#editForm');
             $('.time').datepicker({
                 language: 'zh-CN',
@@ -76,10 +77,6 @@ define([
             var $data = [];
             $.each(this.$suggestWrap, function (k, el) {
                 $(el).bsSuggest({
-                    /*url: "/rest/sys/getuserlist?keyword=",
-                     effectiveFields: ["userName", "email"],
-                     searchFields: [ "shortAccount"],
-                     effectiveFieldsAlias:{userName: "姓名"},*/
                     effectiveFieldsAlias: {peopleName: "姓名", employeeNum: "工号"},
                     effectiveFields: ['peopleName', 'employeeNum'],
                     clearable: true,
@@ -107,29 +104,9 @@ define([
                     keyField: "peopleName"
                 }).on('onSetSelectValue', function (e, keyword, data) {
                     $('#userId').val(data.id);
-                    $('#userName').val(data.peopleName);
+                    $('#user').val(data.peopleName);
                 });
             })
-        },
-        initBtnEvent: function () {
-            var method = $(this).text();
-            var $i;
-
-            if (method === 'init') {
-                this.initSuggest();
-            } else {
-                $i = this.$suggestWrap.bsSuggest(method);
-                if (typeof $i === 'object') {
-                    $i = $i.data('bsSuggest');
-                }
-                if (!$i) {
-                    alert('未初始化或已销毁');
-                }
-            }
-
-            if (method === 'version') {
-                alert($i);
-            }
         },
         delOne: function (row) {
             var that = this;
@@ -159,19 +136,52 @@ define([
 
             });
         },
-        downlaodFile: function () {},
+        downlaodFile: function (row) {
+            var params = {
+                id: row.id
+            };
+            ncjwUtil.postData(QUERY.ASSETS_FILE_DOWNLOAD, JSON.stringify(params), function (res) {
+                if (res.success) {
+                    ncjwUtil.showInfo('下载成功');
+                } else {
+                    ncjwUtil.showError('下载失败' + res.errorMsg);
+                }
+            }, {
+                'contentType': 'application/json'
+            });
+        },
         initSubmitForm: function () {
             this.$editForm.validate({
                 errorElement: 'span',
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    assetClass: {
+                    name: {
                         required: true
+                    },
+                    code: {
+                        required: true
+                    },
+                    user: {
+                        required: true
+                    },
+                    time: {
+                        required: true
+                    },
+                    month: {
+                        required: true,
+                        number: true
                     }
                 },
                 messages: {
-                    assetClass: "请输入类别名称"
+                    name: "请输入合同名称",
+                    code: '请输入合同编号',
+                    user: '请选择使用人',
+                    time: '请选择购入时间',
+                    month: {
+                        required: '请输入期限',
+                        number: '请输入数字'
+                    }
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

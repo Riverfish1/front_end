@@ -70,7 +70,10 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'time',
                     title: '购入时间',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
+                    }
                 }, {
                     field: 'month',
                     title: '使用期限（月）',
@@ -86,6 +89,7 @@ define(['../../common/query/index'], function (QUERY) {
                     title: '操作',
                     align: 'center',
                     valign: 'middle',
+                    events: this.operateEvents,
                     formatter: function (value, row) {
                         var str = '';
                         str += '<p class="grid-command-p btn-edit">修改</p>';
@@ -116,7 +120,7 @@ define(['../../common/query/index'], function (QUERY) {
             'click .btn-delete': function (e, value, row, index) {
                 Backbone.trigger('itemDelete', row);
             },
-            'click btn-download': function (e, value, row, index) {
+            'click .btn-download': function (e, value, row, index) {
                 Backbone.trigger('itemDownload', row);
             }
         }

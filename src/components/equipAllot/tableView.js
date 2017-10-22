@@ -48,47 +48,52 @@ define(['../../common/query/index'], function (QUERY) {
                 detailView: false, //是否显示父子表
                 columns: [{
                     field: 'storeNo',
-                    title: '入库单号',
+                    title: '调拨单号',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'warehouse',
+                    field: 'equipName',
+                    title: '装备名称',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'fromStoreName',
+                    title: '出库仓库',
+                    align: 'center',
+                    valign: 'middle'
+                }, {
+                    field: 'toStoreName',
                     title: '入库仓库',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'storeTime',
-                    title: '入库日期',
+                    field: 'handleTime',
+                    title: '办理时间',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'operator',
+                    field: 'handlerName',
                     title: '经办人',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'gmtCreate',
-                    title: '经办日期',
+                    field: 'allocTime',
+                    title: '调出时间',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'pickerName',
+                    title: '领用人',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'creatorName',
+                    title: '创建者',
                     align: 'center',
                     valign: "middle"
                 }, {
                     field: 'remark',
                     title: '入库备注',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'goods',
-                    title: '物品名称',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'people',
-                    title: '领用人',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'warehouseIn',
-                    title: '调入仓库',
                     align: 'center',
                     valign: "middle"
                 }, {
@@ -99,7 +104,7 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
+                        // str += '<p class="grid-command-p btn-edit">修改</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
                         return str;
                     }

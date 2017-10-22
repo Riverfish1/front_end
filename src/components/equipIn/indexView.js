@@ -10,12 +10,13 @@ define([
         el: '#main',
         initialData: {
             storeNo: '',
-            storeList: '',
+            storeList: [],
             storeTime: '',
             handlerName: '',
             handleTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'),
             remark: '',
-            goods: '',
+            goodsList: [],
+            num: '',
             id: ''
         },
         template: _.template(tpl),
@@ -30,6 +31,11 @@ define([
         },
         render: function () {
             var that = this;
+            this.$el.empty().html(this.template());
+            this.$officeDialog = this.$el.find('#editDialog');
+            this.$officeDialogPanel = this.$el.find('#editPanel');
+            this.table = new BaseTableView();
+            this.table.render();
             var params = {
                 pageNum: 0,
                 pageSize: 10000
@@ -42,11 +48,14 @@ define([
             }, {
                 'contentType': 'application/json'
             });
-            this.$el.empty().html(this.template());
-            this.$officeDialog = this.$el.find('#editDialog');
-            this.$officeDialogPanel = this.$el.find('#editPanel');
-            this.table = new BaseTableView();
-            this.table.render();
+            ncjwUtil.postData(QUERY.EQUIP_MNG_QUERY, JSON.stringify(params), function(res) {
+                if (res.success) {
+                    var data = res.data && res.data[0];
+                    that.initialData.goodsList = data;
+                }
+            }, {
+                'contentType': 'application/json'
+            });
             return this;
         },
         addOne: function (row) {
@@ -58,9 +67,7 @@ define([
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row));
             this.$suggestWrap = this.$officeDialogPanel.find('.test');
-            this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
-            this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             this.$editForm = this.$el.find('#editForm');
             $('#storeTime').datepicker({
                 language: 'zh-CN',
@@ -106,26 +113,6 @@ define([
                 });
             })
         },
-        initBtnEvent: function () {
-            var method = $(this).text();
-            var $i;
-
-            if (method === 'init') {
-                this.initSuggest();
-            } else {
-                $i = this.$suggestWrap.bsSuggest(method);
-                if (typeof $i === 'object') {
-                    $i = $i.data('bsSuggest');
-                }
-                if (!$i) {
-                    alert('未初始化或已销毁');
-                }
-            }
-
-            if (method === 'version') {
-                alert($i);
-            }
-        },
         delOne: function (row) {
             var that = this;
             bootbox.confirm({
@@ -160,9 +147,6 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    warehouse: {
-                        required: true
-                    },
                     goods: {
                         required: true
                     },
@@ -171,8 +155,7 @@ define([
                     }
                 },
                 messages: {
-                    warehouse: "请输入仓库名称",
-                    goods: "请输入物品",
+                    goods: "请输入装备",
                     storeTime: "请选择日期"
                 },
                 highlight: function (element) {
