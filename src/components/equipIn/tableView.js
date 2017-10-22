@@ -52,7 +52,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'warehouse',
+                    field: 'storeName',
                     title: '入库仓库',
                     align: 'center',
                     valign: "middle"
@@ -60,17 +60,23 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'storeTime',
                     title: '入库日期',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy-mm-dd');
+                    }
                 }, {
-                    field: 'operator',
+                    field: 'handlerName',
                     title: '经办人',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'gmtCreate',
+                    field: 'handleTime',
                     title: '经办日期',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy-mm-dd');
+                    }
                 }, {
                     field: 'remark',
                     title: '入库备注',
@@ -106,8 +112,6 @@ define(['../../common/query/index'], function (QUERY) {
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit
-                // departmentname: $("#txt_search_departmentname").val(),
-                // statu: $("#txt_search_statu").val()
             };
             return temp;
         },

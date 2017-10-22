@@ -18,7 +18,9 @@ define([
         },
         render: function () {
             //main view
-            this.initState = {};
+            this.initState = {
+                list: []
+            };
             this.getInitialData();
             this.$editDialog = this.$el.find('#editDialog');
             this.$editDialogPanel = this.$el.find('#editPanel');
@@ -32,10 +34,12 @@ define([
             };
             ncjwUtil.postData(QUERY.ASSESS_SUMMARY_QUERY, JSON.stringify(params), function(res) {
                 if (res.success) {
-                    console.log(res.data);
                     var list = res.data && res.data[0];
                     that.initState.list = list;
                     that.$el.empty().html(that.template(that.initState));
+                } else {
+                    that.$el.empty().html(that.template(that.initState));
+
                 }
             }, {
                 'contentType': 'application/json'

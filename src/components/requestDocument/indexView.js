@@ -65,7 +65,6 @@ define([
                         return data;
                     }
                 }).on('onDataRequestSuccess', function (e, result) {
-                    // console.log('onDataRequestSuccess: ', result);
                 }).on('onSetSelectValue', function (e, keyword, data) {
                     var $row = $(e.target).parents('.row')
                     var $operatorId = $row.find('input[name=operatorId]');
@@ -76,9 +75,7 @@ define([
                     $operatorId.val(data.id);
                     $operatorName.val(data.peopleName);
                     $helpBlock.remove();
-                    // console.log('onSetSelectValue: ', keyword, data, $validInput.val(data.id), $operatorId.val());
                 }).on('onUnsetSelectValue', function () {
-                    console.log('onUnsetSelectValue');
                 });
             })
         },
@@ -93,7 +90,6 @@ define([
                 if (typeof $i === 'object') {
                     $i = $i.data('bsSuggest');
                 }
-                console.log(method, $i);
                 if (!$i) {
                     alert('未初始化或已销毁');
                 }

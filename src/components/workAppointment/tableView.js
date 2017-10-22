@@ -121,8 +121,6 @@ define(['../../common/query/index'], function (QUERY) {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
                 visitorId: window.ownerPeopleId
-                // departmentname: $("#txt_search_departmentname").val(),
-                // statu: $("#txt_search_statu").val()
             };
             return temp;
         },

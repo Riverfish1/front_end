@@ -1,3 +1,4 @@
+<% if(list.length) {%>
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <% $.each(list, function(i, n){ %>
     <% if(n.summaryType != 0) {%>
@@ -85,6 +86,12 @@
     <% } %>
     <% }); %>
 </div>
+<% } %>
+<% if(!list.length) {%>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    暂未收到需要评价的总结！
+</div>
+<% } %>
 
 <!--dialog-->
 <div class="modal fade bs-example-modal-lg" id="editDialog" tabindex="-1" role="dialog" aria-hidden="true">

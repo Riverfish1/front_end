@@ -93,14 +93,11 @@ define(['../../common/query/index'], function (QUERY) {
                     }
                 }
             });
-            // this.hideLoading();
         },
         queryParams: function (params) {
             var temp = {
                 pageNum: params.offset / params.limit, //页面大小
                 pageSize: params.limit //页码
-                // departmentname: $("#txt_search_departmentname").val(),
-                // statu: $("#txt_search_statu").val()
             };
             return temp;
         },

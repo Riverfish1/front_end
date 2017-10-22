@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#record_departmentRecord',
+        el: '#assets',
         initialize: function () {
         },
         showLoading: function () {
@@ -20,8 +20,9 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable('refresh');
         },
         init: function () {
+            var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_DEPARTMENT_QUERY, //请求后台的URL（*）
+                url: QUERY.ASSETS_FILE_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -46,35 +47,50 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'departmentName',
-                    title: '部门名称',
+                    field: 'assetClass',
+                    title: '合同名称',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'parentName',
-                    title: '所属单位',
+                    field: 'assetClass',
+                    title: '合同名称',
                     align: 'center',
-                    valign: 'middle'
+                    valign: "middle"
                 }, {
-                    field: 'responsibility',
-                    title: '部门职责',
+                    field: 'assetClass',
+                    title: '合同名称',
                     align: 'center',
-                    valign: "middle",
+                    valign: "middle"
                 }, {
-                    field: 'departmentType',
-                    title: '部门类型',
+                    field: 'assetClass',
+                    title: '合同名称',
                     align: 'center',
-                    valign: "middle",
+                    valign: "middle"
                 }, {
-                    field: 'status',
+                    field: 'assetClass',
+                    title: '合同名称',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetClass',
+                    title: '合同名称',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetClass',
+                    title: '合同名称',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'oper',
                     title: '操作',
                     align: 'center',
-                    valign: "middle",
-                    events: this.operateEvents,
-                    formatter: function (value, row, index) {
+                    valign: 'middle',
+                    formatter: function (value, row) {
                         var str = '';
                         str += '<p class="grid-command-p btn-edit">修改</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
+                        str += '<p class="grid-command-p btn-download">下载</p>';
                         return str;
                     }
                 }],
@@ -85,7 +101,6 @@ define(['../../common/query/index'], function (QUERY) {
                     }
                 }
             });
-            // this.hideLoading();
         },
         queryParams: function (params) {
             var temp = {
@@ -100,6 +115,9 @@ define(['../../common/query/index'], function (QUERY) {
             },
             'click .btn-delete': function (e, value, row, index) {
                 Backbone.trigger('itemDelete', row);
+            },
+            'click btn-download': function (e, value, row, index) {
+                Backbone.trigger('itemDownload', row);
             }
         }
     });

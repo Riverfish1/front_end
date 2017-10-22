@@ -81,7 +81,6 @@ define([
                 if (typeof $i === 'object') {
                     $i = $i.data('bsSuggest');
                 }
-                console.log(method, $i);
                 if (!$i) {
                     alert('未初始化或已销毁');
                 }
@@ -233,7 +232,6 @@ define([
                 }catch(e){
 
                 }
-                console.log("datas", datas);
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.WORK_NOTICERECORD_UPDATE : QUERY.WORK_NOTICERECORD_NEW, datas, function (res) {
                     if (res.success) {

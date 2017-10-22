@@ -103,8 +103,6 @@ define(['../../common/query/index'], function (QUERY) {
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit
-                // departmentname: $("#txt_search_departmentname").val(),
-                // statu: $("#txt_search_statu").val()
             };
             return temp;
         },

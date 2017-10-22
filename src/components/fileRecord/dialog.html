@@ -1,0 +1,62 @@
+<div class="loading" style="width:95%"></div>
+
+<form class="form-horizontal" id="editForm">
+    <input type="hidden" name="id" value="<%= id %>" id="id" />
+    <input type="hidden" name="operatorId" value="<%= window.ownerPeopleId %>" id="operatorId" />
+    <div class="form-group">
+        <label class="col-md-3 control-label">合同名称：</label>
+        <div class="col-md-9">
+            <input type="text" name="name" class="form-control" value="<%= name %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">合同编号：</label>
+        <div class="col-md-9">
+            <input type="text" name="code" class="form-control" value="<%= code %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">使用人：</label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input type="hidden" name="userId" id="userId" name="userId">
+                <input class="form-control test" type="text" id="userName" value="<%= userName %>">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">使用部门：</label>
+        <div class="col-md-9">
+            <select class="form-control">
+            	<% $.each(departmentList, function(i, n) {%>
+            		<option value="<%= n.id %>"><%= n.departmentName %></option>
+            	<% }); %>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">购入时间：</label>
+        <div class="col-md-9">
+            <input type="text" name="time" class="form-control" value="<%= time %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">使用期限（月）：</label>
+        <div class="col-md-9">
+            <input type="text" name="month" class="form-control" value="<%= month %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">登记人</label>
+        <div class="col-md-9">
+            <span class="form-control"><%= window.ownerPeopleName%></span>
+        </div>
+    </div>
+</form>

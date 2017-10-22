@@ -169,7 +169,6 @@ define(['jquery'], function ($) {
                 $(e.target).addClass('active');
                 var date = new Date(self.monthDate.year, self.monthDate.month - 1, $target.dataset.date);
                 self._date = date;
-                console.log("data==>", self._date);
                 // $input.value = format(date);
             }, false);
         },
