@@ -63,7 +63,7 @@ define([
         },
         addOne: function (row) {
             // debugger;
-            var initData = {id: '', peopleId: '1', eventName: '', eventDescription: '', completeTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'), eventType: this.getValue()};
+            var initData = {id: '', peopleId: window.ownerPeopleId, eventName: '', eventDescription: '', completeTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'), eventType: this.getValue()};
             var row = row.id ? row : initData;
             row.completeTime = row.id && ncjwUtil.timeTurn(row.completeTime, 'yyyy-MM-dd');
             this.$officeDialog.modal('show');

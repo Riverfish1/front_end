@@ -1,7 +1,12 @@
 define([], function () {
     var QUERY = {
-        LOGIN: '/api/login/getCurrentUser',
         // 登记
+        LOGIN: '/api/login/getCurrentUser',
+        //首页-日程
+        HOME_SCHEDULE_INSERT:'/api/schedule/insert',
+        HOME_SCHEDULE_QUERY:'/api/schedule/query',
+        HOME_SCHEDULE_UPDATE_BY_ID:'/api/schedule/updateById',
+        HOME_SCHEDULE_DELETE:'/api/schedule/deleteById',
         // 办公区登记
         RECORD_OFFICEAREA_INSERT: '/api/officeArea/insert',
         RECORD_OFFICEAREA_UPDATE: '/api/officeArea/updateById',
