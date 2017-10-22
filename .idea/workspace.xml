@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f35dcadc-155c-437a-b1b8-44d45963930a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/home/workMeetingTableView.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/home/workStaffTableView.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/home/tableView.js" afterPath="$PROJECT_DIR$/src/components/home/toDoTableView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/app/app.css" afterPath="$PROJECT_DIR$/src/components/app/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/app/appView.js" afterPath="$PROJECT_DIR$/src/components/app/appView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/createCooperation/indexView.js" afterPath="$PROJECT_DIR$/src/components/createCooperation/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/header/header.html" afterPath="$PROJECT_DIR$/src/components/header/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/home/index.html" afterPath="$PROJECT_DIR$/src/components/home/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/home/indexController.js" afterPath="$PROJECT_DIR$/src/components/home/indexController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/home/indexView.js" afterPath="$PROJECT_DIR$/src/components/home/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/personnelSummary/indexView.js" afterPath="$PROJECT_DIR$/src/components/personnelSummary/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveCooperation/indexView.js" afterPath="$PROJECT_DIR$/src/components/receiveCooperation/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveDocument/indexView.js" afterPath="$PROJECT_DIR$/src/components/receiveDocument/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/requestDocument/indexView.js" afterPath="$PROJECT_DIR$/src/components/requestDocument/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sendDocument/indexView.js" afterPath="$PROJECT_DIR$/src/components/sendDocument/indexView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/home/workMeetingTableView.js" afterPath="$PROJECT_DIR$/src/components/home/workMeetingTableView.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -96,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="toDoTableView.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="toDoTableView.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/home/toDoTableView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+            <state relative-caret-position="578">
+              <caret line="81" column="17" lean-forward="false" selection-start-line="53" selection-start-column="26" selection-end-line="81" selection-end-column="17" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -108,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="workMeetingTableView.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="workMeetingTableView.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/home/workMeetingTableView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="71" column="45" lean-forward="true" selection-start-line="71" selection-start-column="45" selection-end-line="71" selection-end-column="45" />
+            <state relative-caret-position="419">
+              <caret line="73" column="35" lean-forward="true" selection-start-line="73" selection-start-column="35" selection-end-line="73" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -1125,12 +1110,12 @@
       <workItem from="1508323728252" duration="12337000" />
       <workItem from="1508410338439" duration="13564000" />
       <workItem from="1508460727668" duration="37466000" />
-      <workItem from="1508550918666" duration="20471000" />
+      <workItem from="1508550918666" duration="20911000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="276160000" />
+    <option name="totallyTimeSpent" value="276600000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1626,21 +1611,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/home/workMeetingTableView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="71" column="45" lean-forward="true" selection-start-line="71" selection-start-column="45" selection-end-line="71" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/home/toDoTableView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+        <state relative-caret-position="578">
+          <caret line="81" column="17" lean-forward="false" selection-start-line="53" selection-start-column="26" selection-end-line="81" selection-end-column="17" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/home/workMeetingTableView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="73" column="35" lean-forward="true" selection-start-line="73" selection-start-column="35" selection-end-line="73" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -53,9 +53,15 @@ define(['../../common/query/index'], function (QUERY) {
                     valign: "middle",
                     formatter: function (value, row) {
                         var date = ncjwUtil.timeTurn(row.startTime, 'yyyy/MM/dd') +
-                        ' - ' + ncjwUtil.timeTurn(row.endTime, 'yyyy/MM/dd');
+                            ' - ' + ncjwUtil.timeTurn(row.endTime, 'yyyy/MM/dd');
                         return date;
                     }
+                }, {
+                    field: 'conferenceTheme',
+                    title: '主题',
+                    width: '30%',
+                    align: 'center',
+                    valign: "middle"
                 }, {
                     field: 'place',
                     title: '地点',
@@ -65,12 +71,6 @@ define(['../../common/query/index'], function (QUERY) {
                 }, {
                     field: 'conferenceRoom',
                     title: '会议室',
-                    width: '30%',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'conferenceTheme',
-                    title: '主题',
                     width: '23.3%',
                     align: 'center',
                     valign: "middle"
@@ -78,7 +78,7 @@ define(['../../common/query/index'], function (QUERY) {
                 onPostBody: function (data) {
                     $('.view').viewer();
                 },
-                responseHandler: function(res) {
+                responseHandler: function (res) {
                     return {
                         "total": res.total,
                         "rows": res.data && res.data[0]
