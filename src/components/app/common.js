@@ -120,7 +120,7 @@ var ncjwUtil = (function ($) {
         if (!timeStr) {
             return "";
         }
-        var fmt = fmt || "yyyy-MM-dd hh:mm:ss";
+        var fmt = fmt || "yyyy/MM/dd hh:mm:ss";
         var time = {};
         if (Object.prototype.toString.call(timeStr) !== "[object Date]") {
             // time = /^\d*$/.test(timeStr) ? new Date(timeStr) : parseDate(timeStr);
