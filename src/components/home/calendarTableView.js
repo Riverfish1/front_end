@@ -124,7 +124,6 @@ define(['../../common/query/index'], function (QUERY) {
             // this.hideLoading();
         },
         queryParams: function (params) {
-            debugger;
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
