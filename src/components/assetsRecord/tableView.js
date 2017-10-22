@@ -22,7 +22,7 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_PEOPLETYPE_QUERY, //请求后台的URL（*）
+                url: QUERY.ASSETS_RECORD_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,12 +47,66 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'typeName',
-                    title: '人员类型',
+                    field: 'assetNo',
+                    title: '资产编号',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetName',
+                    title: '资产名称',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetClassName',
+                    title: '资产类别',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetUsedName',
+                    title: '使用人',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetDepartment',
+                    title: '使用部门',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetBuyDate',
+                    title: '购入时间',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetExpireDate',
+                    title: '到期时间',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetDeadline',
+                    title: '使用期限（月）',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'operatorName',
+                    title: '登记人',
                     align: 'center',
                     valign: "middle"
                 }, {
                     field: 'status',
+                    title: '资产状态',
+                    align: 'center',
+                    valign: "middle",
+                    formatter: function (value) {
+                        switch (value) {
+                            case 0: return '闲置';
+                            case 1: return '已领用';
+                            case 2: return '维修中';
+                            case 3: return '已报废';
+                            default: return '-';
+                        }
+                    }
+                }, {
+                    field: 'oper',
                     title: '操作',
                     align: 'center',
                     valign: "middle",

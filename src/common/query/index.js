@@ -201,6 +201,31 @@ define([], function () {
         ASSETS_FILE_DELETE: '/api/fileRecord/deleteById',
         ASSETS_FILE_INSERT: '/api/fileRecord/insert',
         ASSETS_FILE_DOWNLOAD: '/api/fileRecord/download',
+        // 资产登记
+        ASSETS_RECORD_INSERT: '/api/assetsRecord/insert',
+        ASSETS_RECORD_QUERY: '/api/assetsRecord/query',
+        ASSETS_RECORD_UPDATE: '/api/assetsRecord/updateById',
+        ASSETS_RECORD_DELETE: '/api/assetsRecord/deleteById',
+        // 资产维修
+        ASSETS_MAINTAIN_INSERT: '/api/assetsMaintain/insert',
+        ASSETS_MAINTAIN_QUERY: '/api/assetsMaintain/query',
+        ASSETS_MAINTAIN_UPDATE: '/api/assetsMaintain/updateById',
+        ASSETS_MAINTAIN_DELETE: '/api/assetsMaintain/deleteById',
+        // 资产领用
+        ASSETS_RECEIVE_INSERT: '/api/assetsReceive/insert',
+        ASSETS_RECEIVE_QUERY: '/api/assetsReceive/query',
+        ASSETS_RECEIVE_UPDATE: '/api/assetsReceive/updateById',
+        ASSETS_RECEIVE_DELETE: '/api/assetsReceive/deleteById',
+        // 资产报废
+        ASSETS_SCRAP_INSERT: '/api/assetsScrap/insert',
+        ASSETS_SCRAP_QUERY: '/api/assetsScrap/query',
+        ASSETS_SCRAP_UPDATE: '/api/assetsScrap/updateById',
+        ASSETS_SCRAP_DELETE: '/api/assetsScrap/deleteById',
+        // 资产预警
+        ASSETS_WARN_INSERT: '/api/assetsRecord/insert',
+        ASSETS_WARN_QUERY: '/api/assetsRecord/query',
+        ASSETS_WARN_UPDATE: '/api/assetsRecord/updateById',
+        ASSETS_WARN_DELETE: '/api/assetsRecord/deleteById',
         // 单警装备
         // 入库
         EQUIP_IN_INSERT: '/api/equipIn/insert',
