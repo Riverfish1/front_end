@@ -3,11 +3,12 @@ define([
     './toDoTableView',
     './workMeetingTableView',
     './workStaffTableView',
+    './calendarTableView',
     '../../common/calendar/calendar',
     'text!./index.html',
     'text!./dialog.html',
     '../../common/query/index'
-], function (ToDoTableView, WorkMeetingTableView, WorkStaffTableView, calendar, tpl, dialogTpl, QUERY) {
+], function (ToDoTableView, WorkMeetingTableView, WorkStaffTableView, CalendarTableView, calendar, tpl, dialogTpl, QUERY) {
     'use strict';
     var TabView = Backbone.View.extend({
         default: {
@@ -17,12 +18,14 @@ define([
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
         events: {
-            'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
+            'click .btn-addDate': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
             'click #submitBtn': 'submitForm'
         },
         initialize: function () {
             this.value = 0;
             this._bindEvent();
+            Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
+            Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
         },
         _selet1stTab: function () {
             // debugger;
@@ -54,6 +57,10 @@ define([
             this.workStaffTableView = new WorkStaffTableView();
             this.workStaffTableView.render();
         },
+        createCalendarTableView: function () {
+            this.calendarTableView = new CalendarTableView();
+            this.calendarTableView.render();
+        },
         getValue: function () {
             return this.value;
         },
@@ -74,24 +81,54 @@ define([
             this.createWorkMeetingTableView();
             //名片
             this.createWorkStaffTableView();
+            //日程
+            this.createCalendarTableView();
             return this;
         },
         addOne: function (row) {
             // debugger;
-            var initData = {id: '', peopleId: '1', eventName: '', eventDescription: '', completeTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'), eventType: this.getValue()};
+            var initData = {id: '', peopleId: '1', eventName: '', eventDescription: '', completeTime: ''};
             var row = row.id ? row : initData;
-            row.completeTime = row.id && ncjwUtil.timeTurn(row.completeTime, 'yyyy-MM-dd');
+            row.completeTime = row.id && ncjwUtil.timeTurn(row.completeTime);
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
-            $('#completeTime').datepicker({
+            $('.completeTime').datepicker({
                 language: 'zh-CN',
                 autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
+                todayHighlight: true
+                // format: 'yyyy-mm-dd'
             });
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
+        },
+        delOne: function (row) {
+            var that = this;
+            bootbox.confirm({
+                buttons: {
+                    confirm: {
+                        label: '确认'
+                    },
+                    cancel: {
+                        label: '取消'
+                    }
+                },
+                title: "温馨提示",
+                message: '执行删除后将无法恢复，确定继续吗？',
+                callback: function (result) {
+                    if (result) {
+                        ncjwUtil.getData(QUERY.WORK_TODO_DELETE, {id: row.id}, function (res) {
+                            if (res.success) {
+                                ncjwUtil.showInfo("删除成功");
+                                that.calendarTableView.refresh();
+                            } else {
+                                ncjwUtil.showError("删除失败：" + res.errorMsg);
+                            }
+                        })
+                    }
+                }
+
+            });
         },
         initSubmitForm: function () {
             this.$editForm.validate({
@@ -149,7 +186,7 @@ define([
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
-                        that.todoTable.refresh();
+                        that.calendarTableView.refresh();
                     } else {
                         ncjwUtil.showError("保存失败：" + res.errorMsg);
                     }
