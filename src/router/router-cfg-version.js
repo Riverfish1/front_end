@@ -103,7 +103,12 @@ define(['backbone'], function (Backbone) {
         'support/storeQuery': 'src/components/storeQuery/indexController.js',
 
 
-
+        // 差旅报销管理-我的报销
+        'support/createRepay': 'src/components/createRepay/indexController.js',
+        // 差旅报销管理-待处理的报销
+        'support/receiveRepay': 'src/components/receiveRepay/indexController.js',
+        // 借款或报销查询
+        'support/feeQuery': 'src/components/feeQuery/indexController.js',
         '*actions': 'defaultAction'
     };
 
@@ -115,7 +120,7 @@ define(['backbone'], function (Backbone) {
 
         defaultAction: function () {
             if(isFirst){
-                location.hash = '#/register/officeArea';
+                location.hash = '#/home';
                 isFirst = false;
             }
         }
@@ -140,6 +145,14 @@ define(['backbone'], function (Backbone) {
 
             router.currentController = controller;
             controller.apply(null, params);     //每个模块约定都返回controller
+            //根据hash隐藏不同的首页容器
+            if(hashFirst == "home"){
+                $('#app').find('.menuWrap').hide();
+                $('#app').find('.homeWrap').show();
+            }else{
+                $('#app').find('.menuWrap').show();
+                $('#app').find('.homeWrap').hide();
+            }
         });
     });
 

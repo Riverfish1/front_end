@@ -72,6 +72,11 @@ define({
             {className: 'icon_homePage', href: '#support/storeMng', title: '仓库管理'},
             {className: 'icon_homePage', href: '#support/equipQuery', title: '装备查询'},
             {className: 'icon_homePage', href: '#support/storeQuery', title: '库存查询'}
-        ]}
+        ]},
+        {className: 'icon_homePage', href: '#', title: '差旅报销管理', children: [
+            {className: 'icon_homePage', href: '#/support/createRepay', title: '我的报销'},
+            {className: 'icon_homePage', href: '#/support/receiveRepay', title: '待处理的报销'}
+        ]},
+        {className: 'icon_homePage', href: '#/support/feeQuery', title: '借款或报销查询'}
     ]
 });

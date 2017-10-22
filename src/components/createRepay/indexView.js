@@ -65,6 +65,7 @@ define([
                         return data;
                     }
                 }).on('onDataRequestSuccess', function (e, result) {
+                    // console.log('onDataRequestSuccess: ', result);
                 }).on('onSetSelectValue', function (e, keyword, data) {
                     var $row = $(e.target).parents('.row')
                     var $operatorId = $row.find('input[name=operatorId]');
@@ -75,7 +76,9 @@ define([
                     $operatorId.val(data.id);
                     $operatorName.val(data.peopleName);
                     $helpBlock.remove();
+                    // console.log('onSetSelectValue: ', keyword, data, $validInput.val(data.id), $operatorId.val());
                 }).on('onUnsetSelectValue', function () {
+                    console.log('onUnsetSelectValue');
                 });
             })
         },
@@ -90,6 +93,7 @@ define([
                 if (typeof $i === 'object') {
                     $i = $i.data('bsSuggest');
                 }
+                console.log(method, $i);
                 if (!$i) {
                     alert('未初始化或已销毁');
                 }
@@ -275,23 +279,27 @@ define([
                             params[name] = val;
                         }
                     })
-
+                    //提交也是创建人；
+                    if(index == 1){
+                        currentOperatorId = window.ownerPeopleId;
+                        comment = "";
+                    }
+                    var submitParams = {recordId: id, operatorId: currentOperatorId, comment: comment};
                 } else {
+                    //提交也是创建人；
+                    if(index == 1){
+                        currentOperatorId = window.ownerPeopleId;
+                        comment = "";
+                    }
                     var params = {recordId: id, operatorId: currentOperatorId, comment: comment};
                 }
 
                 if(index == 1){
-                    ncjwUtil.postData(urlMap[0], JSON.stringify(params), function (res) {
+                    ncjwUtil.postData(urlMap[0], JSON.stringify(submitParams), function (res) {
                         if (res.success) {
-                            //提交也是创建人；
-                            if(index == 1){
-                                currentOperatorId = window.ownerPeopleId;
-                                comment = "";
-                            }
-                            var submitParams = {recordId: id || res.data[0], operatorId: currentOperatorId, comment: comment};
-                            ncjwUtil.postData(urlMap[index], JSON.stringify(submitParams), function (res) {
+                            ncjwUtil.postData(urlMap[index], JSON.stringify(params), function (res) {
                                 if (res.success) {
-                                    ncjwUtil.showInfo('提交成功！');
+                                    ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                                     that.$editDialog.modal('hide');
                                     that.table.refresh();
                                 } else {
