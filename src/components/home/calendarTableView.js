@@ -1,7 +1,7 @@
 /*global define*/
+var  homeGmtCreate = "";
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
-    var toDoType = 0;
     var Table = Backbone.View.extend({
         el: '.calendarDetail',
         initialize: function () {
@@ -14,20 +14,21 @@ define(['../../common/query/index'], function (QUERY) {
         hideLoading: function () {
             this.$el.bootstrapTable('hideLoading');
         },
-        render: function (index) {
-            this.init(index);
+        render: function (gmtCreate) {
+            homeGmtCreate = gmtCreate;
+            this.init();
         },
-        refresh: function () {
+        refresh: function (gmtCreate) {
+            homeGmtCreate = gmtCreate;
             this.$el.bootstrapTable('refresh');
         },
         load: function () {
             this.$el.bootstrapTable('load');
         },
-        init: function (index) {
-            toDoType = index;
+        init: function () {
             this.$el.bootstrapTable('destroy');
             this.$el.bootstrapTable({
-                url: QUERY.WORK_TODO_QUERY, //请求后台的URL（*）
+                url: QUERY.HOME_SCHEDULE_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 // toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -53,14 +54,14 @@ define(['../../common/query/index'], function (QUERY) {
                 // detailView: false, //是否显示父子表
                 columns: [
                     //     {
-                    //     field: 'eventName',
+                    //     field: 'title',
                     //     title: '标题',
                     //     width: '33.3%',
                     //     align: 'center',
                     //     valign: "middle"
                     // },
                     {
-                        field: 'completeTime',
+                        field: 'startDate',
                         title: '时间',
                         width: '80px',
                         align: 'center',
@@ -72,7 +73,7 @@ define(['../../common/query/index'], function (QUERY) {
                         }
                     },
                     {
-                        field: 'eventDescription',
+                        field: 'content',
                         title: '内容',
                         width: '80px',
                         align: 'center',
@@ -123,10 +124,12 @@ define(['../../common/query/index'], function (QUERY) {
             // this.hideLoading();
         },
         queryParams: function (params) {
+            debugger;
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
-                eventType: toDoType
+                operatorId: window.ownerPeopleId,
+                gmtCreate:  homeGmtCreate
             };
             return temp;
         },

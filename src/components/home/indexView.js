@@ -19,7 +19,8 @@ define([
         getDialogContent: _.template(dialogTpl),
         events: {
             'click .btn-addDate': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
-            'click #submitBtn': 'submitForm'
+            'click #submitBtn': 'submitForm',
+            'click .ui-datepicker-body td': 'calendarClick'
         },
         initialize: function () {
             this.value = 0;
@@ -59,7 +60,14 @@ define([
         },
         createCalendarTableView: function () {
             this.calendarTableView = new CalendarTableView();
-            this.calendarTableView.render();
+            this.calendarTableView.render(this.formaterCalendarDate());
+        },
+        formaterCalendarDate: function () {
+            return ncjwUtil.timeTurn(calendar.getDate(), 'yyyy-MM-dd')
+        },
+        calendarClick: function (e) {
+            console.log("this.formaterCalendarDate", calendar.getDate());
+            this.calendarTableView.refresh(this.formaterCalendarDate());
         },
         getValue: function () {
             return this.value;
@@ -86,14 +94,16 @@ define([
             return this;
         },
         addOne: function (row) {
+            debugger;
             // debugger;
-            var initData = {id: '', peopleId: '1', eventName: '', eventDescription: '', completeTime: ''};
+            var initData = {id: '', operatorId: window.ownerPeopleId, title: '', content: '', startDate: '', endDate: '', gmtCreate: this.formaterCalendarDate(), isRemind: 0};
             var row = row.id ? row : initData;
-            row.completeTime = row.id && ncjwUtil.timeTurn(row.completeTime);
+            row.startDate = row.id && ncjwUtil.timeTurn(row.startDate);
+            row.endDate = row.id && ncjwUtil.timeTurn(row.endDate);
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
-            $('.completeTime').datepicker({
+            $('.accessTime').datepicker({
                 language: 'zh-CN',
                 autoclose: true,
                 todayHighlight: true
@@ -117,10 +127,10 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.getData(QUERY.WORK_TODO_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.getData(QUERY.HOME_SCHEDULE_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo("删除成功");
-                                that.calendarTableView.refresh();
+                                that.calendarTableView.refresh(this.formaterCalendarDate());
                             } else {
                                 ncjwUtil.showError("删除失败：" + res.errorMsg);
                             }
@@ -136,29 +146,41 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    eventName: {
+                    title: {
                         required: true,
                         maxlength: 50
                     },
-                    eventDescription: {
+                    content: {
                         required: true,
                         maxlength: 100
                     },
-                    completeTime: {
+                    startDate: {
+                        required: true
+                    },
+                    endDate: {
+                        required: true
+                    },
+                    isRemind: {
                         required: true
                     }
                 },
                 messages: {
-                    eventName: {
+                    title: {
                         required: "请输入标题",
                          maxlength: "最多输入50个字符"
                     },
-                    eventDescription: {
+                    content: {
                         required: "请输入描述",
                          maxlength: "最多输入100个字符"
                     },
-                    completeTime: {
-                        required: "请选择时间",
+                    startDate: {
+                        required: "请选择时间"
+                    },
+                    endDate: {
+                        required: "请选择时间"
+                    },
+                    isRemind: {
+                        required: "请选择是否提醒"
                     }
                 },
                 highlight: function (element) {
@@ -182,11 +204,12 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_TODO_UPDATE : QUERY.WORK_TODO_INSERT, datas, function (res) {
+                debugger;
+                ncjwUtil.postData(id ? QUERY.HOME_SCHEDULE_UPDATE_BY_ID : QUERY.HOME_SCHEDULE_INSERT, datas, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
-                        that.calendarTableView.refresh();
+                        that.calendarTableView.refresh(that.formaterCalendarDate());
                     } else {
                         ncjwUtil.showError("保存失败：" + res.errorMsg);
                     }

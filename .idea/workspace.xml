@@ -2,23 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f35dcadc-155c-437a-b1b8-44d45963930a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/createRepay/dialog.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/createRepay/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/createRepay/indexController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/createRepay/indexView.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/createRepay/tableView.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/receiveRepay/dialog.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/receiveRepay/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/receiveRepay/indexController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/receiveRepay/indexView.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/receiveRepay/tableView.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/home/index1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/home/indexView1.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/query/index.js" afterPath="$PROJECT_DIR$/src/common/query/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/home/calendarTableView.js" afterPath="$PROJECT_DIR$/src/components/home/calendarTableView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveDocument/indexView.js" afterPath="$PROJECT_DIR$/src/components/receiveDocument/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/requestDocument/indexView.js" afterPath="$PROJECT_DIR$/src/components/requestDocument/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sendDocument/indexView.js" afterPath="$PROJECT_DIR$/src/components/sendDocument/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" afterPath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/router-cfg-version.js" afterPath="$PROJECT_DIR$/src/router/router-cfg-version.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/home/dialog.html" afterPath="$PROJECT_DIR$/src/components/home/dialog.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/home/indexView.js" afterPath="$PROJECT_DIR$/src/components/home/indexView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workToDo/indexView.js" afterPath="$PROJECT_DIR$/src/components/workToDo/indexView.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,38 +24,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/sendDocument/indexView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="264" column="44" lean-forward="true" selection-start-line="264" selection-start-column="31" selection-end-line="264" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/receiveDocument/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/receiveDocument/indexView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="264" column="16" lean-forward="false" selection-start-line="264" selection-start-column="16" selection-end-line="264" selection-end-column="16" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/requestDocument/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -75,12 +34,90 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/requestDocument/indexView.js">
+      <file leaf-file-name="calendarTableView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/home/calendarTableView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="299" column="13" lean-forward="false" selection-start-line="299" selection-start-column="13" selection-end-line="299" selection-end-column="13" />
+            <state relative-caret-position="207">
+              <caret line="125" column="19" lean-forward="false" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="19" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dialog.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/home/dialog.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/home/indexView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1632">
+              <caret line="96" column="21" lean-forward="false" selection-start-line="96" selection-start-column="21" selection-end-line="96" selection-end-column="21" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/home/indexController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toDoTableView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/home/toDoTableView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="642">
+              <caret line="70" column="4" lean-forward="false" selection-start-line="78" selection-start-column="64" selection-end-line="78" selection-end-column="74" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/app/common.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="195" column="21" lean-forward="false" selection-start-line="195" selection-start-column="21" selection-end-line="195" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/common/query/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="17" lean-forward="true" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/indexView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="243" column="10" lean-forward="true" selection-start-line="239" selection-start-column="8" selection-end-line="243" selection-end-column="10" />
+              <folding>
+                <element signature="e#433#592#0" expanded="false" />
+                <element signature="e#1293#1511#0" expanded="false" />
+                <element signature="e#15911#15926#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,16 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.w294</find>
-      <find>w294</find>
-      <find>.w332</find>
-      <find>debugger;</find>
-      <find>70px</find>
-      <find>安全退出</find>
-      <find>806px</find>
-      <find>submitForm</find>
-      <find>img</find>
-      <find>allowNoKeyword: false,</find>
       <find>suggest</find>
       <find>src/components/workToDo</find>
       <find>table</find>
@@ -106,7 +133,6 @@
       <find>createDetailView</find>
       <find>h1</find>
       <find>template</find>
-      <find>calendar</find>
       <find>createWorkMeetingTableView</find>
       <find>.3</find>
       <find>WorkStaffTableView</find>
@@ -119,17 +145,22 @@
       <find>meetingWrap</find>
       <find>btn_add</find>
       <find>120px</find>
+      <find>eventName</find>
+      <find>eventDescription</find>
+      <find>completeTime</find>
+      <find>startDate</find>
+      <find>calendar</find>
+      <find>gmtCreate</find>
+      <find>calendarClick</find>
+      <find>this.gmtCreate</find>
+      <find>queryParams</find>
+      <find>peopleId</find>
+      <find>calendarTableView</find>
     </findStrings>
     <replaceStrings>
-      <replace>departmentIds</replace>
-      <replace>this.monthDate</replace>
-      <replace>this.$wrapper</replace>
-      <replace>this</replace>
-      <replace>workSummary</replace>
       <replace>personnelSummary</replace>
       <replace>this.</replace>
       <replace>./</replace>
-      <replace>endDate</replace>
       <replace>kpiName</replace>
       <replace>targetNumber</replace>
       <replace>operatorName</replace>
@@ -140,7 +171,6 @@
       <replace>approverName</replace>
       <replace>&lt;%= 'collapse' + i  %&gt;</replace>
       <replace>selfEvaluation</replace>
-      <replace>operatorId</replace>
       <replace>w332</replace>
       <replace>allowNoKeyword: true,</replace>
       <replace>50px</replace>
@@ -151,6 +181,13 @@
       <replace>calendarTableView</replace>
       <replace>h4</replace>
       <replace>80px</replace>
+      <replace>title</replace>
+      <replace>content</replace>
+      <replace>endDate</replace>
+      <replace>startDate</replace>
+      <replace>homeGmtCreate</replace>
+      <replace>operatorId</replace>
+      <replace>this.formaterCalendarDate</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -171,7 +208,6 @@
         <option value="$PROJECT_DIR$/src/components/receiveNoticeRecord/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/receiveNoticeRecord/dialog.html" />
         <option value="$PROJECT_DIR$/src/components/sendNoticeRecord/dialog.html" />
-        <option value="$PROJECT_DIR$/src/common/query/index.js" />
         <option value="$PROJECT_DIR$/src/components/receiveCooperation/index.html" />
         <option value="$PROJECT_DIR$/src/components/receiveCooperation/dialog.html" />
         <option value="$PROJECT_DIR$/src/components/createCooperation/dialog.html" />
@@ -197,15 +233,12 @@
         <option value="$PROJECT_DIR$/src/components/home/indexController.js" />
         <option value="$PROJECT_DIR$/src/components/home/workStaffTableView.js" />
         <option value="$PROJECT_DIR$/src/components/home/workMeetingTableView.js" />
-        <option value="$PROJECT_DIR$/src/components/home/dialog.html" />
         <option value="$PROJECT_DIR$/src/components/workToDo/tableView.js" />
-        <option value="$PROJECT_DIR$/src/components/home/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/home/toDoTableView.js" />
         <option value="$PROJECT_DIR$/src/components/home/index.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/components/workToDo/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/app/app.css" />
-        <option value="$PROJECT_DIR$/src/components/home/calendarTableView.js" />
         <option value="$PROJECT_DIR$/src/components/receiveRepay/tableView.js" />
         <option value="$PROJECT_DIR$/src/router/router-cfg-version.js" />
         <option value="$PROJECT_DIR$/src/components/receiveRepay/index.html" />
@@ -215,6 +248,10 @@
         <option value="$PROJECT_DIR$/src/components/sendDocument/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/receiveDocument/indexView.js" />
         <option value="$PROJECT_DIR$/src/components/requestDocument/indexView.js" />
+        <option value="$PROJECT_DIR$/src/components/home/dialog.html" />
+        <option value="$PROJECT_DIR$/src/common/query/index.js" />
+        <option value="$PROJECT_DIR$/src/components/home/calendarTableView.js" />
+        <option value="$PROJECT_DIR$/src/components/home/indexView.js" />
       </list>
     </option>
   </component>
@@ -228,8 +265,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="y" value="23" />
+    <option name="width" value="1232" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -328,72 +366,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sidebar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front_end" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front_end" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sendDocument" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front_end" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front_end" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="requestDocument" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front_end" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front_end" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="receiveRepay" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -416,7 +388,51 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="receiveDocument" />
+              <option name="myItemId" value="personnelSummary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="officeRoomRecord" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -456,6 +472,50 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="query" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front_end" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -474,7 +534,6 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="SearchEverywhereHistoryKey" value="navS&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/navSidebarModel.js&#10;app.css&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/app.css&#10;app.&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/appView.js&#10;head&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;appv.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/appView.js&#10;appV&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/appView.js&#10;hea&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;nav-si&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.html&#10;foot&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/footer/footer.html&#10;appc&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/app.css&#10;cal.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/common/calendar/calendar.js&#10;com&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/common.js&#10;det&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/personnelSummary/detail.html&#10;detai&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/assessAttendance/detail.html&#10;co&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/common.js&#10;upload&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/createCooperation/upload.js&#10;nav-&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.js&#10;nav&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/navSidebarModel.js&#10;header.html&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;nav-s&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.js&#10;header.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.js&#10;nav-si.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.js&#10;app&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/app.css&#10;header&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;navM&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/navSidebarModel.js&#10;common.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/common.js&#10;main.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/main.js&#10;head.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.js&#10;nav-si.&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.html&#10;nav-si.html&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/sidebar/nav-sidebar.html&#10;APP&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/app/app.css&#10;hea.htm&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/components/header/header.html&#10;index.j&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/src/common/query/index.js&#10;webuploader.js&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/libs/webUpload/webuploader.js&#10;prox&#9;FILE&#9;file:///Users/yujian/Desktop/yujian/front_end/proxy.config.js" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/components/officeAreaRecord/tableView.js" />
-    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -924,15 +983,15 @@
       <workItem from="1508323728252" duration="12337000" />
       <workItem from="1508410338439" duration="13564000" />
       <workItem from="1508460727668" duration="37466000" />
-      <workItem from="1508550918666" duration="30995000" />
+      <workItem from="1508550918666" duration="35586000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="286684000" />
+    <option name="totallyTimeSpent" value="291275000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="0" y="23" width="1232" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -949,7 +1008,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23990306" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24957983" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -984,32 +1043,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/home/indexView1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/shotcut/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="144" column="39" lean-forward="true" selection-start-line="144" selection-start-column="39" selection-end-line="144" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/header/header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/requestDocument/dialog.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1061,18 +1094,10 @@
         <state relative-caret-position="238">
           <caret line="19" column="51" lean-forward="true" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="true" />
-            <element signature="e#2017#2024#0" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="false" />
+            <element signature="e#2017#2024#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/home/indexController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1102,18 +1127,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="129" column="20" lean-forward="false" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="20" />
-          <folding>
-            <element signature="e#433#592#0" expanded="false" />
-            <element signature="e#1293#1511#0" expanded="false" />
-            <element signature="e#15911#15926#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/workStaff/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1129,14 +1142,6 @@
           <folding>
             <element signature="n#!!doc" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/query/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="77" column="8" lean-forward="false" selection-start-line="77" selection-start-column="8" selection-end-line="77" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1186,24 +1191,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-51">
           <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-          <folding>
-            <marker date="1508648930000" expanded="true" signature="245:6679" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/home/dialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/home/index1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1213,26 +1200,6 @@
         <state relative-caret-position="-612">
           <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/home/toDoTableView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="70" column="4" lean-forward="false" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/home/indexView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="59" column="8" lean-forward="false" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1248,14 +1215,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="10" lean-forward="false" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/home/calendarTableView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="86" column="9" lean-forward="true" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1419,6 +1378,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/requestDocument/indexView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="291" column="16" lean-forward="false" selection-start-line="291" selection-start-column="16" selection-end-line="291" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/requestDocument/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1427,10 +1394,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/requestDocument/indexView.js">
+    <entry file="file://$PROJECT_DIR$/src/components/officeRoomRecord/dialog.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="299" column="13" lean-forward="false" selection-start-line="299" selection-start-column="13" selection-end-line="299" selection-end-column="13" />
+        <state relative-caret-position="119">
+          <caret line="7" column="82" lean-forward="false" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/personnelSummary/indexView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="243" column="10" lean-forward="true" selection-start-line="239" selection-start-column="8" selection-end-line="243" selection-end-column="10" />
+          <folding>
+            <element signature="e#433#592#0" expanded="false" />
+            <element signature="e#1293#1511#0" expanded="false" />
+            <element signature="e#15911#15926#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/home/indexView1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/home/toDoTableView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="642">
+          <caret line="70" column="4" lean-forward="false" selection-start-line="78" selection-start-column="64" selection-end-line="78" selection-end-column="74" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/home/index1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/home/indexController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/home/calendarTableView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="125" column="19" lean-forward="false" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/home/dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/app/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="195" column="21" lean-forward="false" selection-start-line="195" selection-start-column="21" selection-end-line="195" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/home/indexView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="96" column="21" lean-forward="false" selection-start-line="96" selection-start-column="21" selection-end-line="96" selection-end-column="21" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/query/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="17" lean-forward="true" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
           <folding />
         </state>
       </provider>
