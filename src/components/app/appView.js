@@ -11,6 +11,8 @@ define([
 		el: '#app',
 
 		initialize: function () {
+			window.ownerPeopleId = 4;
+			window.ownerPeopleName = "张三";
 			// this.$header = $('#header');
 			this.$footer = $('#footer');
 			// this.$sidebar = $('#sidebar');

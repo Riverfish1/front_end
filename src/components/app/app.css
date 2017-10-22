@@ -116,7 +116,10 @@ body {
     bottom: 0;
     left: 45%;
 }
-
+/* Hide for mobile, show later */
+.home-sidebar {
+    display: none;
+}
 @media (min-width: 768px) {
     #main {
         padding: 20px 40px;
@@ -131,6 +134,11 @@ body {
         padding-right: 40px;
         padding-left: 40px;
     }
+    .home-sidebar {
+        display: block;
+        padding: 20px 40px;
+        margin-top: 50px;
+    }
 }
 
 @media (min-width: 806px) {
@@ -140,6 +148,11 @@ body {
     }
     #sidebar {
         top: 80px;
+    }
+    .home-sidebar {
+        display: block;
+        margin-top: 30px;
+        padding: 20px 40px;
     }
 }
 
@@ -151,6 +164,11 @@ body {
     #sidebar {
         top: 80px;
     }
+    .home-sidebar{
+        display: block;
+        margin-top: 30px;
+        padding: 20px 40px;
+    }
 }
 @media (min-width: 980px) {
     #main {
@@ -159,6 +177,11 @@ body {
     }
     #sidebar {
         top: 50px;
+    }
+    .home-sidebar {
+        display: block;
+        margin-top: 0px;
+        padding: 20px 40px;
     }
 }
 
@@ -522,7 +545,7 @@ input:-webkit-autofill {
 }
 
 .nav-sub a {
-    padding-left: 83px !important;
+    padding-left: 100px !important;
     color: #222;
 }
 
@@ -968,5 +991,12 @@ input:-webkit-autofill {
     line-height: 28px;
     padding-left: 10px;
 }
+/*首页*/
+.home-sidebar .calendarWrap {margin-top: 10px;}
+.home-sidebar .calendarWrap .ui-datepicker-wrapper{margin: 0 auto;}
+.home-sidebar .btn-wrap{text-align: center;}
+.home-sidebar .btn-wrap .btn-addDate{width: 240px; margin-top: 10px;}
+.home-sidebar .workStaffWrap{width: 240px; margin: 0 auto;}
+.home-sidebar .cardWrap{width: 240px;}
 
 
