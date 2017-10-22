@@ -124,7 +124,6 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
-                console.log(JSONData);
                 JSONData.userId = window.ownerPeopleId;
                 var kpi = this.$kpiSel.val();
                 var targetNum = this.$targetNumSel.val();

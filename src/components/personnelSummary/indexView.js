@@ -105,7 +105,6 @@ define([
                     operatorId: window.ownerPeopleId
                 }
             };
-            console.log("param", JSON.stringify(paramMap[index]))
             ncjwUtil.postData(QUERY.ASSESS_SUMMARY_QUERY_BY_USER_ID, JSON.stringify(paramMap[index]), function (res) {
                 if (res.success) {
                     var list = {list: res.data[0]};
@@ -238,7 +237,6 @@ define([
 
         },
         calendarClick: function (e) {
-            console.log("calendar.getDate()", calendar.getDate());
             timeUtil.setNow(calendar.getDate());
             this.createDetailView(this.getValue());
         },
@@ -398,7 +396,6 @@ define([
                 if (typeof $i === 'object') {
                     $i = $i.data('bsSuggest');
                 }
-                console.log(method, $i);
                 if (!$i) {
                     alert('未初始化或已销毁');
                 }

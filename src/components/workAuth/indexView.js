@@ -109,7 +109,6 @@ define([
                 if (typeof $i === 'object') {
                     $i = $i.data('bsSuggest');
                 }
-                console.log(method, $i);
                 if (!$i) {
                     alert('未初始化或已销毁');
                 }

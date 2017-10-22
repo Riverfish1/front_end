@@ -81,8 +81,8 @@ define(['backbone'], function (Backbone) {
         'support/fileRecord': 'src/components/fileRecord/indexController.js',
         // 资产统计
         'support/assetsCount': 'src/components/assetsCount/indexController.js',
-        // 系统设置
-        'support/systemSet': 'src/components/systemSet/indexController.js',
+        // 资产类别管理
+        'support/assetsCate': 'src/components/assetsCate/indexController.js',
         // 装备入库
         'support/equipIn': 'src/components/equipIn/indexController.js',
         // 装备出库

@@ -5,7 +5,11 @@
     <div class="form-group">
         <label class="col-md-3 control-label">入库仓库</label>
         <div class="col-md-9">
-            <input type="text" name="warehouse" class="form-control" value="<%= warehouse %>">
+            <select class="form-control" name="storeId">
+                <% $.each(storeList, function(i, n) {%>
+                    <option value="<%= n.id %>"><%= n.name %></option>
+                <% }); %>
+            </select>
         </div>
     </div>
     <div class="form-group">
@@ -15,9 +19,31 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">经办日期</label>
+        <label class="col-md-3 control-label">创建人</label>
         <div class="col-md-9">
-            <span style="border: none" name="gmtCreate" class="form-control"><%= gmtCreate %></span>
+            <span style="border: none" name="creatorId" value="<%= window.ownerPeopleId%>" class="form-control"><%= window.ownerPeopleName %></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">经办时间</label>
+        <div class="col-md-9">
+            <span style="border: none" name="handleTime" class="form-control"><%= handleTime %></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">经办人</label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input type="hidden" name="handlerId" id="handlerId" name="handlerId">
+                <input class="form-control test" type="text" id="handlerName" value="<%= handlerName %>">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     <div class="form-group">
@@ -29,13 +55,7 @@
     <div class="form-group">
         <label class="col-md-3 control-label">入库时间</label>
         <div class="col-md-9">
-            <input type="text" name="storeTime" class="form-control" value="<%= storeTime %>">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">经办人</label>
-        <div class="col-md-9">
-            <span style="border: none" name="operator" class="form-control"><%= operator %></span>
+            <input type="text" name="storeTime" id="storeTime" class="form-control" value="<%= storeTime %>">
         </div>
     </div>
     <div class="form-group">

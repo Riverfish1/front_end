@@ -190,7 +190,17 @@ define([], function () {
         // 资产
         // 资产统计
         ASSETS_COUNT_QUERY: '/api/assetsCount/query',
-
+        // 资产类别
+        ASSETS_CATEGORY_QUERY: '/api/assetClassRecord/query',
+        ASSETS_CATEGORY_UPDATE: '/api/assetClassRecord/updateById',
+        ASSETS_CATEGORY_DELETE: '/api/assetClassRecord/deleteById',
+        ASSETS_CATEGORY_INSERT: '/api/assetClassRecord/insert',
+        // 文件登记
+        ASSETS_FILE_QUERY: '/api/fileRecord/query',
+        ASSETS_FILE_UPDATE: '/api/fileRecord/updateById',
+        ASSETS_FILE_DELETE: '/api/fileRecord/deleteById',
+        ASSETS_FILE_INSERT: '/api/fileRecord/insert',
+        ASSETS_FILE_DOWNLOAD: '/api/fileRecord/download',
         // 单警装备
         // 入库
         EQUIP_IN_INSERT: '/api/equipIn/insert',

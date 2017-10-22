@@ -85,7 +85,6 @@ define([
                 if (typeof $i === 'object') {
                     $i = $i.data('bsSuggest');
                 }
-                console.log(method, $i);
                 if (!$i) {
                     alert('未初始化或已销毁');
                 }
@@ -143,9 +142,7 @@ define([
                 var that = this;
                 var data = this.$submitForm.serialize();
                 data = decodeURIComponent(data, true);
-                console.log(data);
                 var datas = serializeJSON(data);
-                console.log(datas);
                 var JSONData = JSON.parse(datas);
                 JSONData.userId = window.ownerPeopleId;
                 var assignTime = this.$submitForm.find('#assignTime').val();

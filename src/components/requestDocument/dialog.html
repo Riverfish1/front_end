@@ -76,7 +76,7 @@
         <label class="col-md-3 control-label"></label>
         <div class="col-md-9">
             <div class="flowWrap">
-                <% $.each(workFlow.nodeList, function(k, node){ console.log("node1", node) %>
+                <% $.each(workFlow.nodeList, function(k, node){ %>
                     <% if(k == 0){ %>
                         <div class="row">
                            <div class="<%= workFlow.currentNode.nodeIndex == 0 ? 'col-md-3 title-wrap' : 'col-md-3 title-wrap active' %>">

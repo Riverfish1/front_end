@@ -26,23 +26,24 @@ define([
         },
         initialize:function(){
             var that = this;
-            ncjwUtil.getData(QUERY.LOGIN, {}, function(res) {
-                console.log(res);
-                if (res.success) {
-                    var data = res.data && res.data[0];
-                    var JSONData = JSON.parse(data);
-                    window.ownerPeopleId = JSONData.id;
-                    window.ownerPeopleName = JSONData.peopleName;
-                    that.default = {
-                        loginName: JSONData.peopleName
-                    };
-                    that.$el.html(that.template(that.default));
-                } else {
-                    window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + window.location.href;
-                }
-            }, {
-                'contentType': 'application/json'
-            });
+            // ncjwUtil.getData(QUERY.LOGIN, {}, function(res) {
+            //     if (res.success) {
+            //         var data = res.data && res.data[0];
+            //         var JSONData = JSON.parse(data);
+            //         window.ownerPeopleId = JSONData.id;
+            //         window.ownerPeopleName = JSONData.peopleName;
+            //         that.default = {
+            //             loginName: JSONData.peopleName
+            //         };
+            //         that.$el.html(that.template(that.default));
+            //     } else {
+            //         window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + window.location.href;
+            //     }
+            // }, {
+            //     'contentType': 'application/json'
+            // });
+            window.ownerPeopleId = 5;
+            window.ownerPeopleName = '张三疯';
 			Backbone.off('routeChange').on('routeChange', this.updateNavSideBar);
 			this.isFirst = true;
 		},

@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#record_departmentRecord',
+        el: '#assets',
         initialize: function () {
         },
         showLoading: function () {
@@ -20,8 +20,9 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable('refresh');
         },
         init: function () {
+            var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_DEPARTMENT_QUERY, //请求后台的URL（*）
+                url: QUERY.ASSETS_CATEGORY_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -46,27 +47,12 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'departmentName',
-                    title: '部门名称',
+                    field: 'assetClass',
+                    title: '资产类别',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'parentName',
-                    title: '所属单位',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'responsibility',
-                    title: '部门职责',
-                    align: 'center',
-                    valign: "middle",
-                }, {
-                    field: 'departmentType',
-                    title: '部门类型',
-                    align: 'center',
-                    valign: "middle",
-                }, {
-                    field: 'status',
+                    field: 'oper',
                     title: '操作',
                     align: 'center',
                     valign: "middle",
@@ -85,7 +71,6 @@ define(['../../common/query/index'], function (QUERY) {
                     }
                 }
             });
-            // this.hideLoading();
         },
         queryParams: function (params) {
             var temp = {
