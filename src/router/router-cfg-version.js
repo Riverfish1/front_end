@@ -133,6 +133,10 @@ define(['backbone'], function (Backbone) {
     var oldHashFirst = null;
     //彻底用on route接管路由的逻辑，这里route是路由对应的value
     router.on('route', function (route, params) {
+        //修复默认路由加载defaultAction.js的bug;
+        if(route == "defaultAction"){
+            return false;
+        }
         require([route], function (controller) {
             if (router.currentController && router.currentController !== controller) {
                 router.currentController.onRouteChange && router.currentController.onRouteChange();
