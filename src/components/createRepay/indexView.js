@@ -3,20 +3,23 @@ define([
     './tableView',
     'text!./index.html',
     'text!./dialog.html',
+    'text!./detail.html',
     './upload',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, FileUploadView, QUERY) {
+], function (BaseTableView, tpl, dialogTpl, detailTpl, FileUploadView, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
+        getDetailContent: _.template(detailTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
             'click #btn-draft': 'submitForm',
             'click #btn-submit': 'submitForm',
             'click #btn-ok': 'submitForm',
-            'click #btn-no': 'submitForm'
+            'click #btn-no': 'submitForm',
+            'click #btn_detail_add': 'addDetailOne'
         },
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
@@ -27,6 +30,8 @@ define([
             this.$el.empty().html(this.template());
             this.$editDialog = this.$el.find('#editDialog');
             this.$editDialogPanel = this.$el.find('#editPanel');
+            this.$detailDialog = this.$el.find('#detailDialog');
+            this.$detailDialogPanel = this.$el.find('#detailPanel');
             this.table = new BaseTableView();
             this.table.render();
             return this;
@@ -202,6 +207,31 @@ define([
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
+        addDetailOne: function (row) {
+            //id不存在与staus==3都是新建；
+            var initState = {
+                id : "",
+                startTime: "",
+                type: "",
+                detail: "",
+                fee: ""
+            };
+            var row = row.id ? row : initState;
+            if (row.id) {
+
+            }
+            this.$detailDialog.modal('show');
+            this.$detailDialog.modal({backdrop: 'static', keyboard: false});
+            this.$detailDialogPanel.empty().html(this.getDetailContent(row));
+            this.$detailForm = this.$el.find('#detailForm');
+            $('.accessTime').datepicker({
+                language: 'zh-CN',
+                autoclose: true,
+                todayHighlight: true,
+                format: 'yyyy-mm-dd'
+            });
+            this.initDetailForm();
+        },
         setBssuggestValue: function (row) {
             $.each(this.$suggestWrap, function (k, el) {
                 $(el).val(row.workFlow.nodeList[k].operatorName);
@@ -282,6 +312,47 @@ define([
                     operator_valid5: "请选择接收人",
                     operator_valid6: "请选择接收人",
                     operator_valid7: "请选择接收人",
+                    comment: "请填写审核意见"
+                },
+                highlight: function (element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                success: function (label) {
+                    label.closest('.form-group').removeClass('has-error');
+                    label.remove();
+                },
+                errorPlacement: function (error, element) {
+                    element.parent('div').append(error);
+                }
+            });
+        },
+        initDetailForm: function () {
+            this.$detailForm.validate({
+                errorElement: 'span',
+                errorClass: 'help-block',
+                focusInvalid: true,
+                rules: {
+                    title: {
+                        required: true
+                    },
+                    content: {
+                        required: true
+                    },
+                    operator_valid1: {
+                        required: true
+                    },
+                    operator_valid2: {
+                        required: true
+                    },
+                    comment: {
+                        required: true
+                    }
+                },
+                messages: {
+                    title: "请填写标题",
+                    content: "请填写正文",
+                    operator_valid1: "请选择接收人",
+                    operator_valid2: "请选择接收人",
                     comment: "请填写审核意见"
                 },
                 highlight: function (element) {
