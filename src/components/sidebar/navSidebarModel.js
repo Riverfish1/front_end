@@ -72,7 +72,7 @@ define({
             {className: 'icon_homePage', href: '#/support/equipOut', title: '装备出库'},
             {className: 'icon_homePage', href: '#/support/equipAllot', title: '装备调拨'},
             {className: 'icon_homePage', href: '#/support/stocking', title: '库存盘点'},
-            {className: 'icon_homePage', href: '#/support/equipCollect', title: '装备领用'},
+            // {className: 'icon_homePage', href: '#/support/equipCollect', title: '装备领用'},
             {className: 'icon_homePage', href: '#/support/equipMng', title: '装备管理'},
             {className: 'icon_homePage', href: '#/support/storeMng', title: '仓库管理'},
             // {className: 'icon_homePage', href: '#/support/equipQuery', title: '装备查询'},

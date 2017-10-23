@@ -1,0 +1,34 @@
+<div class="loading" style="width:95%"></div>
+
+<form class="form-horizontal" id="editForm">
+    <input type="hidden" name="creatorId" value="<%= window.ownerPeopleId %>"/>
+    <div class="form-group">
+        <label class="col-md-3 control-label">盘点单名称：</label>
+        <div class="col-md-9">
+            <input type="text" name="name" class="form-control" value="<%= name %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">盘点仓库：</label>
+        <div class="col-md-9">
+            <select class="form-control" name="storeId">
+                <% $.each(storeList, function(i, n) {%>
+                    <option value="<%= n.id %>"><%= n.name %></option>
+                <% }); %>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">盘点负责人：</label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input type="hidden" name="targetId" id="targetId" name="targetId" value="<%= targetId %>">
+                <input class="form-control test" name="targetName" type="text" id="targetName" value="<%= targetName %>">
+                <div class="input-group-btn">
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

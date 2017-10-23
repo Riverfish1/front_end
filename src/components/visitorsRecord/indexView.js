@@ -41,6 +41,8 @@ define([
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
+            this.$suggestWrap = this.$officeDialogPanel.find('.test');
+            this.initSuggest();
             $('.accessTime').datepicker({
                 language: 'zh-CN',
                 autoclose: true,
@@ -49,6 +51,40 @@ define([
             });
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
+        },
+        initSuggest: function () {
+            var $data = [];
+            $.each(this.$suggestWrap, function (k, el) {
+                $(el).bsSuggest({
+                    effectiveFieldsAlias: {peopleName: "姓名", employeeNum: "工号"},
+                    effectiveFields: ['peopleName', 'employeeNum'],
+                    clearable: true,
+                    showHeader: true,
+                    showBtn: false,
+                    getDataMethod: 'url',
+                    fnAdjustAjaxParam: function(keywords, opts) {
+                        return {
+                            method: 'post',
+                            data: JSON.stringify({
+                                peopleName: $(el).val()
+                            }),
+                            'contentType': 'application/json'
+                        };
+                    },
+                    processData: function(json) {
+                        var data = { value: [] };  
+                        $.each(json.data && json.data[0], function (i, r) {  
+                            data.value.push({ peopleName: r.peopleName, employeeNum: r.employeeNum, id: r.id })  
+                        })  
+                        return data;  
+                    },
+                    url: QUERY.FUZZY_QUERY,
+                    idField: "id",
+                    keyField: "name"
+                }).on('onSetSelectValue', function (e, keyword, data) {
+                    $('#interviewee').val(data.peopleName);
+                });
+            })
         },
         delOne: function (row) {
             var that = this;

@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#equip',
+        el: '#assets',
         initialize: function () {
         },
         showLoading: function () {
@@ -16,13 +16,13 @@ define(['../../common/query/index'], function (QUERY) {
         render: function () {
             this.init();
         },
-        refresh: function () {
-            this.$el.bootstrapTable('refresh');
+        refresh: function (params) {
+            this.$el.bootstrapTable('refresh', params);
         },
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.STORE_STOCKING_QUERY, //请求后台的URL（*）
+                url: QUERY.STORE_STOCKING_QUERY_BY_USER_ID, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -52,30 +52,48 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'person',
+                    field: 'storeName',
+                    title: '仓库名称',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'creatorName',
+                    title: '创建者名',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'targetName',
                     title: '盘点负责人',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'warehouse',
-                    title: '盘点仓库',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'startTime',
-                    title: '开始盘点时间',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'endTime',
-                    title: '结束盘点时间',
                     align: 'center',
                     valign: "middle"
                 }, {
                     field: 'status',
                     title: '状态',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        switch (value) {
+                            case 'submit': return '盘点中';
+                            case 'complete': return '完成盘点';
+                            default: return '-';
+                        }
+                    }
+                }, {
+                    field: 'startTime',
+                    title: '开始盘点时间',
+                    align: 'center',
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
+                    }
+                }, {
+                    field: 'endTime',
+                    title: '结束盘点时间',
+                    align: 'center',
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
+                    }
                 }, {
                     field: 'oper',
                     title: '操作',
@@ -84,9 +102,15 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-complete">完成盘点</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
-                        return str;
+                        if (row.status === 'complete') return str;
+                        if (row.targetId === window.ownerPeopleId) {
+                            str += '<p class="grid-command-p btn-complete">完成盘点</p>';
+                            return str;
+                        }
+                        if (row.creatorId === window.ownerPeopleId) {
+                            str += '<p class="grid-command-p btn-delete">删除</p>';
+                            return str;
+                        }
                     }
                 }],
                 responseHandler: function(res) {
@@ -100,7 +124,8 @@ define(['../../common/query/index'], function (QUERY) {
         queryParams: function (params) {
             var temp = {
                 pageNum: params.offset / params.limit,
-                pageSize: params.limit
+                pageSize: params.limit,
+                id: window.ownerPeopleId
             };
             return temp;
         },

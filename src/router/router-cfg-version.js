@@ -94,13 +94,13 @@ define(['backbone'], function (Backbone) {
         // 库存盘点
         'support/stocking': 'src/components/stocking/indexController.js',
         // 装备领用
-        'support/equipCollect': 'src/components/equipCollect/indexController.js',
+        // 'support/equipCollect': 'src/components/equipCollect/indexController.js',
         // 装备管理
         'support/equipMng': 'src/components/equipMng/indexController.js',
         // 仓库管理
         'support/storeMng': 'src/components/storeMng/indexController.js',
         // 装备查询
-        'support/equipQuery': 'src/components/equipQuery/indexController.js',
+        // 'support/equipQuery': 'src/components/equipQuery/indexController.js',
         // 库存查询
         'support/storeQuery': 'src/components/storeQuery/indexController.js',
 

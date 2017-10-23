@@ -17,8 +17,8 @@ define(['../../common/query/index'], function (QUERY) {
         render: function (index) {
             this.init(index);
         },
-        refresh: function () {
-            this.$el.bootstrapTable('refresh');
+        refresh: function (params) {
+            this.$el.bootstrapTable('refresh', params);
         },
         load: function () {
             this.$el.bootstrapTable('load');

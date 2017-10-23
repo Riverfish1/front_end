@@ -16,8 +16,8 @@ define([], function () {
         render: function () {
             this.init();
         },
-        refresh: function () {
-            this.$el.bootstrapTable('refresh');
+        refresh: function (params) {
+            this.$el.bootstrapTable('refresh', params);
         },
         init: function () {
             this.$el.bootstrapTable({

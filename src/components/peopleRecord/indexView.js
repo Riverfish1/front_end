@@ -70,7 +70,7 @@ define([
                 if (res.success) {
                     var list = {list: res.data[0]};
                     self.$officeAreaBelong.empty().html(self.getAreaContent(list));
-                    (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {list: row.list});
+                    (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {officeAreaId: row.officeAreaId});
                 } else {
                 }
             }, {
@@ -87,7 +87,7 @@ define([
                 if (res.success) {
                     var nameList = {nameList: res.data[0]};
                     self.$officeRoomBelong.empty().html(self.getRoomContent(nameList));
-                    (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {nameList: row.nameList});
+                    (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {officeRoomId: row.officeRoomId});
                 } else {
                 }
             }, {
@@ -104,7 +104,7 @@ define([
                 if (res.success) {
                     var departmentList = {departmentList: res.data[0]};
                     self.$departmentBelong.empty().html(self.getDepartmentContent(departmentList));
-                    (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {departmentList: row.departmentList});
+                    (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {departmentId: row.departmentId});
                 } else {
                 }
             }, {
@@ -236,8 +236,10 @@ define([
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
+                var JSONData = JSON.parse(datas);
+                JSONData.userId = window.ownerPeopleId;
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.RECORD_PEOPLE_UPDATE : QUERY.RECORD_PEOPLE_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.RECORD_PEOPLE_UPDATE : QUERY.RECORD_PEOPLE_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');

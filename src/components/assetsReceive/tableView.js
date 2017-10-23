@@ -16,13 +16,13 @@ define(['../../common/query/index'], function (QUERY) {
         render: function () {
             this.init();
         },
-        refresh: function () {
-            this.$el.bootstrapTable('refresh');
+        refresh: function (params) {
+            this.$el.bootstrapTable('refresh', params);
         },
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.ASSETS_MAINTAIN_QUERY, //请求后台的URL（*）
+                url: QUERY.ASSETS_RECEIVE_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -92,8 +92,7 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
+                        str += '<p class="grid-command-p btn-delete">退库</p>';
                         return str;
                     }
                 }],
@@ -113,9 +112,6 @@ define(['../../common/query/index'], function (QUERY) {
             return temp;
         },
         operateEvents: {
-            'click .btn-edit': function (e, value, row, index) {
-                Backbone.trigger('itemEdit', row);
-            },
             'click .btn-delete': function (e, value, row, index) {
                 Backbone.trigger('itemDelete', row);
             }

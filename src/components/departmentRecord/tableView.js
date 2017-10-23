@@ -16,8 +16,8 @@ define(['../../common/query/index'], function (QUERY) {
         render: function () {
             this.init();
         },
-        refresh: function () {
-            this.$el.bootstrapTable('refresh');
+        refresh: function (params) {
+            this.$el.bootstrapTable('refresh', params);
         },
         init: function () {
             this.$el.bootstrapTable({
@@ -58,11 +58,6 @@ define(['../../common/query/index'], function (QUERY) {
                 }, {
                     field: 'responsibility',
                     title: '部门职责',
-                    align: 'center',
-                    valign: "middle",
-                }, {
-                    field: 'departmentType',
-                    title: '部门类型',
                     align: 'center',
                     valign: "middle",
                 }, {

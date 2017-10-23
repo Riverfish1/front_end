@@ -19,7 +19,8 @@ define([
             'mouseover .shotcutWrap': 'mouseoverShotcutMenu',
             'mouseout .shotcutWrap':  'mouseoutShotcutMenu',
             'click .shotcutBtn': 'addShotcut',
-            'click .logout': 'loginOut'
+            'click .logout': 'loginOut',
+            'click #set': 'handleRouter'
         },
         loginOut: function () {
             window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + location.href;
@@ -85,6 +86,14 @@ define([
         },
         resetHeight: function () {
             this.$shotcutBtn.css('top', this.$menu.height() + 58);
+        },
+        handleRouter: function () {
+            var ip = returnCitySN["cip"];
+            if (window.location.host.split('.')[0].indexOf('120') !== -1) {
+                window.location.href = 'http://60.190.226.163:5002/uums-server/xtgl.htm';
+            } else {
+                window.location.href = 'http://120.55.36.116:8082/uums-server/xtgl.htm';
+            }
         }
 	});
 	return HeaderView;

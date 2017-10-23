@@ -56,7 +56,7 @@ define([
                 if (res.success) {
                     var departmentList = {departmentList: res.data[0]};
                     self.$companyBelong.empty().html(self.getDepartmentContent(departmentList));
-                    (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {departmentList: row.departmentList});
+                    (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {parentId: row.parentId});
                 } else {
                 }
             }, {

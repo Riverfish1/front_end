@@ -16,13 +16,13 @@ define(['../../common/query/index'], function (QUERY) {
         render: function () {
             this.init();
         },
-        refresh: function () {
-            this.$el.bootstrapTable('refresh');
+        refresh: function (params) {
+            this.$el.bootstrapTable('refresh', params);
         },
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.ASSETS_COUNT_QUERY, //请求后台的URL（*）
+                url: QUERY.ASSETS_RECORD_QUERY_BY_ASSET_CLASS, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,22 +47,10 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'typeName',
-                    title: '人员类型',
+                    field: 'departmentName',
+                    title: '部门',
                     align: 'center',
                     valign: "middle"
-                }, {
-                    field: 'status',
-                    title: '操作',
-                    align: 'center',
-                    valign: "middle",
-                    events: this.operateEvents,
-                    formatter: function (value, row, index) {
-                        var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
-                        return str;
-                    }
                 }],
                 responseHandler: function(res) {
                     return {
@@ -75,18 +63,9 @@ define(['../../common/query/index'], function (QUERY) {
         queryParams: function (params) {
             var temp = {
                 pageNum: params.offset / params.limit,
-                pageSize: params.limit,
-                status: 1
+                pageSize: params.limit
             };
             return temp;
-        },
-        operateEvents: {
-            'click .btn-edit': function (e, value, row, index) {
-                Backbone.trigger('itemEdit', row);
-            },
-            'click .btn-delete': function (e, value, row, index) {
-                Backbone.trigger('itemDelete', row);
-            }
         }
     });
     return Table;

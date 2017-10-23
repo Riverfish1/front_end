@@ -206,6 +206,10 @@ define([], function () {
         ASSETS_RECORD_QUERY: '/api/assetsRecord/query',
         ASSETS_RECORD_UPDATE: '/api/assetsRecord/updateById',
         ASSETS_RECORD_DELETE: '/api/assetsRecord/deleteById',
+        // 资产统计-类别
+        ASSETS_RECORD_QUERY_BY_ASSET_CLASS: '/api/assetsRecord/queryByAssetClass',
+        // 资产统计-部门
+        ASSETS_RECORD_QUERY_BY_DEPARTMENT: '/api/assetsRecord/queryByDepartment',
         // 资产维修
         ASSETS_MAINTAIN_INSERT: '/api/assetsMaintain/insert',
         ASSETS_MAINTAIN_QUERY: '/api/assetsMaintain/query',
@@ -246,14 +250,15 @@ define([], function () {
         EQUIP_ALLOT_DELETE: '/api/equipAllot/deleteById',
         EQUIP_ALLOT_CONFIRM: '/api/equipAllot/confirm',
         // 库存盘点
-        STORE_STOCKING_QUERY: '/api/stocking/query',
-        STORE_STOCKING_INSERT: '/api/stocking/insert',
-        STORE_STOCKING_DELETE: '/api/stocking/deleteById',
-        STORE_STOCKING_COMPLETE: '/api/stocking/complete',
+        STORE_STOCKING_QUERY: '/api/stockCheck/query',
+        STORE_STOCKING_INSERT: '/api/stockCheck/insert',
+        STORE_STOCKING_DELETE: '/api/stockCheck/deleteById',
+        STORE_STOCKING_COMPLETE: '/api/stockCheck/complete',
+        STORE_STOCKING_QUERY_BY_USER_ID: '/api/stockCheck/queryByUserId',
         // 库存查询
         STORE_QUERY: 'api/storeQuery/query',
         // 装备查询
-        EQUIP_QUERY: '/api/equipQuery/query',
+        // EQUIP_QUERY: '/api/equipQuery/query',
         // 装备管理
         EQUIP_MNG_INSERT: '/api/equipMng/insert',
         EQUIP_MNG_QUERY: '/api/equipMng/query',
@@ -264,7 +269,6 @@ define([], function () {
         STORE_MNG_QUERY: '/api/storeMng/query',
         STORE_MNG_UPDATE: '/api/storeMng/updateById',
         STORE_MNG_DELETE: '/api/storeMng/deleteById',
-
 
         // 正则
         TEL_REG: /(^(13\d|15[^4,\D]|17[13678]|18\d)\d{8}|170[^346,\D]\d{7})$/,

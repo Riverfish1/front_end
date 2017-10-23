@@ -16,13 +16,14 @@ define(['../../common/query/index'], function (QUERY) {
         render: function () {
             this.init();
         },
-        refresh: function () {
-            this.$el.bootstrapTable('refresh');
+        refresh: function (params) {
+            console.log(params);
+            this.$el.bootstrapTable('refresh', params);
         },
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.EQUIP_IN_QUERY, //请求后台的URL（*）
+                url: QUERY.STORE_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,28 +48,28 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'storeNo',
-                    title: '装备编码',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'warehouse',
+                    field: 'equipName',
                     title: '装备名称',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'storeTime',
+                    field: 'equipCode',
+                    title: '装备编码',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'equipScale',
                     title: '装备规格',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'operator',
+                    field: 'storeName',
                     title: '仓库',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'gmtCreate',
-                    title: '数量',
+                    field: 'equipNum',
+                    title: '装备数量',
                     align: 'center',
                     valign: "middle"
                 }],

@@ -17,27 +17,25 @@ define([
         render: function () {
             //main view
             this.$el.empty().html(this.template());
-            this.$officeDialog = this.$el.find('#editDialog');
-            this.$officeDialogPanel = this.$el.find('#editPanel');
             this.table = new BaseTableView();
             this.table.render();
             return this;
         },
-        queryByCate: function (e, el) {
-            console.log(e, el);
+        queryByCate: function (e) {
             e.preventDefault();
-            this.table.bootstrapTable('refresh', {
-                queryParams: function (params) {
-                    return {
-                        pageNum: params.offset / params.limit,
-                        pageSize: params.limit,
-                        status: 1
-                    }
-                }
+            $(e.target).removeClass('btn-default').addClass('btn-primary');
+            $(e.target).siblings().removeClass('btn-primary').addClass('btn-default');
+            this.table.refresh({
+                url: QUERY.ASSETS_RECORD_QUERY_BY_ASSET_CLASS
             });
         },
         queryByDep: function (e) {
+            $(e.target).siblings().removeClass('btn-primary').addClass('btn-default');
+            $(e.target).removeClass('btn-default').addClass('btn-primary');
             e.preventDefault();
+            this.table.refresh({
+                url: QUERY.ASSETS_RECORD_QUERY_BY_DEPARTMENT
+            });
         }
     });
     return View;
