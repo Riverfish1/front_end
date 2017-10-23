@@ -185,6 +185,14 @@ var ncjwUtil = (function ($) {
         var week = "星期" + "日一二三四五六".charAt(new Date(date).getDay());
         return week;
     }
+    //readOnly为true时，编辑页面disable
+    function setDisableEditPage(readOnly) {
+        if (readOnly) {
+            $('select, input, textarea').attr('disabled', true);
+        } else {
+            $('select, input, textarea').removeAttr('disabled');
+        }
+    }
 
     return {
         //将方法暴露出来 JSON格式数
@@ -198,7 +206,8 @@ var ncjwUtil = (function ($) {
         getCurrentDate: getCurrentDate,
         sellectAll: sellectAll,
         unSellectAll: unSellectAll,
-        selectSome: selectSome
+        selectSome: selectSome,
+        setDisableEditPage: setDisableEditPage
     };
 })(jQuery);
 

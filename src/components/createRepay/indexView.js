@@ -3,8 +3,9 @@ define([
     './tableView',
     'text!./index.html',
     'text!./dialog.html',
+    './upload',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, QUERY) {
+], function (BaseTableView, tpl, dialogTpl, FileUploadView, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
@@ -32,23 +33,41 @@ define([
         },
         initSuggest: function () {
             $.each(this.$suggestWrap, function (k, el) {
-                $(el).bsSuggest('init', {
-                    /*url: "/rest/sys/getuserlist?keyword=",
-                     effectiveFields: ["userName", "email"],
-                     searchFields: [ "shortAccount"],
-                     effectiveFieldsAlias:{userName: "姓名"},*/
-                    effectiveFieldsAlias: {peopleName: "姓名", id: "ID", employeeNum: "工号"},
-                    clearable: true,
-                    showHeader: true,
-                    showBtn: false,
-                    allowNoKeyword: true,
-                    getDataMethod: "url",
-                    delayUntilKeyup: true,
-                    // url: "src/components/sendDocument/data.json",
-                    url: QUERY.FUZZY_QUERY,
-                    idField: "id",
-                    keyField: "peopleName",
-                    fnAdjustAjaxParam: function (keyword, opts) {
+                var $el = $(el),effectiveFieldsAlias = '', url = '', keyField = '', fnAdjustAjaxParam = '', processData = '', onSetSelectValue = '';
+                if($el.hasClass('department')){
+                    effectiveFieldsAlias = {departmentName: "部门名称", id: "部门ID", parentName: "单位"};
+                    url = QUERY.RECORD_DEPARTMENT_QUERY;
+                    keyField = "departmentName";
+                    fnAdjustAjaxParam = function (keyword, opts) {
+                        return {
+                            method: 'post',
+                            data: JSON.stringify({
+                                userPaged: false
+                            }),
+                            'contentType': 'application/json'
+                        };
+                    };
+                    processData = function (json) {
+                        var data = {value: []};
+                        $.each(json.data && json.data[0], function (i, r) {
+                            data.value.push({departmentName: r.departmentName, parentName: r.parentName, id: r.id})
+                        })
+                        return data;
+                    }
+                    onSetSelectValue = function (e, keyword, data) {
+                        var $row = $(e.target).parents('.input-group')
+                        var $operatorName = $row.find('input[name=departmentName]');
+                        var $validInput = $row.find('.departmentIds');
+                        var $helpBlock = $row.find('.help-block');
+                        $validInput.val(data.id);
+                        $operatorName.val(data.departmentName);
+                        $helpBlock.remove();
+                    }
+                }else{
+                    effectiveFieldsAlias = {peopleName: "姓名", id: "ID", employeeNum: "工号"};
+                    url = QUERY.FUZZY_QUERY;
+                    keyField = "peopleName";
+                    fnAdjustAjaxParam =  function (keyword, opts) {
                         return {
                             method: 'post',
                             data: JSON.stringify({
@@ -56,14 +75,39 @@ define([
                             }),
                             'contentType': 'application/json'
                         };
-                    },
-                    processData: function (json) {
+                    };
+                    processData = function (json) {
                         var data = {value: []};
                         $.each(json.data && json.data[0], function (i, r) {
                             data.value.push({peopleName: r.peopleName, employeeNum: r.employeeNum, id: r.id})
                         })
                         return data;
+                    };
+                    onSetSelectValue = function (e, keyword, data) {
+                        var $row = $(e.target).parents('.row')
+                        var $operatorId = $row.find('input[name=operatorId]');
+                        var $operatorName = $row.find('input[name=operatorName]');
+                        var $validInput = $row.find('.operatorId');
+                        var $helpBlock = $row.find('.help-block');
+                        $validInput.val(data.id);
+                        $operatorId.val(data.id);
+                        $operatorName.val(data.peopleName);
+                        $helpBlock.remove();
                     }
+                }
+                $(el).bsSuggest('init', {
+                    effectiveFieldsAlias: effectiveFieldsAlias,
+                    clearable: true,
+                    showHeader: true,
+                    showBtn: false,
+                    allowNoKeyword: true,
+                    getDataMethod: "url",
+                    delayUntilKeyup: true,
+                    url: url,
+                    idField: "id",
+                    keyField: keyField,
+                    fnAdjustAjaxParam: fnAdjustAjaxParam,
+                    processData: processData
                 }).on('onDataRequestSuccess', function (e, result) {
                     // console.log('onDataRequestSuccess: ', result);
                 }).on('onSetSelectValue', function (e, keyword, data) {
@@ -143,11 +187,18 @@ define([
             this.$editDialog.modal('show');
             this.$editDialog.modal({backdrop: 'static', keyboard: false});
             this.$editDialogPanel.empty().html(this.getDialogContent(row));
+            this.fileUpload = new FileUploadView();
             this.$suggestWrap = this.$editDialogPanel.find('.test');
             this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
             row.id && (this.setBssuggestValue(row));
             this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
+            $('.accessTime').datepicker({
+                language: 'zh-CN',
+                autoclose: true,
+                todayHighlight: true,
+                format: 'yyyy-mm-dd'
+            });
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
@@ -342,16 +393,6 @@ define([
             if (this.isOpertor(row) && (row.workFlow.currentNode.nodeIndex != 0)) {
                 this.$editDialog.find("#btn-ok,#btn-no").show();
             }
-            // this.$editDialog.find('.status-button').hide();
-            // if(this.isCreater(row)){
-            //    if(row.role == "current"){
-            //         this.$editDialog.find("#btn-draft,#btn-submit").show();
-            //    }
-            // }else{
-            //      if(row.role == "current"){
-            //         this.$editDialog.find("#btn-ok,#btn-on").show();
-            //     }
-            // }
         },
         isCreater: function (row) {
             return window.ownerPeopleId == row.creatorId;

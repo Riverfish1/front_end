@@ -33,12 +33,12 @@ define([
 
                 // 文件接收服务端。
                 server: QUERY.FILE_UPLOAD,
-                formData: {"path": "sendNoticeRecord"},
+                formData: {"path": "createRepay"},
 
                 // 选择文件的按钮。可选。
                 // 内部根据当前运行是创建，可能是input元素，也可能是flash.
                 pick: '#filePicker',
-                fileNumLimit: 1,
+                fileNumLimit: 10,
                 fileSizeLimit: 200*1024,
                 fileSingleSizeLimit: 200*1024
             });
@@ -73,6 +73,7 @@ define([
                 $('#' + file.id).find('p.state').text('已上传');
                 if (response.success == true) {
                     $('#filePath').val(response.data[0]);
+                    $('.filePathWrap').html(response.data[0]).show();
                 }
             });
 

@@ -81,7 +81,7 @@ body {
     width: 120px;
     margin: 0 auto;
     color: #222;
-    text-align: center;
+    text-align: left;
 }
 
 .nav-sidebar > .active > a {
@@ -546,7 +546,7 @@ input:-webkit-autofill {
 }
 
 .nav-sub a {
-    padding-left: 100px !important;
+    padding-left: 86px !important;
     color: #222;
 }
 
@@ -1004,3 +1004,5 @@ input:-webkit-autofill {
 /*差旅报销管理*/
 .w666{width: 666px;}
 .w405{width: 405px;}
+/*人员、部门自动提示下拉列表*/
+.suggestValidAssist{ width: 0; height: 0; opacity: 0;  }
