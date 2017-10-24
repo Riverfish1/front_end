@@ -1,17 +1,17 @@
 <div class="loading" style="width:95%"></div>
 
 <form class="form-horizontal" id="detailForm" >
-    <input type="hidden" name="id" class="submit-assist" value="<%= id %>" id="id" />
+    <input type="hidden" name="id" class="id detail-assist" value="<%= id %>" />
     <div class="form-group">
         <label class="col-md-4 control-label">费用日期</label>
         <div class="col-md-8">
-            <input type="text" name="startTime"  class="form-control accessTime" value="<%= startTime %>">
+            <input type="text" name="startTime"  class="form-control detail-assist accessTime" value="<%= startTime %>">
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-4 control-label">报销类型</label>
         <div class="col-md-8">
-            <select name="type"  class="form-control submit-assist">
+            <select name="type"  class="form-control detail-assist">
                 <option value="0">借款单</option>
                 <option value="1">经费报销单</option>
                 <option value="2">差旅报销单</option>
@@ -22,13 +22,13 @@
     <div class="form-group">
         <label class="col-md-4 control-label">费用说明</label>
         <div class="col-md-8">
-            <textarea  name="detail" class="form-control" value="<%= detail %>"><%= detail %></textarea>
+            <textarea  name="detail" class="form-control detail-assist" value="<%= detail %>"><%= detail %></textarea>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-4 control-label">报销金额</label>
         <div class="col-md-8">
-            <input type="text" name="fee"  class="form-control accessTime" value="<%= fee %>">
+            <input type="text" name="fee"  class="form-control detail-assist" value="<%= fee %>">
         </div>
     </div>
 </form>

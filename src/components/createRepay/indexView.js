@@ -1,12 +1,13 @@
 /*global define*/
 define([
     './tableView',
+    './detailTableView',
     'text!./index.html',
     'text!./dialog.html',
     'text!./detail.html',
     './upload',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, detailTpl, FileUploadView, QUERY) {
+], function (BaseTableView, DetailTableView, tpl, dialogTpl, detailTpl, FileUploadView, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
@@ -19,11 +20,14 @@ define([
             'click #btn-submit': 'submitForm',
             'click #btn-ok': 'submitForm',
             'click #btn-no': 'submitForm',
-            'click #btn_detail_add': 'addDetailOne'
+            // 报销明细
+            'click #btn_detail_add': 'addDetailOne',
+            'click .btn-save': 'createDetailData'
         },
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
+            this.detailData = [];
         },
         render: function () {
             //main view
@@ -205,6 +209,8 @@ define([
                 format: 'yyyy-mm-dd'
             });
             this.$editForm = this.$el.find('#editForm');
+            this.detailTable = new DetailTableView();
+            this.detailTable.render(this.detailData);
             this.initSubmitForm();
         },
         addDetailOne: function (row) {
@@ -452,6 +458,22 @@ define([
                         "contentType": 'application/json'
                     })
                 }
+            }
+        },
+        createDetailData: function () {
+            if (this.$detailForm.valid()) {
+                var that = this;
+                var $inputs = that.$editForm.find('.detail-assist');
+                var id = this.$detailForm.find('.id').val();
+                var obj = {};
+                //保存
+               $.each($inputs, function (k, el) {
+                   var $el = $(el), val = $el.val(), name = $el.attr('name');
+                   obj[name] = val;
+               })
+                //id自增
+                obj.id = this.detailData.length + 1;
+                this.detailData.push(obj);
             }
         },
         showOrhideBtn: function (row) {

@@ -168,16 +168,23 @@
     </div>
     <!--报销名细-->
     <div class="row">
-        <button id="btn_detail_add" type="button" class="btn btn-default">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-        </button>
-    </div>
-    <div class="row">
-        <div class="repayTableWrap"></div>
-    </div>
-    <div class="row">
-        <div class="detailTitle">明细</div>
-        <div class="detailTotal"> <span><%= filePath %></span></div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">报销明细</label>
+                <div class="col-md-8">
+                    <button id="btn_detail_add" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                    </button>
+                    <div class="row">
+                        <div class="repayTableWrap"></div>
+                    </div>
+                    <div class="row">
+                        <div class="detailTitle">明细</div>
+                        <div class="detailTotal"> <span><%= filePath %></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!--审批意见-->
     <div class="row">
