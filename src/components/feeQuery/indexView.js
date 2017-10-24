@@ -211,7 +211,7 @@ define([
             });
         },
         query: function () {
-            if (this.$editForm.valid()) {
+            if (this.$searchForm.valid()) {
                 var $inputs = this.$searchForm.find('.search-assist');
                 var param = {};
                 //保存
@@ -223,7 +223,7 @@ define([
                         param[name] = val;
                     }
                 })
-                this.table.refresh(param);
+                this.table.refresh({query: param});
             }
         }
     });
