@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#assets',
+        el: '#equip',
         initialize: function () {
         },
         showLoading: function () {
@@ -17,12 +17,13 @@ define(['../../common/query/index'], function (QUERY) {
             this.init();
         },
         refresh: function (params) {
+            console.log(params);
             this.$el.bootstrapTable('refresh', params);
         },
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.ASSETS_CATEGORY_QUERY, //请求后台的URL（*）
+                url: QUERY.ASSETS_WARN_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,21 +48,63 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'assetClass',
+                    field: 'assetNo',
+                    title: '资产编号',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetName',
+                    title: '资产名称',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetClassName',
                     title: '资产类别',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'oper',
-                    title: '操作',
+                    field: 'assetUsedName',
+                    title: '使用人',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetDepartmentName',
+                    title: '使用部门',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetBuyDate',
+                    title: '购入时间',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetExpireDate',
+                    title: '到期时间',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'assetDeadline',
+                    title: '使用期限（月）',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'operatorName',
+                    title: '登记人',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'status',
+                    title: '资产状态',
                     align: 'center',
                     valign: "middle",
-                    events: this.operateEvents,
-                    formatter: function (value, row, index) {
-                        var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
-                        return str;
+                    formatter: function (value) {
+                        switch (value) {
+                            case 0: return '闲置';
+                            case 1: return '已领用';
+                            case 2: return '维修中';
+                            case 3: return '已报废';
+                            default: return '-';
+                        }
                     }
                 }],
                 responseHandler: function(res) {
@@ -78,14 +121,6 @@ define(['../../common/query/index'], function (QUERY) {
                 pageSize: params.limit
             };
             return temp;
-        },
-        operateEvents: {
-            'click .btn-edit': function (e, value, row, index) {
-                Backbone.trigger('itemEdit', row);
-            },
-            'click .btn-delete': function (e, value, row, index) {
-                Backbone.trigger('itemDelete', row);
-            }
         }
     });
     return Table;

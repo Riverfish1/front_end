@@ -25,16 +25,78 @@ define([
             e.preventDefault();
             $(e.target).removeClass('btn-default').addClass('btn-primary');
             $(e.target).siblings().removeClass('btn-primary').addClass('btn-default');
-            this.table.refresh({
-                url: QUERY.ASSETS_RECORD_QUERY_BY_ASSET_CLASS
+            this.table.refreshOptions({
+                url: QUERY.ASSETS_RECORD_QUERY_BY_ASSET_CLASS,
+                columns: [{
+                    field: 'assetClass',
+                    title: '资产类别',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'a',
+                    title: '在用',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'b',
+                    title: '闲置',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'c',
+                    title: '借出',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'd',
+                    title: '已报废',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'e',
+                    title: '合计',
+                    align: 'center',
+                    valign: "middle"
+                }]
             });
         },
         queryByDep: function (e) {
             $(e.target).siblings().removeClass('btn-primary').addClass('btn-default');
             $(e.target).removeClass('btn-default').addClass('btn-primary');
             e.preventDefault();
-            this.table.refresh({
-                url: QUERY.ASSETS_RECORD_QUERY_BY_DEPARTMENT
+            this.table.refreshOptions({
+                url: QUERY.ASSETS_RECORD_QUERY_BY_DEPARTMENT,
+                columns: [{
+                    field: 'departmentName',
+                    title: '部门',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'a',
+                    title: '在用',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'b',
+                    title: '闲置',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'c',
+                    title: '借出',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'd',
+                    title: '已报废',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'e',
+                    title: '合计',
+                    align: 'center',
+                    valign: "middle"
+                }]
             });
         }
     });
