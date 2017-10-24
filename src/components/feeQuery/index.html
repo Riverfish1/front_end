@@ -1,0 +1,68 @@
+<div class="row">
+    <form class="form-horizontal" id="searchForm">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">员工姓名</label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input type="text" class="form-control test">
+                            <input type="text" name="creatorId" class="creatorId search-assist" value="<%= creatorId %>">
+                            <!--<input type="hidden"  name="targetName">-->
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                </ul>
+                            </div>
+                        </div>
+                        <!--<input type="text" name="creatorName"  class="form-control" value="<%= creatorName %>">-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">报销类型</label>
+                    <div class="col-md-8">
+                        <select name="type"  class="form-control search-assist">
+                            <option value="0">借款单</option>
+                            <option value="1">经费报销单</option>
+                            <option value="2">差旅报销单</option>
+                            <option value="3">还款单</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">起始日期</label>
+                    <div class="col-md-8">
+                        <input type="text" name="startTime"  class="form-control accessTime search-assist" value="<%= startTime %>">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">结束日期</label>
+                    <div class="col-md-8">
+                        <input type="text" name="endTime"  class="form-control accessTime search-assist" value="<%= endTime %>">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="toolbar" class="btn-group">
+                <button id="btn_search" type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>查询
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row">
+    <table id="tableWrap"></table>
+</div>
+
