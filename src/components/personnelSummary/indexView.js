@@ -107,7 +107,7 @@ define([
             };
             ncjwUtil.postData(QUERY.ASSESS_SUMMARY_QUERY_BY_USER_ID, JSON.stringify(paramMap[index]), function (res) {
                 if (res.success) {
-                    var list = {list: res.data[0]};
+                    var list = {list: res.data ? res.data[0] : []};
                     self.$tabContent.empty().html(self.getDetailContent(list));
                 } else {
                     self.$tabContent.empty().html("暂无数据！");

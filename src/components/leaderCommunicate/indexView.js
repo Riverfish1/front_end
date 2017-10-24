@@ -34,7 +34,7 @@ define([
             };
             ncjwUtil.postData(QUERY.ASSESS_SUMMARY_QUERY, JSON.stringify(params), function(res) {
                 if (res.success) {
-                    var list = res.data && res.data[0];
+                    var list = res.data ? res.data[0] : [];
                     that.initState.list = list;
                     that.$el.empty().html(that.template(that.initState));
                 } else {
