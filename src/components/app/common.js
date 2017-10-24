@@ -148,6 +148,13 @@ var ncjwUtil = (function ($) {
     var timeTurn = function (d, fmt) {
         return formatTime(d, fmt);
     };
+    // 2016-10-9 12:00:00 转换成时间戮
+    var parseTimestamp = function(time) {
+        var normalTime = time.replace(/\-/g, '/');
+        var timeStamp = new Date(normalTime) ? new Date(normalTime).getTime() : '';
+        timeStamp = timeStamp ? timeStamp : '';
+        return timeStamp;
+    }
 
     //获取当前的日期 2012-05-03 星期三
     var getCurrentDate = function (d) {
@@ -202,6 +209,7 @@ var ncjwUtil = (function ($) {
         postData: postData,
         setFiledsValue: setFiledsValue,
         timeTurn: timeTurn,
+        parseTimestamp: parseTimestamp,
         getDate: getDate,
         getCurrentDate: getCurrentDate,
         sellectAll: sellectAll,

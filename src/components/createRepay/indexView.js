@@ -27,6 +27,8 @@ define([
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
+            Backbone.off('itemDetailEdit').on('itemDetailEdit', this.addDetailOne, this);
+            Backbone.off('itemDetailDelete').on('itemDetailDelete', this.delDetailOne, this);
             this.detailData = [];
         },
         render: function () {
@@ -224,7 +226,7 @@ define([
             };
             var row = row.id ? row : initState;
             if (row.id) {
-
+                row.startTime = ncjwUtil.timeTurn(row.startTime, 'yyyy-MM-dd');
             }
             this.$detailDialog.modal('show');
             this.$detailDialog.modal({backdrop: 'static', keyboard: false});
@@ -266,6 +268,29 @@ define([
                                 ncjwUtil.showError("删除失败：" + res.errorMsg);
                             }
                         })
+                    }
+                }
+
+            });
+        },
+        delDetailOne: function (row) {
+            var that = this;
+            bootbox.confirm({
+                buttons: {
+                    confirm: {
+                        label: '确认'
+                    },
+                    cancel: {
+                        label: '取消'
+                    }
+                },
+                title: "温馨提示",
+                message: '执行删除后将无法恢复，确定继续吗？',
+                callback: function (result) {
+                    if (result) {
+                        ncjwUtil.showInfo('删除成功');
+                        that.detailData = that.delDetailData(row);
+                        that.detailTable.load(that.detailData);
                     }
                 }
 
@@ -462,19 +487,50 @@ define([
         },
         createDetailData: function () {
             if (this.$detailForm.valid()) {
-                var that = this;
-                var $inputs = that.$editForm.find('.detail-assist');
+                var $inputs = this.$detailForm.find('.detail-assist');
                 var id = this.$detailForm.find('.id').val();
                 var obj = {};
                 //保存
                $.each($inputs, function (k, el) {
                    var $el = $(el), val = $el.val(), name = $el.attr('name');
-                   obj[name] = val;
+                   if(name == "startTime"){
+                       obj[name] = ncjwUtil.parseTimestamp(val);
+                   }else{
+                       obj[name] = val;
+                   }
                })
-                //id自增
-                obj.id = this.detailData.length + 1;
-                this.detailData.push(obj);
+
+                if(id){
+                    //更新
+                    this.detailData = this.updateDetailData(obj);
+                }else{
+                    //id自增-新增
+                    obj.id = this.detailData.length + 1;
+                    this.detailData.push(obj);
+                }
+                this.$detailDialog.modal('hide');
+                this.detailTable.load(this.detailData);
             }
+        },
+        delDetailData: function (row) {
+            var d = [];
+            $.each(this.detailData, function (k, v) {
+                if(row.id != v.id){
+                    d.push(v);
+                }
+            })
+            return d;
+        },
+        updateDetailData: function (obj) {
+            var d = [];
+            $.each(this.detailData, function (k, v) {
+                if(obj.id == v.id){
+                    d.push($.extend({}, v, obj));
+                }else{
+                    d.push(v);
+                }
+            })
+            return d;
         },
         showOrhideBtn: function (row) {
             this.$editDialog.find('.status-button').hide();

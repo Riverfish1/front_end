@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#repayTableWrap',
+        el: '.repayTableWrap',
         initialize: function () {
         },
         showLoading: function () {
@@ -24,6 +24,12 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable('load', data);
         },
         init: function (data) {
+            var typeMap = {
+                "0": "借款单",
+                "1": "经费报销单",
+                "2": "差旅报销单",
+                "3": "还款单"
+            }
             this.$el.bootstrapTable({
                 data: data,
                 // toolbar: '#toolbar', //工具按钮用哪个容器
@@ -39,17 +45,24 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'id',
                     title: '序号',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+
                 }, {
                     field: 'startTime',
                     title: '费用日期',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : '';
+                    }
                 }, {
                     field: 'type',
                     title: '报销类型',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return typeMap[value];
+                    }
                 }, {
                     field: 'detail',
                     title: '使用说明',
@@ -71,8 +84,8 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
+                        str += '<p class="grid-command-p btn-detailEdit">修改</p>';
+                        str += '<p class="grid-command-p btn-detailDelete">删除</p>';
                         return str;
                     }
                 }],
@@ -94,11 +107,11 @@ define(['../../common/query/index'], function (QUERY) {
         //     return temp;
         // },
         operateEvents: {
-            'click .btn-edit': function (e, value, row, index) {
-                Backbone.trigger('itemEdit', row);
+            'click .btn-detailEdit': function (e, value, row, index) {
+                Backbone.trigger('itemDetailEdit', row);
             },
-            'click .btn-delete': function (e, value, row, index) {
-                Backbone.trigger('itemDelete', row);
+            'click .btn-detailDelete': function (e, value, row, index) {
+                Backbone.trigger('itemDetailDelete', row);
             }
         }
     });
