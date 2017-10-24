@@ -18,26 +18,10 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">申请人</label>
+                <label class="col-md-4 control-label">创建人</label>
                 <div class="col-md-8">
-                    <div class="input-group">
-                        <% if(id){ %>
-                        <input type="text" class="form-control test">
-                        <% } %>
-                        <% if(!id){ %>
-                        <input type="text" disabled class="form-control test">
-                        <% } %>
-                        <input type="text" name="creatorId" class="creatorId suggestValidAssist" value="<%= creatorId %>">
-                        <!--<input type="hidden"  name="targetName">-->
-                        <div class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                            </ul>
-                        </div>
-                    </div>
-                    <!--<input type="text" name="creatorName"  class="form-control" value="<%= creatorName %>">-->
+                    <input type="text" name="creatorName" disabled class="form-control" value="<%= creatorName %>">
+                    <input type="hidden" name="creatorId"  class="form-control submit-assist" value="<%= creatorId %>">
                 </div>
             </div>
         </div>
@@ -47,18 +31,8 @@
                     <span class="flow-title">所属部门</span>
                 </label>
                 <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="text" class="form-control department test">
-                        <input type="text" name="departmentIds" class="departmentIds" value="<%= departmentIds %>">
-                        <!--<input type="hidden"  name="departmentName">-->
-                        <div class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                            </ul>
-                        </div>
-                    </div>
+                    <input type="hidden" name="departmentId"  class="form-control" value="<%= departmentId %>">
+                    <input type="text" name="departmentName" disabled class="form-control submit-assist" value="<%= departmentName %>">
                 </div>
             </div>
         </div>
@@ -66,7 +40,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">申请日期</label>
                 <div class="col-md-8">
-                    <input type="text" name="gmtCreate"  class="form-control accessTime" value="<%= gmtCreate %>">
+                    <input type="text" name="gmtCreate" disabled class="form-control" value="<%= gmtCreate %>">
                 </div>
             </div>
         </div>
@@ -104,7 +78,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">起始日期</label>
                 <div class="col-md-8">
-                    <input type="text" name="gmtCreate"  class="form-control accessTime" value="<%= gmtCreate %>">
+                    <input type="text" name="startTime"  class="form-control startTime accessTime" value="<%= startTime %>">
                 </div>
             </div>
         </div>
@@ -112,7 +86,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">结束日期</label>
                 <div class="col-md-8">
-                    <input type="text" name="gmtCreate"  class="form-control accessTime" value="<%= gmtCreate %>">
+                    <input type="text" name="endTime"  class="form-control endTime accessTime" value="<%= endTime %>">
                 </div>
             </div>
         </div>

@@ -162,8 +162,12 @@ define([
             //id不存在与staus==3都是新建；
             var initState = {
                 departmentIds: '',
-                gmtCreate: '',
+                gmtCreate: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'),
+                startTime: '',
+                endTime: '',
                 filePath: '',
+                departmentId: window.ownerDepartmentId,
+                departmentName: window.ownerDepartmentName,
                 creatorId: window.ownerPeopleId,
                 creatorName: window.ownerPeopleName,
                 currentOperatorId: window.ownerPeopleId,
@@ -305,6 +309,13 @@ define([
                     title: {
                         required: true
                     },
+                    startTime: {
+                        required: true
+                    },
+                    endTime: {
+                        required: true,
+                        dateRange: '.startTime'
+                    },
                     content: {
                         required: true
                     },
@@ -335,6 +346,11 @@ define([
                 },
                 messages: {
                     title: "请填写标题",
+                    startTime: "请选择起始日期",
+                    endTime: {
+                        required: "请选择结束日期",
+                        dateRange: '起始日期晚于结束日期'
+                    },
                     content: "请填写正文",
                     operator_valid1: "请选择接收人",
                     operator_valid2: "请选择接收人",

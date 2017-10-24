@@ -89,6 +89,14 @@ var ncjwUtil = (function ($) {
         _sendAjax(path, data, successCbk, options, 'post')
     };
 
+    //添加自定义验证规则
+    // 开始时间晚于结束时间
+    $.validator.methods.dateRange = function(value, element, param) {
+        var startDate = $(param).val();
+        var date1 = parseTimestamp(startDate);
+        var date2 = parseTimestamp(value);
+        return date1 <= date2;
+    };
     //验证信息
     $.extend($.validator.messages, {
         required: "必选字段",
