@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#record_peopleTypeRecord',
+        el: '#assets',
         initialize: function () {
         },
         showLoading: function () {
@@ -67,7 +67,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'assetDepartment',
+                    field: 'assetDepartmentName',
                     title: '使用部门',
                     align: 'center',
                     valign: "middle"
@@ -75,12 +75,18 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'assetBuyDate',
                     title: '购入时间',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
+                    }
                 }, {
                     field: 'assetExpireDate',
                     title: '到期时间',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
+                    }
                 }, {
                     field: 'assetDeadline',
                     title: '使用期限（月）',
@@ -115,6 +121,12 @@ define(['../../common/query/index'], function (QUERY) {
                         var str = '';
                         str += '<p class="grid-command-p btn-edit">修改</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
+                        if (row.status === 0) {
+                            str += '<p class="grid-command-p btn-receive">领用</p>';
+                            str += '<p class="grid-command-p btn-maintain">维修</p>';
+                            str += '<p class="grid-command-p btn-scrap">报废</p>';
+                            return str;
+                        }
                         return str;
                     }
                 }],
@@ -135,11 +147,20 @@ define(['../../common/query/index'], function (QUERY) {
         },
         operateEvents: {
             'click .btn-edit': function (e, value, row, index) {
-                Backbone.trigger('itemEdit', row);
+                Backbone.trigger('assetsEdit', row);
             },
             'click .btn-delete': function (e, value, row, index) {
-                Backbone.trigger('itemDelete', row);
-            }
+                Backbone.trigger('assetsDelete', row);
+            },
+            'click .btn-receive': function (e, value, row, index) {
+                Backbone.trigger('assetsReceive', row);
+            },
+            'click .btn-maintain': function (e, value, row, index) {
+                Backbone.trigger('assetsMaintain', row);
+            },
+            'click .btn-scrap': function (e, value, row, index) {
+                Backbone.trigger('assetsScrap', row);
+            },
         }
     });
     return Table;

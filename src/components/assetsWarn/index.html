@@ -1,29 +1,14 @@
 <div class="row">
-    <div id="toolbar" class="btn-group">
-        <button id="btn_add" type="button" class="btn btn-default">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-        </button>
+    <div id="toolbar">
+        <div class="form-inline" role="form">
+            <div class="form-group">
+                <span>到期时间： </span>
+                <input placeholder="请选择到期时间" type="text" name="assetExpireDate" class="form-control assetExpireDate" />
+            </div>
+            <button class="btn btn-default" id="submit">查询</button>
+        </div>
     </div>
 </div>
 <div class="row">
-    <table id="assets"></table>
-</div>
-
-<!--dialog-->
-<div class="modal fade bs-example-modal-lg" id="editDialog" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" style="width: 450px;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h5 class="modal-title" >人员类型登记</h5>
-            </div>
-            <div class="modal-body" >
-                <div id="editPanel"></div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-                <button id="submitBtn" class="btn btn-primary" onclick="">保存</button>
-            </div>
-        </div>
-    </div>
+    <table id="equip"></table>
 </div>

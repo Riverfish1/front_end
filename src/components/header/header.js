@@ -43,7 +43,7 @@ define([
             // }, {
             //     'contentType': 'application/json'
             // });
-            window.ownerPeopleId = 5;
+            window.ownerPeopleId = 4;
             window.ownerPeopleName = '张三疯';
 			Backbone.off('routeChange').on('routeChange', this.updateNavSideBar);
 			this.isFirst = true;

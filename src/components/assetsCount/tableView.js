@@ -16,8 +16,8 @@ define(['../../common/query/index'], function (QUERY) {
         render: function () {
             this.init();
         },
-        refresh: function (params) {
-            this.$el.bootstrapTable('refresh', params);
+        refreshOptions: function (options) {
+            this.$el.bootstrapTable('refreshOptions', options);
         },
         init: function () {
             var that = this;
@@ -47,8 +47,38 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
+                    field: 'assetClass',
+                    title: '资产类别',
+                    align: 'center',
+                    valign: "middle"
+                }, {
                     field: 'departmentName',
                     title: '部门',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'a',
+                    title: '在用',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'b',
+                    title: '闲置',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'c',
+                    title: '借出',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'd',
+                    title: '已报废',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'e',
+                    title: '合计',
                     align: 'center',
                     valign: "middle"
                 }],

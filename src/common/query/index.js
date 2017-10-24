@@ -188,9 +188,7 @@ define([], function () {
         ASSIGN_MANAGE_INSERT: '/api/assignManage/insert',
 
         // 资产
-        // 资产统计
-        ASSETS_COUNT_QUERY: '/api/assetsCount/query',
-        // 资产类别
+        // 资产类别管理
         ASSETS_CATEGORY_QUERY: '/api/assetClassRecord/query',
         ASSETS_CATEGORY_UPDATE: '/api/assetClassRecord/updateById',
         ASSETS_CATEGORY_DELETE: '/api/assetClassRecord/deleteById',
@@ -202,14 +200,16 @@ define([], function () {
         ASSETS_FILE_INSERT: '/api/fileRecord/insert',
         ASSETS_FILE_DOWNLOAD: '/api/fileRecord/download',
         // 资产登记
-        ASSETS_RECORD_INSERT: '/api/assetsRecord/insert',
-        ASSETS_RECORD_QUERY: '/api/assetsRecord/query',
-        ASSETS_RECORD_UPDATE: '/api/assetsRecord/updateById',
-        ASSETS_RECORD_DELETE: '/api/assetsRecord/deleteById',
+        ASSETS_RECORD_INSERT: '/api/assetRecord/insert',
+        ASSETS_RECORD_QUERY: '/api/assetRecord/query',
+        ASSETS_RECORD_UPDATE: '/api/assetRecord/updateById',
+        ASSETS_RECORD_DELETE: '/api/assetRecord/deleteById',
         // 资产统计-类别
-        ASSETS_RECORD_QUERY_BY_ASSET_CLASS: '/api/assetsRecord/queryByAssetClass',
+        ASSETS_RECORD_QUERY_BY_ASSET_CLASS: '/api/assetRecord/queryByAssetClass',
         // 资产统计-部门
-        ASSETS_RECORD_QUERY_BY_DEPARTMENT: '/api/assetsRecord/queryByDepartment',
+        ASSETS_RECORD_QUERY_BY_DEPARTMENT: '/api/assetRecord/queryByDepartment',
+        // 资产预警
+        ASSETS_WARN_QUERY: '/api/assetRecord/queryByExpireDate',
         // 资产维修
         ASSETS_MAINTAIN_INSERT: '/api/assetsMaintain/insert',
         ASSETS_MAINTAIN_QUERY: '/api/assetsMaintain/query',
@@ -225,11 +225,6 @@ define([], function () {
         ASSETS_SCRAP_QUERY: '/api/assetsScrap/query',
         ASSETS_SCRAP_UPDATE: '/api/assetsScrap/updateById',
         ASSETS_SCRAP_DELETE: '/api/assetsScrap/deleteById',
-        // 资产预警
-        ASSETS_WARN_INSERT: '/api/assetsRecord/insert',
-        ASSETS_WARN_QUERY: '/api/assetsRecord/query',
-        ASSETS_WARN_UPDATE: '/api/assetsRecord/updateById',
-        ASSETS_WARN_DELETE: '/api/assetsRecord/deleteById',
         // 单警装备
         // 入库
         EQUIP_IN_INSERT: '/api/equipIn/insert',

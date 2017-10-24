@@ -77,7 +77,6 @@ define([
             });
             this.initSubmitForm();
         },
-
         initSuggest: function () {
             var $data = [];
             $.each(this.$suggestWrap, function (k, el) {
