@@ -48,7 +48,7 @@ define(['../../common/query/index'], function (QUERY) {
                     valign: "middle",
                     width: '10%'
                 }, {
-                    field: 'startTime',
+                    field: 'time',
                     title: '费用日期',
                     align: 'center',
                     valign: "middle",
@@ -66,13 +66,13 @@ define(['../../common/query/index'], function (QUERY) {
                         return typeMap[value];
                     }
                 }, {
-                    field: 'detail',
+                    field: 'description',
                     title: '使用说明',
                     align: 'center',
                     width: '25%',
                     valign: "middle"
                 }, {
-                    field: 'fee',
+                    field: 'money',
                     title: '报销金额',
                     align: 'center',
                     width: '15%',

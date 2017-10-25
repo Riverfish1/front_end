@@ -24,7 +24,7 @@ define([
             'click #btn_detail_add': 'addDetailOne',
             'click .btn-save': 'createDetailData',
             //自动计算总天数
-            'change .endTime': 'getTotalDay',
+            'change .endTime': 'gettotalDays'
         },
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
@@ -46,8 +46,8 @@ define([
         },
         initSuggest: function () {
             $.each(this.$suggestWrap, function (k, el) {
-                var $el = $(el),effectiveFieldsAlias = '', url = '', keyField = '', fnAdjustAjaxParam = '', processData = '', onSetSelectValue = '';
-                if($el.hasClass('department')){
+                var $el = $(el), effectiveFieldsAlias = '', url = '', keyField = '', fnAdjustAjaxParam = '', processData = '', onSetSelectValue = '';
+                if ($el.hasClass('department')) {
                     effectiveFieldsAlias = {departmentName: "部门名称", id: "部门ID", parentName: "单位"};
                     url = QUERY.RECORD_DEPARTMENT_QUERY;
                     keyField = "departmentName";
@@ -76,11 +76,11 @@ define([
                         $operatorName.val(data.departmentName);
                         $helpBlock.remove();
                     }
-                }else{
+                } else {
                     effectiveFieldsAlias = {peopleName: "姓名", id: "ID", employeeNum: "工号"};
                     url = QUERY.FUZZY_QUERY;
                     keyField = "peopleName";
-                    fnAdjustAjaxParam =  function (keyword, opts) {
+                    fnAdjustAjaxParam = function (keyword, opts) {
                         return {
                             method: 'post',
                             data: JSON.stringify({
@@ -125,9 +125,9 @@ define([
                     // console.log('onDataRequestSuccess: ', result);
                 }).on('onSetSelectValue', function (e, keyword, data) {
                     var $row = $(e.target).parents('.row')
-                    var $operatorId = $row.find('input[name=operatorId]');
-                    var $operatorName = $row.find('input[name=operatorName]');
-                    var $validInput = $row.find('.operatorId');
+                    var $operatorId = $row.find('.suggest-assist-id');
+                    var $operatorName = $row.find('.suggest-assist-name');
+                    var $validInput = $row.find('.operator_valid');
                     var $helpBlock = $row.find('.help-block');
                     $validInput.val(data.id);
                     $operatorId.val(data.id);
@@ -163,43 +163,38 @@ define([
         addOne: function (row) {
             //id不存在与staus==3都是新建；
             var initState = {
-                departmentIds: '',
-                gmtCreate: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'),
-                startTime: '',
-                endTime: '',
-                totalDay: 0,
-                filePath: '',
-                departmentId: window.ownerDepartmentId,
-                departmentName: window.ownerDepartmentName,
+                id: '',
+                title: '',
+                type: '',
                 creatorId: window.ownerPeopleId,
                 creatorName: window.ownerPeopleName,
-                currentOperatorId: window.ownerPeopleId,
-                currentOperatorName: window.ownerPeopleName,
-                role: "current",
-                content: "",
-                title: "",
-                comment: "",
-                status: 10,
+                operatorId: '',
+                departmentId: window.ownerDepartmentId,
+                departmentName: window.ownerDepartmentName,
+                comment: '',
+                applyerId: '',
+                createTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'),
+                startTime: '',
+                endTime: '',
+                totalDays: 0,
+                reason: '',
+                filePath: '',
+                detailList: [],
                 workFlow: {
                     currentNode: {operatorId: window.ownerPeopleId, nodeName: '拟稿', operatorName: window.ownerPeopleName, nodeStatus: '0', comment: '', nodeIndex: '0'},
                     nodeList: [
                         {operatorId: window.ownerPeopleId, nodeName: '拟稿', operatorName: window.ownerPeopleName},
-                        {operatorId: "", nodeName: '领导审批', operatorName: ""},
-                        {operatorId: "", nodeName: '会签', operatorName: ""},
-                        {operatorId: "", nodeName: '审核', operatorName: ""},
-                        {operatorId: "", nodeName: '签发', operatorName: ""},
-                        {operatorId: "", nodeName: '印发', operatorName: ""},
-                        {operatorId: "", nodeName: '归档', operatorName: ""},
-                        {operatorId: "", nodeName: '承办', operatorName: ""}
+                        {operatorId: "", nodeName: '领导审批', operatorName: "", comment: ""},
+                        {operatorId: "", nodeName: '财务审批', operatorName: "", comment: ""}
                     ]
                 },
-                id: ''
-
+                currentNode: "拟稿"
             };
             var row = row.id ? row : initState;
             if (row.id) {
                 row.workFlow = JSON.parse(row.workflowData);
-                row.gmtCreate = ncjwUtil.timeTurn(row.gmtCreate);
+                row.createTime = ncjwUtil.timeTurn(row.createTime);
+                row.currentNode = row.workFlow.currentNode.nodeName;
             }
             this.showOrhideBtn(row);
             this.$editDialog.modal('show');
@@ -225,15 +220,15 @@ define([
         addDetailOne: function (row) {
             //id不存在与staus==3都是新建；
             var initState = {
-                id : "",
-                startTime: "",
+                id: "",
+                time: "",
                 type: "",
-                detail: "",
-                fee: ""
+                description: "",
+                money: ""
             };
             var row = row.id ? row : initState;
             if (row.id) {
-                row.startTime = ncjwUtil.timeTurn(row.startTime, 'yyyy-MM-dd');
+                row.time = ncjwUtil.timeTurn(row.startTime, 'yyyy-MM-dd');
             }
             this.$detailDialog.modal('show');
             this.$detailDialog.modal({backdrop: 'static', keyboard: false});
@@ -267,7 +262,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.WORK_SENDDOCUMENT_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.REPAY_CREATE_DELETE_BY_ID, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();
@@ -331,21 +326,9 @@ define([
                     operator_valid3: {
                         required: true
                     },
-                    operator_valid4: {
-                        required: true
-                    },
-                    operator_valid5: {
-                        required: true
-                    },
-                    operator_valid6: {
-                        required: true
-                    },
-                    operator_valid7: {
-                        required: true
-                    },
                     comment: {
                         required: true
-                    }
+                    },
                 },
                 messages: {
                     title: "请填写标题",
@@ -358,10 +341,6 @@ define([
                     operator_valid1: "请选择接收人",
                     operator_valid2: "请选择接收人",
                     operator_valid3: "请选择接收人",
-                    operator_valid4: "请选择接收人",
-                    operator_valid5: "请选择接收人",
-                    operator_valid6: "请选择接收人",
-                    operator_valid7: "请选择接收人",
                     comment: "请填写审核意见"
                 },
                 highlight: function (element) {
@@ -385,25 +364,27 @@ define([
                     title: {
                         required: true
                     },
-                    content: {
+                    time: {
                         required: true
                     },
-                    operator_valid1: {
+                    type: {
                         required: true
                     },
-                    operator_valid2: {
+
+                    description: {
                         required: true
                     },
-                    comment: {
-                        required: true
+                    money: {
+                        required: true,
+                        number: true
                     }
                 },
                 messages: {
                     title: "请填写标题",
-                    content: "请填写正文",
-                    operator_valid1: "请选择接收人",
-                    operator_valid2: "请选择接收人",
-                    comment: "请填写审核意见"
+                    time: "请填写费用日期",
+                    type: "请选择报销类型",
+                    description: "请填写使用说明",
+                    money: "请填写报销金额"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -422,10 +403,10 @@ define([
             //根据点击按钮-修改status隐藏域值；
             var id = $('#id').val();
             var urlMap = {
-                "0": id ? QUERY.WORK_SENDDOCUMENT_UPDATE : QUERY.WORK_SENDDOCUMENT_NEW,
-                "1": QUERY.WORK_SENDDOCUMENT_SUBMIT,
-                "2": QUERY.WORK_SENDDOCUMENT_AGREE,
-                "3": QUERY.WORK_SENDDOCUMENT_REJECT
+                "0": id ? QUERY.WORK_SENDDOCUMENT_UPDATE : QUERY.REPAY_CREATE_NEW,
+                // "1": QUERY.WORK_SENDDOCUMENT_SUBMIT,
+                "1": QUERY.REPAY_CREATE_AGREE,
+                "2": QUERY.REPAY_CREATE_REJECT
             }
             $status.val(index);
             //驳回状态-草稿或提交时，清空反馈意见+审批流程相关数据；
@@ -434,74 +415,79 @@ define([
                 var that = this;
                 var $inputs = that.$editForm.find('.submit-assist');
                 var id = $('#id').val();
-                var currentOperatorId = $('#currentOperatorId').val();
-                var comment = $('#comment').val();
+                var applyerId = $('.applyerId').val();
+                var currentNode = $('#currentNode').val();
+                var comment = currentNode == "领导审批" ? $('.leader').val() : $('.financer').val();
                 //保存
-                if (index == 0 || index == 1) {
-                    var params = {workFlow: {nodeList: []}};
+                if (index == 0) {
+                    var params = {workFlow: {nodeList: []}, detailList: that.detailData};
                     $.each($inputs, function (k, el) {
                         var node = {};
                         var $el = $(el), val = $el.val(), name = $el.attr('name');
                         if (name == "operatorId") {
                             node[name] = val;
-                            node.operatorName = $el.parents('.row').find('input[name=operatorName]').val();
+                            node.operatorName = $el.parents('.row').find('.suggest-assist-name').val();
                             node.nodeName = $el.parents('.row').find('.flow-title').html();
                             params.workFlow.nodeList.push(node);
                             // }else if(name == 'status' || name == "id"){
                         } else if (name == 'status') {
 
+                        } else if (name == 'filePath') {
+                            if(val){
+                                params[name] = val.split(',');
+                            }
                         } else {
                             params[name] = val;
                         }
                     })
-                    //提交也是创建人；
-                    if(index == 1){
-                        currentOperatorId = window.ownerPeopleId;
-                        comment = "";
-                    }
-                    var submitParams = {recordId: id, operatorId: currentOperatorId, comment: comment};
+                    // //提交也是创建人；
+                    // if (index == 1) {
+                    //     applyerId = window.ownerPeopleId;
+                    //     comment = "";
+                    // }
+                    // var submitParams = {recordId: id, operatorId: applyerId, comment: comment};
                 } else {
                     //提交也是创建人；
-                    if(index == 1){
-                        currentOperatorId = window.ownerPeopleId;
-                        comment = "";
-                    }
-                    var params = {recordId: id, operatorId: currentOperatorId, comment: comment};
+                    // if (index == 1 || index == 2) {
+                    // applyerId = window.ownerPeopleId;
+                    // comment = "";
+                    // }
+                    var params = {recordId: id, operatorId: applyerId, comment: comment};
                 }
 
-                if(index == 1){
-                    ncjwUtil.postData(urlMap[0], JSON.stringify(submitParams), function (res) {
-                        if (res.success) {
-                            ncjwUtil.postData(urlMap[index], JSON.stringify(params), function (res) {
-                                if (res.success) {
-                                    ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
-                                    that.$editDialog.modal('hide');
-                                    that.table.refresh();
-                                } else {
-                                    ncjwUtil.showError("保存失败：" + res.errorMsg);
-                                }
-                            }, {
-                                "contentType": 'application/json'
-                            })
-                        } else {
-                            ncjwUtil.showError("保存失败：" + res.errorMsg);
-                        }
-                    }, {
-                        "contentType": 'application/json'
-                    })
-                }else{
-                    ncjwUtil.postData(urlMap[index], JSON.stringify(params), function (res) {
-                        if (res.success) {
-                            ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
-                            that.$editDialog.modal('hide');
-                            that.table.refresh();
-                        } else {
-                            ncjwUtil.showError("保存失败：" + res.errorMsg);
-                        }
-                    }, {
-                        "contentType": 'application/json'
-                    })
-                }
+                // if (index == 1) {
+                //     ncjwUtil.postData(urlMap[0], JSON.stringify(submitParams), function (res) {
+                //         if (res.success) {
+                //             ncjwUtil.postData(urlMap[index], JSON.stringify(params), function (res) {
+                //                 if (res.success) {
+                //                     ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
+                //                     that.$editDialog.modal('hide');
+                //                     that.table.refresh();
+                //                 } else {
+                //                     ncjwUtil.showError("保存失败：" + res.errorMsg);
+                //                 }
+                //             }, {
+                //                 "contentType": 'application/json'
+                //             })
+                //         } else {
+                //             ncjwUtil.showError("保存失败：" + res.errorMsg);
+                //         }
+                //     }, {
+                //         "contentType": 'application/json'
+                //     })
+                // } else {
+                ncjwUtil.postData(urlMap[index], JSON.stringify(params), function (res) {
+                    if (res.success) {
+                        ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
+                        that.$editDialog.modal('hide');
+                        that.table.refresh();
+                    } else {
+                        ncjwUtil.showError("保存失败：" + res.errorMsg);
+                    }
+                }, {
+                    "contentType": 'application/json'
+                })
+                // }
             }
         },
         createDetailData: function () {
@@ -510,19 +496,19 @@ define([
                 var id = this.$detailForm.find('.id').val();
                 var obj = {};
                 //保存
-               $.each($inputs, function (k, el) {
-                   var $el = $(el), val = $el.val(), name = $el.attr('name');
-                   if(name == "startTime"){
-                       obj[name] = ncjwUtil.parseTimestamp(val);
-                   }else{
-                       obj[name] = val;
-                   }
-               })
+                $.each($inputs, function (k, el) {
+                    var $el = $(el), val = $el.val(), name = $el.attr('name');
+                    if (name == "time") {
+                        obj[name] = ncjwUtil.parseTimestamp(val);
+                    } else {
+                        obj[name] = val;
+                    }
+                })
 
-                if(id){
+                if (id) {
                     //更新
                     this.detailData = this.updateDetailData(obj);
-                }else{
+                } else {
                     //id自增-新增
                     obj.id = this.detailData.length + 1;
                     this.detailData.push(obj);
@@ -534,7 +520,7 @@ define([
         delDetailData: function (row) {
             var d = [];
             $.each(this.detailData, function (k, v) {
-                if(row.id != v.id){
+                if (row.id != v.id) {
                     d.push(v);
                 }
             })
@@ -543,9 +529,9 @@ define([
         updateDetailData: function (obj) {
             var d = [];
             $.each(this.detailData, function (k, v) {
-                if(obj.id == v.id){
+                if (obj.id == v.id) {
                     d.push($.extend({}, v, obj));
-                }else{
+                } else {
                     d.push(v);
                 }
             })
@@ -566,18 +552,18 @@ define([
             return window.ownerPeopleId == row.creatorId;
         },
         isOpertor: function (row) {
-            return window.ownerPeopleId == row.currentOperatorId;
+            return window.ownerPeopleId == row.applyerId;
         },
-        getTotalDay: function (e) {
+        gettotalDays: function (e) {
             var $startTime = this.$editForm.find('.startTime');
             var $endTime = this.$editForm.find('.endTime');
-            var $totalDay = this.$editForm.find('.totalDay');
+            var $totalDays = this.$editForm.find('.totalDays');
             var stVal = ncjwUtil.parseTimestamp($startTime.val());
             var edVal = ncjwUtil.parseTimestamp($endTime.val());
-            if(stVal <= edVal){
-                $totalDay.val(ncjwUtil.getDateRange($startTime.val(), $endTime.val()));
-            }else{
-                $totalDay.val(0);
+            if (stVal <= edVal) {
+                $totalDays.val(ncjwUtil.getDateRange($startTime.val(), $endTime.val()));
+            } else {
+                $totalDays.val(0);
             }
         }
     });

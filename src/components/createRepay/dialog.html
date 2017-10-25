@@ -2,7 +2,7 @@
 
 <form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
     <input type="hidden" name="id" class="submit-assist" value="<%= id %>" id="id" />
-    <input type="hidden" name="status" class="submit-assist" value="<%= status %>" id="status" />
+    <input type="hidden"  value="<%= currentNode %>" id="currentNode" />
     <!--基本信息-->
     <div class="row">
         <div class="col-md-4">
@@ -30,8 +30,8 @@
                     <span class="flow-title">所属部门</span>
                 </label>
                 <div class="col-md-8">
-                    <input type="hidden" name="departmentId"  class="form-control" value="<%= departmentId %>">
-                    <input type="text" name="departmentName" disabled class="form-control submit-assist" value="<%= departmentName %>">
+                    <input type="hidden" name="departmentId"  class="form-control submit-assist" value="<%= departmentId %>">
+                    <input type="text" name="departmentName" disabled class="form-control " value="<%= departmentName %>">
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">申请日期</label>
                 <div class="col-md-8">
-                    <input type="text" name="gmtCreate" disabled class="form-control" value="<%= gmtCreate %>">
+                    <input type="text" name="createTime" disabled class="form-control submit-assist" value="<%= createTime %>">
                 </div>
             </div>
         </div>
@@ -51,14 +51,15 @@
                 <label class="col-md-4 control-label">报销人员</label>
                 <div class="col-md-8">
                     <div class="input-group">
-                        <% if(id){ %>
+                        <% if(!id){ %>
                         <input type="text" class="form-control test">
                         <% } %>
-                        <% if(!id){ %>
+                        <% if(id){ %>
                         <input type="text" disabled class="form-control test">
                         <% } %>
-                        <input type="text" name="creatorId" class="creatorId suggestValidAssist" value="<%= creatorId %>">
-                        <!--<input type="hidden"  name="targetName">-->
+                        <input type="text" name="operator_valid1" class="operator_valid suggestValidAssist" value="<%= applyerId %>">
+                        <input type="hidden" name="applyerId" class="suggest-assist-id submit-assist">
+                        <input type="hidden" name="applyerName"  class="suggest-assist-name">
                         <div class="input-group-btn">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 <span class="caret"></span>
@@ -67,7 +68,6 @@
                             </ul>
                         </div>
                     </div>
-                    <!--<input type="text" name="creatorName"  class="form-control w666" value="<%= creatorName %>">-->
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">起始日期</label>
                 <div class="col-md-8">
-                    <input type="text" name="startTime"  class="form-control startTime accessTime" value="<%= startTime %>">
+                    <input type="text" name="startTime"  class="form-control startTime accessTime submit-assist" value="<%= startTime %>">
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">结束日期</label>
                 <div class="col-md-8">
-                    <input type="text" name="endTime"  class="form-control endTime accessTime" value="<%= endTime %>">
+                    <input type="text" name="endTime"  class="form-control endTime accessTime submit-assist" value="<%= endTime %>">
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">总天数</label>
                 <div class="col-md-8">
-                    <input type="text" name="totalDay" disabled class="form-control totalDay submit-assist" value="<%= totalDay %>">
+                    <input type="text" name="totalDays" disabled class="form-control totalDays submit-assist" value="<%= totalDays %>">
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
                 <% if(!id){ %>
                 <div class="col-md-8">
                     <div id="uploaderWrap"></div>
-                    <input type="hidden" name="filePath" id="filePath" class="form-control" value="<%= filePath %>">
+                    <input type="hidden" name="filePath" id="filePath" class="form-control submit-assist" value="<%= filePath %>">
                 </div>
                 <% } %>
                 <% if(id){ %>
@@ -121,7 +121,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">报销类型</label>
                 <div class="col-md-8">
-                    <select name="title"  class="form-control submit-assist">
+                    <select name="type"  class="form-control submit-assist">
                         <option value="0">借款单</option>
                         <option value="1">经费报销单</option>
                         <option value="2">差旅报销单</option>
@@ -134,7 +134,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">申请理由</label>
                 <div class="col-md-8">
-                    <input type="text" name="title" class="form-control submit-assist w405" value="<%= title %>">
+                    <input type="text" name="reason" class="form-control submit-assist w405" value="<%= reason %>">
                 </div>
             </div>
         </div>
@@ -163,17 +163,18 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">审批领导</label>
+                <label class="col-md-4 control-label flow-title">领导审批</label>
                 <div class="col-md-8">
                     <div class="input-group">
-                        <% if(id){ %>
+                        <% if(!id){ %>
                         <input type="text" class="form-control test">
                         <% } %>
-                        <% if(!id){ %>
+                        <% if(id){ %>
                         <input type="text" disabled class="form-control test">
                         <% } %>
-                        <input type="text" name="creatorId" class="creatorId suggestValidAssist" value="<%= creatorId %>">
-                        <!--<input type="hidden"  name="targetName">-->
+                        <input type="text" name="operator_valid2" class="operator_valid suggestValidAssist" value="<%= operatorId %>">
+                        <input type="hidden" name="operatorId" class="suggest-assist-id submit-assist">
+                        <input type="hidden" name="operatorName"  class="suggest-assist-name">
                         <div class="input-group-btn">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 <span class="caret"></span>
@@ -192,7 +193,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">领导意见</label>
                 <div class="col-md-8">
-                    <textarea  name="content" class="form-control w666" value="<%= content %>"><%= content %></textarea>
+                    <textarea  name="comment" class="form-control leader w666" value="<%= comment %>"><%= comment %></textarea>
                 </div>
             </div>
         </div>
@@ -200,17 +201,18 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">审批账务</label>
+                <label class="col-md-4 control-label flow-title">账务审批</label>
                 <div class="col-md-8">
                     <div class="input-group">
-                        <% if(id){ %>
+                        <% if(!id){ %>
                         <input type="text" class="form-control test">
                         <% } %>
-                        <% if(!id){ %>
+                        <% if(id){ %>
                         <input type="text" disabled class="form-control test">
                         <% } %>
-                        <input type="text" name="creatorId" class="creatorId suggestValidAssist" value="<%= creatorId %>">
-                        <!--<input type="hidden"  name="targetName">-->
+                        <input type="text" name="operator_valid3" class="operator_valid suggestValidAssist" value="<%= operatorId %>">
+                        <input type="hidden" name="operatorId" class="suggest-assist-id submit-assist">
+                        <input type="hidden" name="operatorName"  class="suggest-assist-name">
                         <div class="input-group-btn">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 <span class="caret"></span>
@@ -219,7 +221,6 @@
                             </ul>
                         </div>
                     </div>
-                    <!--<input type="text" name="creatorName"  class="form-control w666" value="<%= creatorName %>">-->
                 </div>
             </div>
         </div>
@@ -229,7 +230,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">账务意见</label>
                 <div class="col-md-8">
-                    <textarea  name="content" class="form-control w666" value="<%= content %>"><%= content %></textarea>
+                    <textarea  name="comment" class="form-control financer  w666" value="<%= comment %>"><%= comment %></textarea>
                 </div>
             </div>
         </div>

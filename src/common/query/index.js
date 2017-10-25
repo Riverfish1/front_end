@@ -264,6 +264,15 @@ define([], function () {
         STORE_MNG_QUERY: '/api/storeMng/query',
         STORE_MNG_UPDATE: '/api/storeMng/updateById',
         STORE_MNG_DELETE: '/api/storeMng/deleteById',
+        // 差旅报销管理
+        REPAY_CREATE_NEW: '/api/reimbursement/new',
+        REPAY_CREATE_AGREE: '/api/reimbursement/agree',
+        REPAY_CREATE_REJECT: '/api/reimbursement/reject',
+        REPAY_CREATE_QUERYMYREIM: '/api/reimbursement/queryMyReim',
+        REPAY_CREATE_QUERYNEEDPROCESS: '/api/reimbursement/queryNeedProcess',
+        REPAY_CREATE_QUERY: '/api/reimbursement/query',
+        REPAY_CREATE_DELETE_BY_ID: '/api/reimbursement/deleteById',
+
 
         // 正则
         TEL_REG: /(^(13\d|15[^4,\D]|17[13678]|18\d)\d{8}|170[^346,\D]\d{7})$/,
