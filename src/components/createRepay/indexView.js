@@ -22,7 +22,9 @@ define([
             'click #btn-no': 'submitForm',
             // 报销明细
             'click #btn_detail_add': 'addDetailOne',
-            'click .btn-save': 'createDetailData'
+            'click .btn-save': 'createDetailData',
+            //自动计算总天数
+            'change .endTime': 'getTotalDay',
         },
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
@@ -165,6 +167,7 @@ define([
                 gmtCreate: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'),
                 startTime: '',
                 endTime: '',
+                totalDay: 0,
                 filePath: '',
                 departmentId: window.ownerDepartmentId,
                 departmentName: window.ownerDepartmentName,
@@ -564,6 +567,18 @@ define([
         },
         isOpertor: function (row) {
             return window.ownerPeopleId == row.currentOperatorId;
+        },
+        getTotalDay: function (e) {
+            var $startTime = this.$editForm.find('.startTime');
+            var $endTime = this.$editForm.find('.endTime');
+            var $totalDay = this.$editForm.find('.totalDay');
+            var stVal = ncjwUtil.parseTimestamp($startTime.val());
+            var edVal = ncjwUtil.parseTimestamp($endTime.val());
+            if(stVal <= edVal){
+                $totalDay.val(ncjwUtil.getDateRange($startTime.val(), $endTime.val()));
+            }else{
+                $totalDay.val(0);
+            }
         }
     });
     return View;

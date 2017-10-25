@@ -3,7 +3,6 @@
 <form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
     <input type="hidden" name="id" class="submit-assist" value="<%= id %>" id="id" />
     <input type="hidden" name="status" class="submit-assist" value="<%= status %>" id="status" />
-    <input type="hidden" name="creatorId" class="submit-assist" value="<%= creatorId %>" id="creatorId" />
     <!--基本信息-->
     <div class="row">
         <div class="col-md-4">
@@ -94,7 +93,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">总天数</label>
                 <div class="col-md-8">
-                    <input type="text" name="title" class="form-control submit-assist" value="<%= title %>">
+                    <input type="text" name="totalDay" disabled class="form-control totalDay submit-assist" value="<%= totalDay %>">
                 </div>
             </div>
         </div>
@@ -149,7 +148,7 @@
                     <button id="btn_detail_add" type="button" class="btn btn-default">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
                     </button>
-                    <div class="tableWrap w405">
+                    <div class="tableWrap w666">
                         <div class="repayTableWrap"></div>
                     </div>
                     <div class="row">

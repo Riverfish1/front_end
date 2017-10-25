@@ -46,12 +46,13 @@ define(['../../common/query/index'], function (QUERY) {
                     title: '序号',
                     align: 'center',
                     valign: "middle",
-
+                    width: '10%'
                 }, {
                     field: 'startTime',
                     title: '费用日期',
                     align: 'center',
                     valign: "middle",
+                    width: '20%',
                     formatter: function (value, row) {
                         return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : '';
                     }
@@ -60,6 +61,7 @@ define(['../../common/query/index'], function (QUERY) {
                     title: '报销类型',
                     align: 'center',
                     valign: "middle",
+                    width: '15%',
                     formatter: function (value, row) {
                         return typeMap[value];
                     }
@@ -67,11 +69,13 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'detail',
                     title: '使用说明',
                     align: 'center',
+                    width: '25%',
                     valign: "middle"
                 }, {
                     field: 'fee',
                     title: '报销金额',
                     align: 'center',
+                    width: '15%',
                     valign: "middle",
                     formatter: function (value, row) {
                         return value;
@@ -81,6 +85,7 @@ define(['../../common/query/index'], function (QUERY) {
                     title: '操作',
                     align: 'center',
                     valign: "middle",
+                    width: '15%',
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
