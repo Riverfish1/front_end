@@ -158,36 +158,21 @@ define([
                     title: {
                         required: true
                     },
-                    content: {
-                        required: true
+                    startTime: {
+                        // required: true
                     },
-                    operator_valid1: {
-                        required: true
+                    endTime: {
+                        // required: true,
+                        dateRange: '.startTime'
                     },
-                    operator_valid2: {
-                        required: true
-                    },
-                    operator_valid3: {
-                        required: true
-                    },
-                    operator_valid4: {
-                        required: true
-                    },
-                    operator_valid5: {
-                        required: true
-                    },
-                    operator_valid6: {
-                        required: true
-                    },
-                    operator_valid7: {
-                        required: true
-                    },
-                    comment: {
-                        required: true
-                    }
                 },
                 messages: {
                     title: "请填写标题",
+                    startTime: "请选择起始日期",
+                    endTime: {
+                        required: "请选择结束日期",
+                        dateRange: '起始日期晚于结束日期'
+                    },
                     content: "请填写正文",
                     operator_valid1: "请选择接收人",
                     operator_valid2: "请选择接收人",

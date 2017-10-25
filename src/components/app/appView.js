@@ -13,6 +13,8 @@ define([
 		initialize: function () {
 			window.ownerPeopleId = 4;
 			window.ownerPeopleName = "张三";
+			window.ownerDepartmentId = 13;
+			window.ownerDepartmentName = "吃饭速度部";
 			// this.$header = $('#header');
 			this.$footer = $('#footer');
 			// this.$sidebar = $('#sidebar');

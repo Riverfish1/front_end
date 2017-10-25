@@ -89,6 +89,14 @@ var ncjwUtil = (function ($) {
         _sendAjax(path, data, successCbk, options, 'post')
     };
 
+    //添加自定义验证规则
+    // 开始时间晚于结束时间
+    $.validator.methods.dateRange = function(value, element, param) {
+        var startDate = $(param).val();
+        var date1 = parseTimestamp(startDate);
+        var date2 = parseTimestamp(value);
+        return date1 <= date2;
+    };
     //验证信息
     $.extend($.validator.messages, {
         required: "必选字段",
@@ -161,7 +169,12 @@ var ncjwUtil = (function ($) {
         var d = d ? new Date(d) : new Date();
         return timeTurn(d.getTime(), 'yyyy-MM-dd') + "&nbsp;&nbsp;星期" + "日一二三四五六".charAt(d.getDay())
     }
-
+    //获取两个日期之间有多少天 ->参考 https://zhidao.baidu.com/question/2014936690274521028.html
+    var getDateRange = function (startTime, endTime) {
+        var st = parseTimestamp(startTime);
+        var ed = parseTimestamp(endTime);
+        return (ed-st)/ 1000 / 60 / 60 / 24;
+    }
     //填充form数据
     var setFiledsValue = function (parentEle, obj) {
         for (var i in obj) {
@@ -210,6 +223,7 @@ var ncjwUtil = (function ($) {
         setFiledsValue: setFiledsValue,
         timeTurn: timeTurn,
         parseTimestamp: parseTimestamp,
+        getDateRange: getDateRange,
         getDate: getDate,
         getCurrentDate: getCurrentDate,
         sellectAll: sellectAll,

@@ -21,7 +21,7 @@ define(['../../common/query/index'], function (QUERY) {
         },
         init: function () {
             this.$el.bootstrapTable({
-                url: QUERY.WORK_SENDDOCUMENT_QUERY_BY_ID, //请求后台的URL（*）
+                url: QUERY.REPAY_CREATE_QUERYMYREIM, //请求后台的URL（*）
                 method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -51,12 +51,12 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'creatorName',
+                    field: 'type',
                     title: '报销类型',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'gmtCreate',
+                    field: 'createTime',
                     title: '金额',
                     align: 'center',
                     valign: "middle",
@@ -64,7 +64,7 @@ define(['../../common/query/index'], function (QUERY) {
                         return value;
                     }
                 }, {
-                    field: 'gmtCreate',
+                    field: 'createTime',
                     title: '接收日期',
                     align: 'center',
                     valign: "middle",
@@ -72,7 +72,7 @@ define(['../../common/query/index'], function (QUERY) {
                         return value ? ncjwUtil.timeTurn(value) : "";
                     }
                 }, {
-                    field: 'gmtCreate',
+                    field: 'createTime',
                     title: '创建日期',
                     align: 'center',
                     valign: "middle",
@@ -88,7 +88,7 @@ define(['../../common/query/index'], function (QUERY) {
                         return value ? JSON.parse(value).currentNode.nodeName : '';
                     }
                 }, {
-                    field: 'gmtCreate',
+                    field: 'createTime',
                     title: '创建人',
                     align: 'center',
                     valign: "middle"
@@ -110,7 +110,7 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        if(row.creatorId != row.currentOperatorId){
+                        if(row.creatorId != row.applyerId){
                             str += '<p class="grid-command-p btn-edit">查看</p>';
                         }else{
                             str += '<p class="grid-command-p btn-edit">处理</p>';

@@ -21,6 +21,7 @@ define([
                 $list = $('#fileList'),
                 $btn = $('#ctlBtn'),
                 state = 'pending',
+                fileList = [],
                 uploader;
 
             uploader = WebUploader.create({
@@ -72,7 +73,8 @@ define([
             uploader.on('uploadSuccess', function (file, response) {
                 $('#' + file.id).find('p.state').text('已上传');
                 if (response.success == true) {
-                    $('#filePath').val(response.data[0]);
+                    fileList.push(response.data[0])
+                    $('#filePath').val(fileList.join(","));
                     $('.filePathWrap').html(response.data[0]).show();
                 }
             });
