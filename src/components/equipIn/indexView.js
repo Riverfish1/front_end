@@ -146,15 +146,11 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    goods: {
-                        required: true
-                    },
                     storeTime: {
                         required: true
                     }
                 },
                 messages: {
-                    goods: "请输入装备",
                     storeTime: "请选择日期"
                 },
                 highlight: function (element) {
@@ -182,6 +178,10 @@ define([
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.EQUIP_IN_UPDATE : QUERY.EQUIP_IN_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
+                        if (res.data && !res.data[0]) {
+                            ncjwUtil.showError(res.tips);
+                            return;
+                        }
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
                         that.table.refresh();

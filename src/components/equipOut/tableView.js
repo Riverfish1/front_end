@@ -67,14 +67,6 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'storeTime',
-                    title: '出库日期',
-                    align: 'center',
-                    valign: "middle",
-                    formatter: function (value) {
-                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
-                    }
-                }, {
                     field: 'departmentName',
                     title: '领用部门',
                     align: 'center',
@@ -118,7 +110,7 @@ define(['../../common/query/index'], function (QUERY) {
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data && res.data[0]
+                        "rows": res.data ? res.data[0] : []
                     }
                 }
             });

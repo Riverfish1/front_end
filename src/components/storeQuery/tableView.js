@@ -17,7 +17,6 @@ define(['../../common/query/index'], function (QUERY) {
             this.init();
         },
         refresh: function (params) {
-            console.log(params);
             this.$el.bootstrapTable('refresh', params);
         },
         init: function () {
@@ -76,7 +75,7 @@ define(['../../common/query/index'], function (QUERY) {
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data && res.data[0]
+                        "rows": res.data ? res.data[0] : []
                     }
                 }
             });

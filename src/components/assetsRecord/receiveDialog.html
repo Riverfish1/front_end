@@ -1,0 +1,51 @@
+<div class="loading" style="width:95%"></div>
+
+<form class="form-horizontal" id="assetReceiveEditForm">
+    <input type="hidden" name="assetId" value="<%= assetId %>" id="id" />
+    <div class="form-group">
+        <label class="col-md-3 control-label">领用单号：</label>
+        <div class="col-md-9">
+            <span style="border: none" class="form-control">提交后自动生成</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">领用人：</label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input class="form-control test" type="text" id="receiveName" name="receiveName" value="<%= receiveName %>">
+                <div class="input-group-btn">
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">领用使用部门：</label>
+        <div class="col-md-9">
+            <select class="form-control" name="receiveDepartmentId" value="<%= receiveDepartmentId %>">
+                <% $.each(departmentList, function(i, n) { %>
+                    <option value="<%= n.id %>"><%= n.departmentName %></option>
+                <% }); %>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">领用处理人</label>
+        <div class="col-md-9">
+            <span class="form-control" style="border: none"><%= window.ownerPeopleName %></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">领用时间：</label>
+        <div class="col-md-9">
+            <input type="text" name="receiveDate" class="form-control receiveDate" value="<%= receiveDate %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">说明：</label>
+        <div class="col-md-9">
+            <input type="text" name="remark" class="form-control" value="<%= remark %>">
+        </div>
+    </div>
+</form>

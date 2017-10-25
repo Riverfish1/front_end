@@ -50,7 +50,10 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'assetName',
                     title: '资产名称',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return row.assetRecordDO && row.assetRecordDO.assetName;
+                    }
                 }, {
                     field: 'scrapNo',
                     title: '报废单编号',
@@ -67,7 +70,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function (value) {
-                        return ncjwUtil.tiemTurn(value, 'yyyy/mm/dd');
+                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
                     }
                 }, {
                     field: 'remark',
@@ -82,15 +85,14 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
+                        str += '<p class="grid-command-p btn-store">还原入库</p>';
                         return str;
                     }
                 }],
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data && res.data[0]
+                        "rows": res.data ? res.data[0] : []
                     }
                 }
             });
@@ -103,11 +105,8 @@ define(['../../common/query/index'], function (QUERY) {
             return temp;
         },
         operateEvents: {
-            'click .btn-edit': function (e, value, row, index) {
-                Backbone.trigger('itemEdit', row);
-            },
-            'click .btn-delete': function (e, value, row, index) {
-                Backbone.trigger('itemDelete', row);
+            'click .btn-store': function (e, value, row, index) {
+                Backbone.trigger('itemStore', row);
             }
         }
     });

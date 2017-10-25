@@ -50,7 +50,10 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'assetName',
                     title: '资产名称',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return row.assetRecordDO && row.assetRecordDO.assetName;
+                    }
                 }, {
                     field: 'maintainNo',
                     title: '维修单编号',
@@ -72,13 +75,24 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function (value) {
-                        return ncjwUtil.tiemTurn(value, 'yyyy/mm/dd');
+                        return ncjwUtil.timeTurn(value, 'yyyy/mm/dd');
                     }
                 }, {
                     field: 'remark',
                     title: '维修内容',
                     align: 'center',
                     valign: "middle"
+                }, {
+                    field: 'status',
+                    title: '维修状态',
+                    align: 'center',
+                    valign: "middle",
+                    formatter: function (value) {
+                        switch (value) {
+                            case 0: return '维修中';
+                            case 1: return '维修已完成';
+                        }
+                    }
                 }, {
                     field: 'oper',
                     title: '操作',
@@ -87,15 +101,14 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
+                        if (row.status === 0) str += '<p class="grid-command-p btn-edit">完成维修</p>';
                         return str;
                     }
                 }],
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data && res.data[0]
+                        "rows": res.data ? res.data[0] : []
                     }
                 }
             });
@@ -110,9 +123,6 @@ define(['../../common/query/index'], function (QUERY) {
         operateEvents: {
             'click .btn-edit': function (e, value, row, index) {
                 Backbone.trigger('itemEdit', row);
-            },
-            'click .btn-delete': function (e, value, row, index) {
-                Backbone.trigger('itemDelete', row);
             }
         }
     });

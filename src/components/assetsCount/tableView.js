@@ -47,45 +47,43 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'assetClass',
-                    title: '资产类别',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'departmentName',
-                    title: '部门',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'a',
-                    title: '在用',
-                    align: 'center',
-                    valign: "middle"
-                }, {
                     field: 'b',
                     title: '闲置',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        if (row.statusName === '闲置') {
+                            return row.count;
+                        }
+                        return 0;
+                    }
                 }, {
                     field: 'c',
-                    title: '借出',
+                    title: '在用',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        if (row.statusName === '在用') {
+                            return row.count;
+                        }
+                        return 0;
+                    }
                 }, {
                     field: 'd',
                     title: '已报废',
                     align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'e',
-                    title: '合计',
-                    align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        if (row.statusName === '已报废') {
+                            return row.count;
+                        }
+                        return 0;
+                    }
                 }],
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data && res.data[0]
+                        "rows": res.data ? res.data[0] : []
                     }
                 }
             });

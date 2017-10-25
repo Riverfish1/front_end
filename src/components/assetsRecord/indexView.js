@@ -2,9 +2,12 @@
 define([
     './tableView',
     'text!./index.html',
+    'text!./receiveDialog.html',
+    'text!./scrapDialog.html',
+    'text!./maintainDialog.html',
     'text!./dialog.html',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, QUERY) {
+], function (BaseTableView, tpl, receiveDialog, scrapDialog, maintainDialog, dialogTpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
@@ -20,11 +23,36 @@ define([
             assetClassList: [],
             departmentList: []
         },
+        receiveInitialData: {
+            receiveName: '',
+            receiveDepartmentId: '',
+            receiveDate: '',
+            remark: '',
+            assetId: '',
+            departmentList: []
+        },
+        scrapInitialData: {
+            scrapDate: '',
+            assetId: '',
+            remark: ''
+        },
+        maintainInitialData: {
+            maintainDate: '',
+            maintainName: '',
+            assetId: '',
+            remark: ''
+        },
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
+        getMaintainDialogContent: _.template(maintainDialog),
+        getReceiveDialogContent: _.template(receiveDialog),
+        getScrapDialogContent: _.template(scrapDialog),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
-            'click #submitBtn': 'submitForm'
+            'click #assetSubmitBtn': 'submitForm',
+            'click #assetReceiveSubmitBtn': 'receiveSubmitForm',
+            'click #assetMaintainSubmitBtn': 'maintainSubmitForm',
+            'click #assetScrapSubmitBtn': 'scrapSubmitForm'
         },
         initialize: function () {
             Backbone.off('assetsEdit').on('assetsEdit', this.addOne, this);
@@ -33,9 +61,181 @@ define([
             Backbone.off('assetsMaintain').on('assetsMaintain', this.maintainAsset, this);
             Backbone.off('assetsScrap').on('assetsScrap', this.scrapAsset, this);
         },
-        receiveAsset: function (row) {},
-        maintainAsset: function (row) {},
-        scrapAsset: function (row) {},
+        receiveAsset: function (row) {
+            this.receiveInitialData.departmentList = this.initialData.departmentList;
+            this.receiveInitialData.assetId = row.id;
+            this.$assetsReceiveDialog.modal('show');
+            this.$assetsReceiveDialog.modal({backdrop: 'static', keyboard: false});
+            this.$assetsReceiveDialogPanel.empty().html(this.getReceiveDialogContent(this.receiveInitialData));
+            this.$suggestWrap = this.$assetsReceiveDialogPanel.find('.test');
+            this.initSuggest();
+            $('.receiveDate').datepicker({
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+            this.$assetReceiveEditForm = this.$assetsReceiveDialog.find('#assetReceiveEditForm');
+            this.$assetReceiveEditForm.validate({
+                errorElement: 'span',
+                errorClass: 'help-block',
+                focusInvalid: true,
+                rules: {
+                    typeName: {
+                        required: true
+                    }
+                },
+                messages: {
+                    typeName: "请输入名称"
+                },
+                highlight: function (element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                success: function (label) {
+                    label.closest('.form-group').removeClass('has-error');
+                    label.remove();
+                },
+                errorPlacement: function (error, element) {
+                    element.parent('div').append(error);
+                }
+            });
+        },
+        receiveSubmitForm: function () {
+            if(this.$assetReceiveEditForm.valid()){
+                var that = this;
+                var data = this.$assetReceiveEditForm.serialize();
+                data = decodeURIComponent(data, true);
+                var datas = serializeJSON(data);
+                var JSONData = JSON.parse(datas);
+                ncjwUtil.postData(QUERY.ASSETS_RECEIVE_INSERT, JSON.stringify(JSONData), function (res) {
+                    if (res.success) {
+                        ncjwUtil.showInfo('领用资产成功！');
+                        that.$assetsReceiveDialog.modal('hide');
+                        that.table.refresh();
+                    } else {
+                        ncjwUtil.showError("保存失败：" + res.errorMsg);
+                    }
+                }, {
+                    "contentType": 'application/json'
+                })
+            }
+        },
+        maintainAsset: function (row) {
+            this.maintainInitialData.assetId = row.id;
+            this.$assetsMaintainDialog.modal('show');
+            this.$assetsMaintainDialog.modal({backdrop: 'static', keyboard: false});
+            this.$assetsMaintainDialogPanel.empty().html(this.getMaintainDialogContent(this.maintainInitialData));
+            this.$suggestWrap = this.$assetsMaintainDialogPanel.find('.test');
+            this.initSuggest();
+            $('.maintainDate').datepicker({
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+            this.$assetMaintainEditForm = this.$assetsMaintainDialog.find('#assetMaintainEditForm');
+            this.$assetMaintainEditForm.validate({
+                errorElement: 'span',
+                errorClass: 'help-block',
+                focusInvalid: true,
+                rules: {
+                    typeName: {
+                        required: true
+                    }
+                },
+                messages: {
+                    typeName: "请输入名称"
+                },
+                highlight: function (element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                success: function (label) {
+                    label.closest('.form-group').removeClass('has-error');
+                    label.remove();
+                },
+                errorPlacement: function (error, element) {
+                    element.parent('div').append(error);
+                }
+            });
+        },
+        maintainSubmitForm: function () {
+            if(this.$assetMaintainEditForm.valid()){
+                var that = this;
+                var data = this.$assetMaintainEditForm.serialize();
+                data = decodeURIComponent(data, true);
+                var datas = serializeJSON(data);
+                var JSONData = JSON.parse(datas);
+                ncjwUtil.postData(QUERY.ASSETS_MAINTAIN_INSERT, JSON.stringify(JSONData), function (res) {
+                    if (res.success) {
+                        ncjwUtil.showInfo('已在维修中！');
+                        that.$assetsMaintainDialog.modal('hide');
+                        that.table.refresh();
+                    } else {
+                        ncjwUtil.showError("保存失败：" + res.errorMsg);
+                    }
+                }, {
+                    "contentType": 'application/json'
+                })
+            }
+        },
+        scrapAsset: function (row) {
+            this.scrapInitialData.assetId = row.id;
+            this.$assetsScrapDialog.modal('show');
+            this.$assetsScrapDialog.modal({backdrop: 'static', keyboard: false});
+            this.$assetsScrapDialogPanel.empty().html(this.getScrapDialogContent(this.scrapInitialData));
+            this.$suggestWrap = this.$assetsScrapDialogPanel.find('.test');
+            this.initSuggest();
+            $('.scrapDate').datepicker({
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+            this.$assetScrapEditForm = this.$assetsScrapDialog.find('#assetScrapEditForm');
+            this.$assetScrapEditForm.validate({
+                errorElement: 'span',
+                errorClass: 'help-block',
+                focusInvalid: true,
+                rules: {
+                    typeName: {
+                        required: true
+                    }
+                },
+                messages: {
+                    typeName: "请输入名称"
+                },
+                highlight: function (element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                success: function (label) {
+                    label.closest('.form-group').removeClass('has-error');
+                    label.remove();
+                },
+                errorPlacement: function (error, element) {
+                    element.parent('div').append(error);
+                }
+            });
+        },
+        scrapSubmitForm: function () {
+            if(this.$assetScrapEditForm.valid()){
+                var that = this;
+                var data = this.$assetScrapEditForm.serialize();
+                data = decodeURIComponent(data, true);
+                var datas = serializeJSON(data);
+                var JSONData = JSON.parse(datas);
+                ncjwUtil.postData(QUERY.ASSETS_SCRAP_INSERT, JSON.stringify(JSONData), function (res) {
+                    if (res.success) {
+                        ncjwUtil.showInfo('报废资产成功！');
+                        that.$assetsScrapDialog.modal('hide');
+                        that.table.refresh();
+                    } else {
+                        ncjwUtil.showError("保存失败：" + res.errorMsg);
+                    }
+                }, {
+                    "contentType": 'application/json'
+                })
+            }
+        },
         render: function () {
             var that = this;
             this.$el.empty().html(this.template());
@@ -73,9 +273,16 @@ define([
         },
         addOne: function (row) {
             var row = row.id ? row : this.initialData;
+            row.assetClassList = this.initialData.assetClassList;
+            row.departmentList = this.initialData.departmentList;
+            row.assetBuyDate = ncjwUtil.timeTurn(row.assetBuyDate, 'yyyy-MM-dd');
             this.$assetsDialog.modal('show');
             this.$assetsDialog.modal({backdrop: 'static', keyboard: false});
-            this.$assetsDialogPanel.empty().html(this.getDialogContent(row))
+            this.$assetsDialogPanel.empty().html(this.getDialogContent(row));
+            if (row.id) {
+                ncjwUtil.setFiledsValue(this.$assetsDialogPanel, {assetDepartmentId: row.assetDepartmentId});
+                ncjwUtil.setFiledsValue(this.$assetsDialogPanel, {assetClassId: row.assetClassId});
+            }
             this.$suggestWrap = this.$assetsDialogPanel.find('.test');
             this.initSuggest();
             $('.assetBuyDate').datepicker({
@@ -84,7 +291,7 @@ define([
                 autoclose: true,
                 todayHighlight: true
             });
-            this.$assetsEditForm = this.$assetsDialog.find('#assetsEditForm');
+            this.$assetEditForm = this.$assetsDialog.find('#assetEditForm');
             this.initSubmitForm();
         },
         initSuggest: function () {
@@ -151,7 +358,7 @@ define([
             });
         },
         initSubmitForm: function () {
-            this.$assetsEditForm.validate({
+            this.$assetEditForm.validate({
                 errorElement: 'span',
                 errorClass: 'help-block',
                 focusInvalid: true,
@@ -176,17 +383,13 @@ define([
             });
         },
         submitForm: function (e) {
-            if(this.$assetsEditForm.valid()){
+            if(this.$assetEditForm.valid()){
                 var that = this;
-                var $form = $(e.target).parents('.modal-content').find('#assetsEditForm');
+                var $form = $(e.target).parents('.modal-content').find('#assetEditForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
-                // JSONData.assetClassId = Number(JSONData.assetClassId);
-                // JSONData.assetDepartmentId = Number(JSONData.assetDepartmentId);
-                // JSONData.operatorId = Number(JSONData.operatorId);
-                // JSONData.assetDeadline = Number(JSONData.assetDeadline);
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.ASSETS_RECORD_UPDATE : QUERY.ASSETS_RECORD_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {

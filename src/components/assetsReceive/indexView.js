@@ -24,6 +24,11 @@ define([
         },
         delOne: function (row) {
             var that = this;
+            var params = {
+                id: row.id,
+                assetId: row.assetId,
+                status: 1
+            };
             bootbox.confirm({
                 buttons: {
                     confirm: {
@@ -34,16 +39,18 @@ define([
                     }
                 },
                 title: "温馨提示",
-                message: '确定退库吗',
+                message: '确定退库吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.ASSETS_RECEIVE_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.ASSETS_RECEIVE_UPDATE, JSON.stringify(params), function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('退库成功');
                                 that.table.refresh();
                             } else {
                                 ncjwUtil.showError("退库失败：" + res.errorMsg);
                             }
+                        }, {
+                            'contentType': 'application/json'
                         })
                     }
                 }

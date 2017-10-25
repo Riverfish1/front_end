@@ -67,7 +67,6 @@ define([
             // return new Date(calendar.getDate()).getTime();
         },
         calendarClick: function (e) {
-            console.log("this.formaterCalendarDate", calendar.getDate());
             this.calendarTableView.refresh(this.formaterCalendarDate());
         },
         getValue: function () {

@@ -73,22 +73,13 @@ define([
             return this;
         },
         addOne: function (row) {
-            var row = row.id ? row : this.initialData;
-            if (row.id) row.storeList = this.initialData.storeList;
-            if (row.id) row.handleTime = ncjwUtil.timeTurn(row.handleTime, 'yyyy-MM-dd');
-            if (row.id) row.storeTime = ncjwUtil.timeTurn(row.storeTime, 'yyyy-MM-dd');
+            var row = this.initialData;
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row));
             this.$suggestWrap = this.$officeDialogPanel.find('.test');
             this.initSuggest();
             this.$editForm = this.$el.find('#editForm');
-            $('#storeTime').datepicker({
-                language: 'zh-CN',
-                format: 'yyyy-mm-dd',
-                autoclose: true,
-                todayHighlight: true
-            });
             this.initSubmitForm();
         },
 
@@ -122,8 +113,8 @@ define([
                     idField: "id",
                     keyField: "name"
                 }).on('onSetSelectValue', function (e, keyword, data) {
-                    $('#pickerId').val(data.id);
-                    $('#pickerName').val(data.peopleName);
+                    $(el).siblings('input').val(data.id);
+                    $(el).val(data.peopleName);
                 });
             })
         },
@@ -161,15 +152,11 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    goods: {
-                        required: true
-                    },
                     storeTime: {
                         required: true
                     }
                 },
                 messages: {
-                    goods: "请输入装备",
                     storeTime: "请选择日期"
                 },
                 highlight: function (element) {
@@ -197,6 +184,10 @@ define([
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.EQUIP_OUT_UPDATE : QUERY.EQUIP_OUT_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
+                        if (res.data && !res.data[0]) {
+                            ncjwUtil.showError(res.tips);
+                            return;
+                        }
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
                         that.table.refresh();

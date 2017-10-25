@@ -205,26 +205,26 @@ define([], function () {
         ASSETS_RECORD_UPDATE: '/api/assetRecord/updateById',
         ASSETS_RECORD_DELETE: '/api/assetRecord/deleteById',
         // 资产统计-类别
-        ASSETS_RECORD_QUERY_BY_ASSET_CLASS: '/api/assetRecord/queryByAssetClass',
+        ASSETS_RECORD_QUERY_BY_ASSET_CLASS: '/api/assetRecord/queryByStatus',
         // 资产统计-部门
         ASSETS_RECORD_QUERY_BY_DEPARTMENT: '/api/assetRecord/queryByDepartment',
         // 资产预警
         ASSETS_WARN_QUERY: '/api/assetRecord/queryByExpireDate',
         // 资产维修
-        ASSETS_MAINTAIN_INSERT: '/api/assetsMaintain/insert',
-        ASSETS_MAINTAIN_QUERY: '/api/assetsMaintain/query',
-        ASSETS_MAINTAIN_UPDATE: '/api/assetsMaintain/updateById',
-        ASSETS_MAINTAIN_DELETE: '/api/assetsMaintain/deleteById',
+        ASSETS_MAINTAIN_INSERT: '/api/assetMaintain/insert',
+        ASSETS_MAINTAIN_QUERY: '/api/assetMaintain/query',
+        ASSETS_MAINTAIN_UPDATE: '/api/assetMaintain/updateById',
+        ASSETS_MAINTAIN_DELETE: '/api/assetMaintain/deleteById',
         // 资产领用
-        ASSETS_RECEIVE_INSERT: '/api/assetsReceive/insert',
-        ASSETS_RECEIVE_QUERY: '/api/assetsReceive/query',
-        ASSETS_RECEIVE_UPDATE: '/api/assetsReceive/updateById',
-        ASSETS_RECEIVE_DELETE: '/api/assetsReceive/deleteById',
+        ASSETS_RECEIVE_INSERT: '/api/assetReceive/insert',
+        ASSETS_RECEIVE_QUERY: '/api/assetReceive/query',
+        ASSETS_RECEIVE_UPDATE: '/api/assetReceive/updateById',
+        ASSETS_RECEIVE_DELETE: '/api/assetReceive/deleteById',
         // 资产报废
-        ASSETS_SCRAP_INSERT: '/api/assetsScrap/insert',
-        ASSETS_SCRAP_QUERY: '/api/assetsScrap/query',
-        ASSETS_SCRAP_UPDATE: '/api/assetsScrap/updateById',
-        ASSETS_SCRAP_DELETE: '/api/assetsScrap/deleteById',
+        ASSETS_SCRAP_INSERT: '/api/assetScrap/insert',
+        ASSETS_SCRAP_QUERY: '/api/assetScrap/query',
+        ASSETS_SCRAP_UPDATE: '/api/assetScrap/updateById',
+        ASSETS_SCRAP_DELETE: '/api/assetScrap/deleteById',
         // 单警装备
         // 入库
         EQUIP_IN_INSERT: '/api/equipIn/insert',
@@ -245,13 +245,13 @@ define([], function () {
         EQUIP_ALLOT_DELETE: '/api/equipAllot/deleteById',
         EQUIP_ALLOT_CONFIRM: '/api/equipAllot/confirm',
         // 库存盘点
-        STORE_STOCKING_QUERY: '/api/stockCheck/query',
-        STORE_STOCKING_INSERT: '/api/stockCheck/insert',
-        STORE_STOCKING_DELETE: '/api/stockCheck/deleteById',
-        STORE_STOCKING_COMPLETE: '/api/stockCheck/complete',
-        STORE_STOCKING_QUERY_BY_USER_ID: '/api/stockCheck/queryByUserId',
+        STORE_STOCKING_QUERY: '/api/storeCheck/query',
+        STORE_STOCKING_INSERT: '/api/storeCheck/insert',
+        STORE_STOCKING_DELETE: '/api/storeCheck/deleteById',
+        STORE_STOCKING_COMPLETE: '/api/storeCheck/complete',
+        STORE_STOCKING_QUERY_BY_USER_ID: '/api/storeCheck/queryByUserId',
         // 库存查询
-        STORE_QUERY: 'api/storeQuery/query',
+        STORE_QUERY: 'api/equipStore/query',
         // 装备查询
         // EQUIP_QUERY: '/api/equipQuery/query',
         // 装备管理

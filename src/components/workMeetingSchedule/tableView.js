@@ -89,7 +89,7 @@ define(['../../common/query/index'], function (QUERY) {
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data && res.data[0]
+                        "rows": res.data ? res.data[0] : []
                         // "rows": res.data && res.data
                     }
                 }

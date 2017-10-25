@@ -50,7 +50,10 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'assetName',
                     title: '资产名称',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return row.assetRecordDO && row.assetRecordDO.assetName;
+                    }
                 }, {
                     field: 'receiveNo',
                     title: '领用单号',
@@ -62,13 +65,8 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'receiveName',
+                    field: 'receiveDepartmentName',
                     title: '领用部门',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'receiveOperatorName',
-                    title: '处理人',
                     align: 'center',
                     valign: "middle"
                 }, {
@@ -77,7 +75,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function (value) {
-                        return ncjwUtil.tiemTurn(value, 'yyyy/mm/dd');
+                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
                     }
                 }, {
                     field: 'remark',
@@ -99,7 +97,7 @@ define(['../../common/query/index'], function (QUERY) {
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data && res.data[0]
+                        "rows": res.data ? res.data[0] : []
                     }
                 }
             });

@@ -17,7 +17,6 @@ define(['../../common/query/index'], function (QUERY) {
             this.init();
         },
         refresh: function (params) {
-            console.log(params);
             this.$el.bootstrapTable('refresh', params);
         },
         init: function () {
@@ -76,12 +75,18 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'assetBuyDate',
                     title: '购入时间',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
+                    }
                 }, {
                     field: 'assetExpireDate',
                     title: '到期时间',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
+                    }
                 }, {
                     field: 'assetDeadline',
                     title: '使用期限（月）',
@@ -110,7 +115,7 @@ define(['../../common/query/index'], function (QUERY) {
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data && res.data[0]
+                        "rows": res.data ? res.data[0] : []
                     }
                 }
             });

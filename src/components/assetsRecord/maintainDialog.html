@@ -1,0 +1,42 @@
+<div class="loading" style="width:95%"></div>
+
+<form class="form-horizontal" id="assetMaintainEditForm">
+    <input type="hidden" name="assetId" value="<%= assetId %>" id="id" />
+    <input type="hidden" name="operatorName" value="<%= window.ownerPeopleName %>">
+    <div class="form-group">
+        <label class="col-md-3 control-label">维修单编号：</label>
+        <div class="col-md-9">
+            <span style="border: none" class="form-control">提交后自动生成</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">报修人：</label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input class="form-control test" type="text" id="maintainName" name="maintainName" value="<%= maintainName %>">
+                <div class="input-group-btn">
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">处理人</label>
+        <div class="col-md-9">
+            <span class="form-control" style="border: none"><%= window.ownerPeopleName %></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">维修时间：</label>
+        <div class="col-md-9">
+            <input type="text" name="maintainDate" class="form-control maintainDate" value="<%= maintainDate %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">维修内容：</label>
+        <div class="col-md-9">
+            <input type="text" name="remark" class="form-control" value="<%= remark %>">
+        </div>
+    </div>
+</form>

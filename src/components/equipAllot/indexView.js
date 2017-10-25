@@ -161,15 +161,11 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    goods: {
-                        required: true
-                    },
                     storeTime: {
                         required: true
                     }
                 },
                 messages: {
-                    goods: "请输入装备",
                     storeTime: "请选择日期"
                 },
                 highlight: function (element) {

@@ -52,7 +52,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'goods',
+                    field: 'equipName',
                     title: '装备名称',
                     align: 'center',
                     valign: "middle"
@@ -108,7 +108,7 @@ define(['../../common/query/index'], function (QUERY) {
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data && res.data[0]
+                        "rows": res.data ? res.data[0] : []
                     }
                 }
             });

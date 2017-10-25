@@ -23,7 +23,7 @@ define(['../../common/query/index'], function (QUERY) {
             var that = this;
             this.$el.bootstrapTable({
                 url: QUERY.STORE_STOCKING_QUERY_BY_USER_ID, //请求后台的URL（*）
-                method: 'post', //请求方式（*）
+                method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
                 cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -92,7 +92,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function (value) {
-                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
+                        return value ? ncjwUtil.timeTurn(value, 'yyyy/MM/dd') : '盘点中';
                     }
                 }, {
                     field: 'oper',
@@ -116,7 +116,7 @@ define(['../../common/query/index'], function (QUERY) {
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
-                        "rows": res.data && res.data[0]
+                        "rows": res.data ? res.data[0] : []
                     }
                 }
             });

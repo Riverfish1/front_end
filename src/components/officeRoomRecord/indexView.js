@@ -59,7 +59,6 @@ define([
                     var list = {list: res.data[0]};
                     self.$officeAreaBelong.empty().html(self.getAreaContent(list));
                     if (row && row.id) {
-                        console.log(row.officeAreaName);
                         ncjwUtil.setFiledsValue(self.$officeDialogPanel, {officeAreaId: row.officeAreaId});
                         ncjwUtil.setFiledsValue(self.$officeDialogPanel, {officeRoomFunction: row.officeRoomFunction});
                     }

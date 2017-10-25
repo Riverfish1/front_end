@@ -5,7 +5,7 @@
     <div class="form-group">
         <label class="col-md-3 control-label">装备：</label>
         <div class="col-md-9">
-            <select class="form-control" name="goods">
+            <select class="form-control" name="equipId">
                 <% $.each(goodsList, function(i, n) {%>
                     <option value="<%= n.id %>"><%= n.name %></option>
                 <% }); %>
@@ -41,13 +41,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">出库时间：</label>
-        <div class="col-md-9">
-            <input type="text" name="storeTime" id="storeTime" class="form-control" value="<%= storeTime %>">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">经办人：</label>
+        <label class="col-md-3 control-label">创建人：</label>
         <div class="col-md-9">
             <span style="border: none" name="handlerName" class="form-control"><%= handlerName %></span>
         </div>
@@ -55,10 +49,11 @@
     <div class="form-group">
         <label class="col-md-3 control-label">领用部门：</label>
         <div class="col-md-9">
-            <input type="hidden" name="departmentId" value="<%= departmentId %>">
-            <select class="form-control departmentName" name="departmentName" value="<%= departmentName %>">
-                <% $.each(departmentList, function(i, n) { console.log(n.departmentName)%>
-                    <option value="<%= n.departmentName %>"><%= n.departmentName %></option>
+            <select class="form-control departmentId" name="departmentId" value="<%= departmentId %>">
+                <% $.each(departmentList, function(i, n) { %>
+                    <option value="<%= n.id %>">
+                        <%= n.departmentName %>
+                    </option>
                 <% }); %>
             </select>
         </div>
@@ -67,8 +62,21 @@
         <label class="col-md-3 control-label">领用人：</label>
         <div class="col-md-9">
             <div class="input-group">
-                <input type="hidden" name="pickerId" id="pickerId" name="pickerId" value="<%= pickerId %>">
-                <input class="form-control test" name="pickerName" type="text" id="pickerName" value="<%= pickerName %>">
+                <input type="hidden" name="pickerId" id="pickerId" name="pickerId">
+                <input class="form-control test" name="pickerName" type="text" id="pickerName">
+                <div class="input-group-btn">
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">经办人：</label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input type="hidden" name="handlerId" id="handlerId" >
+                <input class="form-control test" name="handlerName" type="text" id="handlerName">
                 <div class="input-group-btn">
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                     </ul>
