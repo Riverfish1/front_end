@@ -21,8 +21,8 @@ define(['../../common/query/index'], function (QUERY) {
         },
         init: function () {
             this.$el.bootstrapTable({
-                url: QUERY.WORK_SENDDOCUMENT_QUERY_BY_ID, //请求后台的URL（*）
-                method: 'get', //请求方式（*）
+                url: QUERY.REPAY_CREATE_QUERY, //请求后台的URL（*）
+                method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
                 cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -128,7 +128,10 @@ define(['../../common/query/index'], function (QUERY) {
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
-                id: window.ownerPeopleId
+                usePaged: true,
+                applyerId: window.ownerPeopleId
+
+                // id: window.ownerPeopleId
 
             };
             return temp;

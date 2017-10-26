@@ -307,6 +307,9 @@ define([
                     title: {
                         required: true
                     },
+                    type: {
+                        required: true
+                    },
                     startTime: {
                         required: true
                     },
@@ -314,7 +317,11 @@ define([
                         required: true,
                         dateRange: '.startTime'
                     },
-                    content: {
+                    // reason: {
+                    //     required: true
+                    // },
+
+                    filePath: {
                         required: true
                     },
                     operator_valid1: {
@@ -328,19 +335,20 @@ define([
                     },
                     comment: {
                         required: true
-                    },
+                    }
                 },
                 messages: {
                     title: "请填写标题",
+                    type: "请选择报销类型",
+                    // reason: "请填写申请理由",
                     startTime: "请选择起始日期",
                     endTime: {
                         required: "请选择结束日期",
                         dateRange: '起始日期晚于结束日期'
                     },
-                    content: "请填写正文",
-                    operator_valid1: "请选择接收人",
-                    operator_valid2: "请选择接收人",
-                    operator_valid3: "请选择接收人",
+                    operator_valid1: "请选择报销人员",
+                    operator_valid2: "请选择审批领导",
+                    operator_valid3: "请选择审批财务",
                     comment: "请填写审核意见"
                 },
                 highlight: function (element) {

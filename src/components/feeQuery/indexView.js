@@ -135,9 +135,9 @@ define([
                     // console.log('onDataRequestSuccess: ', result);
                 }).on('onSetSelectValue', function (e, keyword, data) {
                     var $row = $(e.target).parents('.row')
-                    var $operatorId = $row.find('input[name=operatorId]');
-                    var $operatorName = $row.find('input[name=operatorName]');
-                    var $validInput = $row.find('.operatorId');
+                    var $operatorId = $row.find('.suggest-assist-id');
+                    var $operatorName = $row.find('.suggest-assist-name');
+                    var $validInput = $row.find('.operator_valid');
                     var $helpBlock = $row.find('.help-block');
                     $validInput.val(data.id);
                     $operatorId.val(data.id);
@@ -158,13 +158,16 @@ define([
                     title: {
                         required: true
                     },
+                    applyerId: {
+                        required: true
+                    },
                     startTime: {
                         // required: true
                     },
                     endTime: {
                         // required: true,
                         dateRange: '.startTime'
-                    },
+                    }
                 },
                 messages: {
                     title: "请填写标题",
@@ -173,15 +176,7 @@ define([
                         required: "请选择结束日期",
                         dateRange: '起始日期晚于结束日期'
                     },
-                    content: "请填写正文",
-                    operator_valid1: "请选择接收人",
-                    operator_valid2: "请选择接收人",
-                    operator_valid3: "请选择接收人",
-                    operator_valid4: "请选择接收人",
-                    operator_valid5: "请选择接收人",
-                    operator_valid6: "请选择接收人",
-                    operator_valid7: "请选择接收人",
-                    comment: "请填写审核意见"
+                    applyerId: "请选择用户姓名"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
