@@ -70,7 +70,10 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'handleTime',
                     title: '办理时间',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
+                    }
                 }, {
                     field: 'handlerName',
                     title: '经办人',
@@ -80,7 +83,10 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'allocTime',
                     title: '调出时间',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
+                    }
                 }, {
                     field: 'pickerName',
                     title: '领用人',
@@ -89,11 +95,6 @@ define(['../../common/query/index'], function (QUERY) {
                 }, {
                     field: 'creatorName',
                     title: '创建者',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'remark',
-                    title: '入库备注',
                     align: 'center',
                     valign: "middle"
                 }, {

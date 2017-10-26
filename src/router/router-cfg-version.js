@@ -71,6 +71,12 @@ define(['backbone'], function (Backbone) {
         'assess/myAttendance': 'src/components/myAttendance/indexController.js',
         // 资产登记
         'support/assetsRecord': 'src/components/assetsRecord/indexController.js',
+        // 办公用品
+        'support/officeMaterials': 'src/components/officeMaterials/indexController.js',
+        // 应急物资
+        'support/emergencyMaterials': 'src/components/emergencyMaterials/indexController.js',
+        // 车辆管理
+        'support/assetsCar': 'src/components/assetsCar/indexController.js',
         // 资产领用
         'support/assetsReceive': 'src/components/assetsReceive/indexController.js',
         // 资产维修

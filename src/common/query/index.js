@@ -204,6 +204,16 @@ define([], function () {
         ASSETS_RECORD_QUERY: '/api/assetRecord/query',
         ASSETS_RECORD_UPDATE: '/api/assetRecord/updateById',
         ASSETS_RECORD_DELETE: '/api/assetRecord/deleteById',
+        // 应急物资
+        ASSETS_EMERGENCY_INSERT: '/api/emergencySupplies/insert',
+        ASSETS_EMERGENCY_QUERY: '/api/emergencySupplies/query',
+        ASSETS_EMERGENCY_UPDATE: '/api/emergencySupplies/updateById',
+        ASSETS_EMERGENCY_DELETE: '/api/emergencySupplies/deleteById',
+        // 资产管理
+        ASSETS_CAR_INSERT: '/api/car/insert',
+        ASSETS_CAR_QUERY: '/api/car/query',
+        ASSETS_CAR_UPDATE: '/api/car/updateById',
+        ASSETS_CAR_DELETE: '/api/car/deleteById',
         // 资产统计-类别
         ASSETS_RECORD_QUERY_BY_ASSET_CLASS: '/api/assetRecord/queryByStatus',
         // 资产统计-部门

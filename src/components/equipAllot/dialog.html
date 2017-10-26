@@ -57,9 +57,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">经办人：</label>
+        <label class="col-md-3 control-label">创建人：</label>
         <div class="col-md-9">
-            <span style="border: none" name="handlerName" class="form-control"><%= handlerName %></span>
+            <span style="border: none" name="creatorName" class="form-control"><%= window.ownerPeopleName %></span>
         </div>
     </div>
     <div class="form-group">
@@ -79,6 +79,19 @@
             <div class="input-group">
                 <input type="hidden" name="pickerId" id="pickerId" name="pickerId" value="<%= pickerId %>">
                 <input class="form-control test" name="pickerName" type="text" id="pickerName" value="<%= pickerName %>">
+                <div class="input-group-btn">
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">经办人：</label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input type="hidden" name="handlerId" id="handlerId" value="<%= handlerId %>">
+                <input class="form-control test" name="handlerName" type="text" id="handlerName" value="<%= handlerName %>">
                 <div class="input-group-btn">
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                     </ul>

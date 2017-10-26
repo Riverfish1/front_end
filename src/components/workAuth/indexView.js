@@ -91,7 +91,7 @@ define([
                     idField: "id",
                     keyField: "peopleName"
                 }).on('onSetSelectValue', function (e, keyword, data) {
-                    $(el).next('input').val(data.id);
+                    $(el).siblings('input').val(data.id);
                     $(el).val(data.peopleName);
                 });
             })

@@ -3,8 +3,9 @@ define([
     './tableView',
     'text!./index.html',
     'text!./dialog.html',
+    './upload.js',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, QUERY) {
+], function (BaseTableView, tpl, dialogTpl, FileUploadView, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
@@ -17,6 +18,7 @@ define([
             department: '',
             departmentList: [],
             time: '',
+            filePath: '',
             month: ''
         },
         template: _.template(tpl),
@@ -61,6 +63,7 @@ define([
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
             if (row.id) ncjwUtil.setFiledsValue(this.$officeDialogPanel, {department: row.department});
+            this.filePath = new FileUploadView();
             this.$suggestWrap = this.$officeDialogPanel.find('.test');
             this.initSuggest();
             this.$editForm = this.$el.find('#editForm');
@@ -137,18 +140,8 @@ define([
             });
         },
         downlaodFile: function (row) {
-            var params = {
-                id: row.id
-            };
-            ncjwUtil.postData(QUERY.ASSETS_FILE_DOWNLOAD, JSON.stringify(params), function (res) {
-                if (res.success) {
-                    ncjwUtil.showInfo('下载成功');
-                } else {
-                    ncjwUtil.showError('下载失败' + res.errorMsg);
-                }
-            }, {
-                'contentType': 'application/json'
-            });
+            var file = row.filePath;
+            if (file) window.open(file);
         },
         initSubmitForm: function () {
             this.$editForm.validate({

@@ -22,7 +22,7 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.ASSETS_RECORD_QUERY, //请求后台的URL（*）
+                url: QUERY.ASSETS_EMERGENCY_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,56 +47,33 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'assetNo',
-                    title: '资产编号',
+                    field: 'name',
+                    title: '名称',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'assetName',
-                    title: '资产名称',
+                    field: 'num',
+                    title: '数量',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'assetClassName',
-                    title: '资产类别',
+                    field: 'type',
+                    title: '类型',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'assetUsedName',
-                    title: '使用人',
+                    field: 'warning',
+                    title: '预警',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'assetDepartmentName',
-                    title: '使用部门',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'assetBuyDate',
+                    field: 'gmtCreate',
                     title: '购入时间',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value) {
                         return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
                     }
-                }, {
-                    field: 'assetExpireDate',
-                    title: '到期时间',
-                    align: 'center',
-                    valign: "middle",
-                    formatter: function (value) {
-                        return ncjwUtil.timeTurn(value, 'yyyy/MM/dd');
-                    }
-                }, {
-                    field: 'assetDeadline',
-                    title: '使用期限（月）',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'operatorName',
-                    title: '登记人',
-                    align: 'center',
-                    valign: "middle"
                 }, {
                     field: 'status',
                     title: '资产状态',
@@ -106,8 +83,6 @@ define(['../../common/query/index'], function (QUERY) {
                         switch (value) {
                             case 0: return '闲置';
                             case 1: return '已领用';
-                            case 2: return '维修中';
-                            case 3: return '已报废';
                             default: return '-';
                         }
                     }
@@ -123,9 +98,6 @@ define(['../../common/query/index'], function (QUERY) {
                         str += '<p class="grid-command-p btn-delete">删除</p>';
                         if (row.status === 0) {
                             str += '<p class="grid-command-p btn-receive">领用</p>';
-                            str += '<p class="grid-command-p btn-maintain">维修</p>';
-                            str += '<p class="grid-command-p btn-scrap">报废</p>';
-                            return str;
                         }
                         return str;
                     }
@@ -154,12 +126,6 @@ define(['../../common/query/index'], function (QUERY) {
             },
             'click .btn-receive': function (e, value, row, index) {
                 Backbone.trigger('assetsReceive', row);
-            },
-            'click .btn-maintain': function (e, value, row, index) {
-                Backbone.trigger('assetsMaintain', row);
-            },
-            'click .btn-scrap': function (e, value, row, index) {
-                Backbone.trigger('assetsScrap', row);
             }
         }
     });

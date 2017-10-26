@@ -48,17 +48,17 @@ define(['../../common/query/index'], function (QUERY) {
                 detailView: false, //是否显示父子表
                 columns: [{
                     field: 'assetNo',
-                    title: '资产编号',
+                    title: '编号',
                     align: 'center',
                     valign: "middle"
                 }, {
                     field: 'assetName',
-                    title: '资产名称',
+                    title: '名称',
                     align: 'center',
                     valign: "middle"
                 }, {
                     field: 'assetClassName',
-                    title: '资产类别',
+                    title: '类型',
                     align: 'center',
                     valign: "middle"
                 }, {
@@ -73,7 +73,7 @@ define(['../../common/query/index'], function (QUERY) {
                     valign: "middle"
                 }, {
                     field: 'assetBuyDate',
-                    title: '购入时间',
+                    title: '登记时间',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value) {
@@ -121,12 +121,6 @@ define(['../../common/query/index'], function (QUERY) {
                         var str = '';
                         str += '<p class="grid-command-p btn-edit">修改</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
-                        if (row.status === 0) {
-                            str += '<p class="grid-command-p btn-receive">领用</p>';
-                            str += '<p class="grid-command-p btn-maintain">维修</p>';
-                            str += '<p class="grid-command-p btn-scrap">报废</p>';
-                            return str;
-                        }
                         return str;
                     }
                 }],
@@ -151,15 +145,6 @@ define(['../../common/query/index'], function (QUERY) {
             },
             'click .btn-delete': function (e, value, row, index) {
                 Backbone.trigger('assetsDelete', row);
-            },
-            'click .btn-receive': function (e, value, row, index) {
-                Backbone.trigger('assetsReceive', row);
-            },
-            'click .btn-maintain': function (e, value, row, index) {
-                Backbone.trigger('assetsMaintain', row);
-            },
-            'click .btn-scrap': function (e, value, row, index) {
-                Backbone.trigger('assetsScrap', row);
             }
         }
     });

@@ -28,6 +28,11 @@ define([
             this.table.refreshOptions({
                 url: QUERY.ASSETS_RECORD_QUERY_BY_ASSET_CLASS,
                 columns: [{
+                    field: 'assetClassName',
+                    title: '资产类别',
+                    align: 'center',
+                    valign: 'middle'
+                }, {
                     field: 'b',
                     title: '闲置',
                     align: 'center',

@@ -59,13 +59,15 @@ define({
         ]},
         {className: 'icon_homePage', href: '#/support/assetsRecord', title: '资产', children: [
             {className: 'icon_homePage', href: '#/support/assetsRecord', title: '资产登记'},
+            {className: 'icon_homePage', href: '#/support/officeMaterials', title: '办公用品'},
+            {className: 'icon_homePage', href: '#/support/emergencyMaterials', title: '应急物资'},
             {className: 'icon_homePage', href: '#/support/fileRecord', title: '文件登记'},
             {className: 'icon_homePage', href: '#/support/assetsReceive', title: '资产领用'},
             {className: 'icon_homePage', href: '#/support/assetsMaintain', title: '资产维修'},
             {className: 'icon_homePage', href: '#/support/assetsScrap', title: '资产报废'},
             {className: 'icon_homePage', href: '#/support/assetsWarn', title: '资产预警'},
             {className: 'icon_homePage', href: '#/support/assetsCount', title: '资产统计'},
-            {className: 'icon_homePage', href: '#/support/assetsCate', title: '资产类别管理'}
+            {className: 'icon_homePage', href: '#/support/assetsCate', title: '资产类别管理'},
         ]},
         {className: 'icon_homePage', href: '#/support/equipIn', title: '单警装备', children: [
             {className: 'icon_homePage', href: '#/support/equipIn', title: '装备入库'},
@@ -75,6 +77,7 @@ define({
             // {className: 'icon_homePage', href: '#/support/equipCollect', title: '装备领用'},
             {className: 'icon_homePage', href: '#/support/equipMng', title: '装备管理'},
             {className: 'icon_homePage', href: '#/support/storeMng', title: '仓库管理'},
+            {className: 'icon_homePage', href: '#/support/assetsCar', title: '车辆管理'},
             // {className: 'icon_homePage', href: '#/support/equipQuery', title: '装备查询'},
             {className: 'icon_homePage', href: '#/support/storeQuery', title: '库存查询'}
         ]}

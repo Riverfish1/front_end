@@ -9,89 +9,54 @@ define([
     var View = Backbone.View.extend({
         el: '#main',
         initialData: {
-            storeNo: '',
-            storeList: [],
-            departmentList: [],
-            allocTime: '',
-            handlerName: window.ownerPeopleName,
-            handlerId: window.ownerPeopleId,
-            departmentId: '',
-            departmentName: '',
-            pickerName: '',
-            pickerId: '',
-            handleTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'),
-            remark: '',
-            goodsList: [],
-            num: '',
-            id: ''
+            plateNumber: '',
+            id: '',
+            name: '',
+            oilType: '',
+            userName: '',
+            userId: '',
+            yearCheck: '',
+            insurance: '',
+            status: '',
         },
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
-            'click #submitBtn': 'submitForm'
+            'click #assetSubmitBtn': 'submitForm',
         },
         initialize: function () {
-            Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
-            Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
+            Backbone.off('assetsEdit').on('assetsEdit', this.addOne, this);
+            Backbone.off('assetsDelete').on('assetsDelete', this.delOne, this);
         },
         render: function () {
-            var that = this;
             this.$el.empty().html(this.template());
-            this.$officeDialog = this.$el.find('#editDialog');
-            this.$officeDialogPanel = this.$el.find('#editPanel');
+            this.$assetsDialog = this.$el.find('#assetsOne');
+            this.$assetsDialogPanel = this.$assetsDialog.find('#editPanel');
             this.table = new BaseTableView();
             this.table.render();
-            var params = {
-                pageNum: 0,
-                pageSize: 10000
-            };
-            ncjwUtil.postData(QUERY.STORE_MNG_QUERY, JSON.stringify(params), function(res) {
-                if (res.success) {
-                    var data = res.data && res.data[0];
-                    that.initialData.storeList = data;
-                }
-            }, {
-                'contentType': 'application/json'
-            });
-            ncjwUtil.postData(QUERY.EQUIP_MNG_QUERY, JSON.stringify(params), function(res) {
-                if (res.success) {
-                    var data = res.data && res.data[0];
-                    that.initialData.goodsList = data;
-                }
-            }, {
-                'contentType': 'application/json'
-            });
-            ncjwUtil.postData(QUERY.RECORD_DEPARTMENT_QUERY, JSON.stringify(params), function(res) {
-                if (res.success) {
-                    var data = res.data && res.data[0];
-                    that.initialData.departmentList = data;
-                }
-            }, {
-                'contentType': 'application/json'
-            });
             return this;
         },
         addOne: function (row) {
             var row = row.id ? row : this.initialData;
-            if (row.id) row.storeList = this.initialData.storeList;
-            if (row.id) row.handleTime = ncjwUtil.timeTurn(row.handleTime, 'yyyy-MM-dd');
-            if (row.id) row.storeTime = ncjwUtil.timeTurn(row.storeTime, 'yyyy-MM-dd');
-            this.$officeDialog.modal('show');
-            this.$officeDialog.modal({backdrop: 'static', keyboard: false});
-            this.$officeDialogPanel.empty().html(this.getDialogContent(row));
-            this.$suggestWrap = this.$officeDialogPanel.find('.test');
+            if (row.id) {
+                row.insurance = ncjwUtil.timeTurn(row.insurance, 'yyyy-MM-dd');
+                row.yearCheck = ncjwUtil.timeTurn(row.yearCheck, 'yyyy-MM-dd');
+            }
+            this.$assetsDialog.modal('show');
+            this.$assetsDialog.modal({backdrop: 'static', keyboard: false});
+            this.$assetsDialogPanel.empty().html(this.getDialogContent(row));
+            this.$suggestWrap = this.$assetsDialogPanel.find('.test');
             this.initSuggest();
-            this.$editForm = this.$el.find('#editForm');
-            $('#allocTime').datepicker({
+            $('.insurance, .yearCheck').datepicker({
                 language: 'zh-CN',
                 format: 'yyyy-mm-dd',
                 autoclose: true,
                 todayHighlight: true
             });
+            this.$assetEditForm = this.$assetsDialog.find('#assetEditForm');
             this.initSubmitForm();
         },
-
         initSuggest: function () {
             var $data = [];
             $.each(this.$suggestWrap, function (k, el) {
@@ -142,7 +107,7 @@ define([
                 message: '执行删除后将无法恢复，确定继续吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(QUERY.EQUIP_ALLOT_DELETE, {id: row.id}, function (res) {
+                        ncjwUtil.postData(QUERY.ASSETS_CAR_DELETE, {id: row.id}, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('删除成功');
                                 that.table.refresh();
@@ -156,17 +121,17 @@ define([
             });
         },
         initSubmitForm: function () {
-            this.$editForm.validate({
+            this.$assetEditForm.validate({
                 errorElement: 'span',
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    storeTime: {
+                    typeName: {
                         required: true
                     }
                 },
                 messages: {
-                    storeTime: "请选择日期"
+                    typeName: "请输入名称"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -181,27 +146,21 @@ define([
             });
         },
         submitForm: function (e) {
-            if(this.$editForm.valid()){
+            if(this.$assetEditForm.valid()){
                 var that = this;
-                var $form = $(e.target).parents('.modal-content').find('#editForm');
+                var $form = $(e.target).parents('.modal-content').find('#assetEditForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
-                JSONData.creatorId = window.ownerPeopleId;
-                JSONData.handleTime = this.initialData.handleTime;
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.EQUIP_ALLOT_UPDATE : QUERY.EQUIP_ALLOT_INSERT, JSON.stringify(JSONData), function (res) {
+                ncjwUtil.postData(id ? QUERY.ASSETS_CAR_UPDATE : QUERY.ASSETS_CAR_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
-                        if (res.data && !res.data[0]) {
-                            ncjwUtil.showError(res.tips);
-                            return;
-                        }
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
-                        that.$officeDialog.modal('hide');
+                        that.$assetsDialog.modal('hide');
                         that.table.refresh();
                     } else {
-                        ncjwUtil.showError("提交失败：" + res.errorMsg);
+                        ncjwUtil.showError("保存失败：" + res.errorMsg);
                     }
                 }, {
                     "contentType": 'application/json'

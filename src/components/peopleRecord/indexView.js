@@ -11,6 +11,18 @@ define([
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
+        initState: {
+            employeeNum: '',
+            peopleName: '',
+            departmentId: '',
+            positionName: '',
+            titleList: [],
+            phoneNum: '',
+            mailAddress: '',
+            officeAreaId: '',
+            officeRoomId: '',
+            id: ''
+        },
         template: _.template(tpl),
         getAreaContent: _.template(areaTpl),
         getRoomContent: _.template(nameTpl),
@@ -26,28 +38,28 @@ define([
             Backbone.off('itemAdd').on('itemAdd', this.addToCard, this);
         },
         render: function () {
-            //main view
+            var that = this;
+            var params = {
+                pageNum: 0,
+                pageSize: 10000
+            };
             this.$el.empty().html(this.template());
             this.$officeDialog = this.$el.find('#editDialog');
             this.$officeDialogPanel = this.$el.find('#editPanel');
             this.table = new BaseTableView();
             this.table.render();
+            ncjwUtil.postData(QUERY.RECORD_POSTRECORD_QUERY, JSON.stringify(params), function (res) {
+                if (res.success) {
+                    var data = res.data && res.data[0];
+                    that.initState.titleList = data;
+                }
+            }, {
+                'contentType': 'application/json'
+            });
             return this;
         },
         addOne: function (row) {
-            var initState = {
-                employeeNum: '',
-                peopleName: '',
-                departmentId: '',
-                positionName: '',
-                titleName: '',
-                phoneNum: '',
-                mailAddress: '',
-                officeAreaId: '',
-                officeRoomId: '',
-                id: ''
-            };
-            var row = row.id ? row : initState;
+            var row = row.id ? row : this.initState;
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row));

@@ -47,6 +47,11 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
+                    field: 'assetClassName',
+                    title: '资产类别',
+                    align: 'center',
+                    valign: 'middle'
+                }, {
                     field: 'b',
                     title: '闲置',
                     align: 'center',
