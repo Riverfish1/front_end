@@ -20,8 +20,14 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable('refresh', params);
         },
         init: function () {
+            var typeMap = {
+                "0": "借款单",
+                "1": "经费报销单",
+                "2": "差旅报销单",
+                "3": "还款单"
+            }
             this.$el.bootstrapTable({
-                url: QUERY.WORK_SENDDOCUMENT_QUERY_BY_ID, //请求后台的URL（*）
+                url: QUERY.REPAY_CREATE_QUERYNEEDPROCESS, //请求后台的URL（*）
                 method: 'get', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -51,12 +57,15 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'creatorName',
+                    field: 'type',
                     title: '报销类型',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return typeMap[value];
+                    }
                 }, {
-                    field: 'gmtCreate',
+                    field: 'totalMoney',
                     title: '金额',
                     align: 'center',
                     valign: "middle",
@@ -64,39 +73,47 @@ define(['../../common/query/index'], function (QUERY) {
                         return value;
                     }
                 }, {
-                    field: 'gmtCreate',
+                    field: 'acceptTime',
                     title: '接收日期',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row) {
-                        return value ? ncjwUtil.timeTurn(value) : "";
+                        return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : "";
                     }
                 }, {
-                    field: 'gmtCreate',
+                    field: 'createTime',
                     title: '创建日期',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row) {
-                        return value ? ncjwUtil.timeTurn(value) : "";
+                        return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : "";
                     }
                 }, {
-                    field: 'workflowData',
+                    field: 'currentNodeName',
                     title: '当前节点',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'creatorName',
+                    title: '创建人',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'workFlow',
+                    title: '领导',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row) {
-                        return value ? JSON.parse(value).currentNode.nodeName : '';
+                        return value ? JSON.parse(value).nodeList[0].operatorName : '';
                     }
                 }, {
-                    field: 'currentOperatorName',
-                    title: '领导',
-                    align: 'center',
-                    valign: "middle"
-                }, {
-                    field: 'currentOperatorName',
+                    field: 'workFlow',
                     title: '财务',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return value ? JSON.parse(value).nodeList[1].operatorName : '';
+                    }
                 }, {
                     field: 'status',
                     title: '操作',
@@ -105,12 +122,21 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        if(row.creatorId != row.currentOperatorId){
-                            str += '<p class="grid-command-p btn-edit">查看</p>';
-                        }else{
+                        var workFlow = row.workFlow.length ? JSON.parse(row.workFlow) : row.workFlow;
+                        var currentNodeName = workFlow.currentNode.nodeName;
+                        var nodeList = row.workFlow ? JSON.parse(row.workFlow).nodeList: [];
+                        var leaderId = nodeList[0].operatorId;
+                        var financerId = nodeList[1].operatorId;
+                        var peopleId = window.ownerPeopleId;
+                        // if(peopleId == row.creatorId || peopleId == leaderId || peopleId == financerId){
+                        //     str += '<p class="grid-command-p btn-edit">查看</p>';
+                        // }
+                        if(((peopleId == leaderId && currentNodeName == "领导审批") || (peopleId == financerId && currentNodeName == "财务审批") ) && row.status == "submit"){
                             str += '<p class="grid-command-p btn-edit">处理</p>';
                         }
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
+                        // if(value == "submit"){
+                        //     str += '<p class="grid-command-p btn-delete">删除</p>';
+                        // }
                         return str;
                     }
                 }],

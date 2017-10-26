@@ -32,6 +32,8 @@ define([
             Backbone.off('itemDetailEdit').on('itemDetailEdit', this.addDetailOne, this);
             Backbone.off('itemDetailDelete').on('itemDetailDelete', this.delDetailOne, this);
             this.detailData = [];
+            this.totalMoney = 0;
+            this.totalObj = {};
         },
         render: function () {
             //main view
@@ -174,9 +176,12 @@ define([
                 comment: '',
                 applyerId: '',
                 createTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'),
+                acceptTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'),
                 startTime: '',
                 endTime: '',
                 totalDays: 0,
+                totalMoney: 0,
+                total: 0,
                 reason: '',
                 filePath: '',
                 detailList: [],
@@ -188,13 +193,32 @@ define([
                         {operatorId: "", nodeName: '财务审批', operatorName: "", comment: ""}
                     ]
                 },
-                currentNode: "拟稿"
+                currentNode: "拟稿",
+                leaderId: '',
+                financerId: '',
+                status: 'submit'
             };
             var row = row.id ? row : initState;
             if (row.id) {
-                row.workFlow = JSON.parse(row.workflowData);
-                row.createTime = ncjwUtil.timeTurn(row.createTime);
+                row.departmentId = row.departmentId ? row.departmentId : '';
+                row.operatorId = row.operatorId ? row.operatorId : '';
+                row.comment = row.comment ? row.comment : '';
+                row.workFlow = row.workFlow.length ? JSON.parse(row.workFlow) : row.workFlow;
+                row.createTime = ncjwUtil.timeTurn(row.createTime, 'yyyy-MM-dd');
+                row.startTime = ncjwUtil.timeTurn(row.startTime, 'yyyy-MM-dd');
+                row.endTime = ncjwUtil.timeTurn(row.endTime, 'yyyy-MM-dd');
+
                 row.currentNode = row.workFlow.currentNode.nodeName;
+                row.leaderId = row.workFlow.nodeList[0].operatorId;
+                row.financerId = row.workFlow.nodeList[1].operatorId;
+
+                this.detailData = row.detail.length ? JSON.parse(row.detail) : row.detail;
+                this.getTotalMoney(this.detailData);
+                this.detailData = this.detailData.concat([this.totalObj])
+            }else {
+                this.detailData = [];
+                this.totalMoney = 0;
+                this.totalObj = {};
             }
             this.showOrhideBtn(row);
             this.$editDialog.modal('show');
@@ -244,7 +268,14 @@ define([
         },
         setBssuggestValue: function (row) {
             $.each(this.$suggestWrap, function (k, el) {
-                $(el).val(row.workFlow.nodeList[k].operatorName);
+                var name = $(el).parents('.input-group').find('.suggest-assist-name').attr('name');
+                var nameMap = {
+                    applyerName: row.applyerName
+                }
+                if(k > 0){
+                    nameMap.operatorName = row.workFlow.nodeList[k-1].operatorName;
+                }
+                $(el).val(nameMap[name]);
             });
         },
         delOne: function (row) {
@@ -292,6 +323,7 @@ define([
                     if (result) {
                         ncjwUtil.showInfo('删除成功');
                         that.detailData = that.delDetailData(row);
+                        that.getTotalMoney(that.detailData);
                         that.detailTable.load(that.detailData);
                     }
                 }
@@ -307,6 +339,9 @@ define([
                     title: {
                         required: true
                     },
+                    type: {
+                        required: true
+                    },
                     startTime: {
                         required: true
                     },
@@ -314,7 +349,11 @@ define([
                         required: true,
                         dateRange: '.startTime'
                     },
-                    content: {
+                    // reason: {
+                    //     required: true
+                    // },
+
+                    filePath: {
                         required: true
                     },
                     operator_valid1: {
@@ -328,19 +367,20 @@ define([
                     },
                     comment: {
                         required: true
-                    },
+                    }
                 },
                 messages: {
                     title: "请填写标题",
+                    type: "请选择报销类型",
+                    // reason: "请填写申请理由",
                     startTime: "请选择起始日期",
                     endTime: {
                         required: "请选择结束日期",
                         dateRange: '起始日期晚于结束日期'
                     },
-                    content: "请填写正文",
-                    operator_valid1: "请选择接收人",
-                    operator_valid2: "请选择接收人",
-                    operator_valid3: "请选择接收人",
+                    operator_valid1: "请选择报销人员",
+                    operator_valid2: "请选择审批领导",
+                    operator_valid3: "请选择审批财务",
                     comment: "请填写审核意见"
                 },
                 highlight: function (element) {
@@ -415,7 +455,7 @@ define([
                 var that = this;
                 var $inputs = that.$editForm.find('.submit-assist');
                 var id = $('#id').val();
-                var applyerId = $('.applyerId').val();
+                // var applyerId = $('.applyerId').val();
                 var currentNode = $('#currentNode').val();
                 var comment = currentNode == "领导审批" ? $('.leader').val() : $('.financer').val();
                 //保存
@@ -433,13 +473,14 @@ define([
                         } else if (name == 'status') {
 
                         } else if (name == 'filePath') {
-                            if(val){
+                            if (val) {
                                 params[name] = val.split(',');
                             }
                         } else {
                             params[name] = val;
                         }
                     })
+                    params.totalMoney = this.totalMoney;
                     // //提交也是创建人；
                     // if (index == 1) {
                     //     applyerId = window.ownerPeopleId;
@@ -452,7 +493,7 @@ define([
                     // applyerId = window.ownerPeopleId;
                     // comment = "";
                     // }
-                    var params = {recordId: id, operatorId: applyerId, comment: comment};
+                    var params = {recordId: id, operatorId: window.ownerPeopleId, comment: comment};
                 }
 
                 // if (index == 1) {
@@ -476,6 +517,7 @@ define([
                 //         "contentType": 'application/json'
                 //     })
                 // } else {
+
                 ncjwUtil.postData(urlMap[index], JSON.stringify(params), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
@@ -514,7 +556,8 @@ define([
                     this.detailData.push(obj);
                 }
                 this.$detailDialog.modal('hide');
-                this.detailTable.load(this.detailData);
+                this.getTotalMoney(this.detailData);
+                this.detailTable.load(this.detailData.concat([this.totalObj]));
             }
         },
         delDetailData: function (row) {
@@ -525,6 +568,15 @@ define([
                 }
             })
             return d;
+        },
+        getTotalMoney: function (detailData) {
+            var totalMoney = 0;
+            $.each(detailData, function (k, v) {
+                totalMoney += Number(v.money);
+            })
+            this.totalMoney = totalMoney < 0 ? 0 : totalMoney;
+            this.totalObj = {id: "合计", money: this.totalMoney}
+            return this.totalMoney;
         },
         updateDetailData: function (obj) {
             var d = [];
@@ -538,21 +590,21 @@ define([
             return d;
         },
         showOrhideBtn: function (row) {
+            var workFlow = row.workFlow.length ? JSON.parse(row.workFlow) : row.workFlow;
+            var nodeList = workFlow.nodeList;
+            var currentNodeName = workFlow.currentNode.nodeName;
+            var leaderId = nodeList[0].operatorId;
+            var financerId = nodeList[1].operatorId;
+            var peopleId = window.ownerPeopleId;
             this.$editDialog.find('.status-button').hide();
             // 创建人：新建、草稿、驳回状态显示-草稿与提交按钮
-            if (this.isCreater(row) && (row.workFlow.currentNode.nodeIndex == 0)) {
-                this.$editDialog.find("#btn-draft,#btn-submit").show();
+            if(!row.id){
+                this.$editDialog.find("#btn-draft").show();
+            }else{
+                if(((peopleId == leaderId && currentNodeName == "领导审批") || (peopleId == financerId && currentNodeName == "财务审批") ) && row.status == "submit"){
+                    this.$editDialog.find("#btn-ok,#btn-no").show();
+                }
             }
-            // 处理人：已提交状态显示-通过与驳回按钮
-            if (this.isOpertor(row) && (row.workFlow.currentNode.nodeIndex != 0)) {
-                this.$editDialog.find("#btn-ok,#btn-no").show();
-            }
-        },
-        isCreater: function (row) {
-            return window.ownerPeopleId == row.creatorId;
-        },
-        isOpertor: function (row) {
-            return window.ownerPeopleId == row.applyerId;
         },
         gettotalDays: function (e) {
             var $startTime = this.$editForm.find('.startTime');

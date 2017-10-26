@@ -1,141 +1,244 @@
 <div class="loading" style="width:95%"></div>
 
 <form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
-    <input type="hidden" name="id" class="submit-assist" value="<%= id %>" id="id" />
-    <input type="hidden" name="status" class="submit-assist" value="<%= status %>" id="status" />
-    <input type="hidden" name="creatorId" class="submit-assist" value="<%= creatorId %>" id="creatorId" />
-    <div class="form-group">
-        <label class="col-md-3 control-label">标题</label>
-        <div class="col-md-9">
-            <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
-            <% if(workFlow.currentNode.nodeIndex == 0){ %>
-                <input type="text" name="title" class="form-control submit-assist" value="<%= title %>">
-            <% } %>
-            <% if(workFlow.currentNode.nodeIndex != 0){ %>
-                <input type="text" name="title" disabled class="form-control submit-assist" value="<%= title %>">
-            <% } %>
-        </div>
-    </div>
-    <!--详情-->
-    <% if(workFlow.currentNode.nodeIndex != 0){ %>
-    <div class="form-group">
-        <label class="col-md-3 control-label">创建时间</label>
-        <div class="col-md-9">
-            <input type="text" name="gmtCreate" disabled class="form-control" value="<%= gmtCreate %>">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">创建人</label>
-        <div class="col-md-9">
-            <input type="text" name="creatorName" disabled class="form-control" value="<%= creatorName %>">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">待操作人</label>
-        <div class="col-md-9">
-            <input type="text" id="currentOperatorName" disabled name="currentOperatorName" class="form-control" value="<%= currentOperatorName %>">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">正文</label>
-        <div class="col-md-9">
-            <textarea type="text" name="content" disabled class="form-control submit-assist" value="<%= content %>"><%= content %></textarea>
-        </div>
-    </div>
-    <% } %>
-    <!--新建-->
-    <% if(workFlow.currentNode.nodeIndex == 0){ %>
-    <div class="form-group">
-        <label class="col-md-3 control-label">正文</label>
-        <div class="col-md-9">
-            <textarea type="text" name="content"  class="form-control submit-assist" value="<%= content %>"><%= content %></textarea>
-        </div>
-    </div>
+    <input type="hidden" name="id" class="submit-assist" value="<%= id %>" id="id"/>
+    <input type="hidden" name="acceptTime" class="submit-assist" value="<%= acceptTime %>"/>
+    <input type="hidden" value="<%= currentNode %>" id="currentNode"/>
+    <!--基本信息-->
     <div class="row">
-        <label class="col-md-3 control-label">审批流程设置</label>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label"></label>
-        <div class="col-md-9">
-            <div class="flowWrap">
-                <% $.each(workFlow.nodeList, function(k, node){ console.log("node1", node) %>
-                    <% if(k == 0){ %>
-                        <div class="row">
-                           <div class="<%= workFlow.currentNode.nodeIndex == 0 ? 'col-md-3 title-wrap' : 'col-md-3 title-wrap active' %>">
-                                <span class="flow-title"><%= node.nodeName %></span>
-                            </div>
-                            <div class="col-md-9">
-                                <span class="opertor"><%= node.operatorName %></span>
-                            </div>
-                            <div class="arrow-down"></div>
-                            <!--<input type="hidden" name="nodeName" value="<%= node.nodeName %>">-->
-                            <input type="hidden"  name="operatorId" class="submit-assist" value="<%= node.operatorId %>">
-                            <input type="hidden"  name="operatorName" class="submit-assist" value="<%= node.operatorName %>">
-                        </div>
-                    <% } %>
-                    <% if(k > 0){ %>
-                        <div class="row">
-                            <div class="col-md-3 title-wrap">
-                                <span class="flow-title"><%= node.nodeName %></span>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="input-group">
-                                    <input type="text" class="form-control test">
-                                    <input type="text"  name="<%= 'operator_valid' + k %>" class="operatorId" value="<%= node.operatorId %>">
-                                    <input type="hidden"  name="operatorId" class="submit-assist" value="<%= node.operatorId %>">
-                                    <input type="hidden"  name="operatorName" class="submit-assist" value="<%= node.operatorName %>">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                        </ul>
-                                    </div>
-                                    <!-- /btn-group -->
-                                </div>
-                            </div>
-                            <% if(k < workFlow.nodeList.length-1){ %>
-                                <div class="arrow-down"></div>
-                            <% } %>
-                            <!--<input type="hidden" name="nodeName" value="<%= node.nodeName %>">-->
-                        </div>
-                    <% } %>
-                <% }); %>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">标题</label>
+                <div class="col-md-8">
+                    <input type="text" name="title" class="form-control submit-assist w666" value="<%= title %>">
+                </div>
             </div>
         </div>
     </div>
-    <% } %>
-    <!--详情-->
-    <% if(workFlow.currentNode.nodeIndex != 0){ %>
     <div class="row">
-        <label class="col-md-3 control-label">流程状态</label>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">创建人</label>
+                <div class="col-md-8">
+                    <input type="text" name="creatorName" disabled class="form-control" value="<%= creatorName %>">
+                    <input type="hidden" name="creatorId" class="form-control submit-assist" value="<%= creatorId %>">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label title-wrap">
+                    <span class="flow-title">所属部门</span>
+                </label>
+                <div class="col-md-8">
+                    <input type="hidden" name="departmentId" class="form-control submit-assist" value="<%= departmentId %>">
+                    <input type="text" name="departmentName" disabled class="form-control " value="<%= departmentName %>">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">申请日期</label>
+                <div class="col-md-8">
+                    <input type="text" name="createTime" disabled class="form-control submit-assist" value="<%= createTime %>">
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label"></label>
-        <div class="col-md-9">
-            <div class="flowWrapDetail">
-                <div class="row">
-                    <% $.each(workFlow.nodeList, function(k, node){ %>
-                        <div class="col-md-2 title-wrap">
-                            <div class="<%= workFlow.currentNode.nodeIndex == k ? 'flow-title active' : 'flow-title' %>"> <%= node.nodeName %></div>
-                            <span class="opertor"><%= node.operatorName %></span>
-                            <div class="comment"><%= node.comment %></div>
-                            <% if(k < workFlow.nodeList.length-1){ %>
-                                <div class="<%= workFlow.currentNode.nodeIndex > k ? 'arrow-right active' : 'arrow-right' %>"></div>
-                            <% } %>
+    <!--报销信息-->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">报销人员</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <% if(!id){ %>
+                        <input type="text" class="form-control test">
+                        <% } %>
+                        <% if(id){ %>
+                        <input type="text" disabled class="form-control test">
+                        <% } %>
+                        <input type="text" name="operator_valid1" class="operator_valid suggestValidAssist" value="<%= applyerId %>">
+                        <input type="hidden" name="applyerId" class="suggest-assist-id submit-assist">
+                        <input type="hidden" name="applyerName" class="suggest-assist-name">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            </ul>
                         </div>
-                    <% }); %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">起始日期</label>
+                <div class="col-md-8">
+                    <input type="text" name="startTime" class="form-control startTime accessTime submit-assist" value="<%= startTime %>">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">结束日期</label>
+                <div class="col-md-8">
+                    <input type="text" name="endTime" class="form-control endTime accessTime submit-assist" value="<%= endTime %>">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">总天数</label>
+                <div class="col-md-8">
+                    <input type="text" name="totalDays" disabled class="form-control totalDays submit-assist" value="<%= totalDays %>">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">报销附件</label>
+                <% if(!id){ %>
+                <div class="col-md-8">
+                    <div id="uploaderWrap"></div>
+                    <input type="hidden" name="filePath" id="filePath" class="form-control submit-assist" value="<%= filePath %>">
+                </div>
+                <% } %>
+                <% if(id){ %>
+                <div class="col-md-8" style="overflow: auto;">
+                    <span><%= filePath %></span>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">报销类型</label>
+                <div class="col-md-8">
+                    <select name="type" class="form-control submit-assist">
+                        <option value="0">借款单</option>
+                        <option value="1">经费报销单</option>
+                        <option value="2">差旅报销单</option>
+                        <option value="3">还款单</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">申请理由</label>
+                <div class="col-md-8">
+                    <input type="text" name="reason" class="form-control submit-assist w405" value="<%= reason %>">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--报销名细-->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">报销明细</label>
+                <div class="col-md-8">
+                    <% if(!id){ %>
+                    <button id="btn_detail_add" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                    </button>
+                    <% } %>
+                    <div class="tableWrap w666">
+                        <div class="repayTableWrap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--审批意见-->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label flow-title">领导审批</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <% if(!id){ %>
+                        <input type="text" class="form-control test">
+                        <input type="text" name="operator_valid2" class="operator_valid suggestValidAssist" value="<%= operatorId %>">
+                        <input type="hidden" name="operatorId" class="suggest-assist-id submit-assist">
+                        <input type="hidden" name="operatorName" class="suggest-assist-name">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            </ul>
+                        </div>
+                        <% } %>
+                        <% if(id){ %>
+                        <input type="text" name = "operatorName" disabled class="form-control test">
+                        <input type="hidden" name="operatorName" class="suggest-assist-name">
+                        <% } %>
+                    </div>
+                    <!--<input type="text" name="creatorName"  class="form-control w666" value="<%= creatorName %>">-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <% if((id && (creatorId == leaderId) && ( currentNode == "领导审批")) || (status != "submit") || currentNode == "财务审批"){ %>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">领导意见</label>
+                <div class="col-md-8">
+                    <textarea name="comment" class="form-control leader w666" value="<%= comment %>"><%= workFlow.nodeList[0].comment %></textarea>
                 </div>
             </div>
         </div>
     </div>
     <% } %>
-    <% if((window.ownerPeopleId == currentOperatorId) && (workFlow.currentNode.nodeIndex != 0)){ %>
-        <div class="row">
-            <label class="col-md-3 control-label">意见反馈</label>
-            <div class="col-md-9">
-                <textarea type="text" name="comment" id="comment" class="form-control"></textarea>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label flow-title">财务审批</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <% if(!id){ %>
+                        <input type="text" class="form-control test">
+                        <input type="text" name="operator_valid3" class="operator_valid suggestValidAssist" value="<%= operatorId %>">
+                        <input type="hidden" name="operatorId" class="suggest-assist-id submit-assist">
+                        <input type="hidden" name="operatorName" class="suggest-assist-name">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            </ul>
+                        </div>
+                        <% } %>
+                        <% if(id){ %>
+                        <input type="text" name="operatorName" disabled class="form-control test">
+                        <input type="hidden" name="operatorName" class="suggest-assist-name">
+                        <% } %>
+
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+    <% if((id && (creatorId == financerId) && ( currentNode == "财务审批")) || status != "submit"){ %>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">账务意见</label>
+                <div class="col-md-8">
+                    <textarea name="comment" class="form-control financer  w666" value="<%= comment %>"><%= workFlow.nodeList[1].comment %></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
     <% } %>
 </form>
