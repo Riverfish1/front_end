@@ -8,7 +8,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control test">
                             <input type="text" name="operator_valid3" class="operator_valid suggestValidAssist">
-                            <input type="hidden" name="applyerId" class="suggest-assist-id submit-assist">
+                            <input type="hidden" name="applyerId" class="suggest-assist-id search-assist">
                             <input type="hidden" name="applyerName"  class="suggest-assist-name">
                             <!--<input type="hidden"  name="targetName">-->
                             <div class="input-group-btn">
@@ -65,5 +65,26 @@
 </div>
 <div class="row">
     <table id="tableWrap"></table>
+</div>
+<!--dialog-edit-->
+<div class="modal fade bs-example-modal-lg" id="editDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" style="width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title" >我的报销</h5>
+            </div>
+            <div class="modal-body" >
+                <div id="editPanel"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <!--<button id="btn-draft" data-status="0" class="btn btn-primary status-button " >提交</button>-->
+                <!--<button id="btn-submit" data-status="1" class="btn btn-primary status-button " >提交</button>-->
+                <!--<button id="btn-ok" data-status="1" class="btn btn-primary  status-button " >通过</button>-->
+                <!--<button id="btn-no" data-status="2" class="btn btn-primary  status-button " >驳回</button>-->
+            </div>
+        </div>
+    </div>
 </div>
 

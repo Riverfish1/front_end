@@ -20,6 +20,12 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable('refresh', params);
         },
         init: function () {
+            var typeMap = {
+                "0": "借款单",
+                "1": "经费报销单",
+                "2": "差旅报销单",
+                "3": "还款单"
+            }
             this.$el.bootstrapTable({
                 url: QUERY.REPAY_CREATE_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
@@ -51,12 +57,15 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'creatorName',
+                    field: 'type',
                     title: '报销类型',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return typeMap[value];
+                    }
                 }, {
-                    field: 'gmtCreate',
+                    field: 'totalMoney',
                     title: '金额',
                     align: 'center',
                     valign: "middle",
@@ -64,44 +73,47 @@ define(['../../common/query/index'], function (QUERY) {
                         return value;
                     }
                 }, {
-                    field: 'gmtCreate',
+                    field: 'acceptTime',
                     title: '接收日期',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row) {
-                        return value ? ncjwUtil.timeTurn(value) : "";
+                        return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : "";
                     }
                 }, {
-                    field: 'gmtCreate',
+                    field: 'createTime',
                     title: '创建日期',
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row) {
-                        return value ? ncjwUtil.timeTurn(value) : "";
+                        return value ? ncjwUtil.timeTurn(value, 'yyyy-MM-dd') : "";
                     }
                 }, {
-                    field: 'workflowData',
+                    field: 'currentNodeName',
                     title: '当前节点',
                     align: 'center',
-                    valign: "middle",
-                    formatter: function (value, row) {
-                        return value ? JSON.parse(value).currentNode.nodeName : '';
-                    }
+                    valign: "middle"
                 }, {
-                    field: 'gmtCreate',
+                    field: 'creatorName',
                     title: '创建人',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'currentOperatorName',
+                    field: 'workFlow',
                     title: '领导',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return value ? JSON.parse(value).nodeList[0].operatorName : '';
+                    }
                 }, {
-                    field: 'currentOperatorName',
+                    field: 'workFlow',
                     title: '财务',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return value ? JSON.parse(value).nodeList[1].operatorName : '';
+                    }
                 }, {
                     field: 'status',
                     title: '操作',
@@ -110,13 +122,11 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        if(row.creatorId != row.currentOperatorId){
-                            str += '<p class="grid-command-p btn-view">查看</p>';
-                        }
+                        str += '<p class="grid-command-p btn-view">查看</p>';
                         return str;
                     }
                 }],
-                responseHandler: function(res) {
+                responseHandler: function (res) {
                     return {
                         "total": res.total,
                         "rows": res.data ? res.data[0] : []
@@ -129,7 +139,7 @@ define(['../../common/query/index'], function (QUERY) {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
                 usePaged: true,
-                applyerId: window.ownerPeopleId
+                // applyerId: window.ownerPeopleId
 
                 // id: window.ownerPeopleId
 
