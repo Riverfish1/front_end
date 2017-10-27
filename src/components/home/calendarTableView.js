@@ -102,7 +102,7 @@ define(['../../common/query/index'], function (QUERY) {
                     {
                         field: 'status',
                         title: '操作',
-                        width: '100px',
+                        width: '80px',
                         align: 'center',
                         valign: "middle",
                         events: this.operateEvents,

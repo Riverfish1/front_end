@@ -999,11 +999,25 @@ input:-webkit-autofill {
 .home-sidebar .btn-wrap{text-align: center;}
 .home-sidebar .btn-wrap .btn-addDate{width: 240px; margin-top: 10px;margin-bottom: 10px;}
 .home-sidebar .workStaffWrap{width: 240px; margin: 0 auto;}
+.home-sidebar .calendarDetailWrap{width: 240px; margin: 0 auto;}
+.home-sidebar .calendarDetail{width: 240px;}
 .home-sidebar .cardWrap{width: 240px;}
 #app .menuWrap, #app .homeWrap{display: none;}
 /*差旅报销管理*/
 .w666{width: 666px;}
 .w405{width: 405px;}
+.createRepay_filePathWrap{
+    overflow: auto;
+    width: 666px;
+    position: absolute;
+    left: 33%;
+    padding-top: 7px;
+    margin-bottom: 0px;
+}
+.createRepay_filePathWrap .fileDownLoad{
+    margin-right: 10px;
+    cursor: pointer;
+}
 /*人员、部门自动提示下拉列表*/
 .suggestValidAssist{ width: 0; height: 0; opacity: 0;  }
 /*差旅报销查询*/

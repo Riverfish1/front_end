@@ -110,8 +110,10 @@
                 </div>
                 <% } %>
                 <% if(id){ %>
-                <div class="col-md-8" style="overflow: auto;">
-                    <span><%= filePath %></span>
+                <div class="col-md-8 createRepay_filePathWrap" style="overflow: auto;">
+                    <% $.each(filePath, function(k, file){ %>
+                    <a class="fileDownLoad" href="<%= file.filePath %>"><%= file.fileName %></a>
+                    <% }); %>
                 </div>
                 <% } %>
             </div>
