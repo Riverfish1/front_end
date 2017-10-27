@@ -71,9 +71,12 @@ define([
             });
 
             uploader.on('uploadSuccess', function (file, response) {
+                var fileObj = {};
                 $('#' + file.id).find('p.state').text('已上传');
                 if (response.success == true) {
-                    fileList.push(response.data[0])
+                    fileObj.filePath = response.data[0];
+                    fileObj.fileName = file.name;
+                    fileList.push(JSON.stringify(fileObj));
                     $('#filePath').val(fileList.join(","));
                     $('.filePathWrap').html(response.data[0]).show();
                 }
