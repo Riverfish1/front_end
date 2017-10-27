@@ -80,38 +80,10 @@ define([
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'b',
-                    title: '闲置',
+                    field: 'count',
+                    title: '数量',
                     align: 'center',
-                    valign: "middle",
-                    formatter: function (value, row) {
-                        if (row.statusName === '闲置') {
-                            return row.count;
-                        }
-                        return 0;
-                    }
-                }, {
-                    field: 'c',
-                    title: '在用',
-                    align: 'center',
-                    valign: "middle",
-                    formatter: function (value, row) {
-                        if (row.statusName === '在用') {
-                            return row.count;
-                        }
-                        return 0;
-                    }
-                }, {
-                    field: 'd',
-                    title: '已报废',
-                    align: 'center',
-                    valign: "middle",
-                    formatter: function (value, row) {
-                        if (row.statusName === '已报废') {
-                            return row.count;
-                        }
-                        return 0;
-                    }
+                    valign: "middle"
                 }]
             });
         }

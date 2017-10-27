@@ -81,12 +81,16 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    typeName: {
+                    receiveName: {
+                        required: true
+                    },
+                    receiveDate: {
                         required: true
                     }
                 },
                 messages: {
-                    typeName: "请输入名称"
+                    receiveName: "请输入名称",
+                    receiveDate: '请选择领用时间'
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -139,12 +143,20 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    typeName: {
+                    maintainName: {
+                        required: true
+                    },
+                    maintainDate: {
+                        required: true
+                    },
+                    remark: {
                         required: true
                     }
                 },
                 messages: {
-                    typeName: "请输入名称"
+                    maintainName: "请输入名称",
+                    maintainDate: '请选择时间',
+                    remark: '请输入内容'
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -197,12 +209,16 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    typeName: {
+                    scrapDate: {
+                        required: true
+                    },
+                    remark: {
                         required: true
                     }
                 },
                 messages: {
-                    typeName: "请输入名称"
+                    scrapDate: "请选择时间",
+                    remark: '请输入报废原因'
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -363,12 +379,32 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    typeName: {
+                    assetName: {
                         required: true
+                    },
+                    assetNo: {
+                        required: true
+                    },
+                    assetBuyDate: {
+                        required: true
+                    },
+                    assetUsedName: {
+                        required: true
+                    },
+                    assetDeadline: {
+                        required: true,
+                        number: true
                     }
                 },
                 messages: {
-                    typeName: "请输入名称"
+                    assetName: "请输入名称",
+                    assetNo: '请输入资产编号',
+                    assetBuyDate: '请选择购入时间',
+                    assetUsedName: '请选择使用人',
+                    assetDeadline: {
+                        required: '请输入日期',
+                        number: '请输入数字'
+                    }
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

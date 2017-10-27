@@ -72,9 +72,9 @@ define([
 
             uploader.on('uploadSuccess', function (file, response) {
                 $('#' + file.id).find('p.state').text('已上传');
-                if (response.success == true) {
+                if (response.success) {
                     fileList.push(response.data[0])
-                    $('#filePath').val(fileList.join(","));
+                    $('#file').val(fileList.join(","));
                     $('.filePathWrap').html(response.data[0]).show();
                 }
             });

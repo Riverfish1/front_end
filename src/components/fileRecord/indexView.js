@@ -18,7 +18,7 @@ define([
             department: '',
             departmentList: [],
             time: '',
-            filePath: '',
+            file: '',
             month: ''
         },
         template: _.template(tpl),
@@ -30,7 +30,7 @@ define([
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
-            Backbone.off('itemDownload').on('itemDownload', this.downlaodFile, this);
+            Backbone.off('itemDownload').on('itemDownload', this.downloadFile, this);
         },
         render: function () {
             var that = this;
@@ -63,7 +63,7 @@ define([
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
             if (row.id) ncjwUtil.setFiledsValue(this.$officeDialogPanel, {department: row.department});
-            this.filePath = new FileUploadView();
+            this.file = new FileUploadView();
             this.$suggestWrap = this.$officeDialogPanel.find('.test');
             this.initSuggest();
             this.$editForm = this.$el.find('#editForm');
@@ -106,8 +106,7 @@ define([
                     idField: "id",
                     keyField: "peopleName"
                 }).on('onSetSelectValue', function (e, keyword, data) {
-                    $('#userId').val(data.id);
-                    $('#user').val(data.peopleName);
+                    $(el).val(data.peopleName);
                 });
             })
         },
@@ -139,8 +138,8 @@ define([
 
             });
         },
-        downlaodFile: function (row) {
-            var file = row.filePath;
+        downloadFile: function (row) {
+            var file = row.file;
             if (file) window.open(file);
         },
         initSubmitForm: function () {

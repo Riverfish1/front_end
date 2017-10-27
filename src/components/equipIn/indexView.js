@@ -146,11 +146,15 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    storeTime: {
-                        required: true
-                    }
+                    storeNo: { required: true },
+                    handlerName: { required: true },
+                    num: { required: true },
+                    storeTime: { required: true }
                 },
                 messages: {
+                    storeNo: "请输入入库单号",
+                    handlerName: "请选择经办人",
+                    num: "请输入数量",
                     storeTime: "请选择日期"
                 },
                 highlight: function (element) {

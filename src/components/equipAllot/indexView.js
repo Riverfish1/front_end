@@ -161,12 +161,18 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    storeTime: {
-                        required: true
-                    }
+                    allocTime: { required: true },
+                    storeNo: { required: true },
+                    num: { required: true, number: true },
+                    pickerName: { required: true },
+                    handlerName: { required: true },
                 },
                 messages: {
-                    storeTime: "请选择日期"
+                    allocTime: "请选择日期",
+                    storeNo: "请输入单号",
+                    num: { required: '请输入数量', number: '请输入数字' },
+                    pickerName: "请选择领用人",
+                    handlerName: "请选择经办人"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

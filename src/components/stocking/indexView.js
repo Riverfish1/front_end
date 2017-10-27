@@ -152,12 +152,12 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    assetClass: {
-                        required: true
-                    }
+                    targetName: { required: true },
+                    name: { required: true }
                 },
                 messages: {
-                    assetClass: "请输入类别名称"
+                    targetName: "请选择盘点负责人"
+                    name: "请输入名称"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

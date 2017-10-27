@@ -3,7 +3,7 @@
 <form class="form-horizontal" id="editForm">
     <input type="hidden" name="creatorId" value="<%= window.ownerPeopleId %>"/>
     <div class="form-group">
-        <label class="col-md-3 control-label">盘点单名称：</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>盘点单名称：</label>
         <div class="col-md-9">
             <input type="text" name="name" class="form-control" value="<%= name %>">
         </div>
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">盘点负责人：</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>盘点负责人：</label>
         <div class="col-md-9">
             <div class="input-group">
                 <input type="hidden" name="targetId" id="targetId" name="targetId" value="<%= targetId %>">

@@ -126,12 +126,36 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    typeName: {
+                    plateNumber: {
+                        required: true
+                    },
+                    name: {
+                        required: true
+                    },
+                    oilType: {
+                        required: true
+                    },
+                    userName: {
+                        required: true
+                    },
+                    yearCheck: {
+                        required: true
+                    },
+                    insurance: {
+                        required: true
+                    },
+                    status: {
                         required: true
                     }
                 },
                 messages: {
-                    typeName: "请输入名称"
+                    plateNumber: "请输入车牌号码",
+                    name: "请输入名称",
+                    oilType: "请输入用油",
+                    userName: "请选择使用人",
+                    yearCheck: "请输入年检时间",
+                    insurance: "请输入保险时间",
+                    status: "请输入车辆状态",
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

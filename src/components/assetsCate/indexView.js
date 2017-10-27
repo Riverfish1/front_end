@@ -9,7 +9,8 @@ define([
     var View = Backbone.View.extend({
         el: '#main',
         initialData: {
-            assetClass: ''
+            assetClass: '',
+            id: ''
         },
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
@@ -30,11 +31,7 @@ define([
             return this;
         },
         addOne: function (row) {
-            var initState = {
-                assetClass: '',
-                id: ''
-            };
-            var row = row.id ? row : initState;
+            var row = row.id ? row : this.initialData;
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))

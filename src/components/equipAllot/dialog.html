@@ -33,13 +33,13 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">调拨单号：</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>调拨单号：</label>
         <div class="col-md-9">
             <input type="text" name="storeNo" class="form-control" value="<%= storeNo %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">调拨数量：</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>调拨数量：</label>
         <div class="col-md-9">
             <input type="text" name="num" class="form-control" value="<%= num %>">
         </div>
@@ -51,7 +51,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">调出时间：</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>调出时间：</label>
         <div class="col-md-9">
             <input type="text" name="allocTime" id="allocTime" class="form-control" value="<%= allocTime %>">
         </div>
@@ -63,9 +63,8 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">领用部门：</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>领用部门：</label>
         <div class="col-md-9">
-            <!-- <input type="hidden" name="departmentId" value="<%= departmentId %>"> -->
             <select class="form-control" name="departmentId" value="<%= departmentId %>">
                 <% $.each(departmentList, function(i, n) { %>
                     <option value="<%= n.id %>"><%= n.departmentName %></option>
@@ -87,7 +86,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">经办人：</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>经办人：</label>
         <div class="col-md-9">
             <div class="input-group">
                 <input type="hidden" name="handlerId" id="handlerId" value="<%= handlerId %>">

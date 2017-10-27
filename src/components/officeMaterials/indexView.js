@@ -151,12 +151,18 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    typeName: {
-                        required: true
-                    }
+                    assetName: { required: true },
+                    assetNo: { required: true },
+                    assetBuyDate: { required: true },
+                    assetUsedName: { required: true },
+                    assetDeadline: { required: true }
                 },
                 messages: {
-                    typeName: "请输入名称"
+                    assetName: "请输入名称",
+                    assetNo: "请输入编号",
+                    assetBuyDate: "请选择日期",
+                    assetUsedName: "请选择使用人",
+                    assetDeadline: "请输入期限"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
