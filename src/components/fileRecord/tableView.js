@@ -94,7 +94,7 @@ define(['../../common/query/index'], function (QUERY) {
                         var str = '';
                         str += '<p class="grid-command-p btn-edit">修改</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
-                        str += '<p class="grid-command-p btn-download">下载</p>';
+                        str += '<a class="grid-command-p" href="' + row.file + '">下载</a>';
                         return str;
                     }
                 }],

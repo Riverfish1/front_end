@@ -158,11 +158,15 @@ define([
                     recordName: "请输入姓名",
                     recordResult: "请输入原因",
                     startTime: '请选择开始时间',
+<<<<<<< HEAD
                     endTime: {
                         required: '请选择结束时间',
                         dateRange: '起始日期晚于结束日期'
                     },
 
+=======
+                    endTime: { required: '请选择结束时间', dateRange: '结束时间必须晚于开始时间' }
+>>>>>>> cb95787099d18a97c798474028b3214de98e9130
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

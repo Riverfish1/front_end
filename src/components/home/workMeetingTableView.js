@@ -52,8 +52,8 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row) {
-                        var date = ncjwUtil.timeTurn(row.startTime, 'yyyy/MM/dd') +
-                            ' - ' + ncjwUtil.timeTurn(row.endTime, 'yyyy/MM/dd');
+                        var date = ncjwUtil.timeTurn(row.startTime, 'yyyy/MM/dd hh:mm:ss') +
+                            ' - ' + ncjwUtil.timeTurn(row.endTime, 'yyyy/MM/dd hh:mm:ss');
                         return date;
                     }
                 }, {

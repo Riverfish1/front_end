@@ -69,11 +69,11 @@ define([
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
-            $('#completeTime').datepicker({
+            $('#completeTime').datetimepicker({
                 language: 'zh-CN',
                 autoclose: true,
                 todayHighlight: true,
-                format: 'yyyy-mm-dd'
+                format: 'yyyy-mm-dd hh:ii:ss'
             });
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
@@ -155,10 +155,12 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
-                data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
+                var JSONData = JSON.parse(datas);
+                console.log(JSONData);
+                JSONData.completeTime = JSONData.completeTime.replace(/\+/, ' ');
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_TODO_UPDATE : QUERY.WORK_TODO_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_TODO_UPDATE : QUERY.WORK_TODO_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');
