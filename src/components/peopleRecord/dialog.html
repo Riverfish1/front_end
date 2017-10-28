@@ -31,7 +31,9 @@
         <div class="col-md-9">
             <select id="departmentBelong" name="titleName" class="form-control" value="<%= titleName %>">
                 <% $.each(titleList, function(i, n) {%>
-                    <option value="<%= n.postName %>"><%= n.postName %></option>
+                    <option value="<%= n.postName %>">
+                        <%= n.postName %>
+                    </option>
                 <% }); %>
             </select>
         </div>

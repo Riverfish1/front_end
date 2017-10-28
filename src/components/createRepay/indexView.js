@@ -241,6 +241,7 @@ define([
                 format: 'yyyy-mm-dd'
             });
             this.$editForm = this.$el.find('#editForm');
+            this.$addDetailValid = this.$editForm.find('.addDetailValid');
             this.detailTable = new DetailTableView();
             this.detailTable.render(this.detailData);
             this.initSubmitForm();
@@ -371,6 +372,9 @@ define([
                     },
                     comment: {
                         required: true
+                    },
+                    addDetailValid: {
+                        required: true
                     }
                 },
                 messages: {
@@ -385,7 +389,10 @@ define([
                     operator_valid1: "请选择报销人员",
                     operator_valid2: "请选择审批领导",
                     operator_valid3: "请选择审批财务",
-                    comment: "请填写审核意见"
+                    comment: "请填写审核意见",
+                    addDetailValid: {
+                        required: "请添加报销名细"
+                    }
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -455,6 +462,11 @@ define([
             $status.val(index);
             //驳回状态-草稿或提交时，清空反馈意见+审批流程相关数据；
             //已提交状态-通过与驳回，row + 新状态
+            if(this.detailData.length > 0){
+                this.$addDetailValid.val(1);
+            }else{
+                this.$addDetailValid.val("");
+            }
             if (this.$editForm.valid()) {
                 var that = this;
                 var $inputs = that.$editForm.find('.submit-assist');
