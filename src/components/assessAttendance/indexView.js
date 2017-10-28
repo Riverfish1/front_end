@@ -167,7 +167,7 @@ define([
 				        	ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_INSERT, JSON.stringify(JSONData), function (res) {
 			                    if (res.success) {
                                     ncjwUtil.showInfo("提交成功！");
-			                        that.$el.html(that.template(that.default));
+			                        // that.$el.html(that.template(that.default));
 			                    } else {
 			                        ncjwUtil.showError("请求数据失败：" + res.errorMsg);
 			                    }

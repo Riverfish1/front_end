@@ -10,11 +10,10 @@ define([
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
         events: {
-            'click #evaluate': 'evaluate',
+            'click .evaluate': 'evaluate',
             'click #submitBtn': 'submitForm'
         },
         initialize: function () {
-            Backbone.off('submitForm').on('submitForm');
         },
         render: function () {
             //main view
@@ -45,7 +44,8 @@ define([
                 'contentType': 'application/json'
             });
         },
-        evaluate: function () {
+        evaluate: function (e) {
+            console.log(e);
             var initData = {evaluation: ''};
             this.$editDialog.modal('show');
             this.$editDialog.modal({backdrop: 'static', keyboard: false});

@@ -52,7 +52,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function (value) {
-                        return ncjwUtil.timeTurn(value);
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
                     }
                 }, {
                     field: 'endTime',
@@ -60,7 +60,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function (value) {
-                        return ncjwUtil.timeTurn(value);
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
                     }
                 }, {
                     field: 'creatorName',

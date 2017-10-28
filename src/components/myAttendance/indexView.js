@@ -90,7 +90,7 @@ define([
                     if (r.success) {
                         var overDays = r.total;
                         that.initState.overDays = overDays;
-                        that.$el.html(that.template(that.initState));
+                        // that.$el.html(that.template(that.initState));
                     } else {
                         ncjwUtil.showError("请求数据失败：" + r.errorMsg);
                     }
