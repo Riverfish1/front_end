@@ -131,9 +131,9 @@ define(['../../common/query/index'], function (QUERY) {
                         if(peopleId == row.creatorId || peopleId == leaderId || peopleId == financerId){
                             str += '<p class="grid-command-p btn-edit">查看</p>';
                         }
-                        if(((peopleId == leaderId && currentNodeName == "领导审批") || (peopleId == financerId && currentNodeName == "财务审批") ) && row.status == "submit"){
-                            str += '<p class="grid-command-p btn-edit">处理</p>';
-                        }
+                        // if(((peopleId == leaderId && currentNodeName == "领导审批") || (peopleId == financerId && currentNodeName == "财务审批") ) && row.status == "submit"){
+                        //     str += '<p class="grid-command-p btn-edit">处理</p>';
+                        // }
                         if(value == "submit"){
                             str += '<p class="grid-command-p btn-delete">删除</p>';
                         }

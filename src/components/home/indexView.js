@@ -158,7 +158,8 @@ define([
                         required: true
                     },
                     endDate: {
-                        required: true
+                        required: true,
+                        dateRange: '.startDate'
                     },
                     isRemind: {
                         required: true
@@ -177,7 +178,8 @@ define([
                         required: "请选择时间"
                     },
                     endDate: {
-                        required: "请选择时间"
+                        required: "请选择时间",
+                        dateRange: '起始日期晚于结束日期'
                     },
                     isRemind: {
                         required: "请选择是否提醒"

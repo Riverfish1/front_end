@@ -849,6 +849,11 @@ input:-webkit-autofill {
     height: 0;
     opacity: 0;
 }
+.inputHideAssist{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
 .approverId{
     width: 0;
     height: 0;
