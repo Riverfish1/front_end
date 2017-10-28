@@ -77,19 +77,19 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label pl0">发布起止时间</label>
+        <label class="col-md-3 control-label pl0">发布起止时间1</label>
         <div class="col-md-4">
             <% if(id){ %>
-            <input type="text" readonly name="startTime" class="form-control accessTime" value="<%= startTime %>">
+            <input type="text" readonly name="startTime" class="form-control startTime accessTime" value="<%= startTime %>">
             <% } %>
             <% if(!id){ %>
-            <input type="text" name="startTime" class="form-control accessTime" value="<%= startTime %>">
+            <input type="text" name="startTime" class="form-control startTime accessTime" value="<%= startTime %>">
             <% } %>
         </div>
         <div class="col-md-1">-</div>
         <div class="col-md-4">
             <% if(id){ %>
-            <input type="text" readonly name="endTime" class="form-control accessTime" value="<%= endTime %>">
+            <input type="text" readonly name="endTime" class="form-control  accessTime" value="<%= endTime %>">
             <% } %>
             <% if(!id){ %>
             <input type="text" name="endTime" class="form-control accessTime" value="<%= endTime %>">

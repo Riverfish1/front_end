@@ -189,7 +189,8 @@ define([
                         required: true
                     },
                     endTime: {
-                        required: true
+                        required: true,
+                        dateRange: '.startTime'
                     },
                     departmentIds: {
                         required: true
@@ -203,7 +204,10 @@ define([
                     sNumber: "请填写编号",
                     content: "请填写正文",
                     startTime: "请选择开始时间",
-                    endTime: "请选择结束时间",
+                    endTime: {
+                        required: "请选择结束时间",
+                        dateRange: '起始日期晚于结束日期'
+                    },
                     departmentIds: "请选择交办人"
                 },
                 highlight: function (element) {

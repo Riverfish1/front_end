@@ -130,6 +130,13 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
+                    startTime: {
+                        required: true
+                    },
+                    endTime: {
+                        required: true,
+                        dateRange: ".startTime"
+                    },
                     employeeNum: {
                         required: true,
                         number: true
@@ -137,7 +144,14 @@ define([
                 },
                 messages: {
                     name: "请输入名称",
-                    gmtCreate: "请输入时间"
+                    gmtCreate: "请输入时间",
+                    startTime: {
+                        required: "请选择开始时间"
+                    },
+                    endTime: {
+                        required: "请选择结束时间",
+                        dateRange: '起始日期晚于结束日期'
+                    }
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

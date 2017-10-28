@@ -143,7 +143,8 @@ define([
                         required: true
                     },
                     summaryEndTime: {
-                        required: true
+                        required: true,
+                        dateRange: '.startDate'
                     },
                     summaryTitle: {
                         required: true
@@ -154,7 +155,10 @@ define([
                 },
                 messages: {
                     summaryStartTime: "请选择开始时间",
-                    summaryEndTime: "请选择结束时间",
+                    summaryEndTime: {
+                        required: "请选择结束时间",
+                        dateRange: '起始日期晚于结束日期'
+                    },
                     summaryTitle: '请输入标题',
                     summaryContent: '请输入内容'
                 },

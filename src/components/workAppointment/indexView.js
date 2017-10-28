@@ -150,14 +150,19 @@ define([
                         required: true
                     },
                     endTime: {
-                        required: true
+                        required: true,
+                        dateRange: '.startTime'
                     }
                 },
                 messages: {
                     recordName: "请输入姓名",
                     recordResult: "请输入原因",
                     startTime: '请选择开始时间',
-                    endTime: '请选择结束时间'
+                    endTime: {
+                        required: '请选择结束时间',
+                        dateRange: '起始日期晚于结束日期'
+                    },
+
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
