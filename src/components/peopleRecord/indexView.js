@@ -17,6 +17,7 @@ define([
             departmentId: '',
             positionName: '',
             titleList: [],
+            titleName: '',
             phoneNum: '',
             mailAddress: '',
             officeAreaId: '',
@@ -60,6 +61,7 @@ define([
         },
         addOne: function (row) {
             var row = row.id ? row : this.initState;
+            if (row.id) row.titleList = this.initState.titleList;
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row));
@@ -69,6 +71,7 @@ define([
             this.getAreaList(row);
             this.getRoomList(row);
             this.getDepartmentList(row);
+            if (row.id) ncjwUtil.setFiledsValue(this.$officeDialogPanel, {titleName: row.titleName});
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
