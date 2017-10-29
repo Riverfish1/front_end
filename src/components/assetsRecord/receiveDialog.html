@@ -12,7 +12,8 @@
         <label class="col-md-3 control-label"><font color="#f00">* </font>领用人：</label>
         <div class="col-md-9">
             <div class="input-group">
-                <input class="form-control test" type="text" id="receiveName" name="receiveName" value="<%= receiveName %>">
+                <input type="hidden" name="assetUsedId" value="<%= assetUsedId %>">
+                <input class="form-control test" type="text" id="assetUsedName" name="assetUsedName" value="<%= assetUsedName %>">
                 <div class="input-group-btn">
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                     </ul>

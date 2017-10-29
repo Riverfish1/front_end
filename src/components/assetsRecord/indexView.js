@@ -23,7 +23,8 @@ define([
             assetClassList: [],
         },
         receiveInitialData: {
-            receiveName: '',
+            assetUsedName: '',
+            assetUsedId: '',
             receiveDate: '',
             remark: '',
             assetId: '',
@@ -107,6 +108,7 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
+                JSONData.receiveOperatorName = window.ownerPeopleName;
                 ncjwUtil.postData(QUERY.ASSETS_RECEIVE_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo('领用资产成功！');

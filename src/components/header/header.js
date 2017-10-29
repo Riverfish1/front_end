@@ -91,10 +91,10 @@ define([
             this.$shotcutBtn.css('top', this.$menu.height() + 58);
         },
         handleRouter: function () {
-            if (window.location.host.split('.')[0].indexOf('120:55:36:116') !== -1) {
+            if (window.location.host.indexOf('120.55.36.116') !== -1) {
                 window.location.href = 'http://60.190.226.163:5002/uums-server/xtgl.htm';
             } else {
-                window.location.href = window.location.origin + ':8082/uums-server/xtgl.htm';
+                window.location.href = 'http://' + window.location.hostname + ':8082/uums-server/xtgl.htm';
             }
         }
 	});
