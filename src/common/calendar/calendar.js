@@ -112,6 +112,7 @@ define(['jquery'], function ($) {
         render: function (direction, container) {
             var year, month;
             container = document.querySelector(container) || document.body;
+
             if (this.monthDate) {
                 year = this.monthDate.year;
                 month = this.monthDate.month;
@@ -148,7 +149,9 @@ define(['jquery'], function ($) {
             this.render(null, container);
             this.selCurrentDay();
             this.showOrHide(true);
-            this.$wrapper.addEventListener('click', function (e) {
+            var $wrap = $(this.$wrapper);
+            $wrap.off();
+            var prevOrNextHandler = function (e) {
                 var $target = e.target;
                 if (!$target.classList.contains('ui-datepicker-btn')) return;
                 /*上个月*/
@@ -159,9 +162,8 @@ define(['jquery'], function ($) {
                 else if ($target.classList.contains('ui-datepicker-next-btn')) {
                     self.render('next',container);
                 }
-            }, false);
-
-            this.$wrapper.addEventListener('click', function (e) {
+            }
+            var tdHandler = function (e) {
                 var $target = e.target;
                 //jquery
                 $('.ui-datepicker-body').find('td').removeClass('active');
@@ -170,7 +172,10 @@ define(['jquery'], function ($) {
                 var date = new Date(self.monthDate.year, self.monthDate.month - 1, $target.dataset.date);
                 self._date = date;
                 // $input.value = format(date);
-            }, false);
+            }
+            $wrap.off();
+            $wrap.on('click', prevOrNextHandler);
+            $wrap.on('click', tdHandler);
         },
         selCurrentDay: function () {
             var $td = $('.ui-datepicker-body').find('td[data-date=' + this.getDay() + ']');

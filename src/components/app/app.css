@@ -506,7 +506,7 @@ input:-webkit-autofill {
 
 .nav-sidebar .nav-icon {
     position: absolute;
-    right: 30px;
+    left: 0px;
     top: 13px;
     color: #0F3652;
 
@@ -546,7 +546,7 @@ input:-webkit-autofill {
 }
 
 .nav-sub a {
-    padding-left: 86px !important;
+    padding-left: 43% !important;
     color: #222;
 }
 

@@ -105,11 +105,6 @@ define([], function () {
         WORK_AUTH_DELETE: '/api/workAuth/deleteById',
         WORK_AUTH_QUERY: '/api/workAuth/queryByUserId',
         WORK_AUTH_SELECT_BY_ID: '/api/workAuth/selectById',
-        // 工作流管理
-        WORK_WORKFLOW_INSERT: '/api/workflow/insert',
-        WORK_WORKFLOW_UPDATE: '/api/workflow/updateById',
-        WORK_WORKFLOW_DELETE: '/api/workflow/deleteById',
-        WORK_WORKFLOW_QUERY: '/api/workflow/query',
         // 发文管理
         WORK_SENDDOCUMENT_NEW: '/api/docsend/new',
         WORK_SENDDOCUMENT_SUBMIT: '/api/docsend/submit',

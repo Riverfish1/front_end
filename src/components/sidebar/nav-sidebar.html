@@ -4,6 +4,9 @@
         <!--<li class="">-->
             <!--<span class="<%= n.className %> icon_com"></span>-->
             <a class="item"  href="<%= n.href %>">
+                <% if(n.children && n.children.length > 0){ %>
+                <i class="nav-icon"></i>
+                <% } %>
                 <span><%= n.title %></span>
             </a>
             <% if(n.children && n.children.length > 0){ %>
