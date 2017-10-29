@@ -37,7 +37,7 @@ define([
                         that.default = {
                             loginName: JSONData.peopleName
                         };
-                        that.$el.html(that.template(that.default));
+                        $('.loginName').html(that.template(that.default));
                     } else {
                         window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + window.location.href;
                     }

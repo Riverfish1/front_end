@@ -26,12 +26,10 @@
                 <li class="shotcutWrap">
                     <a href="#/shotcut" >快捷方式</a>
                     <ul class="shotMenu dropdown-menu">
-
                     </ul>
                     <span class="shotcutBtn">添加</span>
-                    <!--dialog-->
                 </li>
-                <div class="modal fade bs-example-modal-lg" id="editDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+                <div class="modal fade bs-example-modal-lg" id="shotcutDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
                     <div class="modal-dialog" style="width: 650px;">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -43,17 +41,15 @@
                             </div>
                             <div class="modal-footer">
                                 <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-                                <button id="submitBtn" class="btn btn-primary" onclick="">保存</button>
+                                <button id="submitBtn" class="btn btn-primary">保存</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </ul>
-            <ul class="nav navbar-nav navbar-right  navbar-btn-group">
+            <ul class="nav navbar-nav navbar-right loginName navbar-btn-group">
                 <li>
                     <div class="btn-group ">
-                        <!--<span class="list_user icon" aria-hidden="true"></span>-->
-                        <!--<button class="btn btn-default">${account}</button>-->
                         <button class="btn btn-default"><%= loginName %></button>
                         <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
                             <span class="caret"></span>

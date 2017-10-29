@@ -21,8 +21,8 @@ define([
         },
         render: function () {
             var $parent = this.$el.parents('#navbar');
-            this.$editDialog = $parent.find('#editDialog');
-            this.$editPanel = $parent.find('#editPanel');
+            this.$editDialog = $parent.find('#shotcutDialog');
+            this.$editPanel = this.$editDialog.find('#editPanel');
             this.getData();
             return this;
         },

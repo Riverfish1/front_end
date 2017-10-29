@@ -17,13 +17,21 @@
         </div>
     </div>
     <div class="row">
+        <table id="leave_table"></table>
+    </div>
+    <div class="row">
         <div class="col-md-6">
             <span class="col-md-4">请假天数：</span>
-            <span class="col-md-8" style="color: #00f"><%= leaveDays %> 天</span>
+            <span class="col-md-8 leave_day" style="color: #00f"><%= leaveDays %> 天</span>
         </div>
+    </div>
+    <div class="row">
+        <table id="over_table"></table>
+    </div>
+    <div class="row">
         <div class="col-md-6">
             <span class="col-md-4">加班天数：</span>
-            <span class="col-md-8" style="color: #00f"><%= overDays %> 天</span>
+            <span class="col-md-8 over_day" style="color: #00f"><%= overDays %> 天</span>
         </div>
     </div>
 </form>

@@ -10,6 +10,7 @@ define([
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
         events: {
+            'click .evaluate': 'evaluate',
             'click #submitBtn': 'submitForm'
         },
         initialize: function () {
@@ -21,8 +22,6 @@ define([
                 list: []
             };
             this.getInitialData();
-            this.$editDialog = this.$el.find('#editDialog');
-            this.$editDialogPanel = this.$el.find('#editPanel');
             return this;
         },
         getInitialData: function () {
@@ -36,31 +35,33 @@ define([
                     var list = res.data ? res.data[0] : [];
                     that.initState.list = list;
                     that.$el.empty().html(that.template(that.initState));
-                    $('.evaluate').click(that.evaluate(that));
                 } else {
                     that.$el.empty().html(that.template(that.initState));
-
                 }
             }, {
                 'contentType': 'application/json'
             });
         },
-        evaluate: function (bb) {
-            console.log(bb);
-            var initData = {evaluation: ''};
-            bb.$editDialog.modal('show');
-            bb.$editDialog.modal({backdrop: 'static', keyboard: false});
-            bb.$editDialogPanel.empty().html(bb.getDialogContent(initData));
+        evaluate: function (e) {
+            this.$ele = $(e.target);
+            this.$leadDialog = $((this.$ele)[0]).closest('#main').find('#leadDialog');
+            var initData = {evaluation: null};
+            console.log($((this.$ele)[0]).closest('#main').find('#leadDialog'))
+            this.$leadDialog.modal('show');
+            this.$leadDialog.modal({backdrop: 'static', keyboard: false});
+            this.$leadDialog.find('#editPanel').empty().html(this.getDialogContent(initData));
         },
         submitForm: function () {
             var params = {
                 evaluation: $('#evaluation').val(),
                 status: '1',
-                approverId: window.ownerPeopleId
+                approverId: window.ownerPeopleId,
+                id: $((this.$ele[0])).val()
             };
             var that = this;
             ncjwUtil.postData(QUERY.ASSESS_SUMMARY_UPDATE, JSON.stringify(params), function(res) {
                 if (res.success) {
+                    that.$leadDialog.modal('hide');
                     that.getInitialData();
                 }
             }, {
