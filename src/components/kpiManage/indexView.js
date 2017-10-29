@@ -1,16 +1,12 @@
 /*global define*/
 define([
     'text!./index.html',
-    'text!./kpiSelect.html',
-    'text!./targetSelect.html',
     '../../common/query/index'
-], function (tpl, kpiSelect, targetSelect, QUERY) {
+], function (tpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
         template: _.template(tpl),
-        getKpiSelectContent: _.template(kpiSelect),
-        getTargetNumSelectContent: _.template(targetSelect),
         events: {
             'click #btn-submit': 'submitForm'
         },
@@ -27,47 +23,12 @@ define([
                 todayHighlight: true,
                 autoclose: true
             });
-            this.$kpiSel = this.$submitForm.find('#kpiSel');
-            this.$targetNumSel = this.$submitForm.find('#targetNumSel');
+            this.$kpiName = this.$submitForm.find('#kpiName');
+            this.$targetNum = this.$submitForm.find('#targetNumber');
             this.$performance = this.$submitForm.find('#performance');
             this.$postKpi = this.$submitForm.find('#postKpi');
-            this.getKpiList();
-            this.getTargetNumList();
+            this.initSubmitForm();
             return this;
-        },
-        // 获取关键业务指标下拉列表
-        getKpiList: function () {
-            var self = this;
-            var params = {
-                pageNum: 0,
-                pageSize: 10000
-            }
-            ncjwUtil.postData(QUERY.KPI_ITEM_SELECT, JSON.stringify(params), function (res) {
-                if (res.success) {
-                    var list = {list: res.data[0]};
-                    self.$kpiSel.html(self.getKpiSelectContent(list));
-                } else {
-                }
-            }, {
-                "contentType": 'application/json'
-            })
-        },
-        // 获取目标数值下拉列表
-        getTargetNumList: function () {
-            var self = this;
-            var params = {
-                pageNum: 0,
-                pageSize: 10000
-            }
-            ncjwUtil.postData(QUERY.TARGET_NUM_ITEMS_SELECT , JSON.stringify(params), function (res) {
-                if (res.success) {
-                    var list = {list: res.data[0]};
-                    self.$targetNumSel.html(self.getTargetNumSelectContent(list));
-                } else {
-                }
-            }, {
-                "contentType": 'application/json'
-            })
         },
         initSubmitForm: function () {
             this.$submitForm.validate({
@@ -75,11 +36,12 @@ define([
                 errorClass: 'help-block',
                 focusInvalid: true,
                 rules: {
-                    kpi: {
+                    kpiName: {
                         required: true
                     },
-                    targetNum: {
-                        required: true
+                    targetNumber: {
+                        required: true,
+                        number: true
                     },
                     performance: {
                         required: true
@@ -87,14 +49,23 @@ define([
                     postKpi: {
                         required: true,
                         maxlength: 50
+                    },
+                    startDate: {
+                        required: true,
+                        date: true
+                    },
+                    endDate: {
+                        required: true,
+                        date: true
                     }
                 },
                 messages: {
-                    kpi: {
+                    kpiName: {
                         required: "请选择关键业务指标"
                     },
-                    targetNum: {
-                        required: "请选择目标数值"
+                    targetNumber: {
+                        required: "请选择目标数值",
+                        number: '必须输入数字'
                     },
                     performance: {
                         required: "请填写完成情况"
@@ -102,6 +73,14 @@ define([
                     postKpi: {
                         equired: "请填写岗位指标设定",
                         maxlength: 50
+                    },
+                    startDate: {
+                        required: '请选择时间',
+                        date: '必须为2017-09-30格式'
+                    },
+                    endDate: {
+                        required: '请选择时间',
+                        date: '必须为2017-09-30格式'
                     }
                 },
                 highlight: function (element) {
@@ -125,8 +104,8 @@ define([
                 var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
                 JSONData.userId = window.ownerPeopleId;
-                var kpi = this.$kpiSel.val();
-                var targetNum = this.$targetNumSel.val();
+                var kpi = this.$kpiName.val();
+                var targetNum = this.$targetNum.val();
                 var performance = this.$performance.val();
                 var postKpi = this.$postKpi.val();
                 bootbox.confirm({

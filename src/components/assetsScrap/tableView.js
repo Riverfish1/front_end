@@ -78,6 +78,18 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
+                    field: 'status',
+                    title: '状态',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: function (value) {
+                        switch (value) {
+                            case 0: return '报废';
+                            case 1: return '已还原入库';
+                            default: return '-';
+                        }
+                    }
+                }, {
                     field: 'oper',
                     title: '操作',
                     align: 'center',
@@ -85,7 +97,7 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-store">还原入库</p>';
+                        if (row.status === 0) str += '<p class="grid-command-p btn-store">还原入库</p>';
                         return str;
                     }
                 }],

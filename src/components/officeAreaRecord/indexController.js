@@ -1,10 +1,6 @@
-define(['./indexModel', './indexView'], function (Model, View) {
+define(['./indexView'], function (View) {
     var controller = function (name) {
-        var model = new Model();
-        name && model.set({
-            title: '办公区登记'
-        });
-        var view = new View({model:model});
+        var view = new View();
         view.render();      //利用Model定义的默认属性初始化界面
         controller.onRouteChange = function () {
             view.undelegateEvents();

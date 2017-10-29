@@ -89,7 +89,12 @@ define(['../../common/query/index'], function (QUERY) {
                     console.log(res);
                     return {
                         "total": res.total,
-                        "rows": res.data ? res.data[0] : []
+                        // "rows": res.data ? res.data[0] : []
+                        "rows": [
+                            {"斧子": [{assetClassName: "斧子",count: 2,status: 0,statusName: "闲置"},{assetClassName: "斧子",count: 2,status: 0,statusName: "在用"},{assetClassName: "斧子",count: 2,status: 0,statusName: "维修"},{assetClassName: "斧子",count: 2,status: 0,statusName: "报废"}]},
+                            {"机械": [{assetClassName: "机械",count: 2,status: 0,statusName: "闲置"},{assetClassName: "机械",count: 2,status: 0,statusName: "在用"},{assetClassName: "机械",count: 2,status: 0,statusName: "维修"},{assetClassName: "机械",count: 2,status: 0,statusName: "报废"}]},
+                            {"手枪": [{assetClassName: "手枪",count: 2,status: 0,statusName: "闲置"},{assetClassName: "手枪",count: 2,status: 0,statusName: "在用"},{assetClassName: "手枪",count: 2,status: 0,statusName: "维修"},{assetClassName: "手枪",count: 2,status: 0,statusName: "报废"}]}
+                        ]
                     }
                 }
             });

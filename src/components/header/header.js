@@ -27,24 +27,27 @@ define([
         },
         initialize:function(){
             var that = this;
-            // ncjwUtil.getData(QUERY.LOGIN, {}, function(res) {
-            //     if (res.success) {
-            //         var data = res.data && res.data[0];
-            //         var JSONData = JSON.parse(data);
-            //         window.ownerPeopleId = JSONData.id;
-            //         window.ownerPeopleName = JSONData.peopleName;
-            //         that.default = {
-            //             loginName: JSONData.peopleName
-            //         };
-            //         that.$el.html(that.template(that.default));
-            //     } else {
-            //         window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + window.location.href;
-            //     }
-            // }, {
-            //     'contentType': 'application/json'
-            // });
-            window.ownerPeopleId = 4;
-            window.ownerPeopleName = '张三疯';
+            if (window.location.host.indexOf('localhost') === -1) {
+                ncjwUtil.getData(QUERY.LOGIN, {}, function(res) {
+                    if (res.success) {
+                        var data = res.data && res.data[0];
+                        var JSONData = JSON.parse(data);
+                        window.ownerPeopleId = JSONData.id;
+                        window.ownerPeopleName = JSONData.peopleName;
+                        that.default = {
+                            loginName: JSONData.peopleName
+                        };
+                        that.$el.html(that.template(that.default));
+                    } else {
+                        window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + window.location.href;
+                    }
+                }, {
+                    'contentType': 'application/json'
+                });
+            } else {
+                window.ownerPeopleId = 4;
+                window.ownerPeopleName = '张三疯';
+            }
 			Backbone.off('routeChange').on('routeChange', this.updateNavSideBar);
 			this.isFirst = true;
 		},
@@ -88,11 +91,10 @@ define([
             this.$shotcutBtn.css('top', this.$menu.height() + 58);
         },
         handleRouter: function () {
-            var ip = returnCitySN["cip"];
-            if (window.location.host.split('.')[0].indexOf('120') !== -1) {
+            if (window.location.host.split('.')[0].indexOf('120:55:36:116') !== -1) {
                 window.location.href = 'http://60.190.226.163:5002/uums-server/xtgl.htm';
             } else {
-                window.location.href = 'http://120.55.36.116:8082/uums-server/xtgl.htm';
+                window.location.href = window.location.origin + ':8082/uums-server/xtgl.htm';
             }
         }
 	});

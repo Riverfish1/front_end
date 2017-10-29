@@ -100,7 +100,8 @@ define(['../../common/query/index'], function (QUERY) {
         queryParams: function (params) {
             var temp = {
                 pageNum: params.offset / params.limit,
-                pageSize: params.limit
+                pageSize: params.limit,
+                usePaged: true
             };
             return temp;
         },
