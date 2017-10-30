@@ -112,7 +112,7 @@
                 <% if(id){ %>
                 <div class="col-md-8 createRepay_filePathWrap" style="overflow: auto;">
                     <% $.each(filePath, function(k, file){ %>
-                    <a class="fileDownLoad" href="<%= file.filePath %>"><%= file.fileName %></a>
+                    <a target="_blank" class="fileDownLoad" href="<%= file.filePath %>"><%= file.fileName %></a>
                     <% }); %>
                 </div>
                 <% } %>
