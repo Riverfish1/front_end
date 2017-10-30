@@ -1,6 +1,6 @@
 <% if(list.length) {%>
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <% $.each(list, function(i, n){console.log(n) %>
+    <% $.each(list, function(i, n){%>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="<%= 'headingTwo' + i %>">
             <h4 class="panel-title">
@@ -22,11 +22,11 @@
                     <span style="color: #00f"><%= ncjwUtil.getCurrentDate(n.endDate) %></span>)
                 </a>
                 
-                <% if(n.status) {%>
-                <button value="" class="btn btn-primary evaluate">评价</button>
-                <% } %>
                 <% if(!n.status) {%>
-                <button value="" class="btn" disabled="true">已评价</button>
+                <button value="<%= n.id %>" class="btn btn-primary evaluate">评价</button>
+                <% } %>
+                <% if(n.status) {%>
+                <button value="<%= n.id %>" class="btn" disabled="true">已评价</button>
                 <% } %>
             
             </h4>
