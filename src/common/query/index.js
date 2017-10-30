@@ -153,12 +153,12 @@ define([], function () {
         WORK_NOTICEMANAGE_UPDATE: '/api/noticeRecord/updateById',
         WORK_NOTICEMANAGE_DELETE: '/api/noticeRecord/deleteById',
         // 个人绩效
-        
+
         // 领导审核
-        ASSESS_SUMMARY_QUERY: '/api/workSummary/query', 
-        ASSESS_SUMMARY_UPDATE: '/api/workSummary/updateById', 
-        ASSESS_SUMMARY_INSERT: '/api/workSummary/insert', 
-        ASSESS_SUMMARY_QUERY_BY_USER_ID: '/api/workSummary/queryByUserId', 
+        ASSESS_SUMMARY_QUERY: '/api/workSummary/query',
+        ASSESS_SUMMARY_UPDATE: '/api/workSummary/updateById',
+        ASSESS_SUMMARY_INSERT: '/api/workSummary/insert',
+        ASSESS_SUMMARY_QUERY_BY_USER_ID: '/api/workSummary/queryByUserId',
         //交办协办
         WORK_COOPERATION_INSERT: '/api/cooperation/insert',
         WORK_COOPERATION_QUERY: '/api/cooperation/query',
@@ -288,6 +288,31 @@ define([], function () {
         REPAY_CREATE_QUERY: '/api/reimbursement/query',
         REPAY_CREATE_DELETE_BY_ID: '/api/reimbursement/deleteById',
 
+        // 训练
+        CERT_QUERY: '/api/credentialManage/query',
+        CERT_INSERT: '/api/credentialManage/insert',
+        CERT_UPDATE: '/api/credentialManage/updateById',
+        CERT_DELETE: '/api/credentialManage/deleteById',
+
+        CASE_QUERY: '/api/classicCase/query',
+        CASE_INSERT: '/api/classicCase/insert',
+        CASE_UPDATE: '/api/classicCase/updateById',
+        CASE_DELETE: '/api/classicCase/deleteById',
+
+        KNOWLEDGE_QUERY: '/api/repository/query',
+        KNOWLEDGE_INSERT: '/api/repository/insert',
+        KNOWLEDGE_UPDATE: '/api/repository/updateById',
+        KNOWLEDGE_DELETE: '/api/repository/deleteById',
+
+        CULTIVATION_QUERY: '/api/trainRecord/query',
+        CULTIVATION_INSERT: '/api/trainRecord/insert',
+        CULTIVATION_UPDATE: '/api/trainRecord/updateById',
+        CULTIVATION_DELETE: '/api/trainRecord/deleteById',
+
+        SELF_LEARNING_QUERY: '/api/selfStudyRecord/query',
+        SELF_LEARNING_INSERT: '/api/selfStudyRecord/insert',
+        SELF_LEARNING_UPDATE: '/api/selfStudyRecord/updateById',
+        SELF_LEARNING_DELETE: '/api/selfStudyRecord/deleteById',
 
         // 正则
         TEL_REG: /(^(13\d|15[^4,\D]|17[13678]|18\d)\d{8}|170[^346,\D]\d{7})$/,

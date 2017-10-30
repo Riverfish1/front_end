@@ -119,6 +119,18 @@ define(['backbone'], function (Backbone) {
         'support/receiveRepay': 'src/components/receiveRepay/indexController.js',
         // 借款或报销查询
         'support/feeQuery': 'src/components/feeQuery/indexController.js',
+
+        // 训练-证书
+        'training/cert': 'src/components/training/cert/indexController.js',
+        // 训练-培训记录
+        'training/cultivation': 'src/components/training/cultivation/indexController.js',
+        // 训练-经典案例
+        'training/case': 'src/components/training/case/indexController.js',
+        // 训练-知识库
+        'training/knowledge': 'src/components/training/knowledge/indexController.js',
+        // 训练-自学记录
+        'training/selfLearning': 'src/components/training/selfLearning/indexController.js',
+
         '*actions': 'defaultAction'
     };
 
