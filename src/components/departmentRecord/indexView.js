@@ -54,7 +54,7 @@ define([
             }
             ncjwUtil.postData(QUERY.RECORD_DEPARTMENT_QUERY, JSON.stringify(params), function (res) {
                 if (res.success) {
-                    var departmentList = {departmentList: res.data[0]};
+                    var departmentList = {departmentList: res.data && res.data[0]};
                     self.$companyBelong.empty().html(self.getDepartmentContent(departmentList));
                     (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {parentId: row.parentId});
                 } else {

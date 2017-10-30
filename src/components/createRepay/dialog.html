@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">标题</label>
+                <label class="col-md-4 control-label"><font color="#f00">* </font>标题</label>
                 <div class="col-md-8">
                     <input type="text" name="title" class="form-control submit-assist w666" value="<%= title %>">
                 </div>
@@ -49,7 +49,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">报销人员</label>
+                <label class="col-md-4 control-label"><font color="#f00">* </font>报销人员</label>
                 <div class="col-md-8">
                     <div class="input-group">
                         <% if(!id){ %>
@@ -76,7 +76,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">起始日期</label>
+                <label class="col-md-4 control-label"><font color="#f00">* </font>起始日期</label>
                 <div class="col-md-8">
                     <input type="text" name="startTime" class="form-control startTime accessTime submit-assist" value="<%= startTime %>">
                 </div>
@@ -84,7 +84,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">结束日期</label>
+                <label class="col-md-4 control-label"><font color="#f00">* </font>结束日期</label>
                 <div class="col-md-8">
                     <input type="text" name="endTime" class="form-control endTime accessTime submit-assist" value="<%= endTime %>">
                 </div>
@@ -92,7 +92,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">总天数</label>
+                <label class="col-md-4 control-label"><font color="#f00">* </font>总天数</label>
                 <div class="col-md-8">
                     <input type="text" name="totalDays" disabled class="form-control totalDays submit-assist" value="<%= totalDays %>">
                 </div>
@@ -102,7 +102,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">报销附件</label>
+                <label class="col-md-4 control-label"><font color="#f00">* </font>报销附件</label>
                 <% if(!id){ %>
                 <div class="col-md-8">
                     <div id="uploaderWrap"></div>
@@ -112,7 +112,7 @@
                 <% if(id){ %>
                 <div class="col-md-8 createRepay_filePathWrap" style="overflow: auto;">
                     <% $.each(filePath, function(k, file){ %>
-                    <a class="fileDownLoad" href="<%= file.filePath %>"><%= file.fileName %></a>
+                    <a target="_blank" class="fileDownLoad" href="<%= file.filePath %>"><%= file.fileName %></a>
                     <% }); %>
                 </div>
                 <% } %>
@@ -122,7 +122,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">报销类型</label>
+                <label class="col-md-4 control-label"><font color="#f00">* </font>报销类型</label>
                 <div class="col-md-8">
                     <select name="type" class="form-control submit-assist">
                         <option value="0">借款单</option>
@@ -135,7 +135,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">申请理由</label>
+                <label class="col-md-4 control-label"><font color="#f00">* </font>申请理由</label>
                 <div class="col-md-8">
                     <input type="text" name="reason" class="form-control submit-assist w405" value="<%= reason %>">
                 </div>
@@ -146,7 +146,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">报销明细</label>
+                <label class="col-md-4 control-label"><font color="#f00">* </font>报销明细</label>
                 <div class="col-md-8">
                     <% if(!id){ %>
                     <button id="btn_detail_add" type="button" class="btn btn-default">
@@ -165,7 +165,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label flow-title">领导审批</label>
+                <label class="col-md-4 control-label flow-title"><font color="#f00">* </font>领导审批</label>
                 <div class="col-md-8">
                     <div class="input-group">
                         <% if(!id){ %>
@@ -195,7 +195,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">领导意见</label>
+                <label class="col-md-4 control-label"><font color="#f00">* </font>领导意见</label>
                 <div class="col-md-8">
                     <textarea name="comment" class="form-control leader w666" value="<%= comment %>"><%= workFlow.nodeList[0].comment %></textarea>
                 </div>
@@ -206,7 +206,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label flow-title">财务审批</label>
+                <label class="col-md-4 control-label flow-title"><font color="#f00">* </font>财务审批</label>
                 <div class="col-md-8">
                     <div class="input-group">
                         <% if(!id){ %>
@@ -236,7 +236,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">账务意见</label>
+                <label class="col-md-4 control-label"><font color="#f00">* </font>账务意见</label>
                 <div class="col-md-8">
                     <textarea name="comment" class="form-control financer  w666" value="<%= comment %>"><%= workFlow.nodeList[1].comment %></textarea>
                 </div>

@@ -157,7 +157,6 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
-                console.log(JSONData);
                 JSONData.completeTime = JSONData.completeTime.replace(/\+/, ' ');
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.WORK_TODO_UPDATE : QUERY.WORK_TODO_INSERT, JSON.stringify(JSONData), function (res) {

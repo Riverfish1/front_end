@@ -5,7 +5,7 @@
     <!--基本信息-->
     <div class="row">
         <div class="form-group">
-            <label class="col-md-3 control-label">流程名称</label>
+            <label class="col-md-3 control-label"><font color="#f00">* </font>流程名称</label>
             <div class="col-md-9">
                 <input type="text" name="name" class="form-control submit-assist" value="<%= name %>">
             </div>
@@ -13,9 +13,9 @@
     </div>
     <div class="row">
         <div class="form-group">
-            <label class="col-md-3 control-label">流程类型</label>
+            <label class="col-md-3 control-label"><font color="#f00">* </font>流程类型</label>
             <div class="col-md-9">
-                <select name="type" class="form-control submit-assist">
+                <select name="type" class="form-control submit-assist" value="<%= type %>">
                     <option value="0">发文流程</option>
                     <option value="1">收文流程</option>
                 </select>
@@ -25,7 +25,7 @@
     <!--流程设置-->
     <div class="row">
         <div class="form-group">
-            <label class="col-md-3 control-label">流程设置</label>
+            <label class="col-md-3 control-label"><font color="#f00">* </font>流程设置</label>
             <div class="col-md-9">
                 <button id="btn_detail_add" type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增

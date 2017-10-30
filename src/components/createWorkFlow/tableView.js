@@ -21,8 +21,8 @@ define(['../../common/query/index'], function (QUERY) {
         },
         init: function () {
             var typeMap = {
-                "0": "收文管理",
-                "1": "发文管理"
+                "0": "发文管理",
+                "1": "收文管理"
             }
             this.$el.bootstrapTable({
                 url: QUERY.WORK_WORKFLOW_QUERY, //请求后台的URL（*）

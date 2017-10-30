@@ -364,7 +364,7 @@ define([
             }
             ncjwUtil.postData(QUERY.WORK_WORKFLOW_QUERY, JSON.stringify(params), function (res) {
                 if (res.success) {
-                    var d = res.data[0];
+                    var d = res.data && res.data[0];
                     var list = {list: self.parseWorkFlow(d)};
                     self.$flowTypeWrap.empty().html(self.getFlowTypeContent(list));
                     self.$flowWrapDetail.empty().html(self.getFlowDetailContent(list.list[0]));

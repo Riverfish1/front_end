@@ -5,14 +5,14 @@
     <%if(id){%>
         <div class="form-group">
             <label class="col-md-3 control-label">名称：</label>
-            <div class="col-md-9" style="margin-top: 7px;">
-                <span><%= petitionName %></span>
+            <div class="col-md-9">
+                <div class="form-control" style="border: none"><%= petitionName %></div>
             </div>
         </div>
     <%}%>
     <%if(!id){%>
         <div class="form-group">
-            <label class="col-md-3 control-label">名称：</label>
+            <label class="col-md-3 control-label"><font color="#f00">* </font>名称：</label>
             <div class="col-md-9">
                 <input type="text" name="petitionName" class="form-control" value="<%= petitionName %>">
             </div>
@@ -21,14 +21,14 @@
     <%if(id){%>
         <div class="form-group">
             <label class="col-md-3 control-label">登记内容：</label>
-            <div class="col-md-9" style="margin-top: 7px;">
-                <span><%= recordContent %></span>
+            <div class="col-md-9">
+                <div class="form-control" style="border: none"><%= recordContent %></div>
             </div>
         </div>
     <%}%>
     <%if(!id){%>
         <div class="form-group">
-            <label class="col-md-3 control-label">登记内容：</label>
+            <label class="col-md-3 control-label"><font color="#f00">* </font>登记内容：</label>
             <div class="col-md-9">
                 <input type="textarea" name="recordContent" class="form-control" value="<%= recordContent %>">
             </div>

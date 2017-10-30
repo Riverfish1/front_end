@@ -3,7 +3,7 @@
 <form class="form-horizontal" id="editForm">
     <input type="hidden" name="id" value="<%= id %>" id="id" />
     <div class="form-group">
-        <label class="col-md-3 control-label">装备：</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>装备：</label>
         <div class="col-md-9">
             <select class="form-control" name="equipId">
                 <% $.each(goodsList, function(i, n) {%>
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">出库仓库：</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>出库仓库：</label>
         <div class="col-md-9">
             <select class="form-control" name="storeId">
                 <% $.each(storeList, function(i, n) {%>
@@ -35,19 +35,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">办理时间：</label>
-        <div class="col-md-9">
-            <span style="border: none" name="handleTime" class="form-control"><%= handleTime %></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">创建人：</label>
-        <div class="col-md-9">
-            <span style="border: none" name="handlerName" class="form-control"><%= window.ownerPeopleName %></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">领用部门：</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>领用部门：</label>
         <div class="col-md-9">
             <select class="form-control departmentId" name="departmentId" value="<%= departmentId %>">
                 <% $.each(departmentList, function(i, n) { %>
@@ -88,6 +76,18 @@
         <label class="col-md-3 control-label">出库备注：</label>
         <div class="col-md-9">
             <input type="text" name="remark" class="form-control" value="<%= remark %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">创建时间：</label>
+        <div class="col-md-9">
+            <span style="border: none" name="handleTime" class="form-control"><%= handleTime %></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">创建人：</label>
+        <div class="col-md-9">
+            <span style="border: none" name="handlerName" class="form-control"><%= window.ownerPeopleName %></span>
         </div>
     </div>
 </form>
