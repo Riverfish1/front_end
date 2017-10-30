@@ -17,12 +17,11 @@ define([
         },
         render: function () {
             //main view
+            var that = this;
             this.initState = {
                 list: []
             };
             this.getInitialData();
-            this.$editDialog = this.$el.find('#editDialog');
-            this.$editDialogPanel = this.$el.find('#editPanel');
             return this;
         },
         getInitialData: function () {
@@ -38,28 +37,31 @@ define([
                     that.$el.empty().html(that.template(that.initState));
                 } else {
                     that.$el.empty().html(that.template(that.initState));
-
                 }
             }, {
                 'contentType': 'application/json'
             });
         },
         evaluate: function (e) {
-            console.log(e);
-            var initData = {evaluation: ''};
-            this.$editDialog.modal('show');
-            this.$editDialog.modal({backdrop: 'static', keyboard: false});
-            this.$editDialogPanel.empty().html(this.getDialogContent(initData));
+            this.$ele = $(e.target);
+            this.$leadDialog = $((this.$ele)[0]).closest('#main').find('#leadDialog');
+            var initData = {evaluation: null};
+            console.log($((this.$ele)[0]).closest('#main').find('#leadDialog'))
+            this.$leadDialog.modal('show');
+            this.$leadDialog.modal({backdrop: 'static', keyboard: false});
+            this.$leadDialog.find('#editPanel').empty().html(this.getDialogContent(initData));
         },
         submitForm: function () {
             var params = {
                 evaluation: $('#evaluation').val(),
                 status: '1',
-                approverId: window.ownerPeopleId
+                approverId: window.ownerPeopleId,
+                id: $((this.$ele[0])).val()
             };
             var that = this;
             ncjwUtil.postData(QUERY.ASSESS_SUMMARY_UPDATE, JSON.stringify(params), function(res) {
                 if (res.success) {
+                    that.$leadDialog.modal('hide');
                     that.getInitialData();
                 }
             }, {

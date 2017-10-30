@@ -3,20 +3,19 @@
 <form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
     <input type="hidden" name="id" value="<%= id %>" id="id" />
     <div class="form-group">
-        <label class="col-md-3 control-label">职位名称</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>职位名称</label>
         <div class="col-md-9">
-            <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
             <input type="text" name="postName" class="form-control" value="<%= postName %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">岗位职责</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>岗位职责</label>
         <div class="col-md-9">
             <input type="text" name="dutyDescription" class="form-control" value="<%= dutyDescription %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">人员编制</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>人员编制</label>
         <div class="col-md-9">
             <input type="text" name="staffingLevel" class="form-control" value="<%= staffingLevel %>">
         </div>

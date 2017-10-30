@@ -21,7 +21,6 @@ define([
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
         },
         render: function () {
-            //main view
             this.$el.empty().html(this.template());
             this.$officeDialog = this.$el.find('#editDialog');
             this.$officeDialogPanel = this.$el.find('#editPanel');
@@ -60,7 +59,7 @@ define([
                     self.$officeAreaBelong.empty().html(self.getAreaContent(list));
                     if (row && row.id) {
                         ncjwUtil.setFiledsValue(self.$officeDialogPanel, {officeAreaId: row.officeAreaId});
-                        ncjwUtil.setFiledsValue(self.$officeDialogPanel, {officeRoomFunction: row.officeRoomFunction});
+                        ncjwUtil.setFiledsValue(self.$officeDialogPanel, {officeUsage: row.officeUsage});
                     }
                 } else {
                 }

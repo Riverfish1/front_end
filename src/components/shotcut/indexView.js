@@ -21,17 +21,15 @@ define([
         },
         render: function () {
             var $parent = this.$el.parents('#navbar');
-            this.$editDialog = $parent.find('#editDialog');
-            this.$editPanel = $parent.find('#editPanel');
+            this.$editDialog = $parent.find('#shotcutDialog');
+            this.$editPanel = this.$editDialog.find('#editPanel');
             this.getData();
             return this;
         },
         removeActiveClass: function () {
             this.$el.find('li').removeClass('active');
-            // debugger;
         },
         active: function(e) {
-            // debugger;
             var $el = $(e.target);
             $el = $el.hasClass('item') ? $el : $el.parents('.item');
             var $subNav = $el.next(),
@@ -57,9 +55,12 @@ define([
         },
         getData: function () {
             var self = this;
-            ncjwUtil.postData(QUERY.WORK_SHOT_QUERY, JSON.stringify({userId: window.ownerPeopleId, checked: 1}), function (res) {
+            var params = {
+                userId: window.ownerPeopleId,
+                checked: 1
+            };
+            ncjwUtil.postData(QUERY.WORK_SHOT_QUERY, JSON.stringify(params), function (res) {
                 var list = {list: (res.data && res.data[0]) || []}
-                // debugger;
                 if (res.success) {
                     self.$el.empty().html(self.template(list));
                     self.removeActiveClass();
@@ -72,7 +73,6 @@ define([
         },
         getEditData: function () {
             var self = this;
-            // ncjwUtil.postData(QUERY.WORK_SHOT_QUERY, JSON.stringify({userId: window.ownerPeopleId, checked: 0}), function (res) {
             ncjwUtil.postData(QUERY.WORK_SHOT_QUERY, JSON.stringify({userId: window.ownerPeopleId}), function (res) {
                 var list = {list: (res.data && res.data[0]) || []}
                 if (res.success) {

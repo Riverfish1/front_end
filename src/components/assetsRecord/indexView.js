@@ -16,20 +16,18 @@ define([
             id: '',
             assetNo: '',
             assetClassId: '',
-            assetDepartmentId: '',
             assetBuyDate: '',
+            assetUsedId: '',
             assetUsedName: '',
             assetDeadline: '',
             assetClassList: [],
-            departmentList: []
         },
         receiveInitialData: {
-            receiveName: '',
-            receiveDepartmentId: '',
+            assetUsedName: '',
+            assetUsedId: '',
             receiveDate: '',
             remark: '',
             assetId: '',
-            departmentList: []
         },
         scrapInitialData: {
             scrapDate: '',
@@ -62,7 +60,6 @@ define([
             Backbone.off('assetsScrap').on('assetsScrap', this.scrapAsset, this);
         },
         receiveAsset: function (row) {
-            this.receiveInitialData.departmentList = this.initialData.departmentList;
             this.receiveInitialData.assetId = row.id;
             this.$assetsReceiveDialog.modal('show');
             this.$assetsReceiveDialog.modal({backdrop: 'static', keyboard: false});
@@ -111,6 +108,7 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
+                JSONData.receiveOperatorName = window.ownerPeopleName;
                 ncjwUtil.postData(QUERY.ASSETS_RECEIVE_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo('领用资产成功！');
@@ -277,20 +275,11 @@ define([
             }, {
                 'contentType': 'application/json'
             });
-            ncjwUtil.postData(QUERY.RECORD_DEPARTMENT_QUERY, JSON.stringify(params), function (res) {
-                if (res.success) {
-                    var data = res.data && res.data[0];
-                    that.initialData.departmentList = data;
-                }
-            }, {
-                'contentType': 'application/json'
-            });
             return this;
         },
         addOne: function (row) {
             var row = row.id ? row : this.initialData;
             row.assetClassList = this.initialData.assetClassList;
-            row.departmentList = this.initialData.departmentList;
             row.assetBuyDate = ncjwUtil.timeTurn(row.assetBuyDate, 'yyyy-MM-dd');
             this.$assetsDialog.modal('show');
             this.$assetsDialog.modal({backdrop: 'static', keyboard: false});
@@ -340,8 +329,8 @@ define([
                     idField: "id",
                     keyField: "name"
                 }).on('onSetSelectValue', function (e, keyword, data) {
-                    $('#handlerId').val(data.id);
-                    $('#handlerName').val(data.peopleName);
+                    $(el).siblings('input').val(data.id);
+                    $(el).val(data.peopleName);
                 });
             })
         },

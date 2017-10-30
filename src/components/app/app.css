@@ -948,9 +948,9 @@ input:-webkit-autofill {
 
 .timeNow {
     border-radius: 50%;
-    border: 1px solid #000;
+    border: none;
     position: relative;
-    color: #000;
+    color: #fff;
     text-align: center;
     width: 200px;
     height: 200px;
@@ -959,22 +959,22 @@ input:-webkit-autofill {
 .timeNow p {
     position: absolute;
     top: 30%;
-    left: 35%;
+    left: 40%;
 }
 
 .timeNow .btn-link {
     position: absolute;
-    color: #000;
+    color: #fff;
     top: 40%;
-    left: 35%;
+    left: 30%;
 }
 
 .mark .timeNow {
-    background-color: rgb(46, 109, 164);
+    background-color: rgb(46, 109, 255);
 }
 
 .markOK .timeNow {
-    background-color: #eee;
+    background-color: #aaa;
 }
 
 

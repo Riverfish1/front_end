@@ -4,11 +4,9 @@ define([
     'text!./detail.html',
     'text!./comment.html',
     'text!./dialog.html',
-    'text!./kpiSelect.html',
-    'text!./targetSelect.html',
     '../../common/calendar/calendar',
     '../../common/query/index'
-], function (tpl, detailTpl, commentTpl, dialogTpl, kpiSelect, targetSelect, calendar, QUERY) {
+], function (tpl, detailTpl, commentTpl, dialogTpl, calendar, QUERY) {
     'use strict';
     var TabView = Backbone.View.extend({
         default: {
@@ -21,8 +19,6 @@ define([
         getDetailContent: _.template(detailTpl),
         getCommentContent: _.template(commentTpl),
         getDialogContent: _.template(dialogTpl),
-        getKpiSelectContent: _.template(kpiSelect),
-        getTargetNumSelectContent: _.template(targetSelect),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
             'click #submitBtn': 'submitForm',
@@ -135,42 +131,9 @@ define([
             // this.createDetailView(0);
             return this;
         },
-        // 获取关键业务指标下拉列表
-        getKpiList: function () {
-            var self = this;
-            var params = {
-                pageNum: 0,
-                pageSize: 10000
-            }
-            ncjwUtil.postData(QUERY.KPI_ITEM_SELECT, JSON.stringify(params), function (res) {
-                if (res.success) {
-                    var list = {list: res.data[0]};
-                    self.$kpiSel.html(self.getKpiSelectContent(list));
-                } else {
-                }
-            }, {
-                "contentType": 'application/json'
-            })
-        },
-        // 获取目标数值下拉列表
-        getTargetNumList: function () {
-            var self = this;
-            var params = {
-                pageNum: 0,
-                pageSize: 10000
-            }
-            ncjwUtil.postData(QUERY.TARGET_NUM_ITEMS_SELECT, JSON.stringify(params), function (res) {
-                if (res.success) {
-                    var list = {list: res.data[0]};
-                    self.$targetNumSel.html(self.getTargetNumSelectContent(list));
-                } else {
-                }
-            }, {
-                "contentType": 'application/json'
-            })
-        },
         addOne: function (row) {
             // debugger;
+            $('h5.modal-title').text('新增绩效');
             var gmtCreate = ncjwUtil.timeTurn(calendar.getDate(), 'yyyy-MM-dd');
             var initData = {id: '', startDate: '', endDate: '', gmtCreate: gmtCreate, kpiName: '', kpiId: '', targetNumber: '', performance: '', approverId: '', summaryType: '0', operatorId: window.ownerPeopleId, operatorName: window.ownerPeopleName};
             var row = row.id ? row : initData;
@@ -190,14 +153,11 @@ define([
                 format: 'yyyy-mm-dd'
             });
             this.$editForm = this.$el.find('#editForm');
-            this.$kpiSel = this.$editDialogPanel.find('#kpiSel');
-            this.$targetNumSel = this.$editDialogPanel.find('#targetNumSel');
-            this.getKpiList();
-            this.getTargetNumList();
             this.initSubmitForm();
         },
         addSummary: function (row) {
             // debugger;
+            $('h5.modal-title').text('个人总结');
             var index = this.getValue();
             var gmtCreate = ncjwUtil.timeTurn(calendar.getDate(), 'yyyy-MM-dd');
             var commentTimeMap = {
@@ -318,10 +278,6 @@ define([
             });
         },
         submitForm: function (e) {
-            //设置kpiName
-            var $kpiSel = $('#kpiSel'), val = $kpiSel.val();
-            var kpiName = $.trim($kpiSel.find('option[value=' + val + ']').html())
-            $('#kpiName').val(kpiName);
             if (this.$editForm.valid()) {
                 var that = this;
                 var $form = $(e.target).parents('.modal-content').find('#editForm');

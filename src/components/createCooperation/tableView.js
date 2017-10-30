@@ -93,12 +93,9 @@ define(['../../common/query/index'], function (QUERY) {
                     formatter: function (value, row, index) {
                         var value = row.status;
                         var str = '';
-                        if(value == "submit"){
-                            str += '<p class="grid-command-p btn-edit">编辑</p>';
-                            str += '<p class="grid-command-p btn-delete">删除</p>';
-                        }else{
-                            str += '<p class="grid-command-p btn-edit">查看</p>';
-                        }
+                        str += '<p class="grid-command-p btn-edit">编辑</p>';
+                        str += '<p class="grid-command-p btn-delete">删除</p>';
+                        str += '<p class="grid-command-p btn-edit">查看</p>';
                         return str;
                     }
                 }],

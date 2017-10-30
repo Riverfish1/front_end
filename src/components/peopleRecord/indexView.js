@@ -31,7 +31,8 @@ define([
         getDialogContent: _.template(dialogTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
-            'click #submitBtn': 'submitForm'
+            'click #submitBtn': 'submitForm',
+            'select #officeAreaBelong': 'selectAreaName'
         },
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
@@ -74,6 +75,9 @@ define([
             if (row.id) ncjwUtil.setFiledsValue(this.$officeDialogPanel, {titleName: row.titleName});
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
+        },
+        selectAreaName: function(e) {
+            console.log(e);
         },
         getAreaList: function(row) {
             var self = this;
@@ -200,13 +204,7 @@ define([
                     peopleName: {
                         required: true,
                     },
-                    departmentId: {
-                        required: true,
-                    },
                     positionName: {
-                        required: true,
-                    },
-                    titleName: {
                         required: true,
                     },
                     phoneNum: {
@@ -216,15 +214,25 @@ define([
                     mailAddress: {
                         required: true,
                         isMailAddrss: true
-                    },
-                    officeAreaId: {
-                        required: true,
-                    },
-                    officeRoomId: {
-                        required: true,
                     }
                 },
                 messages: {
+                    employeeNum: {
+                        required: '请输入工号',
+                        number: '必须为数字'
+                    },
+                    peopleName: {
+                        required: '请输入名字'
+                    },
+                    positionName: {
+                        required: '请输入岗位'
+                    },
+                    phoneNum: {
+                        required: '请输入电话号码'
+                    },
+                    mailAddress: {
+                        required: '请输入邮箱地址'
+                    }
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');
@@ -252,7 +260,6 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
-                JSONData.userId = window.ownerPeopleId;
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.RECORD_PEOPLE_UPDATE : QUERY.RECORD_PEOPLE_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {

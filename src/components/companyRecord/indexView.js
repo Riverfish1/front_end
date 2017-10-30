@@ -84,8 +84,8 @@ define([
                     }
                 },
                 messages: {
-                    departmentName: "请输入",
-                    responsibility: "请输入"
+                    departmentName: "请输入单位名称",
+                    responsibility: "请输入职责描述"
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

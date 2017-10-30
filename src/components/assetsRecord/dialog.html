@@ -35,22 +35,13 @@
         <label class="col-md-3 control-label"><font color="#f00">* </font>使用人：</label>
         <div class="col-md-9">
             <div class="input-group">
+                <input type="hidden" id="assetUsedName" name="assetUsedId" value="<%= assetUsedId %>">
                 <input class="form-control test" type="text" id="assetUsedName" name="assetUsedName" value="<%= assetUsedName %>">
                 <div class="input-group-btn">
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                     </ul>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">使用部门：</label>
-        <div class="col-md-9">
-            <select class="form-control" name="assetDepartmentId" value="<%= assetDepartmentId %>">
-                <% $.each(departmentList, function(i, n) { %>
-                    <option value="<%= n.id %>"><%= n.departmentName %></option>
-                <% }); %>
-            </select>
         </div>
     </div>
     <div class="form-group">

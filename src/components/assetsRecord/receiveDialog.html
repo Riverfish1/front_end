@@ -12,7 +12,8 @@
         <label class="col-md-3 control-label"><font color="#f00">* </font>领用人：</label>
         <div class="col-md-9">
             <div class="input-group">
-                <input class="form-control test" type="text" id="receiveName" name="receiveName" value="<%= receiveName %>">
+                <input type="hidden" name="assetUsedId" value="<%= assetUsedId %>">
+                <input class="form-control test" type="text" id="assetUsedName" name="assetUsedName" value="<%= assetUsedName %>">
                 <div class="input-group-btn">
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                     </ul>
@@ -21,17 +22,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">领用使用部门：</label>
-        <div class="col-md-9">
-            <select class="form-control" name="receiveDepartmentId" value="<%= receiveDepartmentId %>">
-                <% $.each(departmentList, function(i, n) { %>
-                    <option value="<%= n.id %>"><%= n.departmentName %></option>
-                <% }); %>
-            </select>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">领用处理人</label>
+        <label class="col-md-3 control-label">领用处理人：</label>
         <div class="col-md-9">
             <span class="form-control" style="border: none"><%= window.ownerPeopleName %></span>
         </div>

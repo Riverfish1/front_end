@@ -56,40 +56,45 @@ define(['../../common/query/index'], function (QUERY) {
                     title: '闲置',
                     align: 'center',
                     valign: "middle",
-                    formatter: function (value, row) {
-                        if (row.statusName === '闲置') {
-                            return row.count;
-                        }
-                        return 0;
-                    }
                 }, {
                     field: 'c',
                     title: '在用',
                     align: 'center',
                     valign: "middle",
-                    formatter: function (value, row) {
-                        if (row.statusName === '在用') {
-                            return row.count;
-                        }
-                        return 0;
-                    }
                 }, {
                     field: 'd',
+                    title: '维修',
+                    align: 'center',
+                    valign: 'middle'
+                }, {
+                    field: 'e',
                     title: '已报废',
                     align: 'center',
                     valign: "middle",
-                    formatter: function (value, row) {
-                        if (row.statusName === '已报废') {
-                            return row.count;
-                        }
-                        return 0;
-                    }
                 }],
                 responseHandler: function(res) {
-                    console.log(res);
+                    var arr = [];
+                    var data = res.data && res.data[0];
+                    if (data) {
+                        $.each(data, function(i, obj) {
+                            console.log(obj);
+                            var o = {};
+                            o.assetClassName = i;
+                            $.each(obj, function(key, value) {
+                                console.log(key, value);
+                                o.b = o.b || (value.status === 0 ? value.count : 0);
+                                o.c = o.c || (value.status === 1 ? value.count : 0);
+                                o.d = o.d || (value.status === 2 ? value.count : 0);
+                                o.e = o.e || (value.status === 3 ? value.count : 0);
+                            });
+                            console.log(arr);
+                            arr.push(o);
+                        });
+                    }
                     return {
                         "total": res.total,
-                        "rows": res.data ? res.data[0] : []
+                        // "rows": res.data ? res.data[0] : []
+                        "rows": arr
                     }
                 }
             });
