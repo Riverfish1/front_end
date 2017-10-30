@@ -19,7 +19,8 @@ define([
             'click #btn-draft': 'submitForm',
             'click #btn-submit': 'submitForm',
             'click #btn-ok': 'submitForm',
-            'click #btn-no': 'submitForm'
+            'click #btn-no': 'submitForm',
+            'change .flowTypeWrap': 'changeFlow'
         },
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
@@ -112,6 +113,7 @@ define([
                 currentOperatorId: window.ownerPeopleId,
                 currentOperatorName: window.ownerPeopleName,
                 role: "current",
+                type: '',
                 content: "",
                 title: "",
                 comment: "",
@@ -135,6 +137,7 @@ define([
             var row = row.id ? row : initState;
             if (row.id) {
                 row.workFlow = JSON.parse(row.workflowData);
+                row.type = row.workFlow.name || 8;
                 row.gmtCreate = ncjwUtil.timeTurn(row.gmtCreate);
             }
             this.showOrhideBtn(row);
@@ -144,12 +147,15 @@ define([
             this.$suggestWrap = this.$editDialogPanel.find('.test');
             this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
-            row.id && (this.setBssuggestValue(row));
             this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             this.$editForm = this.$el.find('#editForm');
             this.$flowTypeWrap = this.$editForm.find('.flowTypeWrap');
             this.$flowWrapDetail = this.$editForm.find('.flowWrapDetail');
-            this.createFlowView();
+            this.createFlowView(row);
+            if(row.id){
+                this.setBssuggestValue(row);
+            }
+            // row.id && (this.setBssuggestValue(row));
             this.initSubmitForm();
         },
         setBssuggestValue: function (row) {
@@ -269,20 +275,23 @@ define([
                 if (index == 0 || index == 1) {
                     var params = {workFlow: {nodeList: []}};
                     $.each($inputs, function (k, el) {
-                        var node = {};
+                        // var node = {};
                         var $el = $(el), val = $el.val(), name = $el.attr('name');
                         if (name == "operatorId") {
-                            node[name] = val;
-                            node.operatorName = $el.parents('.row').find('input[name=operatorName]').val();
-                            node.nodeName = $el.parents('.row').find('.flow-title').html();
-                            params.workFlow.nodeList.push(node);
+                            // node[name] = val;
+                            // node.operatorName = $el.parents('.row').find('input[name=operatorName]').val();
+                            // node.nodeName = $el.parents('.row').find('.flow-title').html();
+                            // params.workFlow.nodeList.push(node);
                             // }else if(name == 'status' || name == "id"){
                         } else if (name == 'status') {
 
+                        } else if (name == 'type') {
+                            params.workFlow.name = val;
                         } else {
                             params[name] = val;
                         }
                     })
+                    params.workFlow.nodeList = this.typeFlowMap[params.workFlow.name].nodeList;
 
                 } else {
                     var params = {recordId: id, operatorId: currentOperatorId, comment: comment};
@@ -332,7 +341,7 @@ define([
         showOrhideBtn: function (row) {
             this.$editDialog.find('.status-button').hide();
             // 创建人：新建、草稿、驳回状态显示-草稿与提交按钮
-            if (this.isCreater(row) && (row.workFlow.currentNode.nodeIndex == 0)) {
+            if (this.isCreater(row) && (row.workFlow.currentNode.nodeIndex == 0 && row.currentOperatorName != "null")) {
                 this.$editDialog.find("#btn-draft,#btn-submit").show();
             }
             // 处理人：已提交状态显示-通过与驳回按钮
@@ -356,18 +365,25 @@ define([
         isOpertor: function (row) {
             return window.ownerPeopleId == row.currentOperatorId;
         },
-        createFlowView: function () {
+        createFlowView: function (row) {
             var self = this;
             var params = {
                 pageNum: 0,
-                pageSize: 10000
+                pageSize: 10000,
+                type: 0
             }
             ncjwUtil.postData(QUERY.WORK_WORKFLOW_QUERY, JSON.stringify(params), function (res) {
                 if (res.success) {
                     var d = res.data[0];
                     var list = {list: self.parseWorkFlow(d)};
+                    var flowDetail = list.list[0];
                     self.$flowTypeWrap.empty().html(self.getFlowTypeContent(list));
-                    self.$flowWrapDetail.empty().html(self.getFlowDetailContent(list.list[0]));
+                    if(row.id){
+                        self.$flowTypeWrap.val(row.type);
+                        self.$flowWrapDetail.empty().html(self.getFlowDetailContent(row));
+                    }else{
+                        self.$flowWrapDetail.empty().html(self.getFlowDetailContent(flowDetail));
+                    }
                 } else {
                 }
             }, {
@@ -378,11 +394,18 @@ define([
             var arr = []; var obj = {}
             $.each(d, function (k, v) {
                 v.workFlow  = v.workflowData.length ? JSON.parse(v.workflowData) : v.workflowData;
+                v.workFlow.currentNode = {nodeIndex: 0};
                 arr.push(v);
                 obj[v.id] = v.workFlow;
             })
             this.typeFlowMap = obj;
+            console.log("typeFlowMap", this.typeFlowMap);
             return arr;
+        },
+        changeFlow: function (e) {
+            var $el = $(e.target), val = $el.val();
+            var flowDetail = {workFlow: this.typeFlowMap[val]}
+            this.$flowWrapDetail.empty().html(this.getFlowDetailContent(flowDetail));
         }
 
     });

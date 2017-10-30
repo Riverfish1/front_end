@@ -798,7 +798,7 @@ input:-webkit-autofill {
     height: 0;
     opacity: 0;
 }
-.flowWrapDetail{overflow-x: scroll;}
+.flowWrapDetail{overflow-x: scroll; margin-top: 15px;}
 .flowWrapDetail .row{width: 1150px !important;}
 .flowWrapDetail .row .title-wrap{width: 80px; height: 100px !important; float: left;}
 .hidden{display: none;}

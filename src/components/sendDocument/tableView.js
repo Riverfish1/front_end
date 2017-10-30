@@ -75,7 +75,10 @@ define(['../../common/query/index'], function (QUERY) {
                     field: 'currentOperatorName',
                     title: '待操作人',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    formatter: function (value, row) {
+                        return value ? value : '';
+                    }
                 }, {
                     field: 'status',
                     title: '操作',
