@@ -6,22 +6,43 @@
     </div>
 </div>
 <div class="row">
-    <table id="record_departmentRecord"></table>
+    <table id="tableWrap"></table>
 </div>
-<!--dialog-->
+<!--dialog-edit-->
 <div class="modal fade bs-example-modal-lg" id="editDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog" style="width: 450px;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h5 class="modal-title" >流程管理</h5>
+                <h5 class="modal-title" >我的报销</h5>
             </div>
             <div class="modal-body" >
                 <div id="editPanel"></div>
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-                <button id="submitBtn" class="btn btn-primary" onclick="">保存</button>
+                <button id="btn-draft" data-status="0" class="btn btn-primary status-button " >提交</button>
+                <!--<button id="btn-submit" data-status="1" class="btn btn-primary status-button " >提交</button>-->
+                <!--<button id="btn-ok" data-status="1" class="btn btn-primary  status-button " >通过</button>-->
+                <!--<button id="btn-no" data-status="2" class="btn btn-primary  status-button " >驳回</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--dialog-detail-->
+<div class="modal fade bs-example-modal-lg" id="detailDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" style="width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title" >流程管理</h5>
+            </div>
+            <div class="modal-body" >
+                <div id="detailPanel"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <button data-status="0" class="btn btn-primary btn-save" >保存</button>
             </div>
         </div>
     </div>

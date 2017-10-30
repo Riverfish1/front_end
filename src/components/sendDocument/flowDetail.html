@@ -1,0 +1,12 @@
+<div class="row">
+    <% $.each(workFlow.nodeList, function(k, node){ %>
+    <div class="col-md-2 title-wrap">
+        <div class="<%= workFlow.currentNode.nodeIndex == k ? 'flow-title active' : 'flow-title' %>"> <%= node.nodeName %></div>
+        <span class="opertor"><%= node.operatorName %></span>
+        <div class="comment"><%= node.comment %></div>
+        <% if(k < workFlow.nodeList.length-1){ %>
+        <div class="<%= workFlow.currentNode.nodeIndex > k ? 'arrow-right active' : 'arrow-right' %>"></div>
+        <% } %>
+    </div>
+    <% }); %>
+</div>

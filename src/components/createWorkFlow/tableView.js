@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#record_departmentRecord',
+        el: '#tableWrap',
         initialize: function () {
         },
         showLoading: function () {
@@ -20,8 +20,12 @@ define(['../../common/query/index'], function (QUERY) {
             this.$el.bootstrapTable('refresh', params);
         },
         init: function () {
+            var typeMap = {
+                "0": "发文管理",
+                "1": "收文管理"
+            }
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_DEPARTMENT_QUERY, //请求后台的URL（*）
+                url: QUERY.WORK_WORKFLOW_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,14 +51,17 @@ define(['../../common/query/index'], function (QUERY) {
                 detailView: false, //是否显示父子表
                 columns: [{
                     field: 'name',
-                    title: '审批名称',
+                    title: '流程名称',
                     align: 'center',
                     valign: "middle"
                 }, {
                     field: 'type',
-                    title: '类型',
+                    title: '流程类型',
                     align: 'center',
                     valign: "middle",
+                    formatter: function (value, row) {
+                        return typeMap[value];
+                    }
                 }, {
                     field: 'status',
                     title: '操作',
@@ -63,25 +70,25 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
+                        str += '<p class="grid-command-p btn-edit">编辑</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
                         return str;
                     }
                 }],
-                responseHandler: function(res) {
+                responseHandler: function (res) {
                     return {
                         "total": res.total,
                         "rows": res.data ? res.data[0] : []
                     }
                 }
             });
-            // this.hideLoading();
         },
         queryParams: function (params) {
             var temp = {
                 pageNum: params.offset / params.limit,
                 pageSize: params.limit,
-                parentId: 0
+                // id: window.ownerPeopleId
+
             };
             return temp;
         },

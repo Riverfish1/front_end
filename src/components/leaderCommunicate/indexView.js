@@ -46,7 +46,6 @@ define([
             this.$ele = $(e.target);
             this.$leadDialog = $((this.$ele)[0]).closest('#main').find('#leadDialog');
             var initData = {evaluation: null};
-            console.log($((this.$ele)[0]).closest('#main').find('#leadDialog'))
             this.$leadDialog.modal('show');
             this.$leadDialog.modal({backdrop: 'static', keyboard: false});
             this.$leadDialog.find('#editPanel').empty().html(this.getDialogContent(initData));
