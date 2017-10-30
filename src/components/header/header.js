@@ -38,7 +38,7 @@ define([
 												if (location.href.match('120.55.36.116')) {
 													window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + window.location.href;
 												} else {
-													window.location.href = 'http://51.110.233.61:5002/uums-server/?service=' + window.location.href;
+													window.location.href = 'http://51.110.233.61:8082/uums-server/?service=' + window.location.href;
 												}
                     }
                 }, {
@@ -94,7 +94,7 @@ define([
 					if (location.href.match('120.55.36.116')) {
 						window.location.href = 'http://60.190.226.163:5002/uums-server/xtgl.htm';
 					} else {
-						window.location.href = 'http://51.110.233.61:5002/uums-server/xtgl.htm';
+						window.location.href = 'http://51.110.233.61:8082/uums-server/xtgl.htm';
 					}
           // window.location.href = 'http://' + window.location.hostname + ':8082/uums-server/xtgl.htm';
         }
