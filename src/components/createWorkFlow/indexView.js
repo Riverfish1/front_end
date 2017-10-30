@@ -146,6 +146,7 @@ define([
             this.$editDialog.modal('show');
             this.$editDialog.modal({backdrop: 'static', keyboard: false});
             this.$editDialogPanel.empty().html(this.getDialogContent(row));
+            if (row.id) ncjwUtil.setFiledsValue(this.$editDialogPanel, {type: row.type});
             this.$editForm = this.$el.find('#editForm');
             this.$addDetailValid = this.$editForm.find('.addDetailValid');
             this.detailTable = new DetailTableView();

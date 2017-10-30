@@ -5,7 +5,7 @@
     <input type="hidden" name="status" class="submit-assist" value="<%= status %>" id="status" />
     <input type="hidden" name="creatorId" class="submit-assist" value="<%= creatorId %>" id="creatorId" />
     <div class="form-group">
-        <label class="col-md-3 control-label">标题</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>标题</label>
         <div class="col-md-9">
             <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
             <% if(workFlow.currentNode.nodeIndex == 0 && currentOperatorName != "null"){ %>
@@ -19,25 +19,25 @@
     <!--详情-->
     <% if(workFlow.currentNode.nodeIndex != 0 || currentOperatorName == "null"){ %>
     <div class="form-group">
-        <label class="col-md-3 control-label">创建时间</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>创建时间</label>
         <div class="col-md-9">
             <input type="text" name="gmtCreate" disabled class="form-control" value="<%= gmtCreate %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">创建人</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>创建人</label>
         <div class="col-md-9">
             <input type="text" name="creatorName" disabled class="form-control" value="<%= creatorName %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">待操作人</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>待操作人</label>
         <div class="col-md-9">
             <input type="text" id="currentOperatorName" disabled name="currentOperatorName" class="form-control" value="<%= currentOperatorName %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">正文</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>正文</label>
         <div class="col-md-9">
             <textarea type="text" name="content" disabled class="form-control submit-assist" value="<%= content %>"><%= content %></textarea>
         </div>
@@ -76,7 +76,7 @@
     </div>
     <% if((window.ownerPeopleId == currentOperatorId) && (workFlow.currentNode.nodeIndex != 0)){ %>
         <div class="row">
-            <label class="col-md-3 control-label">意见反馈</label>
+            <label class="col-md-3 control-label"><font color="#f00">* </font>意见反馈</label>
             <div class="col-md-9">
                 <textarea type="text" name="comment" id="comment" class="form-control"></textarea>
             </div>

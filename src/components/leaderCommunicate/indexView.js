@@ -46,7 +46,6 @@ define([
             this.$ele = $(e.target);
             this.$leadDialog = $((this.$ele)[0]).closest('#main').find('#leadDialog');
             var initData = {evaluation: null};
-            console.log($((this.$ele)[0]).closest('#main').find('#leadDialog'))
             this.$leadDialog.modal('show');
             this.$leadDialog.modal({backdrop: 'static', keyboard: false});
             this.$leadDialog.find('#editPanel').empty().html(this.getDialogContent(initData));
@@ -61,8 +60,9 @@ define([
             var that = this;
             ncjwUtil.postData(QUERY.ASSESS_SUMMARY_UPDATE, JSON.stringify(params), function(res) {
                 if (res.success) {
-                    that.$leadDialog.modal('hide');
-                    that.getInitialData();
+                    ncjwUtil.showInfo('评论成功');
+                    setTimeout(function() {window.location.reload();}, 1500);
+                    // that.getInitialData();
                 }
             }, {
                 'contentType': 'application/json'

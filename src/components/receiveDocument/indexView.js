@@ -295,7 +295,7 @@ define([
                                 currentOperatorId = window.ownerPeopleId;
                                 comment = "";
                             }
-                            var submitParams = {recordId: id || res.data[0], operatorId: currentOperatorId, comment: comment};
+                            var submitParams = {recordId: id || (res.data && res.data[0]), operatorId: currentOperatorId, comment: comment};
                             ncjwUtil.postData(urlMap[index], JSON.stringify(submitParams), function (res) {
                                 if (res.success) {
                                     ncjwUtil.showInfo('提交成功！');

@@ -21,7 +21,7 @@
                 <!--<li><a href="#/service">勤务</a></li>-->
                 <li><a href="#/assess/personnelSummary">考核</a></li>
 
-                <li><a href="#/training">训练</a></li>
+                <li><a href="#/training/cert">训练</a></li>
                 <li id="set"><a href="javascript:void(0)">设置</a></li>
                 <li class="shotcutWrap">
                     <a href="#/shotcut" >快捷方式</a>
@@ -56,7 +56,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="http://60.190.226.163:5002/uums-server/?service=<%=location.href%>">安全退出</a>
+                                <a href="http://<%= window.location.hostname%>:5002/uums-server/?service=<%=location.href%>">安全退出</a>
                             </li>
                         </ul>
                     </div>
@@ -74,4 +74,3 @@
 <div id="info-error-id" class="alert alert-danger alert-custom" style="position:fixed" role="alert"></div>
 
 <div class="shadow"></div>
-

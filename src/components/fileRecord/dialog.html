@@ -20,7 +20,7 @@
         <% if(id){ %>
         <div class="col-md-8" style="overflow: auto;">
             <input type="hidden" name="file" class="form-control" value="<%= file %>">
-            <span><%= file %></span>
+            <a target="_blank" href="<%= file %>"><%= file %></a>
         </div>
         <% } %>
         <% if(!id){ %>

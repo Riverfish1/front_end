@@ -130,11 +130,21 @@ define([
                     gmtCreate: {
                         required: true,
                         date: true
+                    },
+                    interviewee: {
+                        required: true
+                    },
+                    reason: {
+                        required: true
                     }
                 },
                 messages: {
                     name: "请输入名称",
-                    gmtCreate: "请选择时间"
+                    gmtCreate: "请选择时间",
+                    idCard: { required: '请输入身份证号码', isIdCard: '请输入正确的身份证号码' },
+                    reason: '请输入访问事由',
+                    interviewee: '请选择被访问人'
+
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

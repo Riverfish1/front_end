@@ -58,17 +58,14 @@ define([
                     var data = res.data && res.data[0];
                     if (data) {
                         $.each(data, function(i, obj) {
-                            console.log(obj);
                             var o = {};
                             o.assetClassName = i;
                             $.each(obj, function(key, value) {
-                                console.log(key, value);
                                 o.b = o.b || (value.status === 0 ? value.count : 0);
                                 o.c = o.c || (value.status === 1 ? value.count : 0);
                                 o.d = o.d || (value.status === 2 ? value.count : 0);
                                 o.e = o.e || (value.status === 3 ? value.count : 0);
                             });
-                            console.log(arr);
                             arr.push(o);
                         });
                     }

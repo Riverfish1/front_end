@@ -156,7 +156,7 @@ define([
                     name: { required: true }
                 },
                 messages: {
-                    targetName: "请选择盘点负责人"
+                    targetName: "请选择盘点负责人",
                     name: "请输入名称"
                 },
                 highlight: function (element) {

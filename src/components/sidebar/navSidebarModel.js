@@ -82,5 +82,12 @@ define({
             // {className: 'icon_homePage', href: '#/support/equipQuery', title: '装备查询'},
             {className: 'icon_homePage', href: '#/support/storeQuery', title: '库存查询'}
         ]}
+    ],
+    "training": [
+      {className: 'icon_homePage', href: '#/training/cert', title: '个人证书登记'},
+      // {className: 'icon_homePage', href: '#/training/cultivation', title: '培训记录'},
+      {className: 'icon_homePage', href: '#/training/case', title: '经典案例'},
+      {className: 'icon_homePage', href: '#/training/knowledge', title: '知识库'},
+      {className: 'icon_homePage', href: '#/training/selfLearning', title: '自学记录'}
     ]
 });
