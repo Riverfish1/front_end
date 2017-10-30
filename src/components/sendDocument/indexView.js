@@ -3,13 +3,17 @@ define([
     './tableView',
     'text!./index.html',
     'text!./dialog.html',
+    'text!./flowType.html',
+    'text!./flowDetail.html',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, QUERY) {
+], function (BaseTableView, tpl, dialogTpl, flowTypeTpl, flowDetailTpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
+        getFlowTypeContent: _.template(flowTypeTpl),
+        getFlowDetailContent: _.template(flowDetailTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
             'click #btn-draft': 'submitForm',
@@ -20,6 +24,7 @@ define([
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
             Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
+            this.typeFlowMap = {};
         },
         render: function () {
             //main view
@@ -142,6 +147,9 @@ define([
             row.id && (this.setBssuggestValue(row));
             this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             this.$editForm = this.$el.find('#editForm');
+            this.$flowTypeWrap = this.$editForm.find('.flowTypeWrap');
+            this.$flowWrapDetail = this.$editForm.find('.flowWrapDetail');
+            this.createFlowView();
             this.initSubmitForm();
         },
         setBssuggestValue: function (row) {
@@ -347,7 +355,36 @@ define([
         },
         isOpertor: function (row) {
             return window.ownerPeopleId == row.currentOperatorId;
+        },
+        createFlowView: function () {
+            var self = this;
+            var params = {
+                pageNum: 0,
+                pageSize: 10000
+            }
+            ncjwUtil.postData(QUERY.WORK_WORKFLOW_QUERY, JSON.stringify(params), function (res) {
+                if (res.success) {
+                    var d = res.data[0];
+                    var list = {list: self.parseWorkFlow(d)};
+                    self.$flowTypeWrap.empty().html(self.getFlowTypeContent(list));
+                    self.$flowWrapDetail.empty().html(self.getFlowDetailContent(list.list[0]));
+                } else {
+                }
+            }, {
+                "contentType": 'application/json'
+            })
+        },
+        parseWorkFlow: function (d) {
+            var arr = []; var obj = {}
+            $.each(d, function (k, v) {
+                v.workFlow  = v.workflowData.length ? JSON.parse(v.workflowData) : v.workflowData;
+                arr.push(v);
+                obj[v.id] = v.workFlow;
+            })
+            this.typeFlowMap = obj;
+            return arr;
         }
+
     });
     return View;
 });

@@ -1028,6 +1028,13 @@ input:-webkit-autofill {
 /*差旅报销查询*/
 .w86{width: 86px;}
 
+/*发文与收文管理*/
+/*审批人验证提示*/
+.workflowManage .help-block{
+    position: absolute;
+    left: 0;
+    top: 32px;
+}
 
 
 /*兼容处理*/
