@@ -61,6 +61,7 @@ define([
             return this;
         },
         addOne: function (row) {
+            var that = this;
             var row = row.id ? row : this.initState;
             if (row.id) row.titleList = this.initState.titleList;
             this.$officeDialog.modal('show');
@@ -69,9 +70,11 @@ define([
             this.$officeAreaBelong = this.$officeDialogPanel.find('#officeAreaBelong');
             this.$officeRoomBelong = this.$officeDialogPanel.find('#officeRoomBelong');
             this.$departmentBelong = this.$officeDialogPanel.find('#departmentBelong');
-            this.getAreaList(row);
-            this.getRoomList(row);
             this.getDepartmentList(row);
+            this.getAreaList(row);
+            $(this.$officeAreaBelong).change(function(e) {
+                that.getRoomList({officeAreaId: e.target.value})
+            });
             if (row.id) ncjwUtil.setFiledsValue(this.$officeDialogPanel, {titleName: row.titleName});
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
@@ -87,9 +90,16 @@ define([
             }
             ncjwUtil.postData(QUERY.RECORD_OFFICEAREA_QUERY, JSON.stringify(params), function (res) {
                 if (res.success) {
-                    var list = {list: res.data[0]};
-                    self.$officeAreaBelong.empty().html(self.getAreaContent(list));
-                    (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {officeAreaId: row.officeAreaId});
+                    self.areaList = res.data ? res.data[0] : []
+                    self.list = {list: self.areaList};
+                    self.$officeAreaBelong.empty().html(self.getAreaContent(self.list));
+                    if (!row.id) {
+                        $('#officeAreaBelong').val(self.areaList[0].id);
+                        self.getRoomList({officeAreaId: $('#officeAreaBelong').val()});
+                    } else if (row.id) {
+                        ncjwUtil.setFiledsValue(self.$officeDialogPanel, {officeAreaId: row.officeAreaId});
+                        self.getRoomList({officeAreaId: row.officeAreaId});
+                    }
                 } else {
                 }
             }, {
@@ -100,11 +110,12 @@ define([
             var self = this;
             var params = {
                 pageNum: 0,
-                pageSize: 10000
+                pageSize: 10000,
+                officeAreaId: row.officeAreaId
             }
             ncjwUtil.postData(QUERY.RECORD_OFFICEROOM_QUERY, JSON.stringify(params), function (res) {
                 if (res.success) {
-                    var nameList = {nameList: res.data[0]};
+                    var nameList = {nameList: res.data && res.data[0]};
                     self.$officeRoomBelong.empty().html(self.getRoomContent(nameList));
                     (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {officeRoomId: row.officeRoomId});
                 } else {
@@ -121,7 +132,7 @@ define([
             }
             ncjwUtil.postData(QUERY.RECORD_DEPARTMENT_QUERY, JSON.stringify(params), function (res) {
                 if (res.success) {
-                    var departmentList = {departmentList: res.data[0]};
+                    var departmentList = {departmentList: res.data && res.data[0]};
                     self.$departmentBelong.empty().html(self.getDepartmentContent(departmentList));
                     (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {departmentId: row.departmentId});
                 } else {

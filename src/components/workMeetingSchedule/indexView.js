@@ -103,7 +103,7 @@ define([
             }
             ncjwUtil.postData(QUERY.RECORD_OFFICEAREA_QUERY, JSON.stringify(params), function (res) {
                 if (res.success) {
-                    var list = {list: res.data[0]};
+                    var list = {list: res.data && res.data[0]};
                     self.$officeAreaSel.empty().html(self.getSelectContent(list));
                     // debugger;
                     (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {place: row.place});
@@ -121,7 +121,7 @@ define([
             }
             ncjwUtil.postData(QUERY.RECORD_OFFICEROOM_QUERY , JSON.stringify(params), function (res) {
                 if (res.success) {
-                    var list = {list: res.data[0]};
+                    var list = {list: res.data && res.data[0]};
                     self.$officeRoomSel.empty().html(self.getRoomSelectContent(list));
                     (row && row.id) && ncjwUtil.setFiledsValue(self.$officeDialogPanel, {conferenceRoom: row.conferenceRoom});
                 } else {

@@ -55,7 +55,7 @@ define([
             }
             ncjwUtil.postData(QUERY.RECORD_OFFICEAREA_QUERY, JSON.stringify(params), function (res) {
                 if (res.success) {
-                    var list = {list: res.data[0]};
+                    var list = {list: res.data && res.data[0]};
                     self.$officeAreaBelong.empty().html(self.getAreaContent(list));
                     if (row && row.id) {
                         ncjwUtil.setFiledsValue(self.$officeDialogPanel, {officeAreaId: row.officeAreaId});
