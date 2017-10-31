@@ -236,6 +236,7 @@ var ncjwUtil = (function ($) {
 var serializeJSON = function (data) {
     data = data.replace(/&/g, "\",\"");
     data = data.replace(/=/g, "\":\"");
+    data = data.replace(/\+/g, " ");
     data = "{\"" + data + "\"}";
     return data;
 }

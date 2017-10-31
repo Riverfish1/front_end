@@ -37,11 +37,11 @@ define([
                         };
                         $('.loginName').html(that.template(that.default));
                     } else {
-												if (location.href.match('120.55.36.116')) {
-													window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + window.location.href;
-												} else {
-													window.location.href = 'http://51.110.233.61:8082/uums-server/?service=' + window.location.href;
-												}
+        				if (location.href.match('120.55.36.116')) {
+        					window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + window.location.href;
+        				} else {
+        					window.location.href = 'http://51.110.233.61:8082/uums-server/?service=' + window.location.href;
+        				}
                     }
                 }, {
                     'contentType': 'application/json'
@@ -93,11 +93,11 @@ define([
             this.$shotcutBtn.css('top', this.$menu.height() + 58);
         },
         handleRouter: function () {
-					if (location.href.match('120.55.36.116')) {
-						window.location.href = 'http://60.190.226.163:5002/uums-server/xtgl.htm';
-					} else {
-						window.location.href = 'http://51.110.233.61:8082/uums-server/xtgl.htm';
-					}
+    		if (location.href.match('120.55.36.116')) {
+    			window.location.href = 'http://60.190.226.163:5002/uums-server/xtgl.htm';
+    		} else {
+    			window.location.href = 'http://51.110.233.61:8082/uums-server/xtgl.htm';
+    		}
           // window.location.href = 'http://' + window.location.hostname + ':8082/uums-server/xtgl.htm';
         }
 	});

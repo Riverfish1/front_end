@@ -81,7 +81,9 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
+                console.log(data);
                 var datas = serializeJSON(data);
+                console.log(datas);
                 var JSONData = JSON.parse(datas);
                 JSONData.date = ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd hh:mm:ss');
                 JSONData.operatorId = window.ownerPeopleId;
