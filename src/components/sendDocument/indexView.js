@@ -137,6 +137,7 @@ define([
             var row = row.id ? row : initState;
             if (row.id) {
                 row.workFlow = JSON.parse(row.workflowData);
+                // debugger;
                 row.type = row.workFlow.name || 8;
                 row.gmtCreate = ncjwUtil.timeTurn(row.gmtCreate);
             }

@@ -53,34 +53,19 @@
     <!--详情-->
     <% if(workFlow.currentNode.nodeIndex == 0 && currentOperatorName != "null"){ %>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>正文</label>
+        <label class="col-md-3 control-label">正文</label>
         <div class="col-md-9">
             <textarea type="text" name="content"  class="form-control submit-assist" value="<%= content %>"><%= content %></textarea>
         </div>
     </div>
     <div class="row">
-<<<<<<< HEAD
         <label class="col-md-3 control-label">收文流程</label>
-=======
-        <label class="col-md-3 control-label"><font color="#f00">* </font>审批流程设置</label>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label"></label>
->>>>>>> 50200a7ae8e463877e10f98a51413e98885dd873
         <div class="col-md-9">
             <select name="type" value="<%= type %>" class="form-control submit-assist flowTypeWrap">
             </select>
         </div>
     </div>
     <% } %>
-<<<<<<< HEAD
-=======
-    <!--详情-->
-    <% if(workFlow.currentNode.nodeIndex != 0){ %>
-    <div class="row">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>流程状态</label>
-    </div>
->>>>>>> 50200a7ae8e463877e10f98a51413e98885dd873
     <div class="form-group">
         <label class="col-md-3 control-label"></label>
         <div class="col-md-9">

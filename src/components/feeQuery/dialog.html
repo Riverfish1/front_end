@@ -3,7 +3,7 @@
 <form class="form-horizontal" id="editForm" action="%{request.contextPath}/live/template/add">
     <input type="hidden" name="id" class="submit-assist" value="<%= id %>" id="id"/>
     <input type="hidden" name="acceptTime" class="submit-assist" value="<%= acceptTime %>"/>
-    <input type="hidden" value="<%= currentNode %>" id="currentNode"/>
+    <!--<input type="hidden" value="<%= currentNode %>" id="currentNode"/>-->
     <!--基本信息-->
     <div class="row">
         <div class="col-md-4">
@@ -102,7 +102,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="col-md-4 control-label">报销附件</label>
+                <label class="col-md-4 control-label pl0"><font color="#f00">* </font>报销附件</label>
                 <% if(!id){ %>
                 <div class="col-md-8">
                     <div id="uploaderWrap"></div>
@@ -110,8 +110,10 @@
                 </div>
                 <% } %>
                 <% if(id){ %>
-                <div class="col-md-8" style="overflow: auto;">
-                    <a target="_blank" href="<%= filePath %>"><%= filePath %></a>
+                <div class="col-md-8 createRepay_filePathWrap" style="overflow: auto;">
+                    <% $.each(filePath, function(k, file){ %>
+                    <a target="_blank" class="fileDownLoad" href="<%= file.filePath %>"><%= file.fileName %></a>
+                    <% }); %>
                 </div>
                 <% } %>
             </div>
@@ -223,7 +225,6 @@
                         <input type="text" name="operatorName" disabled class="form-control test">
                         <input type="hidden" name="operatorName" class="suggest-assist-name">
                         <% } %>
-
                     </div>
                 </div>
             </div>
