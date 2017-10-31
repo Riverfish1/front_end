@@ -28,11 +28,11 @@
             <input type="text" name="entTime" readonly class="form-control accessTime" value="<%= entTime %>">
         </div>
     </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">附件</label>
+    <div class="form-group" >
+        <label class="col-md-3 control-label"><font color="#f00">* </font>附件</label>
         <% if(id){ %>
-        <div class="col-md-9" style="overflow: auto;">
-            <a target="_blank" href="<%= filePath %>"><%= filePath %></a>
+        <div class="col-md-9" style="overflow: auto;line-height: 30px;">
+            <a target="_blank" class="filePathWrap" href="<%= filePath %>">附件1</a>
         </div>
         <% } %>
     </div>

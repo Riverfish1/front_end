@@ -204,6 +204,9 @@ define([
                 row.startTime = ncjwUtil.timeTurn(row.startTime, 'yyyy-MM-dd');
                 row.endTime = ncjwUtil.timeTurn(row.endTime, 'yyyy-MM-dd');
 
+                row.filePath = '{"filePath":"http://120.55.36.116/static/file/createRepay/20171027085503.jpg","fileName":"150*120.jpg"}@{"filePath":"http://120.55.36.116/static/file/createRepay/20171027085503.png","fileName":"230*230.png"}';
+                row.filePath = this.parseFilePath(row.filePath);
+
                 row.currentNode = row.workFlow.currentNode.nodeName;
                 row.leaderId = row.workFlow.nodeList[0].operatorId;
                 row.financerId = row.workFlow.nodeList[1].operatorId;
@@ -613,6 +616,15 @@ define([
             } else {
                 $totalDays.val(0);
             }
+        },
+        parseFilePath: function (filePath) {
+            var filePathList = filePath ? filePath.split("@") : [];
+            var arr = [];
+            $.each(filePathList, function (k, v) {
+                var obj = JSON.parse(v);
+                arr.push(obj);
+            })
+            return arr;
         }
     });
     return View;
