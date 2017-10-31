@@ -72,7 +72,7 @@ define([
                 }
             }).on('onDataRequestSuccess', function (e, result) {
             }).on('onSetSelectValue', function (e, keyword, data) {
-                debugger;
+                // debugger;
                 var $row = $(e.target).parents('.input-group')
                 var $operatorName = $row.find('input[name=operatorName]');
                 var $operatorId = $row.find('input[name=operatorId]');

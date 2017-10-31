@@ -203,8 +203,7 @@ define([
                 row.createTime = ncjwUtil.timeTurn(row.createTime, 'yyyy-MM-dd');
                 row.startTime = ncjwUtil.timeTurn(row.startTime, 'yyyy-MM-dd');
                 row.endTime = ncjwUtil.timeTurn(row.endTime, 'yyyy-MM-dd');
-
-                row.filePath = '{"filePath":"http://120.55.36.116/static/file/createRepay/20171027085503.jpg","fileName":"150*120.jpg"}@{"filePath":"http://120.55.36.116/static/file/createRepay/20171027085503.png","fileName":"230*230.png"}';
+                // row.filePath = '{"filePath":"http://120.55.36.116/static/file/createRepay/20171027085503.jpg","fileName":"150*120.jpg"}@{"filePath":"http://120.55.36.116/static/file/createRepay/20171027085503.png","fileName":"230*230.png"}';
                 row.filePath = this.parseFilePath(row.filePath);
 
                 row.currentNode = row.workFlow.currentNode.nodeName;
@@ -486,7 +485,7 @@ define([
 
                         } else if (name == 'filePath') {
                             if (val) {
-                                params[name] = val.split(',');
+                                params[name] = val.split('@');
                             }
                         } else {
                             params[name] = val;

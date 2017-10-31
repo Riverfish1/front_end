@@ -77,7 +77,7 @@ define([
                     fileObj.filePath = response.data[0];
                     fileObj.fileName = file.name;
                     fileList.push(JSON.stringify(fileObj));
-                    $('#filePath').val(fileList.join(","));
+                    $('#filePath').val(fileList.join("@"));
                     $('.filePathWrap').html(response.data[0]).show();
                 }
             });
