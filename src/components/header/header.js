@@ -30,6 +30,8 @@ define([
                         var JSONData = JSON.parse(data);
                         window.ownerPeopleId = JSONData.id;
                         window.ownerPeopleName = JSONData.peopleName;
+                        window.ownerDepartmentId = JSONData.departmentId;
+                        window.ownerDepartmentName = JSONData.departmentName;
                         that.default = {
                             loginName: JSONData.peopleName
                         };

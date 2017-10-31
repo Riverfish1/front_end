@@ -289,26 +289,25 @@ define([], function () {
         REPAY_CREATE_DELETE_BY_ID: '/api/reimbursement/deleteById',
 
         // 训练
+        // 个人证书
         CERT_QUERY: '/api/credentialManage/query',
         CERT_INSERT: '/api/credentialManage/insert',
         CERT_UPDATE: '/api/credentialManage/updateById',
         CERT_DELETE: '/api/credentialManage/deleteById',
-
+        // 经典案例
         CASE_QUERY: '/api/classicCase/query',
         CASE_INSERT: '/api/classicCase/insert',
         CASE_UPDATE: '/api/classicCase/updateById',
         CASE_DELETE: '/api/classicCase/deleteById',
-
+        // 知识
         KNOWLEDGE_QUERY: '/api/repository/query',
         KNOWLEDGE_INSERT: '/api/repository/insert',
         KNOWLEDGE_UPDATE: '/api/repository/updateById',
         KNOWLEDGE_DELETE: '/api/repository/deleteById',
-
+        // 培训记录
         CULTIVATION_QUERY: '/api/trainRecord/query',
         CULTIVATION_INSERT: '/api/trainRecord/insert',
-        CULTIVATION_UPDATE: '/api/trainRecord/updateById',
-        CULTIVATION_DELETE: '/api/trainRecord/deleteById',
-
+        // 自学记录
         SELF_LEARNING_QUERY: '/api/selfStudyRecord/query',
         SELF_LEARNING_INSERT: '/api/selfStudyRecord/insert',
         SELF_LEARNING_UPDATE: '/api/selfStudyRecord/updateById',
