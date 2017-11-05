@@ -1,8 +1,8 @@
 /*global define*/
-define(['../../common/query/index'], function (QUERY) {
+define(['../../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#tb_officeArea',
+        el: '#train_record',
         initialize: function () {
         },
         showLoading: function () {
@@ -21,7 +21,7 @@ define(['../../common/query/index'], function (QUERY) {
         },
         init: function () {
             this.$el.bootstrapTable({
-                url: QUERY.RECORD_OFFICEAREA_QUERY, //请求后台的URL（*）
+                url: QUERY.CULTIVATION_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -46,58 +46,62 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'areaName',
-                    title: '办公区名称',
+                    field: 'order',
+                    title: '序号',
+                    align: 'center',
+                    valign: "middle",
+                    formatter: function (value, row, index) {
+                        return index + 1;
+                    }
+                }, {
+                    field: 'police',
+                    title: '警员',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'areaUsage',
-                    title: '用途',
+                    field: 'trainType',
+                    title: '培训类型',
                     align: 'center',
-                    valign: "middle",
+                    valign: "middle"
                 }, {
-                    field: 'areaSize',
-                    title: '面积',
+                    field: 'trainUnits',
+                    title: '培训单位',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'trainAddr',
+                    title: '培训地址',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'trainStartTime',
+                    title: '培训开始时间',
                     align: 'center',
                     valign: "middle",
-                    formatter: function (value, row, index) {
-                        return value ? value + "㎡" : "";
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
                     }
                 }, {
-                    field: 'areaAddress',
-                    title: '地址',
+                    field: 'trainEndTime',
+                    title: '培训结束时间',
                     align: 'center',
                     valign: "middle",
-                }, {
-                    field: 'areaPhotoAddress',
-                    title: '图片',
-                    align: 'center',
-                    valign: "middle",
-                    formatter: function (value, row, index) {
-                        return value ? "<img class='view' style='width:100px; height:100px; cursor: pointer;' src='" + value + "'/>" : "";
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
                     }
                 }, {
-                    field: 'areaDescription',
-                    title: '描述'
-                    ,
+                    field: 'isCompleted',
+                    title: '培训完成情况',
                     align: 'center',
                     valign: "middle",
-                }, {
-                    field: 'status',
-                    title: '操作',
-                    align: 'center',
-                    valign: "middle",
-                    events: this.operateEvents,
-                    formatter: function (value, row, index) {
-                        var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
-                        return str;
+                    formatter: function (value) {
+                        switch (value) {
+                            case 0: return '未完成';
+                            case 1: return '已完成';
+                            default: return '-';
+                        }
                     }
                 }],
-                onPostBody: function (data) {
-                    $('.view').viewer();
-                },
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
@@ -112,14 +116,6 @@ define(['../../common/query/index'], function (QUERY) {
                 pageSize: params.limit
             };
             return temp;
-        },
-        operateEvents: {
-            'click .btn-edit': function (e, value, row, index) {
-                Backbone.trigger('itemEdit', row);
-            },
-            'click .btn-delete': function (e, value, row, index) {
-                Backbone.trigger('itemDelete', row);
-            }
         }
     });
     return Table;

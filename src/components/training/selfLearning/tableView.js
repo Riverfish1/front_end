@@ -49,31 +49,36 @@ define(['../../../common/query/index'], function (QUERY) {
                     field: 'title',
                     title: '标题',
                     align: 'center',
-                    valign: "middle"
+                    valign: "middle",
+                    width: '20%'
+                }, {
+                    field: 'content',
+                    title: '内容',
+                    align: 'center',
+                    valign: 'middle',
+                    width: '50%'
                 }, {
                     field: 'gmtModified',
-                    title: '时间',
+                    title: '发表时间',
                     align: 'center',
                     valign: "middle",
-                    formatter: function (value, row) {
-                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd hh:mm');
+                    width: '20%',
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd hh:mm:ss');
                     }
                 }, {
-                    field: 'status',
+                    field: 'oper',
                     title: '操作',
                     align: 'center',
-                    valign: "middle",
+                    valign: 'middle',
+                    width: '10%',
                     events: this.operateEvents,
-                    formatter: function (value, row, index) {
+                    formatter: function (value, row) {
                         var str = '';
-                        str += '<p class="grid-command-p btn-edit">修改</p>';
-                        str += '<p class="grid-command-p btn-delete">删除</p>';
+                        str += '<p class="grid-command-p btn-view">查看</p>';
                         return str;
                     }
                 }],
-                onPostBody: function (data) {
-                    $('.view').viewer();
-                },
                 responseHandler: function(res) {
                     return {
                         "total": res.total,
@@ -85,16 +90,14 @@ define(['../../../common/query/index'], function (QUERY) {
         queryParams: function (params) {
             var temp = {
                 pageNum: params.offset / params.limit,
-                pageSize: params.limit
+                pageSize: params.limit,
+                operatorId: window.ownerPeopleId
             };
             return temp;
         },
         operateEvents: {
-            'click .btn-edit': function (e, value, row, index) {
-                Backbone.trigger('itemEdit', row);
-            },
-            'click .btn-delete': function (e, value, row, index) {
-                Backbone.trigger('itemDelete', row);
+            'click .btn-view': function (e, value, row, index) {
+                Backbone.trigger('itemView', row);
             }
         }
     });

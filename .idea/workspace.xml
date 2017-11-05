@@ -2,21 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f35dcadc-155c-437a-b1b8-44d45963930a" name="Default" comment="快捷方式改版">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/createShortCut/dialog.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/createShortCut/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/createShortCut/indexController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/createShortCut/indexView.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/createShortCut/tableView.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/training/case/view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/training/knowledge/view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/training/selfLearning/view.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/query/index.js" afterPath="$PROJECT_DIR$/src/common/query/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/app/app.css" afterPath="$PROJECT_DIR$/src/components/app/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/header/header.html" afterPath="$PROJECT_DIR$/src/components/header/header.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/app/common.js" afterPath="$PROJECT_DIR$/src/components/app/common.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/header/header.js" afterPath="$PROJECT_DIR$/src/components/header/header.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/shotcut/dialog.html" afterPath="$PROJECT_DIR$/src/components/shotcut/dialog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/shotcut/index.html" afterPath="$PROJECT_DIR$/src/components/shotcut/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/shotcut/indexView.js" afterPath="$PROJECT_DIR$/src/components/shotcut/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sidebar/nav-sidebar.html" afterPath="$PROJECT_DIR$/src/components/sidebar/nav-sidebar.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" afterPath="$PROJECT_DIR$/src/components/sidebar/navSidebarModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/case/dialog.html" afterPath="$PROJECT_DIR$/src/components/training/case/dialog.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/case/index.html" afterPath="$PROJECT_DIR$/src/components/training/case/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/case/indexView.js" afterPath="$PROJECT_DIR$/src/components/training/case/indexView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/case/tableView.js" afterPath="$PROJECT_DIR$/src/components/training/case/tableView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/cert/index.html" afterPath="$PROJECT_DIR$/src/components/training/cert/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/cultivation/dialog.html" afterPath="$PROJECT_DIR$/src/components/training/cultivation/dialog.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/cultivation/index.html" afterPath="$PROJECT_DIR$/src/components/training/cultivation/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/cultivation/indexView.js" afterPath="$PROJECT_DIR$/src/components/training/cultivation/indexView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/cultivation/tableView.js" afterPath="$PROJECT_DIR$/src/components/training/cultivation/tableView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/knowledge/dialog.html" afterPath="$PROJECT_DIR$/src/components/training/knowledge/dialog.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/knowledge/index.html" afterPath="$PROJECT_DIR$/src/components/training/knowledge/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/knowledge/indexView.js" afterPath="$PROJECT_DIR$/src/components/training/knowledge/indexView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/knowledge/tableView.js" afterPath="$PROJECT_DIR$/src/components/training/knowledge/tableView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/selfLearning/dialog.html" afterPath="$PROJECT_DIR$/src/components/training/selfLearning/dialog.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/selfLearning/index.html" afterPath="$PROJECT_DIR$/src/components/training/selfLearning/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/selfLearning/indexView.js" afterPath="$PROJECT_DIR$/src/components/training/selfLearning/indexView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/training/selfLearning/tableView.js" afterPath="$PROJECT_DIR$/src/components/training/selfLearning/tableView.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,8 +44,8 @@
       <file leaf-file-name="indexView.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/shotcut/indexView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="31" column="54" lean-forward="true" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
+            <state relative-caret-position="-34">
+              <caret line="31" column="54" lean-forward="false" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -65,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/sidebar/nav-sidebar.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+              <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -76,7 +86,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="676">
               <caret line="59" column="82" lean-forward="false" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="82" />
-              <folding />
+              <folding>
+                <marker date="1509846674000" expanded="true" signature="7:6198" ph="{...}" />
+                <marker date="1509846674000" expanded="true" signature="5789:6196" ph="[...]" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,7 +99,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
               <caret line="30" column="33" lean-forward="false" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-              <folding />
+              <folding>
+                <marker date="1509846674000" expanded="true" signature="4209:4212" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -138,7 +153,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1445">
               <caret line="85" column="24" lean-forward="false" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="24" />
-              <folding />
+              <folding>
+                <marker date="1509846674000" expanded="true" signature="41:16060" ph="{&quot;LOGIN&quot;: '/api/login/getCurrentUser'...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -157,7 +174,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/shotcut/dialog.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+              <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -935,12 +952,12 @@
       <workItem from="1509583434769" duration="399000" />
       <workItem from="1509631491420" duration="3624000" />
       <workItem from="1509706265411" duration="6126000" />
-      <workItem from="1509844410884" duration="2055000" />
+      <workItem from="1509844410884" duration="2126000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="429692000" />
+    <option name="totallyTimeSpent" value="429763000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -953,7 +970,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -969,7 +986,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3352181" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3352181" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1259,23 +1276,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1445">
           <caret line="85" column="24" lean-forward="false" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/shotcut/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/shotcut/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
+          <folding>
+            <marker date="1509846674000" expanded="true" signature="41:16060" ph="{&quot;LOGIN&quot;: '/api/login/getCurrentUser'...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1332,7 +1335,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/sidebar/nav-sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1341,16 +1344,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="676">
           <caret line="59" column="82" lean-forward="false" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/shotcut/dialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1509846674000" expanded="true" signature="7:6198" ph="{...}" />
+            <marker date="1509846674000" expanded="true" signature="5789:6196" ph="[...]" />
           </folding>
         </state>
       </provider>
@@ -1359,14 +1355,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="30" column="33" lean-forward="false" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+          <folding>
+            <marker date="1509846674000" expanded="true" signature="4209:4212" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/shotcut/dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/shotcut/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/shotcut/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/shotcut/indexView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="31" column="54" lean-forward="true" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
+        <state relative-caret-position="-34">
+          <caret line="31" column="54" lean-forward="false" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
           <folding />
         </state>
       </provider>

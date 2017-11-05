@@ -1,43 +1,45 @@
 <div class="loading" style="width: 95%"></div>
 
 <form class="form-horizontal" id="editForm" >
-    <input type="hidden" name="id" id="id" value="<%= id %>">
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>办公区名称</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>警员</label>
         <div class="col-md-9">
-            <!--<input type="hidden" name="id" class="form-control" value="{{id}}">-->
-            <input type="text" name="areaName" class="form-control" value="<%= areaName %>">
+            <input type="text" name="police" class="form-control" value="<%= police %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>用途</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>培训类型</label>
         <div class="col-md-9">
-            <input type="text" name="areaUsage" class="form-control" value="<%= areaUsage %>">
+            <input type="text" name="trainType" class="form-control" value="<%= trainType %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3  control-label"><font color="#f00">* </font>面积</label>
+        <label class="col-md-3  control-label"><font color="#f00">* </font>培训单位</label>
         <div class="col-md-9">
-            <input placeholder="请输入面积数字，如23.5" type="text" name="areaSize" class="form-control" value="<%= areaSize %>">
+            <input type="text" name="trainUnits" class="form-control" value="<%= trainUnits %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>地址</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>培训地址</label>
         <div class="col-md-9">
-            <input type="text" name="areaAddress" class="form-control" value="<%= areaAddress %>">
+            <input type="text" name="trainAddr" class="form-control" value="<%= trainAddr %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>照片</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>培训时间</label>
         <div class="col-md-9">
-            <div id="uploaderWrap"></div>
-            <input type="hidden" name="areaPhotoAddress" id="areaPhotoAddress" class="form-control" value="<%= areaPhotoAddress %>">
+            <div class="col-md-5 form-group"><input name="trainStartTime" class="form-control trainStartTime" type="text" value="<%= trainStartTime %>"></div>
+            <div class="col-md-2" style="text-align: center;line-height: 30px;">至</div>
+            <div class="col-md-5 form-group"><input name="trainEndTime" class="form-control trainEndTime" type="text" value="<%= trainEndTime %>"></div>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>描述</label>
+        <label class="col-md-3 control-label"><font color="#f00">* </font>培训完成情况</label>
         <div class="col-md-9">
-            <input type="text" name="areaDescription" class="form-control" value="<%= areaDescription %>">
+            <select class="form-control" name="isCompleted">
+                <option value="0">未完成</option>
+                <option value="1">已完成</option>
+            </select>
         </div>
     </div>
 </form>
