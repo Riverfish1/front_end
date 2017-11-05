@@ -8,7 +8,7 @@ define({
         {className: 'icon_homePage', href: '#/register/post', title: '职位登记'},
         {className: 'icon_homePage', href: '#/register/people', title: '人员信息登记'},
         {className: 'icon_homePage', href: '#/register/peopleType', title: '人员类型登记'},
-        {className: 'icon_homePage', href: '#/register/visitors', title: '外来人员登记'},
+        {className: 'icon_homePage', href: '#/register/visitors', title: '外来人员登记'}
     ],
     "work": [
         {className: 'icon_homePage', href: '#/work/meeting', title: '会议预定'},

@@ -39,11 +39,13 @@ body {
  */
 #navbar li {line-height: 50px;}
 #navbar li.active{height: 50px;}
+#navbar .shotcutWrap li.active{height: auto;}
 #navbar li.active a{
     color: #1090c6;
     background-color: #fff;
     height: 51px;
 }
+#navbar .shotcutWrap li.active a{height: auto;}
 
 /*
  * Sidebar

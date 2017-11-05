@@ -1,6 +1,6 @@
 <ul class="nav nav-sidebar">
     <% $.each(list, function(i, n){ %>
-        <li class="<%= i== 0 && 'active' %>">
+        <li class="<%= i== 0 && 'active navLi' %>">
         <!--<li class="">-->
             <!--<span class="<%= n.className %> icon_com"></span>-->
             <a class="item"  href="<%= n.href %>">
@@ -12,7 +12,7 @@
             <% if(n.children && n.children.length > 0){ %>
                 <ul class="nav nav-sub">
                     <% $.each(n.children, function(k, m){ %>
-                        <li>
+                        <li class="navLi">
                             <a class="item" href="<%= m.href %>" data-route="u-s">
                                 <span><%= m.title %></span>
                             </a>

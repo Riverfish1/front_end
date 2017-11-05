@@ -53,7 +53,7 @@ define([
 		},
         updateNavSideBar: function (hash) {
             var hashFirst = hash.split('/')[1];
-            var $header = $('header'), $li = $header.find('li');
+            var $header = $('header'), $li = $header.find('.headerLi');
             $li.removeClass('active');
             $li.each(function (k, el) {
                 var $el = $(el), $a = $el.find('a');
@@ -63,9 +63,18 @@ define([
             })
         },
         mouseoverShotcutMenu: function (e) {
-            if(this.isFirst){
-                this.$menu.find('li').removeClass('active');
-            }
+            // if(this.isFirst){
+            //     this.$menu.find('li').removeClass('active');
+            // }
+            var hash = window.location.href.split("#")[1];
+            var $shotLi = $('.shotMenu').find('li');
+            $shotLi.removeClass('active');
+            $shotLi.each(function (k, el) {
+                var $el = $(el), $a = $el.find('a');
+                if($a.prop('href').indexOf(hash) > 0){
+                    $el.addClass('active');
+                }
+            })
             this.$menu.show();
             this.resetHeight();
             this.$shotcutBtn.show();
