@@ -182,10 +182,11 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 datas = datas.replace(/\+/g, ' ');
-                var JSONData = JSON.parse(datas);
-                JSONData.peopleId = window.ownerPeopleId;
+                datas = datas.slice(0, -2) + ',"peopleId":' + window.ownerPeopleId + datas.slice(-1);
+                // var JSONData = JSON.parse(datas);
+                // JSONData.peopleId = window.ownerPeopleId;
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_SUMMARY_UPDATE : QUERY.WORK_SUMMARY_INSERT, JSON.stringify(JSONData), function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_SUMMARY_UPDATE : QUERY.WORK_SUMMARY_INSERT, datas, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');

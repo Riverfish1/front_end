@@ -121,8 +121,7 @@ define([
                 var data = this.$submitForm.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
-                var JSONData = JSON.parse(datas);
-                JSONData.userId = window.ownerPeopleId;
+                datas = datas.slice(0, -2) + ',"userId":' + window.ownerPeopleId + datas.slice(-1);
                 var assignTime = this.$submitForm.find('#assignTime').val();
                 var assignUserName = this.$submitForm.find('#assignUserName').val();
                 var assignTask = this.$submitForm.find('#assignTask').val();
@@ -139,7 +138,7 @@ define([
                     message: '<div class="tipInfo tipConfirm"><p>' + "交办时间：" + assignTime + '</p><p>交办对象：' + assignUserName + '</p><p>交办任务：' + assignTask + '</p></div>',
                     callback: function (result) {
                         if (result) {
-                            ncjwUtil.postData(QUERY.ASSIGN_MANAGE_INSERT, JSON.stringify(JSONData), function (res) {
+                            ncjwUtil.postData(QUERY.ASSIGN_MANAGE_INSERT, datas, function (res) {
                                 if (res.success) {
                                     ncjwUtil.showInfo('提交成功！');
                                 } else {

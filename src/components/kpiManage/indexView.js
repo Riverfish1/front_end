@@ -102,12 +102,13 @@ define([
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
-                var JSONData = JSON.parse(datas);
-                JSONData.userId = window.ownerPeopleId;
+                datas = datas.slice(0, -2) + ',"userId":' + window.ownerPeopleId + datas.slice(-1);
                 var kpi = this.$kpiName.val();
                 var targetNum = this.$targetNum.val();
                 var performance = this.$performance.val();
                 var postKpi = this.$postKpi.val();
+                var startDate = $('.startDate').val();
+                var endDate = $('.endDate').val();
                 bootbox.confirm({
                     buttons: {
                         confirm: {
@@ -118,10 +119,10 @@ define([
                         }
                     },
                     title: "确认设定",
-                    message: '<div class="tipInfo tipConfirm"><p>时间范围：' + JSONData.startDate + ' —— ' + JSONData.endDate + '</p><p>关键业务指标：' + kpi + "</p><p>目标数值：" + targetNum + '</p><p>完成情况：' + performance + '</p><p>岗位指标设定：' + postKpi + '</p></div>',
+                    message: '<div class="tipInfo tipConfirm"><p>时间范围：' + startDate + ' —— ' + endDate + '</p><p>关键业务指标：' + kpi + "</p><p>目标数值：" + targetNum + '</p><p>完成情况：' + performance + '</p><p>岗位指标设定：' + postKpi + '</p></div>',
                     callback: function (result) {
                         if (result) {
-                            ncjwUtil.postData(QUERY.KPI_MANAGE_INSERT, JSON.stringify(JSONData), function (res) {
+                            ncjwUtil.postData(QUERY.KPI_MANAGE_INSERT, datas, function (res) {
                                 if (res.success) {
                                     ncjwUtil.showInfo('设定成功！');
                                 } else {

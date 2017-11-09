@@ -81,13 +81,10 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
-                console.log(data);
                 var datas = serializeJSON(data);
-                console.log(datas);
-                var JSONData = JSON.parse(datas);
-                JSONData.date = ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd hh:mm:ss');
-                JSONData.operatorId = window.ownerPeopleId;
-                ncjwUtil.postData(QUERY.CASE_INSERT, JSON.stringify(JSONData), function (res) {
+                datas = datas.slice(0, -2) + ',"operatorId":' + window.ownerPeopleId + datas.slice(-1);
+                datas = datas.slice(0, -2) + ',"date":' + ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd hh:mm:ss') + datas.slice(-1);
+                ncjwUtil.postData(QUERY.CASE_INSERT, datas, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo('新增成功！');
                         that.$officeDialog.modal('hide');

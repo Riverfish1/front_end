@@ -147,10 +147,8 @@ define([
                 var data = this.$editForm.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
-                var JSONData = JSON.parse(datas);
-                JSONData.days = Number(JSONData.days);
-                JSONData.userId = window.ownerPeopleId;
-                JSONData.status = Number(this.$el.find('.J_att').val());
+                datas = datas.slice(0, -2) + ',"userId":' + window.ownerPeopleId + datas.slice(-1);
+                datas = datas.slice(0, -2) + ',"status":' + $('.J_att').val() + datas.slice(-1);
                 bootbox.confirm({
 	                buttons: {
 	                    confirm: {
@@ -164,7 +162,7 @@ define([
 	                message: '确定提交吗？',
 	                callback: function (result) {
 	                    if (result) {
-				        	ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_INSERT, JSON.stringify(JSONData), function (res) {
+				        	ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_INSERT, datas, function (res) {
 			                    if (res.success) {
                                     ncjwUtil.showInfo("提交成功！");
 			                        // that.$el.html(that.template(that.default));

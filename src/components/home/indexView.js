@@ -203,7 +203,6 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
-                data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var datas = JSON.parse(datas);
                 datas.startDate = datas.startDate.replace(/\+/, ' ');

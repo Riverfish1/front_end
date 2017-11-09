@@ -278,7 +278,7 @@ define([
                         that.$officeDialog.modal('hide');
                         that.table.refresh();
                     } else {
-                        ncjwUtil.showError("保存失败：" + res.errorMsg);
+                        ncjwUtil.showError("保存失败：" + res.errorMessage);
                     }
                 }, {
                     "contentType": 'application/json'

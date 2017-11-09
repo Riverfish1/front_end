@@ -93,7 +93,7 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
-                        if (row.status === '1') {
+                        if (row.status === '1' || row.status === '2') {
                             str += '<p class="grid-command-p btn-view">查看</p>';
                         } else {
                             str += '<p class="grid-command-p btn-pass">通过</p>';

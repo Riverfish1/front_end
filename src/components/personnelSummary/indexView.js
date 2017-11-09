@@ -283,7 +283,6 @@ define([
                 var $form = $(e.target).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
-                data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var id = $('#id').val();
                 ncjwUtil.postData(QUERY.ASSESS_SUMMARY_INSERT, datas, function (res) {

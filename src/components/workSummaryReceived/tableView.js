@@ -47,7 +47,7 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'name',
+                    field: 'peopleName',
                     title: '姓名',
                     align: 'center',
                     valign: 'middle'
@@ -130,7 +130,7 @@ define(['../../common/query/index'], function (QUERY) {
             'click .btn-pass': function (e, value, row, index) {
                 Backbone.trigger('itemPass', row, 'pass');
             },
-            'click .btn-rejcet': function (e, value, row, index) {
+            'click .btn-reject': function (e, value, row, index) {
                 Backbone.trigger('itemReject', row, 'reject');
             },
             'click .btn-view': function (e, value, row, index) {
