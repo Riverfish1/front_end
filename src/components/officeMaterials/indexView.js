@@ -14,6 +14,7 @@ define([
             assetNo: '',
             assetClassId: '',
             assetBuyDate: '',
+            assetUsedId: '',
             assetUsedName: '',
             assetDeadline: '',
             assetClassList: []
