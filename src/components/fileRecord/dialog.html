@@ -4,19 +4,19 @@
     <input type="hidden" name="id" value="<%= id %>" id="id" />
     <input type="hidden" name="operatorName" value="<%= window.ownerPeopleName %>" id="operatorName" />
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>合同名称：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>合同名称：</label>
         <div class="col-md-9">
             <input type="text" name="name" class="form-control" value="<%= name %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>合同编号：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>合同编号：</label>
         <div class="col-md-9">
             <input type="text" name="code" class="form-control" value="<%= code %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>合同文件：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>合同文件：</label>
         <% if(id){ %>
         <div class="col-md-8" style="overflow: auto;">
             <input type="hidden" name="file" class="form-control" value="<%= file %>">
@@ -31,7 +31,7 @@
         <% } %>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>使用人：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>使用人：</label>
         <div class="col-md-9">
             <div class="input-group">
                 <input class="form-control test" name="user" type="text" id="user" value="<%= user %>">
@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>使用部门：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>使用部门：</label>
         <div class="col-md-9">
             <select class="form-control department" name="department" value="<%= department %>">
             	<% $.each(departmentList, function(i, n) { %>
@@ -53,13 +53,13 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>购入时间：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>购入时间：</label>
         <div class="col-md-9">
             <input type="text" name="time" class="form-control time" value="<%= time %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>使用期限（月）：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>使用期限（月）：</label>
         <div class="col-md-9">
             <input type="text" name="month" class="form-control" value="<%= month %>">
         </div>

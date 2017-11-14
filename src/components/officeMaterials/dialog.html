@@ -4,19 +4,19 @@
     <input type="hidden" name="operatorId" value="<%= window.ownerPeopleId %>" id="operatorId" />
     <input type="hidden" name="id" value="<%= id %>" id="id" />
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>资产名称：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>资产名称：</label>
         <div class="col-md-9">
             <input type="text" name="assetName" class="form-control" value="<%= assetName %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>资产编号：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>资产编号：</label>
         <div class="col-md-9">
             <input type="text" name="assetNo" class="form-control" value="<%= assetNo %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>资产类别：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>资产类别：</label>
         <div class="col-md-9">
             <select class="form-control" name="assetClassId">
                 <% $.each(assetClassList, function(i, n) {%>
@@ -26,13 +26,13 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>购入时间：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>购入时间：</label>
         <div class="col-md-9">
             <input type="text" name="assetBuyDate" class="form-control assetBuyDate" value="<%= assetBuyDate %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>使用人：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>使用人：</label>
         <div class="col-md-9">
             <div class="input-group">
                 <input class="form-control test" type="text" id="assetUsedName" name="assetUsedName" value="<%= assetUsedName %>">
@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>使用部门：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>使用部门：</label>
         <div class="col-md-9">
             <select class="form-control" name="assetDepartmentId" value="<%= assetDepartmentId %>">
                 <% $.each(departmentList, function(i, n) { %>
@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>使用期限（月）：</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>使用期限（月）：</label>
         <div class="col-md-9">
             <input type="text" name="assetDeadline" class="form-control" value="<%= assetDeadline %>">
         </div>

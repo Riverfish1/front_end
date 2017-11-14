@@ -182,7 +182,7 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 datas = datas.replace(/\+/g, ' ');
-                datas = datas.slice(0, -2) + ',"peopleId":' + window.ownerPeopleId + datas.slice(-1);
+                datas = datas.slice(0, -2) + '","peopleId":' + window.ownerPeopleId + datas.slice(-1);
                 // var JSONData = JSON.parse(datas);
                 // JSONData.peopleId = window.ownerPeopleId;
                 var id = $('#id').val();

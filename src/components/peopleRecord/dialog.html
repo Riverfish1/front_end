@@ -3,31 +3,31 @@
 <form class="form-horizontal" id="editForm">
     <input type="hidden" name="id" value="<%= id %>" id="id" />
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>姓名</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>姓名</label>
         <div class="col-md-9">
             <input type="text" name="peopleName" class="form-control" value="<%= peopleName %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>工号</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>工号</label>
         <div class="col-md-9">
             <input type="text" name="employeeNum" class="form-control" value="<%= employeeNum %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>部门</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>部门</label>
         <div class="col-md-9">
             <select id="departmentBelong" name="departmentId" class="form-control"></select>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>岗位</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>岗位</label>
         <div class="col-md-9">
             <input type="text" name="positionName" class="form-control" value="<%= positionName %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>职务</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>职务</label>
         <div class="col-md-9">
             <select id="departmentBelong" name="titleName" class="form-control" value="<%= titleName %>">
                 <% $.each(titleList, function(i, n) {%>
@@ -39,26 +39,26 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>电话号码</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>电话号码</label>
         <div class="col-md-9">
             <input type="text" name="phoneNum" class="form-control" value="<%= phoneNum %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>邮箱地址</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>邮箱地址</label>
         <div class="col-md-9">
             <input type="text" name="mailAddress" class="form-control" value="<%= mailAddress %>">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>所在办公区</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>所在办公区</label>
         <div class="col-md-9">
             <select id="officeAreaBelong" name="officeAreaId" class="form-control">
             </select>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label"><font color="#f00">* </font>所在办公室</label>
+        <label class="col-md-3 control-label"><span style="color: #f00;">* </span>所在办公室</label>
         <div class="col-md-9">
             <select id="officeRoomBelong" name="officeRoomId" class="form-control"></select>
         </div>

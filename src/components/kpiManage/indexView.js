@@ -102,7 +102,7 @@ define([
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
-                datas = datas.slice(0, -2) + ',"userId":' + window.ownerPeopleId + datas.slice(-1);
+                datas = datas.slice(0, -2) + '","userId":' + window.ownerPeopleId + datas.slice(-1);
                 var kpi = this.$kpiName.val();
                 var targetNum = this.$targetNum.val();
                 var performance = this.$performance.val();
