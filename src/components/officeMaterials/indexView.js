@@ -13,12 +13,10 @@ define([
             id: '',
             assetNo: '',
             assetClassId: '',
-            assetDepartmentId: '',
             assetBuyDate: '',
             assetUsedName: '',
             assetDeadline: '',
-            assetClassList: [],
-            departmentList: []
+            assetClassList: []
         },
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
@@ -49,26 +47,16 @@ define([
             }, {
                 'contentType': 'application/json'
             });
-            ncjwUtil.postData(QUERY.RECORD_DEPARTMENT_QUERY, JSON.stringify(params), function (res) {
-                if (res.success) {
-                    var data = res.data && res.data[0];
-                    that.initialData.departmentList = data;
-                }
-            }, {
-                'contentType': 'application/json'
-            });
             return this;
         },
         addOne: function (row) {
             var row = row.id ? row : this.initialData;
             row.assetClassList = this.initialData.assetClassList;
-            row.departmentList = this.initialData.departmentList;
             row.assetBuyDate = ncjwUtil.timeTurn(row.assetBuyDate, 'yyyy-MM-dd');
             this.$assetsDialog.modal('show');
             this.$assetsDialog.modal({backdrop: 'static', keyboard: false});
             this.$assetsDialogPanel.empty().html(this.getDialogContent(row));
             if (row.id) {
-                ncjwUtil.setFiledsValue(this.$assetsDialogPanel, {assetDepartmentId: row.assetDepartmentId});
                 ncjwUtil.setFiledsValue(this.$assetsDialogPanel, {assetClassId: row.assetClassId});
             }
             this.$suggestWrap = this.$assetsDialogPanel.find('.test');
@@ -112,8 +100,8 @@ define([
                     idField: "id",
                     keyField: "name"
                 }).on('onSetSelectValue', function (e, keyword, data) {
-                    $('#handlerId').val(data.id);
-                    $('#handlerName').val(data.peopleName);
+                    $(el).siblings('input').val(data.id);
+                    $(el).val(data.peopleName);
                 });
             })
         },

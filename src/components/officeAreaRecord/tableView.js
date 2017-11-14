@@ -74,7 +74,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function (value, row, index) {
-                        return value ? "<img class='view' style='width:100px; height:100px; cursor: pointer;' src='" + value + "'/>" : "";
+                        return value ? "<img class='view' style='width:100px; cursor: pointer;' src='" + value + "'/>" : "";
                     }
                 }, {
                     field: 'areaDescription',

@@ -80,47 +80,53 @@ define([
                         var leaveDays = res.total;
                         var data = res.data ? res.data[0] : [];
                         $('.leave_day').text(leaveDays);
-                        $('#leave_table').bootstrapTable({
-                            data: data,
-                            toolbar: '#toolbar', //工具按钮用哪个容器
-                            striped: true, //是否显示行间隔色
-                            cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-                            pagination: false, //是否显示分页（*）
-                            sortable: false, //是否启用排序
-                            uniqueId: "id", //每一行的唯一标识，一般为主键列
-                            columns: [{
-                                field: 'startDate',
-                                title: '开始日期',
-                                align: 'center',
-                                valign: "middle",
-                                formatter: function(value) {
-                                    return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
-                                }
-                            }, {
-                                field: 'days',
-                                title: '天数',
-                                align: 'center',
-                                valign: 'middle'
-                            }, {
-                                field: 'endDate',
-                                title: '结束日期',
-                                align: 'center',
-                                valign: "middle",
-                                formatter: function(value) {
-                                    return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
-                                }
-                            }, {
-                                field: 'origin',
-                                title: '事由',
-                                align: 'center',
-                                valign: "middle"
-                            }, {
-                                field: 'remark',
-                                title: '备注',
-                                align: 'center',
-                                valign: "middle",
-                            }]
-                        });
+                        if (!$('#leave_table tbody').length) {
+                            $('#leave_table').bootstrapTable({
+                                data: data,
+                                toolbar: '#toolbar', //工具按钮用哪个容器
+                                striped: true, //是否显示行间隔色
+                                cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                                pagination: false, //是否显示分页（*）
+                                sortable: false, //是否启用排序
+                                uniqueId: "id", //每一行的唯一标识，一般为主键列
+                                columns: [{
+                                    field: 'startDate',
+                                    title: '开始日期',
+                                    align: 'center',
+                                    valign: "middle",
+                                    formatter: function(value) {
+                                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
+                                    }
+                                }, {
+                                    field: 'days',
+                                    title: '天数',
+                                    align: 'center',
+                                    valign: 'middle'
+                                }, {
+                                    field: 'endDate',
+                                    title: '结束日期',
+                                    align: 'center',
+                                    valign: "middle",
+                                    formatter: function(value) {
+                                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
+                                    }
+                                }, {
+                                    field: 'origin',
+                                    title: '事由',
+                                    align: 'center',
+                                    valign: "middle"
+                                }, {
+                                    field: 'remark',
+                                    title: '备注',
+                                    align: 'center',
+                                    valign: "middle",
+                                }]
+                            });
+                        } else {
+                            $('#leave_table').bootstrapTable('refresh', {
+                                data: data
+                            });
+                        }
                     } else {
                         ncjwUtil.showError("请求数据失败：" + res.errorMsg);
                     }
@@ -132,47 +138,53 @@ define([
                         var overDays = r.total;
                         var data = r.data ? r.data[0] : [];
                         $('.over_day').text(overDays);
-                        $('#over_table').bootstrapTable({
-                            data: data,
-                            toolbar: '#toolbar', //工具按钮用哪个容器
-                            striped: true, //是否显示行间隔色
-                            cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-                            pagination: false, //是否显示分页（*）
-                            sortable: false, //是否启用排序
-                            uniqueId: "id", //每一行的唯一标识，一般为主键列
-                            columns: [{
-                                field: 'startDate',
-                                title: '开始日期',
-                                align: 'center',
-                                valign: "middle",
-                                formatter: function(value) {
-                                    return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
-                                }
-                            }, {
-                                field: 'days',
-                                title: '天数',
-                                align: 'center',
-                                valign: 'middle'
-                            }, {
-                                field: 'endDate',
-                                title: '结束日期',
-                                align: 'center',
-                                valign: "middle",
-                                formatter: function(value) {
-                                    return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
-                                }
-                            }, {
-                                field: 'origin',
-                                title: '事由',
-                                align: 'center',
-                                valign: "middle"
-                            }, {
-                                field: 'remark',
-                                title: '备注',
-                                align: 'center',
-                                valign: "middle",
-                            }]
-                        });
+                        if (!$('#over_table tbody').length) {
+                            $('#over_table').bootstrapTable({
+                                data: data,
+                                toolbar: '#toolbar', //工具按钮用哪个容器
+                                striped: true, //是否显示行间隔色
+                                cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                                pagination: false, //是否显示分页（*）
+                                sortable: false, //是否启用排序
+                                uniqueId: "id", //每一行的唯一标识，一般为主键列
+                                columns: [{
+                                    field: 'startDate',
+                                    title: '开始日期',
+                                    align: 'center',
+                                    valign: "middle",
+                                    formatter: function(value) {
+                                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
+                                    }
+                                }, {
+                                    field: 'days',
+                                    title: '天数',
+                                    align: 'center',
+                                    valign: 'middle'
+                                }, {
+                                    field: 'endDate',
+                                    title: '结束日期',
+                                    align: 'center',
+                                    valign: "middle",
+                                    formatter: function(value) {
+                                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
+                                    }
+                                }, {
+                                    field: 'origin',
+                                    title: '事由',
+                                    align: 'center',
+                                    valign: "middle"
+                                }, {
+                                    field: 'remark',
+                                    title: '备注',
+                                    align: 'center',
+                                    valign: "middle",
+                                }]
+                            });
+                        } else {
+                            $('#over_table').bootstrapTable('refresh', {
+                                data: data
+                            });
+                        }
                     } else {
                         ncjwUtil.showError("请求数据失败：" + r.errorMsg);
                     }
