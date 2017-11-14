@@ -121,7 +121,7 @@ define([
                 var data = this.$submitForm.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
-                datas = datas.slice(0, -2) + ',"userId":' + window.ownerPeopleId + datas.slice(-1);
+                datas = datas.slice(0, -2) + '","userId":' + window.ownerPeopleId + datas.slice(-1);
                 var assignTime = this.$submitForm.find('#assignTime').val();
                 var assignUserName = this.$submitForm.find('#assignUserName').val();
                 var assignTask = this.$submitForm.find('#assignTask').val();
