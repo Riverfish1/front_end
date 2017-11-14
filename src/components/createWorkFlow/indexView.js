@@ -72,7 +72,6 @@ define([
                 }
             }).on('onDataRequestSuccess', function (e, result) {
             }).on('onSetSelectValue', function (e, keyword, data) {
-                // debugger;
                 var $row = $(e.target).parents('.input-group')
                 var $operatorName = $row.find('input[name=operatorName]');
                 var $operatorId = $row.find('input[name=operatorId]');
@@ -107,7 +106,7 @@ define([
         },
         setBssuggestValue: function (row) {
             // this.$suggestWrap.val(row.targetId);
-            this.$suggestWrap.val(row.targetName);
+            this.$suggestWrap.val(row.operatorName);
         },
         addOne: function (row) {
             //id不存在与staus==3都是新建；
@@ -160,12 +159,13 @@ define([
                 nodeName1: '',
                 operatorName: '',
                 type: '',
-                operatorId: ''
+                operatorId: '',
+                nodeIndex: ''
             };
-            var row = row.id ? row : initState;
-            // if (row.id) {
-            //     row.time = ncjwUtil.timeTurn(row.startTime, 'yyyy-MM-dd');
-            // }
+            var row = row.nodeName ? row : initState;
+            if (row.nodeName) {
+                row.nodeName1 = row.nodeName;
+            }
             this.$detailDialog.modal('show');
             this.$detailDialog.modal({backdrop: 'static', keyboard: false});
             this.$detailDialogPanel.empty().html(this.getDetailContent(row));
@@ -173,7 +173,7 @@ define([
             this.$suggestWrap = this.$detailForm.find('.test');
             this.$suggestBtn = this.$suggestWrap.find('button');
             this.initSuggest();
-            row.id && (this.setBssuggestValue(row));
+            row.nodeName && (this.setBssuggestValue(row));
             this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
             this.initDetailForm();
         },
@@ -360,7 +360,7 @@ define([
         createDetailData: function () {
             if (this.$detailForm.valid()) {
                 var $inputs = this.$detailForm.find('.detail-assist');
-                var id = this.$detailForm.find('.id').val();
+                var nodeIndex = this.$detailForm.find('.nodeIndex').val();
                 var obj = {};
                 //保存
                 $.each($inputs, function (k, el) {
@@ -372,7 +372,7 @@ define([
                     }
                 })
 
-                if (id) {
+                if (nodeIndex) {
                     //更新
                     this.detailData = this.updateDetailData(obj);
                 } else {
@@ -405,7 +405,7 @@ define([
         updateDetailData: function (obj) {
             var d = [];
             $.each(this.detailData, function (k, v) {
-                if (obj.id == v.id) {
+                if (obj.nodeIndex == v.nodeIndex) {
                     d.push($.extend({}, v, obj));
                 } else {
                     d.push(v);

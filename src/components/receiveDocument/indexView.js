@@ -196,10 +196,12 @@ define([
                 focusInvalid: true,
                 rules: {
                     title: {
-                        required: true
+                        required: true,
+                        maxlength: 100
                     },
                     content: {
-                        required: true
+                        required: true,
+                        maxlength: 100
                     },
                     operator_valid1: {
                         required: true
@@ -221,8 +223,14 @@ define([
                     }
                 },
                 messages: {
-                    title: "请填写标题",
-                    content: "请填写正文",
+                    title: {
+                        required: "请填写标题",
+                        maxlength: "最多输入100个字符"
+                    },
+                    content: {
+                        required: "请填写正文",
+                        maxlength: "最多输入100个字符"
+                    },
                     operator_valid1: "请选择接收人",
                     operator_valid2: "请选择接收人",
                     operator_valid3: "请选择接收人",
