@@ -119,6 +119,7 @@ define(['../../common/query/index'], function (QUERY) {
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
                         var str = '';
+                        str += '<p class="grid-command-p btn-view">查看</p>';
                         str += '<p class="grid-command-p btn-edit">修改</p>';
                         str += '<p class="grid-command-p btn-delete">删除</p>';
                         return str;
@@ -140,6 +141,9 @@ define(['../../common/query/index'], function (QUERY) {
             return temp;
         },
         operateEvents: {
+            'click .btn-view': function (e, value, row, index) {
+                Backbone.trigger('assetsView', row);
+            },
             'click .btn-edit': function (e, value, row, index) {
                 Backbone.trigger('assetsEdit', row);
             },

@@ -3,8 +3,10 @@ define([
     './tableView',
     'text!./index.html',
     'text!./dialog.html',
+    'text!./view.html',
+    'text!./query.html',
     '../../common/query/index'
-], function (BaseTableView, tpl, dialogTpl, QUERY) {
+], function (BaseTableView, tpl, dialogTpl, viewTpl, queryTpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
@@ -21,19 +23,33 @@ define([
         },
         template: _.template(tpl),
         getDialogContent: _.template(dialogTpl),
+        getViewContent: _.template(viewTpl),
+        getQueryContent: _.template(queryTpl),
         events: {
             'click #btn_add': 'addOne',     //使用代理监听交互，好处是界面即使重新rander了，事件还能触发，不需要重新绑定。如果使用zepto手工逐个元素绑定，当元素刷新后，事件绑定就无效了
+            'click #btn_query': 'showQueryModal',
             'click #assetSubmitBtn': 'submitForm',
+            'click #query': 'queryList'
         },
         initialize: function () {
             Backbone.off('assetsEdit').on('assetsEdit', this.addOne, this);
             Backbone.off('assetsDelete').on('assetsDelete', this.delOne, this);
+            Backbone.off('assetsView').on('assetsView', this.viewContent, this);
+        },
+        viewContent(row) {
+            this.$viewContent.modal('show');
+            this.$viewContent.modal({backdrop: 'static', keyboard: false});
+            this.$viewContentPanel.empty().html(this.getViewContent(row));
         },
         render: function () {
             var that = this;
             this.$el.empty().html(this.template());
             this.$assetsDialog = this.$el.find('#assetsOne');
             this.$assetsDialogPanel = this.$assetsDialog.find('#editPanel');
+            this.$viewContent = this.$el.find('#viewContent');
+            this.$viewContentPanel = this.$viewContent.find('#viewPanel');
+            this.$advancedQuery = this.$el.find('#advancedQuery');
+            this.$queryPanel = this.$advancedQuery.find('#queryPanel');
             this.table = new BaseTableView();
             this.table.render();
             var params = {
@@ -70,6 +86,12 @@ define([
             });
             this.$assetEditForm = this.$assetsDialog.find('#assetEditForm');
             this.initSubmitForm();
+        },
+        showQueryModal: function () {
+            this.$advancedQuery.modal('show');
+            this.$advancedQuery.modal({backdrop: 'static', keyboard: false});
+            this.$queryPanel.empty().html(this.getQueryContent({assetClassList: this.initialData.assetClassList}));
+            this.$queryForm = this.$queryPanel.find('#queryForm');
         },
         initSuggest: function () {
             var $data = [];
@@ -165,8 +187,8 @@ define([
                 }
             });
         },
-        submitForm: function (e) {
-            if(this.$assetEditForm.valid()){
+        submitForm: function () {
+            if (this.$assetEditForm.valid()){
                 var that = this;
                 var $form = $(e.target).parents('.modal-content').find('#assetEditForm');
                 var data = $form.serialize();
@@ -186,6 +208,19 @@ define([
                     "contentType": 'application/json'
                 })
             }
+        },
+        queryList: function () {
+            var data = this.$queryForm.serialize();
+            data = decodeURIComponent(data, true);
+            var datas = serializeJSON(data);
+            var JSONData = JSON.parse(datas);
+            if (JSONData.assetClassId === 'all') JSONData.assetClassId = '';
+            JSONData.pageNum = 0;
+            JSONData.pageSize = 10000;
+            this.table.refresh({
+                query: JSONData
+            });
+            this.$advancedQuery.modal('hide');
         }
     });
     return View;
