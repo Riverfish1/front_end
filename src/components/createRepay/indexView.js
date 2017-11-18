@@ -612,7 +612,7 @@ define([
             if(!row.id){
                 this.$editDialog.find("#btn-draft").show();
             }else{
-                if(((peopleId == leaderId && currentNodeName == "领导审批") || (peopleId == financerId && currentNodeName == "财务审批") ) && row.status == "submit"){
+                if(((peopleId == leaderId && currentNodeName.indexOf("领导审批") > -1 ) || (peopleId == financerId && currentNodeName.indexOf("财务审批") > -1) ) && row.status == "submit"){
                     this.$editDialog.find("#btn-ok,#btn-no").show();
                 }
             }

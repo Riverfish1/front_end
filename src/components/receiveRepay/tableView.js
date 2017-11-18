@@ -4,6 +4,7 @@ define(['../../common/query/index'], function (QUERY) {
     var Table = Backbone.View.extend({
         el: '#tableWrap',
         initialize: function () {
+            // window.ownerPeopleId = 12;
         },
         showLoading: function () {
             this.$el.bootstrapTable('load', []);
@@ -128,10 +129,11 @@ define(['../../common/query/index'], function (QUERY) {
                         var leaderId = nodeList[0].operatorId;
                         var financerId = nodeList[1].operatorId;
                         var peopleId = window.ownerPeopleId;
+                        // debugger;
                         // if(peopleId == row.creatorId || peopleId == leaderId || peopleId == financerId){
                         //     str += '<p class="grid-command-p btn-edit">查看</p>';
                         // }
-                        if(((peopleId == leaderId && currentNodeName == "领导审批") || (peopleId == financerId && currentNodeName == "财务审批") ) && row.status == "submit"){
+                        if(((peopleId == leaderId && currentNodeName.indexOf("领导审批") > -1 ) || (peopleId == financerId && currentNodeName.indexOf("财务审批") > -1) ) && row.status == "submit"){
                             str += '<p class="grid-command-p btn-edit">处理</p>';
                         }
                         // if(value == "submit"){

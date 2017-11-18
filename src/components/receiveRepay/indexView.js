@@ -24,7 +24,8 @@ define([
             'click #btn_detail_add': 'addDetailOne',
             'click .btn-save': 'createDetailData',
             //自动计算总天数
-            'change .endTime': 'gettotalDays'
+            'change .endTime': 'gettotalDays',
+            'click #btn_search': 'query',
         },
         initialize: function () {
             Backbone.off('itemEdit').on('itemEdit', this.addOne, this);
@@ -34,16 +35,29 @@ define([
             this.detailData = [];
             this.totalMoney = 0;
             this.totalObj = {};
+            // window.ownerPeopleId=12;
         },
         render: function () {
             //main view
             this.$el.empty().html(this.template());
+            this.$searchForm = this.$el.find('#searchForm');
+            this.$suggestWrap = this.$searchForm.find('.test');
+            this.$suggestBtn = this.$suggestWrap.find('button');
             this.$editDialog = this.$el.find('#editDialog');
             this.$editDialogPanel = this.$el.find('#editPanel');
             this.$detailDialog = this.$el.find('#detailDialog');
             this.$detailDialogPanel = this.$el.find('#detailPanel');
+            this.initSuggest();
+            this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
+            $('.accessTime').datepicker({
+                language: 'zh-CN',
+                autoclose: true,
+                todayHighlight: true,
+                format: 'yyyy-mm-dd'
+            });
             this.table = new BaseTableView();
             this.table.render();
+            this.initSearchForm();
             return this;
         },
         initSuggest: function () {
@@ -235,6 +249,7 @@ define([
                 todayHighlight: true,
                 format: 'yyyy-mm-dd'
             });
+            // debugger;
             this.$editForm = this.$el.find('#editForm');
             this.detailTable = new DetailTableView();
             this.detailTable.render(this.detailData);
@@ -276,6 +291,65 @@ define([
                 }
                 $(el).val(nameMap[name]);
             });
+        },
+        initSearchForm: function () {
+            this.$searchForm.validate({
+                errorElement: 'span',
+                errorClass: 'help-block',
+                focusInvalid: true,
+                rules: {
+                    title: {
+                        required: true
+                    },
+                    applyerId: {
+                        required: true
+                    },
+                    startTime: {
+                        // required: true
+                    },
+                    endTime: {
+                        // required: true,
+                        dateRange: '.startTime'
+                    }
+                },
+                messages: {
+                    title: "请填写标题",
+                    startTime: "请选择起始日期",
+                    endTime: {
+                        required: "请选择结束日期",
+                        dateRange: '起始日期晚于结束日期'
+                    },
+                    applyerId: "请选择用户姓名"
+                },
+                highlight: function (element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                success: function (label) {
+                    label.closest('.form-group').removeClass('has-error');
+                    label.remove();
+                },
+                errorPlacement: function (error, element) {
+                    element.parent('div').append(error);
+                }
+            });
+        },
+        query: function () {
+            if (this.$searchForm.valid()) {
+                var $inputs = this.$searchForm.find('.search-assist');
+                var param = {};
+                //保存
+                $.each($inputs, function (k, el) {
+                    var $el = $(el), val = $el.val(), name = $el.attr('name');
+                    if(val != ""){
+                        if(name == "startTime" || name == "endTime"){
+                            param[name] = ncjwUtil.timeTurn(val, 'yyyy-MM-dd');
+                        }else{
+                            param[name] = val;
+                        }
+                    }
+                })
+                this.table.refresh({query: param});
+            }
         },
         delOne: function (row) {
             var that = this;
@@ -600,7 +674,7 @@ define([
             if(!row.id){
                 this.$editDialog.find("#btn-draft").show();
             }else{
-                if(((peopleId == leaderId && currentNodeName == "领导审批") || (peopleId == financerId && currentNodeName == "财务审批") ) && row.status == "submit"){
+                if(((peopleId == leaderId && currentNodeName.indexOf("领导审批") > -1) || (peopleId == financerId && currentNodeName.indexOf("财务审批") > -1) ) && row.status == "submit"){
                     this.$editDialog.find("#btn-ok,#btn-no").show();
                 }
             }

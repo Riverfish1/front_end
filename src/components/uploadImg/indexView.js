@@ -101,6 +101,7 @@ define([
                     $('#' + file.id).addClass('upload-state-done');
                     if(response.success == true){
                         $('#areaPhotoAddress').val(response.data[0]);
+                        $('.webuploader-pick').text('重新上传');
                     }
                 });
 

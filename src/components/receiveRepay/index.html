@@ -1,10 +1,68 @@
-<!--<div class="row">-->
-    <!--<div id="toolbar" class="btn-group">-->
-        <!--<button id="btn_add" type="button" class="btn btn-default">-->
-            <!--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增-->
-        <!--</button>-->
-    <!--</div>-->
-<!--</div>-->
+<div class="row">
+    <form class="form-horizontal" id="searchForm">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label w86">员工姓名</label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input type="text" class="form-control test">
+                            <input type="text" name="operator_valid3" class="operator_valid suggestValidAssist">
+                            <input type="hidden" name="applyerId" class="suggest-assist-id search-assist">
+                            <input type="hidden" name="applyerName"  class="suggest-assist-name">
+                            <!--<input type="hidden"  name="targetName">-->
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">报销类型</label>
+                    <div class="col-md-8">
+                        <select name="type"  class="form-control search-assist">
+                            <option value="0">借款单</option>
+                            <option value="1">经费报销单</option>
+                            <option value="2">差旅报销单</option>
+                            <option value="3">还款单</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label w86">起始日期</label>
+                    <div class="col-md-8">
+                        <input type="text" name="startTime"  class="form-control startTime accessTime search-assist" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">结束日期</label>
+                    <div class="col-md-8">
+                        <input type="text" name="endTime"  class="form-control endTime accessTime search-assist" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="toolbar" class="btn-group">
+                <button id="btn_search" type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>查询
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 <div class="row">
     <table id="tableWrap"></table>
 </div>
@@ -14,7 +72,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h5 class="modal-title" >我的报销</h5>
+                <h5 class="modal-title" >待处理的报销</h5>
             </div>
             <div class="modal-body" >
                 <div id="editPanel"></div>
@@ -35,7 +93,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h5 class="modal-title" >我的报销</h5>
+                <h5 class="modal-title" >待处理的报销</h5>
             </div>
             <div class="modal-body" >
                 <div id="detailPanel"></div>
