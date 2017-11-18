@@ -80,8 +80,10 @@ define([
                         var leaveDays = res.total;
                         var data = res.data ? res.data[0] : [];
                         $('.leave_day').text(leaveDays);
-                        $('#leave_table').bootstrapTable({
+                        $('#leave_table').empty().html('<table class="leave_table"></table>')
+                        $('#leave_table').find('.leave_table').bootstrapTable({
                             data: data,
+                            silent: true,
                             toolbar: '#toolbar', //工具按钮用哪个容器
                             striped: true, //是否显示行间隔色
                             cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -132,8 +134,10 @@ define([
                         var overDays = r.total;
                         var data = r.data ? r.data[0] : [];
                         $('.over_day').text(overDays);
-                        $('#over_table').bootstrapTable({
+                        $('#over_table').empty().html('<table class="over_table"></table>')
+                        $('#over_table').find('.over_table').bootstrapTable({
                             data: data,
+                            silent: true,
                             toolbar: '#toolbar', //工具按钮用哪个容器
                             striped: true, //是否显示行间隔色
                             cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）

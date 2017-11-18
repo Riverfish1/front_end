@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f35dcadc-155c-437a-b1b8-44d45963930a" name="Default" comment="1、办公区登记-bug修复；&#10;2、">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/createRepay/indexView.js" afterPath="$PROJECT_DIR$/src/components/createRepay/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/createRepay/tableView.js" afterPath="$PROJECT_DIR$/src/components/createRepay/tableView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/feeQuery/indexView.js" afterPath="$PROJECT_DIR$/src/components/feeQuery/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveRepay/dialog.html" afterPath="$PROJECT_DIR$/src/components/receiveRepay/dialog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveRepay/index.html" afterPath="$PROJECT_DIR$/src/components/receiveRepay/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveRepay/indexView.js" afterPath="$PROJECT_DIR$/src/components/receiveRepay/indexView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/receiveRepay/tableView.js" afterPath="$PROJECT_DIR$/src/components/receiveRepay/tableView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/uploadImg/indexView.js" afterPath="$PROJECT_DIR$/src/components/uploadImg/indexView.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -1054,12 +1046,12 @@
       <workItem from="1510667534298" duration="4620000" />
       <workItem from="1510707191083" duration="155000" />
       <workItem from="1510900784884" duration="1328000" />
-      <workItem from="1511004560076" duration="3830000" />
+      <workItem from="1511004560076" duration="3949000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="440589000" />
+    <option name="totallyTimeSpent" value="440708000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

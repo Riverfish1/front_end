@@ -31,8 +31,6 @@ define([
         },
         showContent: function (row) {
             var initState = {
-                creatorId: '',
-                creatorName: '',
                 targetId: '',
                 targetName: '',
                 startTime: '',
@@ -172,8 +170,11 @@ define([
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
+                var JSONData = JSON.parse(datas);
+                JSONData.creatorName = window.ownerPeopleName;
+                JSONData.creatorId = window.ownerPeopleId;
                 var id = $('#id').val();
-                ncjwUtil.postData(id ? QUERY.WORK_AUTH_UPDATE : QUERY.WORK_AUTH_INSERT, datas, function (res) {
+                ncjwUtil.postData(id ? QUERY.WORK_AUTH_UPDATE : QUERY.WORK_AUTH_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '变更成功！' : '新增成功！');
                         that.$officeDialog.modal('hide');

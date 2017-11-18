@@ -72,7 +72,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function (value) {
-                        return ncjwUtil.timeTurn(value, 'yyyy-mm-dd');
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
                     }
                 }, {
                     field: 'handlerName',
@@ -85,7 +85,7 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                     formatter: function (value) {
-                        return ncjwUtil.timeTurn(value, 'yyyy-mm-dd');
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
                     }
                 }, {
                     field: 'remark',

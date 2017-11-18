@@ -25,6 +25,7 @@ define([
             var that = this;
             if (window.location.host.indexOf('localhost') === -1) {
                 ncjwUtil.getData(QUERY.LOGIN, {}, function(res) {
+                    console.log(res);
                     if (res.success) {
                         var data = res.data && res.data[0];
                         var JSONData = JSON.parse(data);
@@ -37,10 +38,10 @@ define([
                         };
                         $('.loginName').html(that.template(that.default));
                     } else {
-        				if (location.href.match('120.55.36.116')) {
-        					window.location.href = 'http://60.190.226.163:5002/uums-server/?service=' + window.location.href;
+        				if (location.href.indexOf('120.55.36.116') > -1) {
+        					window.location.href = 'http://60.190.226.163:5002/uums-server';
         				} else {
-        					window.location.href = 'http://51.110.233.61:8082/uums-server/?service=' + window.location.href;
+        					window.location.href = 'http://51.110.233.61:8082/uums-server';
         				}
                     }
                 }, {

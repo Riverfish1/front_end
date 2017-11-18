@@ -3,6 +3,8 @@
         <button id="btn_add" type="button" id="add" class="btn btn-default">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
         </button>
+        <button id="btn_query" type="button" id="query" class="btn btn-primary">高级查询
+        </button>
     </div>
 </div>
 <div class="row">
@@ -27,55 +29,33 @@
     </div>
 </div>
 
-<div class="modal fade bs-example-modal-lg" id="assetsReceive" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+<div class="modal fade bs-example-modal-lg" id="viewContent" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog" style="width: 650px;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h5 class="modal-title" >资产领用</h5>
+                <h5 class="modal-title" >办公用品</h5>
             </div>
             <div class="modal-body" >
-                <div id="editPanel"></div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-                <button id="assetReceiveSubmitBtn" class="btn btn-primary" onclick="">提交</button>
+                <div id="viewPanel"></div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade bs-example-modal-lg" id="assetsMaintain" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+<div class="modal fade bs-example-modal-lg" id="advancedQuery" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog" style="width: 650px;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h5 class="modal-title" >资产维修</h5>
+                <h5 class="modal-title" >高级查询</h5>
             </div>
             <div class="modal-body" >
-                <div id="editPanel"></div>
+                <div id="queryPanel"></div>
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-                <button id="assetMaintainSubmitBtn" class="btn btn-primary" onclick="">提交</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade bs-example-modal-lg" id="assetsScrap" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog" style="width: 650px;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h5 class="modal-title" >资产报废</h5>
-            </div>
-            <div class="modal-body" >
-                <div id="editPanel"></div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-                <button id="assetScrapSubmitBtn" class="btn btn-primary" onclick="">提交</button>
+                <button id="query" class="btn btn-primary">查询</button>
             </div>
         </div>
     </div>

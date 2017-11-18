@@ -80,7 +80,7 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 datas = datas.slice(0, -2) + '","operatorId":' + window.ownerPeopleId + datas.slice(-1);
-                datas = datas.slice(0, -2) + '","date":' + ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd hh:mm:ss') + datas.slice(-1);
+                datas = datas.slice(0, -1) + ',"date":"' + ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd hh:mm:ss') + '"' + datas.slice(-1);
                 ncjwUtil.postData(QUERY.SELF_LEARNING_INSERT, datas, function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo('新增成功！');

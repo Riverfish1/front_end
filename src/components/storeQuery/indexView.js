@@ -35,7 +35,7 @@ define([
                 that.$el.empty().html(that.template(that.initialData));
                 that.table = new BaseTableView();
                 that.table.render();
-            }, 100);
+            }, 500);
             return this;
         },
         handleChange: function (e) {
