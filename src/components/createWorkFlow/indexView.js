@@ -43,7 +43,7 @@ define([
         },
         initSuggest: function () {
             this.$suggestWrap.bsSuggest('init', {
-                effectiveFieldsAlias: {peopleName: "姓名", id: "ID", employeeNum: "工号"},
+                effectiveFieldsAlias: {peopleName: "姓名", employeeNum: "工号"},
                 clearable: true,
                 showHeader: true,
                 showBtn: false,

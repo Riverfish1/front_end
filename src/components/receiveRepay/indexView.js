@@ -49,7 +49,7 @@ define([
             this.$detailDialogPanel = this.$el.find('#detailPanel');
             this.initSuggest();
             this.$suggestBtn.off('click').on('click', $.proxy(this.initBtnEvent, this));
-            $('.accessTime').datepicker({
+            $('.repayTime').datepicker({
                 language: 'zh-CN',
                 autoclose: true,
                 todayHighlight: true,
@@ -57,14 +57,13 @@ define([
             });
             this.table = new BaseTableView();
             this.table.render();
-            this.initSearchForm();
             return this;
         },
         initSuggest: function () {
             $.each(this.$suggestWrap, function (k, el) {
                 var $el = $(el), effectiveFieldsAlias = '', url = '', keyField = '', fnAdjustAjaxParam = '', processData = '', onSetSelectValue = '';
                 if ($el.hasClass('department')) {
-                    effectiveFieldsAlias = {departmentName: "部门名称", id: "部门ID", parentName: "单位"};
+                    effectiveFieldsAlias = {departmentName: "部门名称", parentName: "单位"};
                     url = QUERY.RECORD_DEPARTMENT_QUERY;
                     keyField = "departmentName";
                     fnAdjustAjaxParam = function (keyword, opts) {
@@ -93,7 +92,7 @@ define([
                         $helpBlock.remove();
                     }
                 } else {
-                    effectiveFieldsAlias = {peopleName: "姓名", id: "ID", employeeNum: "工号"};
+                    effectiveFieldsAlias = {peopleName: "姓名", employeeNum: "工号"};
                     url = QUERY.FUZZY_QUERY;
                     keyField = "peopleName";
                     fnAdjustAjaxParam = function (keyword, opts) {
@@ -292,73 +291,29 @@ define([
                 $(el).val(nameMap[name]);
             });
         },
-        initSearchForm: function () {
-            this.$searchForm.validate({
-                errorElement: 'span',
-                errorClass: 'help-block',
-                focusInvalid: true,
-                rules: {
-                    title: {
-                        required: true
-                    },
-                    applyerId: {
-                        required: true
-                    },
-                    startTime: {
-                        // required: true
-                    },
-                    endTime: {
-                        // required: true,
-                        dateRange: '.startTime'
-                    }
-                },
-                messages: {
-                    title: "请填写标题",
-                    startTime: "请选择起始日期",
-                    endTime: {
-                        required: "请选择结束日期",
-                        dateRange: '起始日期晚于结束日期'
-                    },
-                    applyerId: "请选择用户姓名"
-                },
-                highlight: function (element) {
-                    $(element).closest('.form-group').addClass('has-error');
-                },
-                success: function (label) {
-                    label.closest('.form-group').removeClass('has-error');
-                    label.remove();
-                },
-                errorPlacement: function (error, element) {
-                    element.parent('div').append(error);
-                }
-            });
-        },
         query: function () {
-            if (this.$searchForm.valid()) {
-                var $inputs = this.$searchForm.find('.search-assist');
-                var param = {};
-                //保存
-                $.each($inputs, function (k, el) {
-                    var $el = $(el), val = $el.val(), name = $el.attr('name');
-                    if(val != ""){
-                        if(name == "startTime" || name == "endTime"){
-                            param[name] = ncjwUtil.timeTurn(val, 'yyyy-MM-dd');
-                        } else {
-                            param[name] = val;
-                        }
+            var $inputs = this.$searchForm.find('.search-assist');
+            var param = {};
+            //保存
+            $.each($inputs, function (k, el) {
+                var $el = $(el), val = $el.val(), name = $el.attr('name');
+                if(val != ""){
+                    if(name == "startTime" || name == "endTime"){
+                        param[name] = ncjwUtil.timeTurn(val, 'yyyy-MM-dd');
+                    } else {
+                        param[name] = val;
                     }
-                })
-                if (param.type === 'all') delete param.type;
-                param.currentOperatorId = 12;
-                param.id = window.ownerPeopleId;
-                param.pageNum = 0;
-                param.pageSize = 10000;
-                this.table.refreshOptions({
-                    queryParams: param,
-                    url: QUERY.REPAY_CREATE_QUERY,
-                    method: 'post'
-                });
-            }
+                }
+            })
+            if (param.type === 'all') delete param.type;
+            param.currentOperatorId = window.ownerPeopleId;
+            param.pageNum = 0;
+            param.pageSize = 10000;
+            this.table.refreshOptions({
+                queryParams: param,
+                url: QUERY.REPAY_CREATE_QUERY,
+                method: 'post'
+            });
         },
         delOne: function (row) {
             var that = this;

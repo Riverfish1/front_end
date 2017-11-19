@@ -181,7 +181,7 @@ define([
                         $helpBlock.remove();
                     }
                 }else{
-                    effectiveFieldsAlias = {peopleName: "姓名", id: "ID", employeeNum: "工号"};
+                    effectiveFieldsAlias = {peopleName: "姓名", employeeNum: "工号"};
                     url = QUERY.FUZZY_QUERY;
                     keyField = "peopleName";
                     fnAdjustAjaxParam =  function (keyword, opts) {
