@@ -51,7 +51,7 @@ define([
                 message: '确认' + (type === 'pass' ? '通过' : '驳回') + '吗？',
                 callback: function (result) {
                     if (result) {
-                        ncjwUtil.postData(type === 'pass' ? QUERY.WORK_SUMMARY_AGREE : QUERY.WORK_SUMMARY_REJECT, JSON.stringify(params), function (res) {
+                        ncjwUtil.getData(type === 'pass' ? QUERY.WORK_SUMMARY_AGREE : QUERY.WORK_SUMMARY_REJECT, params, function (res) {
                             if (res.success) {
                                 ncjwUtil.showInfo('成功' + (type === 'pass' ? '通过！' : '驳回！'));
                                 p.table.refresh();

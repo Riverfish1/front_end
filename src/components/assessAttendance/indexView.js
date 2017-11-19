@@ -147,8 +147,8 @@ define([
                 var data = this.$editForm.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
-                datas = datas.slice(0, -2) + '","userId":' + window.ownerPeopleId + datas.slice(-1);
-                datas = datas.slice(0, -2) + '","status":' + $('.J_att').val() + datas.slice(-1);
+                datas = datas.slice(0, -2) + '","userId":"' + window.ownerPeopleId + datas.slice(-1);
+                datas = datas.slice(0, -1) + '","status":' + ($('.statusInput').val() - 1) + datas.slice(-1);
                 bootbox.confirm({
 	                buttons: {
 	                    confirm: {

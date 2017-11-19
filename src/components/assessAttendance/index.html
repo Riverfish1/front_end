@@ -1,10 +1,11 @@
 <div class="attendance">
-		<span class="col-md-3" style="line-height: 36px;">考勤类别：</span>
+		<span class="col-md-3" style="line-height: 36px; font-size: 24px;">考勤类别：</span>
 		<span class="col-md-9">
     <ul class="nav nav-tabs" id="tabNav" style="padding: 0 0 20px 0;">
         <% $.each(items, function(i, n){ %>
         <li>
         	<% if(n.active) {%>
+        	<input value="<%= i %>" type="hidden" class="statusInput" />
         	<button value="<%= i %>" class="btn btn-primary J_att"><%= n.name %></button>
         	<% } %>
         	<% if(!n.active) {%>

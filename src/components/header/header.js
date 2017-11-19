@@ -25,7 +25,6 @@ define([
             var that = this;
             if (window.location.host.indexOf('localhost') === -1) {
                 ncjwUtil.getData(QUERY.LOGIN, {}, function(res) {
-                    console.log(res);
                     if (res.success) {
                         var data = res.data && res.data[0];
                         var JSONData = JSON.parse(data);

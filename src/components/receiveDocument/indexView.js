@@ -397,7 +397,6 @@ define([
                 obj[v.id] = v.workFlow;
             })
             this.typeFlowMap = obj;
-            console.log("typeFlowMap", this.typeFlowMap);
             return arr;
         },
         changeFlow: function (e) {

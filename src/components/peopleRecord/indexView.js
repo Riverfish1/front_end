@@ -80,7 +80,6 @@ define([
             this.initSubmitForm();
         },
         selectAreaName: function(e) {
-            console.log(e);
         },
         getAreaList: function(row) {
             var self = this;
@@ -190,8 +189,13 @@ define([
                     if (result) {
                         ncjwUtil.postData(QUERY.WORK_ADDRESSLIST_INSERT, JSON.stringify(peopleInfo), function (res) {
                             if (res.success) {
-                                ncjwUtil.showInfo('加入名片夹成功！');
-                                that.table.refresh();
+                                var data = res.data && res.data[0];
+                                if (data) {
+                                    ncjwUtil.showInfo('加入名片夹成功！');
+                                    that.table.refresh();
+                                } else {
+                                    ncjwUtil.showError('已加入名片夹，请勿重复加入');
+                                }
                             } else {
                                 ncjwUtil.showError('加入名片夹失败！');
                             }

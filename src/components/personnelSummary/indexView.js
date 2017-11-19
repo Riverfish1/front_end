@@ -217,7 +217,8 @@ define([
                         required: true
                     },
                     targetNumber: {
-                        required: true
+                        required: true,
+                        number: true
                     },
                     performance: {
                         required: true,
@@ -247,7 +248,8 @@ define([
                         required: "请选择关键业务指标"
                     },
                     targetNumber: {
-                        required: "请选择目标数值"
+                        required: "请选择目标数值",
+                        number: '必须为数字'
                     },
                     performance: {
                         required: "请填写完成情况",
