@@ -214,7 +214,9 @@ define([
             data = decodeURIComponent(data, true);
             var datas = serializeJSON(data);
             var JSONData = JSON.parse(datas);
-            if (JSONData.assetClassId === 'all') JSONData.assetClassId = '';
+            if (!JSONData.assetNo) delete JSONData.assetNo;
+            if (!JSONData.assetName) delete JSONData.assetName;
+            if (JSONData.assetClassId === 'all') delete JSONData.assetClassId;
             JSONData.pageNum = 0;
             JSONData.pageSize = 10000;
             this.table.refresh({

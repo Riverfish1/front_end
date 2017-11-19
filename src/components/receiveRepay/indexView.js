@@ -343,12 +343,21 @@ define([
                     if(val != ""){
                         if(name == "startTime" || name == "endTime"){
                             param[name] = ncjwUtil.timeTurn(val, 'yyyy-MM-dd');
-                        }else{
+                        } else {
                             param[name] = val;
                         }
                     }
                 })
-                this.table.refresh({query: param});
+                if (param.type === 'all') delete param.type;
+                param.currentOperatorId = 12;
+                param.id = window.ownerPeopleId;
+                param.pageNum = 0;
+                param.pageSize = 10000;
+                this.table.refreshOptions({
+                    queryParams: param,
+                    url: QUERY.REPAY_CREATE_QUERY,
+                    method: 'post'
+                });
             }
         },
         delOne: function (row) {

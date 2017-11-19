@@ -308,6 +308,7 @@ define([
                         }
                     }
                 })
+                if (param.type === 'all') delete param.type;
                 this.table.refresh({query: param});
             }
         },

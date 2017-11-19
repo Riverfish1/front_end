@@ -20,6 +20,9 @@ define(['../../common/query/index'], function (QUERY) {
         refresh: function (params) {
             this.$el.bootstrapTable('refresh', params);
         },
+        refreshOptions: function (params) {
+            this.$el.bootstrapTable('refreshOptions', params);
+        },
         init: function () {
             var typeMap = {
                 "0": "借款单",
