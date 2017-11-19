@@ -107,7 +107,7 @@ define([
                     processData = function (json) {
                         var data = {value: []};
                         $.each(json.data && json.data[0], function (i, r) {
-                            data.value.push({peopleName: r.peopleName, employeeNum: r.employeeNum, id: r.id})
+                            data.value.push({peopleName: $(r.peopleName).length > 0 ? $(r.peopleName).text() : r.peopleName, employeeNum: r.employeeNum, id: r.id})
                         })
                         return data;
                     };
