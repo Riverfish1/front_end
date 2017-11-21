@@ -150,7 +150,8 @@ define([
                         required: true
                     },
                     summaryContent: {
-                        required: true
+                        required: true,
+                        maxlength: 1000
                     }
                 },
                 messages: {
@@ -160,7 +161,10 @@ define([
                         dateRange: '起始日期晚于结束日期'
                     },
                     summaryTitle: '请输入标题',
-                    summaryContent: '请输入内容'
+                    summaryContent: {
+                        required: "请输入内容",
+                        maxlength: "最多输入1000个字符"
+                    }
                 },
                 highlight: function (element) {
                     $(element).closest('.form-group').addClass('has-error');

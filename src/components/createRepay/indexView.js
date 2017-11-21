@@ -96,7 +96,7 @@ define([
                         $.each(json.data && json.data[0], function (i, r) {
                             data.value.push({peopleName: $(r.peopleName).length > 0 ? $(r.peopleName).text() : r.peopleName, employeeNum: r.employeeNum, id: r.id})
                         })
-                        debugger;
+                        // debugger;
                         return data;
                     };
                     onSetSelectValue = function (e, keyword, data) {
