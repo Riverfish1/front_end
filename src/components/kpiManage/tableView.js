@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#work_petitionMng',
+        el: '#kpi_manage',
         initialize: function () {
         },
         showLoading: function () {
@@ -22,7 +22,7 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.WORK_PETITIONMNG_QUERY, //请求后台的URL（*）
+                url: QUERY.KPI_MANAGE_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,48 +47,57 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'petitionName',
-                    title: '名称',
-                    align: 'center',
-                    valign: "middle",
-                }, {
-                    field: 'registrantId',
-                    title: '登记人',
+                    width: '15%',
+                    field: 'kpiName',
+                    title: '关键业务指标',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'recordContent',
-                    title: '登记内容',
+                    width: '15%',
+                    field: 'targetNumber',
+                    title: '目标数值',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'recordTime',
-                    title: '登记时间',
+                    width: '15%',
+                    field: 'postKpi',
+                    title: '岗位指标设定',
+                    align: 'center',
+                    valign: "middle"
+                }, {
+                    field: 'performance',
+                    title: '完成情况',
                     align: 'center',
                     valign: "middle",
-                    formatter: function(value) {
-                        return ncjwUtil.timeTurn(value) || ncjwUtil.timeTurn(new Date().getTime());
+                    width: '20%'
+                }, {
+                    field: 'startDate',
+                    title: '开始日期',
+                    align: 'center',
+                    width: '15%',
+                    valign: 'middle',
+                    formatter: function (value, row, index) {
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
                     }
                 }, {
-                    field: 'status',
-                    title: '处理状态',
+                    field: ' endDate',
+                    title: '结束日期',
                     align: 'center',
+                    width: '15%',
                     valign: 'middle',
-                    formatter: function(value, row, index) {
-                        switch (value) {
-                            case '1': return '已处理';
-                            default: return '未处理';
-                        }
+                    formatter: function (value, row, index) {
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
                     }
                 }, {
                     field: 'oper',
                     title: '操作',
                     align: 'center',
                     valign: "middle",
+                    width: '5%',
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
-                        var str = row.status === '1' ? '' : '<p class="grid-command-p btn-view">处理</p>';
-                        str += '<p class="grid-command-p btn-check">查看</p>';
+                        var str = '<p class="grid-command-p btn-view">查看</p>';
+                        str += '<p class="grid-command-p btn-delete">删除</p>';
                         return str;
                     }
                 }],
@@ -111,8 +120,8 @@ define(['../../common/query/index'], function (QUERY) {
             'click .btn-view': function (e, value, row, index) {
                 Backbone.trigger('itemView', row);
             },
-            'click .btn-check': function (e, value, row, index) {
-                Backbone.trigger('itemCheck', row);
+            'click .btn-delete': function (e, value, row, index) {
+                Backbone.trigger('itemDelete', row);
             }
         }
     });

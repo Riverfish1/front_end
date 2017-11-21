@@ -16,15 +16,23 @@ define([
         },
         initialize: function () {
             Backbone.off('itemView').on('itemView', this.showContent, this);
+            Backbone.off('itemCheck').on('itemCheck', this.viewContent, this);
         },
         render: function () {
             //main view
             this.$el.empty().html(this.template({id: ''}));
             this.$officeDialog = this.$el.find('#editDialog');
             this.$officeDialogPanel = this.$el.find('#editPanel');
+            this.$viewDialog = this.$el.find('#viewDialog');
+            this.$viewDialogPanel = this.$viewDialog.find('#viewPanel');
             this.table = new BaseTableView();
             this.table.render();
             return this;
+        },
+        viewContent: function (row) {
+            this.$viewDialog.modal('show');
+            this.$viewDialog.modal({backdrop: 'static', keyboard: false});
+            this.$viewDialogPanel.empty().html(this.getDialogContent(row));
         },
         showContent: function (row) {
             var initState = {
@@ -76,8 +84,8 @@ define([
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
-                JSONData.status = 1;
                 var id = $('#id').val();
+                JSONData.status = id ? 1 : 0;
                 ncjwUtil.postData(id ? QUERY.WORK_PETITIONMNG_UPDATE : QUERY.WORK_PETITIONMNG_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '处理成功' : '新增成功！');

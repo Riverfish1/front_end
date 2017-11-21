@@ -2,7 +2,7 @@
 define(['../../common/query/index'], function (QUERY) {
     'use strict';
     var Table = Backbone.View.extend({
-        el: '#work_petitionMng',
+        el: '#assign_manage',
         initialize: function () {
         },
         showLoading: function () {
@@ -22,7 +22,7 @@ define(['../../common/query/index'], function (QUERY) {
         init: function () {
             var that = this;
             this.$el.bootstrapTable({
-                url: QUERY.WORK_PETITIONMNG_QUERY, //请求后台的URL（*）
+                url: QUERY.ASSIGN_MANAGE_QUERY, //请求后台的URL（*）
                 method: 'post', //请求方式（*）
                 toolbar: '#toolbar', //工具按钮用哪个容器
                 striped: true, //是否显示行间隔色
@@ -47,39 +47,23 @@ define(['../../common/query/index'], function (QUERY) {
                 cardView: false, //是否显示详细视图
                 detailView: false, //是否显示父子表
                 columns: [{
-                    field: 'petitionName',
-                    title: '名称',
+                    field: 'assignTime',
+                    title: '交办时间',
                     align: 'center',
                     valign: "middle",
+                    formatter: function (value) {
+                        return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
+                    }
                 }, {
-                    field: 'registrantId',
-                    title: '登记人',
+                    field: 'assignUserName',
+                    title: '交办对象',
                     align: 'center',
                     valign: "middle"
                 }, {
-                    field: 'recordContent',
-                    title: '登记内容',
+                    field: 'assignTask',
+                    title: '交办任务',
                     align: 'center',
                     valign: "middle"
-                }, {
-                    field: 'recordTime',
-                    title: '登记时间',
-                    align: 'center',
-                    valign: "middle",
-                    formatter: function(value) {
-                        return ncjwUtil.timeTurn(value) || ncjwUtil.timeTurn(new Date().getTime());
-                    }
-                }, {
-                    field: 'status',
-                    title: '处理状态',
-                    align: 'center',
-                    valign: 'middle',
-                    formatter: function(value, row, index) {
-                        switch (value) {
-                            case '1': return '已处理';
-                            default: return '未处理';
-                        }
-                    }
                 }, {
                     field: 'oper',
                     title: '操作',
@@ -87,8 +71,8 @@ define(['../../common/query/index'], function (QUERY) {
                     valign: "middle",
                     events: this.operateEvents,
                     formatter: function (value, row, index) {
-                        var str = row.status === '1' ? '' : '<p class="grid-command-p btn-view">处理</p>';
-                        str += '<p class="grid-command-p btn-check">查看</p>';
+                        var str = '<p class="grid-command-p btn-view">查看</p>';
+                        str += '<p class="grid-command-p btn-delete">删除</p>';
                         return str;
                     }
                 }],
@@ -111,8 +95,8 @@ define(['../../common/query/index'], function (QUERY) {
             'click .btn-view': function (e, value, row, index) {
                 Backbone.trigger('itemView', row);
             },
-            'click .btn-check': function (e, value, row, index) {
-                Backbone.trigger('itemCheck', row);
+            'click .btn-delete': function (e, value, row, index) {
+                Backbone.trigger('itemDelete', row);
             }
         }
     });

@@ -1,37 +1,84 @@
 /*global define*/
 define([
     'text!./index.html',
+    'text!./dialog.html',
+    'text!./view.html',
+    './tableView',
     '../../common/query/index'
-], function (tpl, QUERY) {
+], function (tpl, dialogTpl, viewTpl, BaseTableView, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
         el: '#main',
         template: _.template(tpl),
+        getDialogContent: _.template(dialogTpl),
+        getViewContent: _.template(viewTpl),
         events: {
-            'click #btn-submit': 'submitForm'
+            'click #btn_add': 'addOne',
+            'click #submitBtn': 'assignForm'
         },
         initialize: function () {
-
+            Backbone.off('itemDelete').on('itemDelete', this.delOne, this);
+            Backbone.off('itemView').on('itemView', this.viewContent, this);
         },
         render: function () {
-            //main view
-            this.initState = {
-                assignUserName: '',
-                assignUserId: '',
-                assignTime: '',
-                assignTask: ''
-            };
-            this.$el.empty().html(this.template(this.initState));
-            this.$submitForm = this.$el.find('#submitForm');
+            this.$el.empty().html(this.template());
+            this.$dialog = this.$el.find('#dialog');
+            this.$dialogPanel = this.$dialog.find('#dialogPanel');
+            this.$viewContent = this.$el.find('#viewContent');
+            this.$viewContentPanel = this.$viewContent.find('#viewPanel');
+            this.table = new BaseTableView();
+            this.table.render();
+            return this;
+        },
+        viewContent(row) {
+            row.assignTime = ncjwUtil.timeTurn(row.assignTime, 'yyyy-MM-dd');
+            this.$viewContent.modal('show');
+            this.$viewContent.modal({backdrop: 'static', keyboard: false});
+            this.$viewContentPanel.empty().html(this.getViewContent(row));
+        },
+        addOne: function (row) {
+            this.$dialog.modal('show');
+            this.$dialog.modal({backdrop: 'static', keyboard: false});
+            this.$dialogPanel.empty().html(this.getDialogContent());
             $('#assignTime').datepicker({
                 language: 'zh-CN',
                 format: 'yyyy-mm-dd',
                 autoclose: true,
                 todayHighlight: true
             });
-            this.$suggestWrap = this.$submitForm.find('.test');
+            this.$assignForm = this.$dialogPanel.find('#assignForm');
+            this.$suggestWrap = this.$assignForm.find('.test');
             this.initSuggest();
-            return this;
+            this.$assignForm = this.$dialog.find('#assignForm');
+            this.initSubmitForm();
+        },
+        delOne: function (row) {
+            var that = this;
+            bootbox.confirm({
+                buttons: {
+                    confirm: {
+                        label: '确认'
+                    },
+                    cancel: {
+                        label: '取消'
+                    }
+                },
+                title: "温馨提示",
+                message: '执行删除后将无法恢复，确定继续吗？',
+                callback: function (result) {
+                    if (result) {
+                        ncjwUtil.postData(QUERY.ASSIGN_MANAGE_DELETE, {id: row.id}, function (res) {
+                            if (res.success) {
+                                ncjwUtil.showInfo('删除成功');
+                                that.table.refresh();
+                            } else {
+                                ncjwUtil.showError("删除失败：" + res.errorMsg);
+                            }
+                        })
+                    }
+                }
+
+            });
         },
         initSuggest: function () {
             var $data = [];
@@ -73,7 +120,7 @@ define([
             })
         },
         initSubmitForm: function () {
-            this.$submitForm.validate({
+            this.$assignForm.validate({
                 errorElement: 'span',
                 errorClass: 'help-block',
                 focusInvalid: true,
@@ -107,50 +154,27 @@ define([
                 success: function (label) {
                     label.closest('.form-group').removeClass('has-error');
                     label.remove();
-                },
-                errorkpiment: function (error, element) {
-                    element.parent('div').append(error);
                 }
             });
         },
-        submitForm: function (e) {
-            var self = this;
-            this.initSubmitForm();
-            if(this.$submitForm.valid()){
+        assignForm: function (e) {
+            if(this.$assignForm.valid()){
                 var that = this;
-                var data = this.$submitForm.serialize();
+                var data = this.$assignForm.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);
                 datas = datas.slice(0, -2) + '","userId":' + window.ownerPeopleId + datas.slice(-1);
-                var assignTime = this.$submitForm.find('#assignTime').val();
-                var assignUserName = this.$submitForm.find('#assignUserName').val();
-                var assignTask = this.$submitForm.find('#assignTask').val();
-                bootbox.confirm({
-                    buttons: {
-                        confirm: {
-                            label: '确认'
-                        },
-                        cancel: {
-                            label: '取消'
-                        }
-                    },
-                    title: "确认提交？",
-                    message: '<div class="tipInfo tipConfirm"><p>' + "交办时间：" + assignTime + '</p><p>交办对象：' + assignUserName + '</p><p>交办任务：' + assignTask + '</p></div>',
-                    callback: function (result) {
-                        if (result) {
-                            ncjwUtil.postData(QUERY.ASSIGN_MANAGE_INSERT, datas, function (res) {
-                                if (res.success) {
-                                    ncjwUtil.showInfo('提交成功！');
-                                } else {
-                                    ncjwUtil.showError("提交失败：" + res.errorMsg);
-                                }
-                            }, {
-                                "contentType": 'application/json'
-                            })
-                        }
+                ncjwUtil.postData(QUERY.ASSIGN_MANAGE_INSERT, datas, function (res) {
+                    if (res.success) {
+                        ncjwUtil.showInfo('提交成功！');
+                        that.$dialog.modal('hide');
+                        that.table.refresh();
+                    } else {
+                        ncjwUtil.showError("提交失败：" + res.errorMsg);
                     }
-
-                });
+                }, {
+                    "contentType": 'application/json'
+                })
             }
         }
     });

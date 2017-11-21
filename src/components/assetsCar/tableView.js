@@ -72,6 +72,11 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle"
                 }, {
+                    field: 'gmtCreate',
+                    title: '创建时间',
+                    align: 'center',
+                    valign: 'middle'
+                }, {
                     field: 'yearCheck',
                     title: '年检',
                     align: 'center',

@@ -187,11 +187,13 @@ define([], function () {
         ASSESS_ATTENDANCE_CHECK: '/api/attendanceCheck/insert',
         //考核指标管理
         KPI_MANAGE_INSERT: '/api/kpiManage/insert',
-        KPI_ITEM_SELECT: '/api/kpiItems/query',
-        TARGET_NUM_ITEMS_SELECT: '/api/targetNumItems/query',
+        KPI_MANAGE_QUERY: '/api/kpiManage/query',
+        KPI_MANAGE_DELETE: '/api/kpiManage/deleteById',
 
         //临时交办工作管理
         ASSIGN_MANAGE_INSERT: '/api/assignManage/insert',
+        ASSIGN_MANAGE_QUERY: '/api/assignManage/query',
+        ASSIGN_MANAGE_DELETE: '/api/assignManage/deleteById',
 
         // 资产
         // 资产类别管理
