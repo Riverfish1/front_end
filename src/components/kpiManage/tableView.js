@@ -80,7 +80,7 @@ define(['../../common/query/index'], function (QUERY) {
                         return ncjwUtil.timeTurn(value, 'yyyy-MM-dd');
                     }
                 }, {
-                    field: ' endDate',
+                    field: 'endDate',
                     title: '结束日期',
                     align: 'center',
                     width: '15%',

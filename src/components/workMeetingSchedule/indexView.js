@@ -216,7 +216,7 @@ define([
                                     that.$officeDialog.modal('hide');
                                     that.table.refresh();
                                 } else {
-                                    ncjwUtil.showError("预定失败：" + res.errorMsg);
+                                    ncjwUtil.showError(res.errorMessage);
                                 }
                             }, {
                                 "contentType": 'application/json'
