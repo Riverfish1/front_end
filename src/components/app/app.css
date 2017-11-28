@@ -1041,3 +1041,6 @@ input:-webkit-autofill {
 
 
 /*兼容处理*/
+.glyphicon-remove::before {
+    *content: "";
+}

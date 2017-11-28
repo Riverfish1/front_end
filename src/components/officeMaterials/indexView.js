@@ -36,7 +36,7 @@ define([
             Backbone.off('assetsDelete').on('assetsDelete', this.delOne, this);
             Backbone.off('assetsView').on('assetsView', this.viewContent, this);
         },
-        viewContent(row) {
+        viewContent: function(row) {
             this.$viewContent.modal('show');
             this.$viewContent.modal({backdrop: 'static', keyboard: false});
             this.$viewContentPanel.empty().html(this.getViewContent(row));
