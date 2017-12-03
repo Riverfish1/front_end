@@ -187,7 +187,7 @@ define([
                 }
             });
         },
-        submitForm: function () {
+        submitForm: function (e) {
             if (this.$assetEditForm.valid()){
                 var that = this;
                 var $form = $(e.target).parents('.modal-content').find('#assetEditForm');

@@ -139,9 +139,13 @@ define(['jquery'], function ($) {
         },
         showOrHide: function (show) {
             if (show) {
-                this.$wrapper.classList.add('ui-datepicker-wrapper-show');
+                if (this.$wrapper.classList) {
+                    this.$wrapper.classList.add('ui-datepicker-wrapper-show');
+                }
             } else {
-                this.$wrapper.classList.remove('ui-datepicker-wrapper-show');
+                if (this.$wrapper.classList) {
+                    this.$wrapper.classList.remove('ui-datepicker-wrapper-show');
+                }
             }
         },
         init: function (container) {

@@ -11,9 +11,7 @@ define([
 		el: '#app',
 
 		initialize: function () {
-			// this.$header = $('#header');
 			this.$footer = $('#footer');
-			// this.$sidebar = $('#sidebar');
 			this.headerView = new HeaderView();
 			this.footerView = new FooterView();
 			this.navSideBarView = new NavSideBar();
@@ -21,10 +19,8 @@ define([
 		},
 
 		render: function () {
-			// this.$header.html(this.headerView.render().el);
 			this.headerView.render();
 			this.$footer.html(this.footerView.render().el);
-			// this.$sidebar.html(this.navSideBarView.render().el);
 			return this;
 		}
 	});
