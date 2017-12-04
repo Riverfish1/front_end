@@ -172,7 +172,7 @@ define([
         submitForm: function (e) {
             if(this.$editForm.valid()){
                 var that = this;
-                var $form = $(e.target).parents('.modal-content').find('#editForm');
+                var $form = $(e.target || e.srcElement).parents('.modal-content').find('#editForm');
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
                 var datas = serializeJSON(data);

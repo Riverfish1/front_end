@@ -7,7 +7,7 @@ define([
 ], function (BaseTableView, tpl, dialogTpl, QUERY) {
     'use strict';
     var TabView = Backbone.View.extend({
-        default: {
+        defaultValue: {
             items: ["待办事宜", "公文待办", "日常事务"]
         },
         el: '#main',
@@ -53,7 +53,7 @@ define([
         },
         render: function () {
             //main view
-            this.$el.empty().html(this.template(this.default));
+            this.$el.empty().html(this.template(this.defaultValue));
             this.$officeDialog = this.$el.find('#editDialog');
             this.$officeDialogPanel = this.$el.find('#editPanel');
             this.$tabContent = this.$el.find('#tabContent');

@@ -105,10 +105,9 @@ define([
         submitForm: function (e) {
             if(this.$editForm.valid()){
                 var that = this;
-                var $form = $(e.target).parents('.modal-content').find('#editForm');
+                var $form = this.$editForm;
                 var data = $form.serialize();
                 data = decodeURIComponent(data, true);
-                var datas = serializeJSON(data);
                 var JSONData = JSON.parse(datas);
                 var id = $('#id').val();
                 ncjwUtil.postData(id ? QUERY.EQUIP_MNG_UPDATE : QUERY.EQUIP_MNG_INSERT, JSON.stringify(JSONData), function (res) {

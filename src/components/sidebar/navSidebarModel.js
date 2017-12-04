@@ -53,7 +53,7 @@ define({
         ]},
     ],
     "support": [
-        {className: 'icon_homePage', href: '#', title: '差旅报销管理', children: [
+        {className: 'icon_homePage', href: '#/support/createRepay', title: '差旅报销管理', children: [
             {className: 'icon_homePage', href: '#/support/createRepay', title: '我的报销'},
             {className: 'icon_homePage', href: '#/support/receiveRepay', title: '待处理的报销'}
         ]},

@@ -5,7 +5,7 @@ define([
 ], function (tpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
-        default: {
+        defaultValue: {
             items: [
             	{ name: "自动签到", active: true },
             	{ name: "请假申请", active: false },
@@ -42,9 +42,9 @@ define([
             ncjwUtil.postData(QUERY.RECORD_PEOPLE_SELECT_BY_ID, {id: id}, function(res) {
             	if (res.success) {
             		var data = res.data && res.data[0];
-            		that.default.peopleName = data.peopleName;
-            		that.default.departmentName = data.departmentName;
-		            that.$el.empty().html(that.template(that.default));
+            		that.defaultValue.peopleName = data.peopleName;
+            		that.defaultValue.departmentName = data.departmentName;
+		            that.$el.empty().html(that.template(that.defaultValue));
             	}
             });
             return this;
@@ -89,14 +89,14 @@ define([
         },
         onButtonChange: function (e) {
         	var value = e.target.value;
-        	$.each(this.default.items, function(i, n) {
+        	$.each(this.defaultValue.items, function(i, n) {
         		if (String(i) === value) {
         			n.active = true;
         		} else {
         			n.active = false;
         		}
         	});
-        	this.$el.html(this.template(this.default));
+        	this.$el.html(this.template(this.defaultValue));
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         	
@@ -112,7 +112,7 @@ define([
         	var that = this;
         	var params = {
         		userId: window.ownerPeopleId,
-        		checkTime: this.default.dateNow
+        		checkTime: this.defaultValue.dateNow
         	};
         	bootbox.confirm({
                 buttons: {
@@ -129,8 +129,8 @@ define([
                     if (result) {
 			        	ncjwUtil.postData(QUERY.ASSESS_ATTENDANCE_CHECK, JSON.stringify(params), function(res) {
 			        		if (res.success) {
-			        			that.default.isMark = true;
-			        			that.$el.html(that.template(that.default));
+			        			that.defaultValue.isMark = true;
+			        			that.$el.html(that.template(that.defaultValue));
 			        		}
 			        	}, {
 			        		'contentType': 'application/json'

@@ -1,80 +1,24 @@
 <ul class="nav nav-sidebar">
     <% $.each(list, function(i, n){ %>
         <li class="<%= i== 0 && 'active navLi' %>">
-        <!--<li class="">-->
-            <!--<span class="<%= n.className %> icon_com"></span>-->
-            <a class="item"  href="<%= n.href %>">
-                <% if(n.children && n.children.length > 0){ %>
+            <a class="item"  href="<%= n && n.href %>">
+                <% if(n && n.children && n.children.length > 0){ %>
                 <i class="nav-icon"></i>
                 <% } %>
-                <span><%= n.title %></span>
+                <span><%= n && n.title %></span>
             </a>
-            <% if(n.children && n.children.length > 0){ %>
+            <% if(n && n.children && n.children.length > 0){ %>
                 <ul class="nav nav-sub">
-                    <% $.each(n.children, function(k, m){ %>
+                    <% $.each(n && n.children, function(k, m){ %>
                         <li class="navLi">
-                            <a class="item" href="<%= m.href %>" data-route="u-s">
-                                <span><%= m.title %></span>
+                            <a class="item" href="<%= m && m.href %>" data-route="u-s">
+                                <span><%= m && m.title %></span>
                             </a>
                         </li>
                     <% }); %>
                 </ul>
             <% } %>
         </li>
-        <span class="<%= n.className %> icon_com"></span>
+        <span class="<%= n && n.className %> icon_com"></span>
     <% }); %>
-    <!--<li class="active">-->
-        <!--<span class="icon_homePage icon_com"></span>-->
-        <!--<a class="item"  href="#/register/officeArea">-->
-            <!--<span>办公区登记</span>-->
-        <!--</a>-->
-    <!--</li>-->
-    <!--<li id="video">-->
-        <!--<span class="icon_video icon_com"></span>-->
-        <!--<a class="item">-->
-            <!--<span>视频管理</span>-->
-            <!--<i class="nav-icon"></i>-->
-        <!--</a>-->
-        <!--<ul class="nav nav-sub">-->
-            <!--<li>-->
-                <!--<a class="item" href="#/video" data-route="u-s">-->
-                    <!--<span>管理视频</span>-->
-                <!--</a>-->
-            <!--</li>-->
-
-            <!--&lt;!&ndash;#if(${vod-vr}==1)&ndash;&gt;-->
-            <!--&lt;!&ndash;<li>&ndash;&gt;-->
-            <!--&lt;!&ndash;<a href="#/template/VR/index" data-route="u-v">&ndash;&gt;-->
-            <!--&lt;!&ndash;<span>VR转码参数</span>&ndash;&gt;-->
-            <!--&lt;!&ndash;</a>&ndash;&gt;-->
-            <!--&lt;!&ndash;</li>&ndash;&gt;-->
-            <!--&lt;!&ndash;#end&ndash;&gt;-->
-        <!--</ul>-->
-    <!--</li>-->
-    <!--<li id="bigData">-->
-        <!--<span class="icon_stats icon_com"></span>-->
-        <!--<a class="item">-->
-            <!--<span>数据统计</span>-->
-            <!--<i class="nav-icon"></i>-->
-        <!--</a>-->
-        <!--<ul class="nav nav-sub">-->
-            <!--<li class="active">-->
-                <!--<a class="item" data-route="overview" href="#/overview">-->
-                    <!--<span>数据统计概览</span>-->
-                <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<a class="item" href="#/terminal">-->
-                    <!--<span>终端分析</span>-->
-                <!--</a>-->
-                <!--<ul class="nav nav-sub">-->
-                    <!--<li>-->
-                        <!--<a class="item" href="javascript:void(0)" data-route="t-a">-->
-                            <!--<span>终端访问量</span>-->
-                        <!--</a>-->
-                    <!--</li>-->
-                <!--</ul>-->
-            <!--</li>-->
-        <!--</ul>-->
-    <!--</li>-->
 </ul>

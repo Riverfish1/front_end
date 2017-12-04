@@ -5,28 +5,28 @@
         <div class="panel-heading" role="tab" id="<%= 'headingTwo' + i %>">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="<%= '#collapse' + i  %>" aria-expanded="true" aria-controls="<%= 'collapse' + i  %>">
-                		<% if(n.summaryType == 1) {%>
+                		<% if(n && n.summaryType == 1) {%>
                 			<h4>周总结</h4>
                 		<% } %>
-                		<% if(n.summaryType == 2) {%>
+                		<% if(n && n.summaryType == 2) {%>
                 			<h4>月总结</h4>
                 		<% } %>
-                		<% if(n.summaryType == 3) {%>
+                		<% if(n && n.summaryType == 3) {%>
                 			<h4>季度总结</h4>
                 		<% } %>
-                		<% if(n.summaryType == 4) {%>
+                		<% if(n && n.summaryType == 4) {%>
                 			<h4>年总结</h4>
                 		<% } %>
-                    <span style="color: #00f">(<%= ncjwUtil.getCurrentDate(n.startDate) %></span>
+                    <span style="color: #00f">(<%= ncjwUtil.getCurrentDate(n && n.startDate) %></span>
                      至 
-                    <span style="color: #00f"><%= ncjwUtil.getCurrentDate(n.endDate) %></span>)
+                    <span style="color: #00f"><%= ncjwUtil.getCurrentDate(n && n.endDate) %></span>)
                 </a>
                 
-                <% if(!n.status) {%>
-                <button value="<%= n.id %>" class="btn btn-primary evaluate">评价</button>
+                <% if(n && !n.status) {%>
+                <button value="<%= n && n.id %>" class="btn btn-primary evaluate">评价</button>
                 <% } %>
-                <% if(n.status) {%>
-                <button value="<%= n.id %>" class="btn" disabled="true">已评价</button>
+                <% if(n && n.status) {%>
+                <button value="<%= n && n.id %>" class="btn" disabled="true">已评价</button>
                 <% } %>
             
             </h4>
@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">关键业务指标：</label>
                         <div class="col-md-9">
-                            <%= n.kpiName %>
+                            <%= n && n.kpiName %>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">目标数值：</label>
                         <div class="col-md-9">
-                            <%= n.targetNumber %>
+                            <%= n && n.targetNumber %>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">完成情况：</label>
                         <div class="col-md-9">
-                            <%= n.performance %>
+                            <%= n && n.performance %>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">工作总结：</label>
                         <div class="col-md-9">
-                            <%= n.workSummary %>
+                            <%= n && n.workSummary %>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">个人评价：</label>
                         <div class="col-md-9">
-                            <%= n.selfEvaluation %>
+                            <%= n && n.selfEvaluation %>
                         </div>
                     </div>
                 </div>

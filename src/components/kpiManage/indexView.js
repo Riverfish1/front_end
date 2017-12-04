@@ -30,7 +30,7 @@ define([
             this.table.render();
             return this;
         },
-        viewContent(row) {
+        viewContent: function(row) {
             row.startDate = ncjwUtil.timeTurn(row.startDate, 'yyyy-MM-dd');
             row.endDate = ncjwUtil.timeTurn(row.endDate, 'yyyy-MM-dd');
             this.$viewContent.modal('show');
