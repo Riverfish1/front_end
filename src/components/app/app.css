@@ -753,7 +753,7 @@ input:-webkit-autofill {
 .flowWrap .row .operatorId{
     width: 0;
     height: 0;
-    opacity: 0;
+    visibility: hidden;
 }
 .flowWrap .row .input-group .help-block{
     position: absolute;
@@ -799,7 +799,7 @@ input:-webkit-autofill {
 .input-group .departmentIds{
     width: 0;
     height: 0;
-    opacity: 0;
+    visibility: hidden;
 }
 .flowWrapDetail{overflow-x: scroll; margin-top: 15px;}
 .flowWrapDetail .row{width: 1150px !important;}
@@ -850,17 +850,17 @@ input:-webkit-autofill {
 #editForm .targetId{
     width: 0;
     height: 0;
-    opacity: 0;
+    visibility: hidden;
 }
 .inputHideAssist{
     width: 0;
     height: 0;
-    opacity: 0;
+    visibility: hidden;
 }
 .approverId{
     width: 0;
     height: 0;
-    opacity: 0;
+    visibility: hidden;
 }
 #editForm .input-group .help-block{
     position: absolute;
@@ -1027,7 +1027,7 @@ input:-webkit-autofill {
     cursor: pointer;
 }
 /*人员、部门自动提示下拉列表*/
-.suggestValidAssist{ width: 0; height: 0; opacity: 0;  }
+.suggestValidAssist{ width: 0; height: 0; visibility: hidden;  }
 /*差旅报销查询*/
 .w86{width: 86px;}
 
@@ -1044,3 +1044,6 @@ input:-webkit-autofill {
 .glyphicon-remove::before {
     *content: "";
 }
+
+.opacity0{-khtml-opacity:0;-moz-opacity:0;filter:alpha(opacity=0);filter:"alpha(opacity=0)";opacity:0;}
+.opacity1{-khtml-opacity:1;-moz-opacity:1;filter:alpha(opacity=1);filter:"alpha(opacity=1)";opacity:1;}
