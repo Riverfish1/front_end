@@ -9,7 +9,7 @@ define([
 ], function (tpl, detailTpl, commentTpl, dialogTpl, calendar, QUERY) {
     'use strict';
     var TabView = Backbone.View.extend({
-        default: {
+        $default: {
             items: ["当日", "本周", "本月", "本季", "本年"],
             currentDay: new Date().getDate(),
             currentTime: ncjwUtil.getCurrentDate()
@@ -120,7 +120,7 @@ define([
         },
         render: function () {
             //main view
-            this.$el.empty().html(this.template(this.default));
+            this.$el.empty().html(this.template(this.$default));
             //生成日历
             calendar.init('#calendarWrap');
             this.$editDialog = this.$el.find('#editDialog');
