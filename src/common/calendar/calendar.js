@@ -138,13 +138,15 @@ define(['jquery'], function ($) {
             container.appendChild(this.$wrapper);
         },
         showOrHide: function (show) {
+            var $wrap = $(this.$wrapper);
+            var hasClass = $wrap.hasClass('ui-datepicker-wrapper');
             if (show) {
-                if (this.$wrapper.classList) {
-                    this.$wrapper.classList.add('ui-datepicker-wrapper-show');
+                if (hasClass) {
+                    $wrap.addClass('ui-datepicker-wrapper-show');
                 }
             } else {
-                if (this.$wrapper.classList) {
-                    this.$wrapper.classList.remove('ui-datepicker-wrapper-show');
+                if (hasClass) {
+                    $wrap.removeClass('ui-datepicker-wrapper-show');
                 }
             }
         },
@@ -173,7 +175,7 @@ define(['jquery'], function ($) {
                 $('.ui-datepicker-body').find('td').removeClass('active');
                 if ($target.tagName.toLocaleLowerCase() !== 'td') return;
                 $(e.target).addClass('active');
-                var date = new Date(self.monthDate.year, self.monthDate.month - 1, $el.attr('data-date'));
+                var date = new Date(self.monthDate.year, self.monthDate.month - 1, $el.prop('data-date'));
                 self._date = date;
                 // $input.value = format(date);
             }
