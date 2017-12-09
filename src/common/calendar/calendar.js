@@ -138,13 +138,15 @@ define(['jquery'], function ($) {
             container.appendChild(this.$wrapper);
         },
         showOrHide: function (show) {
+            var $wrap = $(this.$wrapper);
+            var hasClass = $wrap.hasClass('ui-datepicker-wrapper');
             if (show) {
-                if (this.$wrapper.classList) {
-                    this.$wrapper.classList.add('ui-datepicker-wrapper-show');
+                if (hasClass) {
+                    $wrap.addClass('ui-datepicker-wrapper-show');
                 }
             } else {
-                if (this.$wrapper.classList) {
-                    this.$wrapper.classList.remove('ui-datepicker-wrapper-show');
+                if (hasClass) {
+                    $wrap.removeClass('ui-datepicker-wrapper-show');
                 }
             }
         },
@@ -156,24 +158,24 @@ define(['jquery'], function ($) {
             var $wrap = $(this.$wrapper);
             $wrap.off();
             var prevOrNextHandler = function (e) {
-                var $target = e.target;
-                if (!$target.classList.contains('ui-datepicker-btn')) return;
+                var $target = $(e.target);
+                if (!$target.hasClass('ui-datepicker-btn')) return;
                 /*上个月*/
-                if ($target.classList.contains('ui-datepicker-prev-btn')) {
+                if ($target.hasClass('ui-datepicker-prev-btn')) {
                     self.render('prev',container);
                 }
                 /*下个月*/
-                else if ($target.classList.contains('ui-datepicker-next-btn')) {
+                else if ($target.hasClass('ui-datepicker-next-btn')) {
                     self.render('next',container);
                 }
             }
             var tdHandler = function (e) {
-                var $target = e.target;
+                var $target = e.target, $el = $(e.target);
                 //jquery
                 $('.ui-datepicker-body').find('td').removeClass('active');
                 if ($target.tagName.toLocaleLowerCase() !== 'td') return;
                 $(e.target).addClass('active');
-                var date = new Date(self.monthDate.year, self.monthDate.month - 1, $target.dataset.date);
+                var date = new Date(self.monthDate.year, self.monthDate.month - 1, $el.prop('data-date'));
                 self._date = date;
                 // $input.value = format(date);
             }

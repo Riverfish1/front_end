@@ -1047,3 +1047,10 @@ input:-webkit-autofill {
 
 .opacity0{-khtml-opacity:0;-moz-opacity:0;filter:alpha(opacity=0);filter:"alpha(opacity=0)";opacity:0;}
 .opacity1{-khtml-opacity:1;-moz-opacity:1;filter:alpha(opacity=1);filter:"alpha(opacity=1)";opacity:1;}
+
+.modal-body {
+    overflow-x: hidden;
+}
+.col-md-4{
+    padding-left: 10px;
+}
