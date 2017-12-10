@@ -56,6 +56,7 @@ define([
             this.$el.empty().html(this.template(this.$default));
             this.$officeDialog = this.$el.find('#editDialog');
             this.$officeDialogPanel = this.$el.find('#editPanel');
+            this.$dialogTitle = this.$el.find('#tab-title');
             this.$tabContent = this.$el.find('#tabContent');
             this._selet1stTab();
             this.createDetailView(0);
@@ -66,6 +67,8 @@ define([
             var initData = {id: '', peopleId: window.ownerPeopleId, eventName: '', eventDescription: '', completeTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'), eventType: this.getValue()};
             var row = row.id ? row : initData;
             row.completeTime = row.id && ncjwUtil.timeTurn(row.completeTime, 'yyyy-MM-dd');
+            //修改dialog-title
+            this.$dialogTitle.text(this.$default.items[this.getValue()]);
             this.$officeDialog.modal('show');
             this.$officeDialog.modal({backdrop: 'static', keyboard: false});
             this.$officeDialogPanel.empty().html(this.getDialogContent(row))
