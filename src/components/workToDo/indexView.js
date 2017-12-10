@@ -159,7 +159,6 @@ define([
                 var JSONData = JSON.parse(datas);
                 JSONData.completeTime = JSONData.completeTime.replace(/\+/, ' ');
                 var id = $('#id').val();
-                alert(JSON.stringify(JSONData));
                 ncjwUtil.postData(id ? QUERY.WORK_TODO_UPDATE : QUERY.WORK_TODO_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');

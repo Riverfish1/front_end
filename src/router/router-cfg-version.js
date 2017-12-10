@@ -133,8 +133,6 @@ define(['backbone'], function (Backbone) {
 
         '*actions': 'defaultAction'
     };
-    window.localStorage.setItem('a', 'b');
-    alert(window.localStorage.getItem('a'))
     var isFirst = true;
 
     var Router = Backbone.Router.extend({
@@ -180,6 +178,7 @@ define(['backbone'], function (Backbone) {
                 $('#app').find('.homeWrap').hide();
             }
         });
+        // window.localStorage.setItem('ncRouter', location.hash);
     });
 
     return router;
