@@ -5,7 +5,7 @@ define([
 ], function (tpl, QUERY) {
     'use strict';
     var View = Backbone.View.extend({
-        $default: {
+        defaultValue: {
             items: [
             	{ name: "自动签到", active: true },
             	{ name: "请假申请", active: false },
@@ -96,7 +96,7 @@ define([
         			n.active = false;
         		}
         	});
-        	this.$el.html(this.template(this.$default));
+        	this.$el.html(this.template(this.defaultValue));
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         	

@@ -124,12 +124,12 @@ define([
                         required: true
                     },
                     idCard: {
+                        required: true,
                         maxlength: 18,
                         isIdCard: true
                     },
                     gmtCreate: {
-                        required: true,
-                        date: true
+                        required: true
                     },
                     interviewee: {
                         required: true
@@ -141,7 +141,7 @@ define([
                 messages: {
                     name: "请输入名称",
                     gmtCreate: "请选择时间",
-                    idCard: { required: '请输入身份证号码', isIdCard: '请输入正确的身份证号码' },
+                    idCard: { required: '请输入身份证号码', maxlength: '最长不能超过18位', isIdCard: '请输入正确的身份证号码' },
                     reason: '请输入访问事由',
                     interviewee: '请选择被访问人'
 

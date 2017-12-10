@@ -52,11 +52,6 @@ define(['../../common/query/index'], function (QUERY) {
                     align: 'center',
                     valign: "middle",
                 }, {
-                    field: 'registrantId',
-                    title: '登记人',
-                    align: 'center',
-                    valign: "middle"
-                }, {
                     field: 'recordContent',
                     title: '登记内容',
                     align: 'center',

@@ -49,8 +49,8 @@ define([
                         } else {
                             that.$editDialog.modal('show');
                             that.$editDialog.modal({backdrop: 'static', keyboard: false});
-                            that.$editDialogForm = that.editDialogPanel.find('#editDialogForm');
                             that.$editDialogPanel.empty().html(that.getDialogTpl());
+                            that.$editDialogForm = that.$editDialogPanel.find('#editDialogForm');
                             that.initSubmitForm();
                         }
                     } else {
@@ -102,14 +102,14 @@ define([
             this.$menu.hide();
             this.$shotcutBtn.hide();
         },
-		render: function () {
-			this.$el.html(this.template(this.$default));
+        render: function () {
+            this.$el.html(this.template(this.$default));
             this.dropMenu = new DropMenu();
             this.$menu = this.$el.find('.shotMenu');
             this.$shotcutBtn = this.$el.find('.shotcutBtn');
             this.renderLogin();
-			return this;
-		},
+            return this;
+        },
         addShotcut: function () {
             Backbone.trigger('shotcutBtnClick');
             this.$menu.hide();
@@ -119,11 +119,11 @@ define([
             this.$shotcutBtn.css('top', this.$menu.height() + 58);
         },
         handleRouter: function () {
-    		if (location.href.match('120.55.36.116')) {
-    			window.location.href = 'http://60.190.226.163:5002/uums-server/xtgl.htm';
-    		} else {
-    			window.location.href = 'http://51.110.233.61:8082/uums-server/xtgl.htm';
-    		}
+            if (location.href.match('120.55.36.116')) {
+                window.location.href = 'http://60.190.226.163:5002/uums-server/xtgl.htm';
+            } else {
+                window.location.href = 'http://51.110.233.61:8082/uums-server/xtgl.htm';
+            }
           // window.location.href = 'http://' + window.location.hostname + ':8082/uums-server/xtgl.htm';
         },
         initSubmitForm: function () {
@@ -133,8 +133,7 @@ define([
                 focusInvalid: true,
                 rules: {
                     employeeNum: {
-                        required: true,
-                        number: true
+                        required: true
                     },
                     peopleName: {
                         required: true,
@@ -150,8 +149,7 @@ define([
                 },
                 messages: {
                     employeeNum: {
-                        required: '请输入工号',
-                        number: '必须为数字'
+                        required: '请输入工号'
                     },
                     peopleName: {
                         required: '请输入名字'

@@ -211,8 +211,7 @@ define([
                 focusInvalid: true,
                 rules: {
                     employeeNum: {
-                        required: true,
-                        number: true
+                        required: true
                     },
                     peopleName: {
                         required: true,
@@ -231,8 +230,7 @@ define([
                 },
                 messages: {
                     employeeNum: {
-                        required: '请输入工号',
-                        number: '必须为数字'
+                        required: '请输入工号'
                     },
                     peopleName: {
                         required: '请输入名字'
