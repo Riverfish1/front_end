@@ -16,7 +16,7 @@ define(['backbone'], function (Backbone) {
         // 人员信息
         'register/people': 'src/components/peopleRecord/indexController.js',
         // 人员类型
-        'register/peopleType': 'src/components/peopleTypeRecord/indexController.js',
+        // 'register/peopleType': 'src/components/peopleTypeRecord/indexController.js',
         // 岗位登记
         'register/post': 'src/components/postRecord/indexController.js',
         // 外来人员登记
@@ -133,7 +133,8 @@ define(['backbone'], function (Backbone) {
 
         '*actions': 'defaultAction'
     };
-
+    window.localStorage.setItem('a', 'b');
+    alert(window.localStorage.getItem('a'))
     var isFirst = true;
 
     var Router = Backbone.Router.extend({
@@ -148,7 +149,6 @@ define(['backbone'], function (Backbone) {
         }
 
     });
-
     var router = new Router();
     var oldHashFirst = null;
     //彻底用on route接管路由的逻辑，这里route是路由对应的value

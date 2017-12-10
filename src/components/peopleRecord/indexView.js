@@ -79,8 +79,6 @@ define([
             this.$editForm = this.$el.find('#editForm');
             this.initSubmitForm();
         },
-        selectAreaName: function(e) {
-        },
         getAreaList: function(row) {
             var self = this;
             var params = {

@@ -63,7 +63,7 @@ define([
         },
         addOne: function (row) {
             // debugger;
-            var initData = {id: '', peopleId: window.ownerPeopleId, eventName: '', eventDescription: '', completeTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'), eventType: this.getValue()};
+            var initData = {id: '', eventName: '', eventDescription: '', completeTime: ncjwUtil.timeTurn(new Date().getTime(), 'yyyy-MM-dd'), eventType: this.getValue()};
             var row = row.id ? row : initData;
             row.completeTime = row.id && ncjwUtil.timeTurn(row.completeTime, 'yyyy-MM-dd');
             this.$officeDialog.modal('show');
@@ -159,6 +159,7 @@ define([
                 var JSONData = JSON.parse(datas);
                 JSONData.completeTime = JSONData.completeTime.replace(/\+/, ' ');
                 var id = $('#id').val();
+                alert(JSON.stringify(JSONData));
                 ncjwUtil.postData(id ? QUERY.WORK_TODO_UPDATE : QUERY.WORK_TODO_INSERT, JSON.stringify(JSONData), function (res) {
                     if (res.success) {
                         ncjwUtil.showInfo(id ? '修改成功！' : '新增成功！');

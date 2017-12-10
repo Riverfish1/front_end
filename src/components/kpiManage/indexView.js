@@ -99,12 +99,10 @@ define([
                         maxlength: 50
                     },
                     startDate: {
-                        required: true,
-                        date: true
+                        required: true
                     },
                     endDate: {
-                        required: true,
-                        date: true
+                        required: true
                     }
                 },
                 messages: {
@@ -124,11 +122,9 @@ define([
                     },
                     startDate: {
                         required: '请选择时间',
-                        date: '必须为2017-09-30格式'
                     },
                     endDate: {
-                        required: '请选择时间',
-                        date: '必须为2017-09-30格式'
+                        required: '请选择时间'
                     }
                 },
                 highlight: function (element) {

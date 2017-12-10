@@ -25,9 +25,12 @@ define([
             'click #dialogBtnSubmit': 'submitDialogContent'
         },
         initialize: function () {
+            Backbone.off('routeChange').on('routeChange', this.updateNavSideBar);
+        },
+        renderLogin: function () {
             var that = this;
             this.$editDialog = this.$el.find('#editDialog');
-            this.$editDialogPanel = this.$el.find('#editDialogPanel');
+            this.$editDialogPanel = this.$editDialog.find('#editDialogPanel');
             if (window.location.host.indexOf('localhost') === -1) {
                 ncjwUtil.getData(QUERY.LOGIN, {}, function(res) {
                     if (res.success) {
@@ -47,25 +50,25 @@ define([
                             that.$editDialog.modal('show');
                             that.$editDialog.modal({backdrop: 'static', keyboard: false});
                             that.$editDialogForm = that.editDialogPanel.find('#editDialogForm');
+                            that.$editDialogPanel.empty().html(that.getDialogTpl());
                             that.initSubmitForm();
                         }
                     } else {
-        				if (location.href.indexOf('120.55.36.116') > -1) {
-        					window.location.href = 'http://60.190.226.163:5002/uums-server';
-        				} else {
-        					window.location.href = 'http://51.110.233.61:8082/uums-server';
-        				}
+                        if (location.href.indexOf('120.55.36.116') > -1) {
+                            window.location.href = 'http://60.190.226.163:5002/uums-server';
+                        } else {
+                            window.location.href = 'http://51.110.233.61:8082/uums-server';
+                        }
                     }
                 }, {
                     'contentType': 'application/json'
                 });
             } else {
-                window.ownerPeopleId = 4;
-                window.ownerPeopleName = '张三疯';
+                window.ownerPeopleId = 133;
+                window.ownerPeopleName = '岳灏';
             }
-			Backbone.off('routeChange').on('routeChange', this.updateNavSideBar);
-			this.isFirst = true;
-		},
+            this.isFirst = true;
+        },
         updateNavSideBar: function (hash) {
             var hashFirst = hash.split('/')[1];
             var $header = $('header'), $li = $header.find('.headerLi');
@@ -104,6 +107,7 @@ define([
             this.dropMenu = new DropMenu();
             this.$menu = this.$el.find('.shotMenu');
             this.$shotcutBtn = this.$el.find('.shotcutBtn');
+            this.renderLogin();
 			return this;
 		},
         addShotcut: function () {
