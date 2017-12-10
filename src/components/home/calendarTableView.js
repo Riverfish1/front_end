@@ -125,8 +125,8 @@ define(['../../common/query/index'], function (QUERY) {
         },
         queryParams: function (params) {
             var temp = {
-                pageNum: params.offset / params.limit,
-                pageSize: params.limit,
+                pageNum: 0,
+                pageSize: 10000,
                 operatorId: window.ownerPeopleId,
                 gmtCreate:  homeGmtCreate
             };

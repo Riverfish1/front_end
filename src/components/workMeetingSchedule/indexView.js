@@ -43,8 +43,6 @@ define([
             this.$officeAreaSel = this.$officeDialogPanel.find('#officeAreaSel');
             this.$officeRoomSel = this.$officeDialogPanel.find('#officeRoomSel');
             this.$conferenceTheme = this.$officeDialogPanel.find('#conferenceTheme');
-            this.$startTime = this.$officeDialogPanel.find('.startTime');
-            this.$endTime = this.$officeDialogPanel.find('.endTime');
             this.getOfficeAreaList(row);
             this.getOfficeRoomList(row);
             this.$editForm = this.$el.find('#editForm');
@@ -148,6 +146,10 @@ define([
                     },
                     startTime: {
                         required: true
+                    },
+                    endTime: {
+                        required: true,
+                        dateRange: '.startTime'
                     }
                 },
                 messages: {
@@ -165,7 +167,8 @@ define([
                         required: "请选择时间"
                     },
                     endTime: {
-                        required: "请选择时间"
+                        required: "请选择时间",
+                        dateRange: '起始时间晚于结束时间'
                     }
                 },
                 highlight: function (element) {
@@ -194,8 +197,6 @@ define([
                 var id = $('#id').val();
                 var place = this.$officeAreaSel.val();
                 var conferenceRoom = this.$officeRoomSel.val();
-                var startTime = this.$startTime.val();
-                var endTime = this.$endTime.val();
                 var conferenceTheme = this.$conferenceTheme.val();
                 bootbox.confirm({
                     buttons: {
@@ -207,7 +208,7 @@ define([
                         }
                     },
                     title: "预定确认",
-                    message: '<div class="tipInfo tipConfirm"><p>' + place + "——" + conferenceRoom + '</p><p>'+ ncjwUtil.timeTurn(startTime) + '至' + ncjwUtil.timeTurn(endTime) + '</p><p>会议主题：' + conferenceTheme + '</p></div>',
+                    message: '<div class="tipInfo tipConfirm"><p>' + place + "——" + conferenceRoom + '</p><p>'+ JSONData.startTime + '至' + JSONData.endTime + '</p><p>会议主题：' + conferenceTheme + '</p></div>',
                     callback: function (result) {
                         if (result) {
                             ncjwUtil.postData(id ? QUERY.WORK_MEETING_UPDATE : QUERY.WORK_MEETING_INSERT, JSON.stringify(JSONData), function (res) {

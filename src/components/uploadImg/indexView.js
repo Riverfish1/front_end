@@ -57,6 +57,7 @@ define([
 
                 // 当有文件添加进来的时候
                 uploader.on('fileQueued', function (file) {
+                    alert(file.type);
                     var $li = $(
                             '<div id="' + file.id + '" class="file-item thumbnail">' +
                             '<img>' +
@@ -97,6 +98,8 @@ define([
 
                 // 文件上传成功，给item添加成功class, 用样式标记上传成功。
                 uploader.on('uploadSuccess', function (file, response) {
+                    alert(response.errorMsg.error)
+                    console.log(file, response);
                     var abc = $.extend({}, file);
                     $('#' + file.id).addClass('upload-state-done');
                     if(response.success == true){
